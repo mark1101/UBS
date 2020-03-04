@@ -12,7 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('login');
+    return redirect('/login');
+    //return view('login');
 }); // quando iniciar o sistema, comeca puxando a tela de login
 
 Auth::routes();
