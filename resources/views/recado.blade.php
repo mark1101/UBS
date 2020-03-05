@@ -116,45 +116,39 @@ The above copyright notice and this permission notice shall be included in all c
     </div>
 
     <div class="main-panel">
-        <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
             <div class="container-fluid">
-
                 <div class="navbar-wrapper">
-                    <a class="navbar-brand" href="javascript:;">Encaminhamento de Paciente a Fisioterapia</a>
+                    <a class="navbar-brand" href="javascript:;">User Profile</a>
                 </div>
-
-                <!-- BOTAO DE RESPONSIVIDADE PARA OPCIOES DE SIDEBAR-->
-                <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="navbar-toggler-icon icon-bar"></span>
                     <span class="navbar-toggler-icon icon-bar"></span>
                     <span class="navbar-toggler-icon icon-bar"></span>
                 </button>
-
-                <!-- TOPO EM CIMA PARA OPCAO DE SAIDA E CONFIGURAÇÃOES DE PERFIL E SISTEMA  -->
                 <div class="collapse navbar-collapse justify-content-end">
-                    <form class="navbar-form"></form>
+
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
-                            <a class="nav-link" href="javascript:;" id="navbarDropdownProfile"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="material-icons">short_text</i>
-                                <p class="d-lg-none d-md-block">
-                                    Configuração
-                                </p>
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
-                                <a class="dropdown-item" href="#">Profile</a>
-                                <a class="dropdown-item" href="#">Settings</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Log out</a>
+
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    {{ __('Sair') }}
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
                             </div>
                         </li>
                     </ul>
                 </div>
-
             </div>
         </nav>
         <!-- End Navbar -->

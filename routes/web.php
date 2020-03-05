@@ -24,35 +24,35 @@ Route::get('/home', function (){
 
 Route::get('/paciente', function () {
     return view('paciente');
-})->name('paciente');
+})->name('paciente')->middleware('auth');
 
 Route::get('/buscarExame', function () {
     return view('buscarExame');
-})->name('buscarExame');
+})->name('buscarExame')->middleware('auth');
 
 Route::get('/cadastroExame', function () {
     return view('cadastroExame');
-})->name('cadastroExame');
+})->name('cadastroExame')->middleware('auth');
 
 Route::get('/cadastroVacina', function () {
     return view('cadastroVacina');
-})->name('cadastroVacina');
+})->name('cadastroVacina')->middleware('auth');
 
 Route::get('/encaminhamento', function () {
     return view('encaminhamento');
-})->name('encaminhamento');
+})->name('encaminhamento')->middleware('auth');
 
 Route::get('/recado', function () {
     return view('recado');
-})->name('recado');
+})->name('recado')->middleware('auth');
 
 Route::get('/comunicacao', function () {
     return view('comunicacao');
-})->name('comunicacao');
+})->name('comunicacao')->middleware('auth');
 
 Route::get('/inicio', function () {
     return view('inicio');
-})->name('inicio');
+})->name('inicio')->middleware('auth');
 
 Route::get('/login', function () {
     return view('login');

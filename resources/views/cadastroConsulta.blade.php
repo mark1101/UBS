@@ -138,18 +138,20 @@ The above copyright notice and this permission notice shall be included in all c
                     <form class="navbar-form"></form>
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
-                            <a class="nav-link" href="javascript:;" id="navbarDropdownProfile" data-toggle="dropdown"
-                               aria-haspopup="true" aria-expanded="false">
-                                <i class="material-icons">short_text</i>
-                                <p class="d-lg-none d-md-block">
-                                    Configuração
-                                </p>
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
-                                <a class="dropdown-item" href="#">Perfil</a>
-                                <a class="dropdown-item" href="#">Configurações</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Sair</a>
+
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    {{ __('Sair') }}
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
                             </div>
                         </li>
                     </ul>

@@ -4,6 +4,22 @@
 <script src="{{asset('//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js')}}"></script>
 <!------ Include the above in your HEAD tag ---------->
 
+<head>
+    <meta charset="utf-8"/>
+    <link rel="icon" type="image/png" href="{{asset('img/icone1.png')}}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>
+        ComunityHelth
+    </title>
+
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet" type="text/css"
+          href="{{asset('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons')}}"/>
+
+
+</head>
+
+
 <style>
     @import url('https://fonts.googleapis.com/css?family=Mukta');
 
@@ -11,7 +27,7 @@
         font-family: 'Mukta', sans-serif;
         height: 100vh;
         min-height: 550px;
-        background-image: ;
+        background-image: url("{{asset('img/unidade.jpg')}}");
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
@@ -217,30 +233,29 @@
 <div class="login-reg-panel">
 
 
-    <div class="register-info-box">
-        <h2>Login de Usuário</h2>
-        <p>texto aqui</p>
 
-        <!-- <label id="label-login" for="log-login-show">Entrar</label>
-         <input type="radio" name="active-log-panel" id="log-login-show"> -->
+    <div class="register-info-box" >
+        <img  src="{{asset('img/imagem.png')}}" alt="">
     </div>
 
     <div class="white-panel">
         <div class="login-show">
-            <h2 align="center">LOGIN</h2>
+            <h2 align="center">ENTRAR</h2>
 
             <form method="POST" action="{{ route('login') }}">
                 @csrf
 
-                <input id="email" type="text" placeholder="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" class="form-control"  @error('email') is-invalid @enderror" name="email"
-                       value="{{ old('email') }}" required autocomplete="email" autofocus>
+                <input style="border-radius: 4px" id="email" type="text" placeholder="Digite seu Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                       class="form-control" @error('email') is-invalid @enderror" name="email"
+                value="{{ old('email') }}" required autocomplete="email" autofocus>
                 @error('email')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
                 @enderror
 
-                <input id="password" placeholder="Digite a sua senha" type="password" class="form-control  @error('password') is-invalid @enderror"
+                <input style="border-radius: 4px" id="password" placeholder="Digite sua Senha" type="password"
+                       class="form-control  @error('password') is-invalid @enderror"
                        name="password" required autocomplete="current-password">
                 @error('password')
                 <span class="invalid-feedback" role="alert">
@@ -250,7 +265,15 @@
 
                 <a href="">Esqueceu a Senha ? </a>
                 <br>
-                <button type="submit" class="btn btn-primary" >Entrar</button>
+                <button style="  display:block;
+    width:100px;
+    height:40px;
+    font-weight:bold;
+    color:#ffffff;
+    border-radius: 4px;
+    background-color: #9C27B0;
+    border:none;" type="submit" class="btn btn-primary">Entrar</button>
+
             </form>
         </div>
 

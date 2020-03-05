@@ -1,14 +1,4 @@
-<!--
-=========================================================
-Material Dashboard - v2.1.2
-=========================================================
 
-Product Page: https://www.creative-tim.com/product/material-dashboard
-Copyright 2020 Creative Tim (https://www.creative-tim.com)
-Coded by Creative Tim
-
-=========================================================
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -138,17 +128,11 @@ The above copyright notice and this permission notice shall be included in all c
                     <form class="navbar-form"></form>
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
-                            <a class="nav-link" href="javascript:;" id="navbarDropdownProfile"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="material-icons">short_text</i>
-                                <p class="d-lg-none d-md-block">
-                                    Configuração
-                                </p>
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
-                                <a class="dropdown-item" href="#">Profile</a>
-                                <a class="dropdown-item" href="#">Settings</a>
-                                <div class="dropdown-divider"></div>
+
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -167,10 +151,12 @@ The above copyright notice and this permission notice shall be included in all c
         </nav>
         <!-- End Navbar -->
 
-        <div class="content">
+        <div class="content")>
+
             <div class="container-fluid">
                <h1>BEM VINDO</h1>
             </div>
+
         </div>
 
         <footer class="footer">
@@ -181,25 +167,24 @@ The above copyright notice and this permission notice shall be included in all c
 </div>
 
 <!-- REFERENCIAS EM JS  -->
-<script src="{{asset('js/core/jquery.min.js')}}"></script>
-<script src="{{asset('js/core/popper.min.js')}}"></script>
-<script src="{{asset('js/core/bootstrap-material-design.min.js')}}"></script>
-<script src="{{asset('js/plugins/perfect-scrollbar.jquery.min.js')}}"></script>
-<script src="{{asset('js/plugins/moment.min.js')}}"></script>
-<script src="{{asset('js/plugins/sweetalert2.js')}}"></script>
-<script src="{{asset('js/plugins/jquery.validate.min.js')}}"></script>
-<script src="{{asset('js/plugins/jquery.bootstrap-wizard.js')}}"></script>
-<script src="{{asset('js/plugins/bootstrap-selectpicker.js')}}"></script>
-<script src="{{asset('js/plugins/bootstrap-datetimepicker.min.js')}}"></script>
-<script src="{{asset('js/plugins/jquery.dataTables.min.js')}}"></script>
-<script src="{{asset('js/plugins/bootstrap-tagsinput.js')}}"></script>
-<script src="{{asset('js/plugins/jasny-bootstrap.min.js')}}"></script>
-<script src="{{asset('js/plugins/fullcalendar.min.js')}}"></script>
-<script src="{{asset('js/plugins/jquery-jvectormap.js')}}"></script>
-<script src="{{asset('assets/js/plugins/nouislider.min.js')}}"></script>
-<script src="{{asset('https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js')}}"></script>
-<script src="{{asset('js/plugins/arrive.min.js')}}"></script>
-
+<script src="{{asset("js/core/jquery.min.js")}}"></script>
+<script src="{{asset("js/core/popper.min.js")}}"></script>
+<script src="{{asset("js/core/bootstrap-material-design.min.js")}}"></script>
+<script src="{{asset("js/plugins/perfect-scrollbar.jquery.min.js")}}"></script>
+<script src="{{asset("js/plugins/moment.min.js")}}"></script>
+<script src="{{asset("js/plugins/sweetalert2.js")}}"></script>
+<script src="{{asset("js/plugins/jquery.validate.min.js")}}"></script>
+<script src="{{asset("js/plugins/jquery.bootstrap-wizard.js")}}"></script>
+<script src="{{asset("js/plugins/bootstrap-selectpicker.js")}}"></script>
+<script src="{{asset("js/plugins/bootstrap-datetimepicker.min.js")}}"></script>
+<script src="{{asset("js/plugins/jquery.dataTables.min.js")}}"></script>
+<script src="{{asset("js/plugins/bootstrap-tagsinput.js")}}"></script>
+<script src="{{asset("js/plugins/jasny-bootstrap.min.js")}}"></script>
+<script src="{{asset("js/plugins/fullcalendar.min.js")}}"></script>
+<script src="{{asset("js/plugins/jquery-jvectormap.js")}}"></script>
+<script src="{{asset("assets/js/plugins/nouislider.min.js")}}"></script>
+<script src="{{asset("https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js")}}"></script>
+<script src="{{asset("js/plugins/arrive.min.js")}}"></script>
 
 </body>
 
