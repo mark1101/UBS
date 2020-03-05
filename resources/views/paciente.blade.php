@@ -256,39 +256,40 @@ The above copyright notice and this permission notice shall be included in all c
                                 <h4 class="card-title">Cadastro de paciente</h4>
                             </div>
                             <div class="card-body">
-                                <form>
+                                <form action="{{route('cadastraPaciente')}}" method="post">
+                                    @csrf
                                     <p class="card-category">Dados Pessoais</p>
                                     <div class="row">
                                         <div class="col-md-5">
                                             <div class="form-group">
-                                                <label class="bmd-label-floating">Company (disabled)</label>
-                                                <input type="text" class="form-control">
+                                                <label class="bmd-label-floating">Nome do Paciente</label>
+                                                <input type="text" class="form-control" id="nome" name="nome" required>
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                <label class="bmd-label-floating">Username</label>
-                                                <input type="text" class="form-control">
+                                                <label class="bmd-label-floating" >Data de Nascimento</label>
+                                                <input type="text" class="form-control" id="data-nascimento" name="data_nascimento" required>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label class="bmd-label-floating">Email address</label>
-                                                <input type="email" class="form-control">
+                                                <label class="bmd-label-floating">Email</label>
+                                                <input type="email" class="form-control" id="emal" name="email" required>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label class="bmd-label-floating">CPF</label>
-                                                <input type="text" class="form-control">
+                                                <label class="bmd-label-floating">Numero do SUS</label>
+                                                <input type="text" class="form-control" id="num_sus" name="num_sus" required>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label class="bmd-label-floating">Last Name</label>
-                                                <input type="text" class="form-control">
+                                                <label class="bmd-label-floating" >CPF</label>
+                                                <input type="text" class="form-control" id="cpf" name="cpf" required>
                                             </div>
                                         </div>
                                     </div>
@@ -298,38 +299,34 @@ The above copyright notice and this permission notice shall be included in all c
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label class="bmd-label-floating">City</label>
-                                                <input type="text" class="form-control">
+                                                <label class="bmd-label-floating">Cidade</label>
+                                                <input type="text" class="form-control" id="cidade" name="cidade" required>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label class="bmd-label-floating">Country</label>
-                                                <input type="text" class="form-control">
+                                                <label class="bmd-label-floating" >Bairro</label>
+                                                <input type="text" class="form-control" id="bairro" name="bairro" required>
                                             </div>
                                         </div>
 
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label class="bmd-label-floating">Postal Code</label>
-                                                <input type="text" class="form-control">
+                                                <label class="bmd-label-floating">Telefone</label>
+                                                <input type="text" class="form-control" id="telefone" name="telefone">
                                             </div>
                                         </div>
                                     </div>
 
 
-                                    <p class="card-category">Demais informações</p>
-
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Adress</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <button type="submit" class="btn btn-primary pull-right">Salvar</button>
+                                    <button style="  display:block;
+    width:100px;
+    height:40px;
+    font-weight:bold;
+    color:#ffffff;
+    border-radius: 4px;
+    background-color: #9C27B0;
+    border:none;" type="submit" class="btn btn-primary">Salvar</button>
                                     <div class="clearfix"></div>
                                 </form>
                             </div>

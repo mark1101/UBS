@@ -13,8 +13,7 @@
 
 Route::get('/', function () {
     return redirect('/login');
-    //return view('login');
-}); // quando iniciar o sistema, comeca puxando a tela de login
+});
 
 Auth::routes();
 
@@ -57,3 +56,6 @@ Route::get('/inicio', function () {
 Route::get('/login', function () {
     return view('login');
 })->name('login');
+
+Route::POST('paciente/salvarPaciente', 'PacienteController@cadastraPaciente')->name('cadastraPaciente')->middleware('auth');
+Route::POST('vacina/cadastrarVacinar', 'CadastroVacinaController@cadastraVacina')->name('cadastraVacina')->middleware('auth');

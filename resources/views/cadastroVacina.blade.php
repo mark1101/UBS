@@ -203,7 +203,7 @@ The above copyright notice and this permission notice shall be included in all c
                                                     Vacina Realizada
                                                 </th>
                                                 <th>
-                                                    Num. SUS
+                                                    Informação de Lote
                                                 </th>
                                                 <th>
                                                     Data
@@ -261,18 +261,19 @@ The above copyright notice and this permission notice shall be included in all c
                                     <h4 class="card-title">Cadastro de Vacina</h4>
                                 </div>
                                 <div class="card-body">
-                                    <form>
+                                    <form action="{{route('cadastraVacina')}}" method="post">
+                                        @csrf
                                         <div class="row">
                                             <div class="col-md-5">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Posto de Vacinação</label>
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" class="form-control" id="posto_vacinacao" name="posto_vacinacao">
                                                 </div>
                                             </div>
                                             <div class="col-md-7">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Nome do paciente</label>
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" class="form-control" id="nome_paciente" name="nome_paciente" >
                                                 </div>
                                             </div>
                                         </div>
@@ -280,28 +281,35 @@ The above copyright notice and this permission notice shall be included in all c
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Vacina Realizada</label>
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" class="form-control" id="vacina_realizada" name="vacina_realizada">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Informação de Lote</label>
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" class="form-control" id="informacao_lote" name="informacao_lote">
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row">
+                                       <!-- <div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Data</label>
                                                     <br>
-                                                    <input type="date" class="form-control">
+                                                    <input type="date" class="form-control" data>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <button type="submit" class="btn btn-primary pull-right">Cadastrar e Imprimir
-                                            Comprovante</button>
+                                        </div>-->
+                                        <button style="  display:block;
+    width:100px;
+    height:40px;
+    font-weight:bold;
+    color:#ffffff;
+    border-radius: 4px;
+    background-color: #9C27B0;
+    border:none;" type="submit" class="btn btn-primary">Salvar</button>
                                         <div class="clearfix"></div>
+
                                     </form>
                                 </div>
                             </div>
