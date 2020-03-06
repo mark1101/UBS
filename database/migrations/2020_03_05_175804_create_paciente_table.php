@@ -17,6 +17,7 @@ class CreatePacienteTable extends Migration
             $table->bigIncrements('id_paciente');
             $table->string('nome');
             $table->string('data_nascimento');
+            $table->string('idade');
             $table->string('email');
             $table->string('num_sus');
             $table->string('cpf', 16)->unique();

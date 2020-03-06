@@ -44,12 +44,17 @@ The above copyright notice and this permission notice shall be included in all c
                         <p>Início</p>
                     </a>
                 </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="{{route('paciente')}}">
-                        <i class="material-icons">person
-                        </i>
-                        <p>Paciente</p>
+                <li class="nav-item dropdown ">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        <i class="material-icons">person</i>
+                        Paciente
                     </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{route('paciente')}}">Cadastro de Paciente</a>
+                        <a class="dropdown-item" href="{{route('mostraPaciente')}}">Busca de Paciente</a>
+                    </div>
                 </li>
                 <li class="nav-item dropdown ">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -140,7 +145,7 @@ The above copyright notice and this permission notice shall be included in all c
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }} <span class="caret"></span>
+                                {{Auth::user()->funcao}} {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -158,7 +163,6 @@ The above copyright notice and this permission notice shall be included in all c
                         </li>
                     </ul>
                 </div>
-
             </div>
         </nav>
         <!-- End Navbar -->
@@ -167,57 +171,6 @@ The above copyright notice and this permission notice shall be included in all c
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-
-                    <div class="col-md-12" style="overflow: hidden">
-
-                        <!-- PARTE DE CIMA DA TABELA PARA PESQUISA -->
-                        <div class="card">
-                            <div class="card-header card-header-primary">
-                                <h4 class="card-title">Buscar Vacina</h4>
-                                <form class="navbar-form" action="{{route('mostraVacina')}}">
-                                    @csrf
-                                    <div class="input-group no-border">
-                                        <input type="text" style="color:beige;" value="" class="form-control"
-                                               placeholder="Digite o nome do paciente...">
-                                        <button type="submit" class="btn btn-white btn-round btn-just-icon">
-                                            <i class="material-icons">search</i>
-                                            <div class="ripple-container"></div>
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-
-                            <!-- PARTE DE MIOLO DA TABELA -->
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-sm">
-                                        <thead>
-                                        <tr>
-
-                                            <th scope="col" width="27%" align="center">Posto de Vacinação</th>
-                                            <th scope="col" width="19%">Nome Paciente</th>
-                                            <th scope="col" width="22%">Vacina Realizada</th>
-                                            <th scope="col" width="19%">Info de Lote</th>
-                                            <th scope="col" width="14%">Data</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-
-                                        @foreach($vacinas as $vacina)
-                                            <tr>
-                                                <td>{{$vacina->posto_vacinacao}}</td>
-                                                <td>{{$vacina->nome_paciente}}</td>
-                                                <td>{{$vacina->vacina_realizada}}</td>
-                                                <td>{{$vacina->informacao_lote}}</td>
-                                                <td>{{$vacina->data}}</td>
-                                            </tr>
-                                        @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
                     <!-- FORM DE CADASTRO DE VACINA  -->
                     <div class="col-md-12">
@@ -233,7 +186,7 @@ The above copyright notice and this permission notice shall be included in all c
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Posto de Vacinação</label>
                                                 <input type="text" class="form-control" id="posto_vacinacao"
-                                                       name="posto_vacinacao" required>
+                                                       name="posto_vacinacao">
                                             </div>
                                         </div>
                                         <div class="col-md-7">
@@ -269,9 +222,54 @@ The above copyright notice and this permission notice shall be included in all c
     background-color: #9C27B0;
     border:none;" onclick="alert('Cadastro Realizado com Sucesso')" type="submit" class="btn btn-primary">Salvar
                                     </button>
-                                    <div class="clearfix"></div>
-
                                 </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="overflow: hidden">
+                        <!-- PARTE DE CIMA DA TABELA PARA PESQUISA -->
+                        <div class="card">
+                            <div class="card-header card-header-primary">
+                                <h4 class="card-title">Buscar Vacina</h4>
+                                <form class="navbar-form" action="{{route('mostraVacina')}}">
+                                    @csrf
+                                    <div class="input-group no-border">
+                                        <input type="text" style="color:beige;" value="" class="form-control"
+                                               placeholder="Digite o nome do paciente...">
+                                        <button type="submit" class="btn btn-white btn-round btn-just-icon">
+                                            <i class="material-icons">search</i>
+                                            <div class="ripple-container"></div>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!-- PARTE DE MIOLO DA TABELA -->
+                            <div class="card-body">
+                                <div class="table-responsive" style="overflow: auto; height: 300px;">
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col" width="27%" align="center">Posto de Vacinação</th>
+                                            <th scope="col" width="19%">Nome Paciente</th>
+                                            <th scope="col" width="22%">Vacina Realizada</th>
+                                            <th scope="col" width="19%">Info de Lote</th>
+                                            <th scope="col" width="14%">Data</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($vacinas as $vacina)
+                                            <tr>
+                                                <td>{{$vacina->posto_vacinacao}}</td>
+                                                <td>{{$vacina->nome_paciente}}</td>
+                                                <td>{{$vacina->vacina_realizada}}</td>
+                                                <td>{{$vacina->informacao_lote}}</td>
+                                                <td>{{$vacina->data}}</td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>

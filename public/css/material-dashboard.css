@@ -17710,6 +17710,7 @@ html[dir="rtl"] .form-check .form-check-sign .check:before {
 .card .card-body {
   padding: 0.9375rem 20px;
   position: relative;
+    font-size: 13.5px;
 }
 
 .card .card-body .form-group {

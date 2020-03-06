@@ -44,12 +44,17 @@ The above copyright notice and this permission notice shall be included in all c
                         <p>Início</p>
                     </a>
                 </li>
-                <li class="nav-item  active">
-                    <a class="nav-link" href="{{route('paciente')}}">
-                        <i class="material-icons">person
-                        </i>
-                        <p>Paciente</p>
+                <li class="nav-item dropdown active">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        <i class="material-icons">person</i>
+                        Paciente
                     </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{route('paciente')}}">Cadastro de Paciente</a>
+                        <a class="dropdown-item" href="{{route('mostraPaciente')}}">Busca de Paciente</a>
+                    </div>
                 </li>
                 <li class="nav-item dropdown ">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -139,7 +144,7 @@ The above copyright notice and this permission notice shall be included in all c
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }} <span class="caret"></span>
+                                {{Auth::user()->funcao}} {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -165,90 +170,6 @@ The above copyright notice and this permission notice shall be included in all c
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-
-                    <!-- DIV DE BUSCA DE PACIENTE -->
-                    <div class="col-md-12">
-
-                        <!-- PARTE DE CIMA DA TABELA PARA PESQUISA -->
-                        <div class="card">
-                            <div class="card-header card-header-primary">
-                                <h4 class="card-title">Pesquisar Paciente</h4>
-                                <form class="navbar-form">
-                                    <div class="input-group no-border">
-                                        <input type="text" style="color:beige;" value="" class="form-control"
-                                               placeholder="Digite o nome do paciente...">
-                                        <button type="submit" class="btn btn-white btn-round btn-just-icon">
-                                            <i class="material-icons">search</i>
-                                            <div class="ripple-container"></div>
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-
-                            <!-- PARTE DE MIOLO DA TABELA -->
-                            <div class="card-body">
-                                <div class="table-responsive" style="overflow: auto; height: 250px;">
-                                    <!-- REAJUSTE PARA SCROLL NA TABELA -->
-                                    <table class="table">
-                                        <thead class=" text-primary">
-                                        <th>
-                                            ID
-                                        </th>
-                                        <th>
-                                            Nome
-                                        </th>
-                                        <th>
-                                            Cidade
-                                        </th>
-                                        <th>
-                                            Localidade
-                                        </th>
-                                        <th>
-                                            Num. SUS
-                                        </th>
-                                        <th>
-
-                                        </th>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td>
-                                                1
-                                            </td>
-                                            <td>
-                                                Mark
-                                            </td>
-                                            <td>
-                                                Santa MAria do Oeste
-                                            </td>
-                                            <td>
-                                                São José
-                                            </td>
-                                            <td class="text-primary">
-                                                432442424324
-                                            </td>
-                                            <td>
-                                                <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                                    <label class="btn btn-secondary ">
-                                                        <i class="material-icons">delete</i>
-                                                        <input type="radio" name="options" id="option1"> Apagar
-                                                    </label>
-                                                    <label class="btn btn-secondary">
-                                                        <i class="material-icons">create</i>
-                                                        <input type="radio" name="options" id="option2"> Alterar
-                                                    </label>
-                                                </div>
-                                            </td>
-                                        </tr>
-
-
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                     <!-- CADASTRO DE PACIENTE -->
                     <div class="col-md-12">
                         <div class="card">
@@ -269,13 +190,18 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating" >Data de Nascimento</label>
-                                                <input type="text" class="form-control" id="data-nascimento" name="data_nascimento" required>
+                                                <input type="text" class="form-control" id="data-nascimento" name="data_nascimento" maxlength="16" required>
+                                            </div>
+                                        </div><div class="col-md-3">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating" >Idade</label>
+                                                <input type="text" class="form-control" id="idade" name="idade" required>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Email</label>
-                                                <input type="email" class="form-control" id="emal" name="email" required>
+                                                <input type="email" class="form-control" id="emal" name="email">
                                             </div>
                                         </div>
                                     </div>
@@ -289,13 +215,12 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating" >CPF</label>
-                                                <input type="text" class="form-control" id="cpf" name="cpf" required>
+                                                <input type="text" class="form-control" id="cpf" name="cpf" maxlength="16" required>
                                             </div>
                                         </div>
                                     </div>
 
                                     <p class="card-category">Informações de Endereço</p>
-
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-group">
@@ -317,8 +242,6 @@ The above copyright notice and this permission notice shall be included in all c
                                             </div>
                                         </div>
                                     </div>
-
-
                                     <button style="  display:block;
     width:100px;
     height:40px;
@@ -327,12 +250,10 @@ The above copyright notice and this permission notice shall be included in all c
     border-radius: 4px;
     background-color: #9C27B0;
     border:none;" type="submit" class="btn btn-primary">Salvar</button>
-                                    <div class="clearfix"></div>
                                 </form>
                             </div>
                         </div>
                     </div>
-
                     <!-- MOSTRAGEM COM IMAGEM EM CIMA
                     <div class="col-md-4">
                       <div class="card card-profile">
@@ -349,8 +270,6 @@ The above copyright notice and this permission notice shall be included in all c
                         </div>
                       </div>
                     </div> -->
-
-
                 </div>
             </div>
         </div>

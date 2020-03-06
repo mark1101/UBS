@@ -34,12 +34,17 @@
                         <p>Início</p>
                     </a>
                 </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="{{route('paciente')}}">
-                        <i class="material-icons">person
-                        </i>
-                        <p>Paciente</p>
+                <li class="nav-item dropdown ">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        <i class="material-icons">person</i>
+                        Paciente
                     </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{route('paciente')}}">Cadastro de Paciente</a>
+                        <a class="dropdown-item" href="{{route('mostraPaciente')}}">Busca de Paciente</a>
+                    </div>
                 </li>
                 <li class="nav-item dropdown ">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"

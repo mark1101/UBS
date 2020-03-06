@@ -33,8 +33,8 @@ The above copyright notice and this permission notice shall be included in all c
 <div class="wrapper ">
 
     <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/unidade.jpg">
-        <div class="logo"><a href="#" class="simple-text logo-normal">
-                Unidade São José
+        <div class="logo"><a href="{{'inicio'}}" class="simple-text logo-normal">
+                Unidade {{Auth::user()->localidade}}
             </a></div>
         <div class="sidebar-wrapper">
             <ul class="nav">
@@ -44,7 +44,7 @@ The above copyright notice and this permission notice shall be included in all c
                         <p>Início</p>
                     </a>
                 </li>
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown active">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                        data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">
@@ -56,7 +56,7 @@ The above copyright notice and this permission notice shall be included in all c
                         <a class="dropdown-item" href="{{route('mostraPaciente')}}">Busca de Paciente</a>
                     </div>
                 </li>
-                <li class="nav-item dropdown active">
+                <li class="nav-item dropdown ">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                        data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">
@@ -68,7 +68,7 @@ The above copyright notice and this permission notice shall be included in all c
                         <a class="dropdown-item" href="{{route('buscarExame')}}">Buscar Exames </a>
                     </div>
                 </li>
-                <li class="nav-item dropdown acitve">
+                <li class="nav-item dropdown ">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                        data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">
@@ -76,8 +76,8 @@ The above copyright notice and this permission notice shall be included in all c
                         Consultas
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{route('novaConsulta')}}">Nova Consulta</a>
-                        <a class="dropdown-item" href="{{route('buscarConsulta')}}">Buscar Consulta </a>
+                        <a class="dropdown-item" href="#">Nova Consulta</a>
+                        <a class="dropdown-item" href="#">Buscar Consulta </a>
                     </div>
                 </li>
                 <li class="nav-item ">
@@ -126,7 +126,7 @@ The above copyright notice and this permission notice shall be included in all c
             <div class="container-fluid">
 
                 <div class="navbar-wrapper">
-                    <a class="navbar-brand" href="javascript:;">Gerenciamento de Exames</a>
+                    <a class="navbar-brand" href="javascript:;">Gerenciamento de Paciente</a>
                 </div>
 
                 <!-- BOTAO DE RESPONSIVIDADE PARA OPCIOES DE SIDEBAR-->
@@ -166,88 +166,90 @@ The above copyright notice and this permission notice shall be included in all c
         </nav>
         <!-- End Navbar -->
 
-        <!-- CADASTRO DE CONSULTA COMPLETA  -->
+
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-
-                    <!-- FORM DE CADASTRO DE CONSULTA  -->
+                    <!-- DIV DE BUSCA DE PACIENTE -->
                     <div class="col-md-12">
+
+                        <!-- PARTE DE CIMA DA TABELA PARA PESQUISA -->
                         <div class="card">
                             <div class="card-header card-header-primary">
-                                <h4 class="card-title">Cadastro de Nova Consulta</h4>
-                            </div>
-                            <div class="card-body">
-                                <form>
-                                    <div class="row">
-                                        <div class="col-md-5">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Comunidade Atendida</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-7">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Nome do paciente</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-                                        </div>
+                                <h4 class="card-title">Pesquisar Paciente</h4>
+                                <form class="navbar-form" action="{{asset('mostraPaciente')}}">
+                                    @csrf
+                                    <div class="input-group no-border">
+                                        <input type="text" style="color:beige;" value="" class="form-control"
+                                               placeholder="Digite o nome do paciente...">
+                                        <button type="submit" class="btn btn-white btn-round btn-just-icon">
+                                            <i class="material-icons">search</i>
+                                            <div class="ripple-container"></div>
+                                        </button>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Fist Name</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Last Name</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Adress</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">City</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Country</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Postal Code</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary pull-right">Cadastrar</button>
-                                    <button type="submit" class="btn btn-primary pull-right">Solicitar Exame</button>
-                                    <div class="clearfix"></div>
                                 </form>
+                            </div>
+
+                            <!-- PARTE DE MIOLO DA TABELA -->
+                            <div class="card-body">
+                                <!-- PARTE DE MIOLO DA TABELA -->
+                                <div class="card-body">
+                                    <div class="table-responsive" style="overflow: auto; height: 300px;">
+                                        <table class="table">
+                                            <thead>
+                                            <tr>
+                                                <th scope="col" width="10%">Nome</th>
+                                                <th scope="col">Data Nascimento</th>
+                                                <th scope="col">Num Sus</th>
+                                                <th scope="col">CPF</th>
+                                                <th scope="col">Cidade</th>
+                                                <th scope="col">Bairro</th>
+                                                <th scope="col">Telefone</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach($pacientes as $paciente)
+                                                <tr>
+                                                    <td>{{$paciente->nome}}</td>
+                                                    <td>{{$paciente->data_nascimento}}</td>
+                                                    <td>{{$paciente->num_sus}}</td>
+                                                    <td>{{$paciente->cpf}}</td>
+                                                    <td>{{$paciente->cidade}}</td>
+                                                    <td>{{$paciente->bairro}}</td>
+                                                    <td>{{$paciente->telefone}}</td>
+                                                </tr>
+                                            @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
+
+                    <!-- MOSTRAGEM COM IMAGEM EM CIMA
+                    <div class="col-md-4">
+                      <div class="card card-profile">
+                        <div class="card-avatar">
+                          <a href="javascript:;">
+                            <h1>?</h1>
+                            <img class="img" src="../assets/img/faces/interrogacao.png" />
+                          </a>
+                        </div>
+                        <div class="card-body">
+                          <p class="card-description">
+                            Aqui explicar a importancia do cadastro do cliente dentro do sistema.
+                          </p>
+                        </div>
+                      </div>
+                    </div> -->
+
+
                 </div>
             </div>
         </div>
         <footer class="footer">
             <div class="container-fluid">
-                <h4 align="left">Versão 1.0</h4>
             </div>
         </footer>
     </div>

@@ -21,22 +21,39 @@ Route::get('/home', function (){
     return redirect('/inicio');
 })->name('home');
 
+// ROTAS DE PACIENTE
+Route::get('/paciente', 'PacienteController@indexPaciente')->middleware('auth')->name('paciente');
+Route::get('/buscaPaciente', 'PacienteController@indexbuscaPaciente')->middleware('auth')->name('buscaPaciente');
+Route::get('/mostraPaciente', 'PacienteController@mostraPaciente')->middleware('auth')->name('mostraPaciente');
+Route::POST('paciente/salvarPaciente', 'PacienteController@cadastraPaciente')->name('cadastraPaciente');
 
-Route::get('/paciente', 'PacienteController@index')->middleware('auth')->name('paciente');
+// ROTAS DE EXAMES
 Route::get('/cadastroExame', 'ExameController@indexcadastroExame')->middleware('auth')->name('cadastroExame');
 Route::get('/buscarExame', 'ExameController@indexbuscarExame')->middleware('auth')->name('buscarExame');
+
+// ROTAS DE VACINAS
+Route::get('/mostraVacina', 'VacinaController@mostraVacina')->middleware('auth')->name('mostraVacina');
 Route::get('/cadastroVacina', 'VacinaController@index')->middleware('auth')->name('cadastroVacina');
-Route::get('/encaminhamento', 'EncaminhamentoController@index')->middleware('auth')->name('encaminhamento');
-Route::get('/comunicacao', 'ComunicacaoController@index')->middleware('auth')->name('comunicacao');
-Route::get('/inicio', 'InicioController@index')->middleware('auth')->name('inicio');
+Route::POST('vacina/cadastrarVacina', 'VacinaController@cadastraVacina')->name('cadastraVacina');
+
+// ROTAS DE RECADOS
 Route::get('/recado', 'RecadoController@index')->middleware('auth')->name('recado');
+Route::get('/comunicacao', 'ComunicacaoController@index')->middleware('auth')->name('comunicacao');
+
+// ROTAS DE ENCAMINHAMENTO
+Route::get('/encaminhamento', 'EncaminhamentoController@index')->middleware('auth')->name('encaminhamento');
+
+
+Route::get('/inicio', 'InicioController@index')->middleware('auth')->name('inicio');
+Route::get('/login', 'LoginController@index')->name('login');
 Route::get('/controleViagem', 'ViagemController@index')->middleware('auth')->name('controleViagem');
 
-Route::get('/login', 'LoginController@index')->name('login');
 
-Route::get('/mostraVacina', 'VacinaController@mostraVacina')->middleware('auth')->name('mostraVacina');
 
-Route::POST('paciente/salvarPaciente', 'PacienteController@cadastraPaciente')->name('cadastraPaciente');
-Route::POST('vacina/cadastrarVacina', 'VacinaController@cadastraVacina')->name('cadastraVacina');
+
+
+
+
+
 
 
