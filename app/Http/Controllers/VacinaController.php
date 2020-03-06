@@ -26,8 +26,6 @@ class VacinaController extends Controller
             'informacao_lote', 'data')->get();
 
         return view('cadastroVacina', ['vacinas' => $vacinas]);
-
-
         //return $vacinas;
     }
 }

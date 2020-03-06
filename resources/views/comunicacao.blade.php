@@ -33,8 +33,8 @@ The above copyright notice and this permission notice shall be included in all c
 <div class="wrapper ">
 
     <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/unidade.jpg">
-        <div class="logo"><a href="#" class="simple-text logo-normal">
-                Unidade São José
+        <div class="logo"><a href="{{'inicio'}}" class="simple-text logo-normal">
+                Unidade {{Auth::user()->localidade}}
             </a></div>
         <div class="sidebar-wrapper">
             <ul class="nav">
@@ -76,7 +76,7 @@ The above copyright notice and this permission notice shall be included in all c
                     </div>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link" href="{{route('cadastroVacina')}}">
+                    <a class="nav-link" href="{{route('mostraVacina')}}">
                         <i class="material-icons">format_color_reset
                         </i>
                         <p>Vacinas</p>
@@ -103,8 +103,8 @@ The above copyright notice and this permission notice shall be included in all c
                         <p>Histórico dos Pacientes</p>
                     </a>
                 </li>
-                <li class="nav-item  ">
-                    <a class="nav-link" href="#">
+                <li class="nav-item ">
+                    <a class="nav-link" href="{{route('controleViagem')}}">
                         <i class="material-icons">commute
                         </i>
                         <p>Gerenciamento de Viagens</p>
@@ -206,7 +206,7 @@ The above copyright notice and this permission notice shall be included in all c
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Mensagem</label>
                                                 <textarea class="form-control" id="exampleFormControlTextarea1"
-                                                          rows="3"></textarea>
+                                                          rows="3" maxlength="50"></textarea>
                                             </div>
                                         </div>
                                     </div>

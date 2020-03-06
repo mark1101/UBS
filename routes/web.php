@@ -30,10 +30,13 @@ Route::get('/encaminhamento', 'EncaminhamentoController@index')->middleware('aut
 Route::get('/comunicacao', 'ComunicacaoController@index')->middleware('auth')->name('comunicacao');
 Route::get('/inicio', 'InicioController@index')->middleware('auth')->name('inicio');
 Route::get('/recado', 'RecadoController@index')->middleware('auth')->name('recado');
+Route::get('/controleViagem', 'ViagemController@index')->middleware('auth')->name('controleViagem');
 
-Route::get('/login', 'LoginController@index')->middleware('auth')->name('login');
+Route::get('/login', 'LoginController@index')->name('login');
 
 Route::get('/mostraVacina', 'VacinaController@mostraVacina')->middleware('auth')->name('mostraVacina');
 
-Route::POST('paciente/salvarPaciente', 'PacienteController@cadastraPaciente')->name('cadastraPaciente')->middleware('auth');
-Route::POST('vacina/cadastrarVacina', 'VacinaController@cadastraVacina')->name('cadastraVacina')->middleware('auth');
+Route::POST('paciente/salvarPaciente', 'PacienteController@cadastraPaciente')->name('cadastraPaciente');
+Route::POST('vacina/cadastrarVacina', 'VacinaController@cadastraVacina')->name('cadastraVacina');
+
+

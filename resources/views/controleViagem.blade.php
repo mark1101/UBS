@@ -33,8 +33,8 @@ The above copyright notice and this permission notice shall be included in all c
 <div class="wrapper ">
 
     <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/unidade.jpg">
-        <div class="logo"><a href="#" class="simple-text logo-normal">
-                Unidade São José
+        <div class="logo"><a href="{{'inicio'}}" class="simple-text logo-normal">
+                Unidade {{Auth::user()->localidade}}
             </a></div>
         <div class="sidebar-wrapper">
             <ul class="nav">
@@ -44,14 +44,14 @@ The above copyright notice and this permission notice shall be included in all c
                         <p>Início</p>
                     </a>
                 </li>
-                <li class="nav-item  ">
+                <li class="nav-item ">
                     <a class="nav-link" href="{{route('paciente')}}">
                         <i class="material-icons">person
                         </i>
                         <p>Paciente</p>
                     </a>
                 </li>
-                <li class="nav-item dropdown active">
+                <li class="nav-item dropdown ">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                        data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">
@@ -89,7 +89,7 @@ The above copyright notice and this permission notice shall be included in all c
                         <p>Encaminhamentos</p>
                     </a>
                 </li>
-                <li class="nav-item  ">
+                <li class="nav-item ">
                     <a class="nav-link" href="{{route('recado')}}">
                         <i class="material-icons">attach_file
                         </i>
@@ -103,7 +103,7 @@ The above copyright notice and this permission notice shall be included in all c
                         <p>Histórico dos Pacientes</p>
                     </a>
                 </li>
-                <li class="nav-item ">
+                <li class="nav-item active ">
                     <a class="nav-link" href="{{route('controleViagem')}}">
                         <i class="material-icons">commute
                         </i>
@@ -116,12 +116,12 @@ The above copyright notice and this permission notice shall be included in all c
     </div>
 
     <div class="main-panel">
-        <!-- INICIO NAVBAR -->
+        <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
             <div class="container-fluid">
 
                 <div class="navbar-wrapper">
-                    <a class="navbar-brand" href="javascript:;">Gerenciamento de Exames</a>
+                    <a class="navbar-brand" href="javascript:;">Controle de Viagens</a>
                 </div>
 
                 <!-- BOTAO DE RESPONSIVIDADE PARA OPCIOES DE SIDEBAR-->
@@ -138,7 +138,8 @@ The above copyright notice and this permission notice shall be included in all c
                     <form class="navbar-form"></form>
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
@@ -149,7 +150,8 @@ The above copyright notice and this permission notice shall be included in all c
                                     {{ __('Sair') }}
                                 </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                      style="display: none;">
                                     @csrf
                                 </form>
                             </div>
@@ -159,100 +161,81 @@ The above copyright notice and this permission notice shall be included in all c
 
             </div>
         </nav>
-        <!-- FIM NAVBAR -->
+        <!-- End Navbar -->
 
-        <!-- INICIO DE PESQUISA DE EXAME -->
+
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
 
-                    <!-- PESQUISA DE EXAME -->
                     <div class="col-md-12">
-
-                        <!-- CARD DE CIMA PARA PESQUISA -->
                         <div class="card">
                             <div class="card-header card-header-primary">
-                                <h4 class="card-title">Pesquisa de Exame</h4>
-                                <form class="navbar-form">
-                                    <div class="input-group no-border">
-                                        <input type="text" style="color:beige;" value="" class="form-control"
-                                               placeholder="Digite o nome do paciente...">
-                                        <button type="submit" class="btn btn-white btn-round btn-just-icon">
-                                            <i class="material-icons">search</i>
-                                            <div class="ripple-container"></div>
-                                        </button>
-                                    </div>
-                                </form>
-
-                                <!-- FORM PARA SELECAO DOS EXAMES REALIZADOS PARA PESQUISA -->
-                                <form action="">
-                                    <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" id="customRadioInline1" name="customRadioInline1"
-                                               class="custom-control-input">
-                                        <label class="custom-control-label" for="customRadioInline1">Exame 1</label>
-                                    </div>
-                                    <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" id="customRadioInline2" name="customRadioInline2"
-                                               class="custom-control-input">
-                                        <label class="custom-control-label" for="customRadioInline2">Exame 2</label>
-                                    </div>
-                                </form>
+                                <h4 class="card-title">Cadatro de Nova Viagem</h4>
                             </div>
-
-                            <!-- MIOLO DE TABELA PARA MEXER -->
                             <div class="card-body">
-                                <div class="table-responsive" style="overflow: auto; height: 250px;">
-                                    <table class="table">
-                                        <thead class=" text-primary">
-                                        <th>
-                                            ID
-                                        </th>
-                                        <th>
-                                            Nome
-                                        </th>
-                                        <th>
-                                            Localidade
-                                        </th>
-                                        <th>
-                                            Exame Realizado
-                                        </th>
-                                        <th>
-                                            Procedimento
-                                        </th>
-                                        <th>
-                                            Finalização
-                                        </th>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td>
-                                                1
-                                            </td>
-                                            <td>
-                                                FordFox
-                                            </td>
-                                            <td>
-                                                Vila Verde
-                                            </td>
-                                            <td>
-                                                Colesterol
-                                            </td>
-                                            <td>
-                                                Realizado em outra localidade
-                                            </td>
-                                            <td class="text-primary">
-                                                Normal
-                                            </td>
+                                <form>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Origem</label>
+                                                <select class="form-control" name="" id="">
+                                                    <option>Nenhum</option>
+                                                    <option>Centro</option>
+                                                    <option>São José</option>
+                                                    <option>São Manoel</option>
+                                                    <option>Rio do Tigre</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Destino</label>
+                                                <select class="form-control" name="" id="">
+                                                    <option>Nenhum</option>
+                                                    <option>Curitiba</option>
+                                                    <option>Recepção</option>
+                                                    <option>Agente de Saúde</option>
+                                                    <option>Outro</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Data</label>
+                                                <input type="date" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
 
-                                        </tr>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Motorista Responsável</label>
+                                                <select class="form-control" name="" id="">
+                                                    <option value="1" selected>Nenhum</option>
+                                                    <option value="2">Enfermaria</option>
+                                                    <option value="3">Recepção</option>
+                                                    <option value="4">Agente de Saúde</option>
+                                                    <option value="5">Outro</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Observação</label>
+                                                <textarea class="form-control" id="exampleFormControlTextarea1"
+                                                          rows="3"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
 
-
-                                        </tbody>
-                                    </table>
-                                </div>
+                                    <button type="submit" class="btn btn-primary pull-right">Enviar</button>
+                                </form>
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -261,7 +244,6 @@ The above copyright notice and this permission notice shall be included in all c
             <div class="container-fluid">
             </div>
         </footer>
-
     </div>
 </div>
 

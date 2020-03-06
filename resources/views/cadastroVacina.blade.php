@@ -33,8 +33,8 @@ The above copyright notice and this permission notice shall be included in all c
 <div class="wrapper ">
 
     <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/unidade.jpg">
-        <div class="logo"><a href="#" class="simple-text logo-normal">
-                Unidade São José
+        <div class="logo"><a href="{{'inicio'}}" class="simple-text logo-normal">
+                Unidade {{Auth::user()->localidade}}
             </a></div>
         <div class="sidebar-wrapper">
             <ul class="nav">
@@ -76,7 +76,7 @@ The above copyright notice and this permission notice shall be included in all c
                     </div>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{route('cadastroVacina')}}">
+                    <a class="nav-link" href="{{route('mostraVacina')}}">
                         <i class="material-icons">format_color_reset
                         </i>
                         <p>Vacinas</p>
@@ -103,8 +103,8 @@ The above copyright notice and this permission notice shall be included in all c
                         <p>Histórico dos Pacientes</p>
                     </a>
                 </li>
-                <li class="nav-item  ">
-                    <a class="nav-link" href="#">
+                <li class="nav-item ">
+                    <a class="nav-link" href="{{route('controleViagem')}}">
                         <i class="material-icons">commute
                         </i>
                         <p>Gerenciamento de Viagens</p>
@@ -168,7 +168,7 @@ The above copyright notice and this permission notice shall be included in all c
             <div class="container-fluid">
                 <div class="row">
 
-                    <div class="col-md-12">
+                    <div class="col-md-12" style="overflow: hidden">
 
                         <!-- PARTE DE CIMA DA TABELA PARA PESQUISA -->
                         <div class="card">
@@ -189,8 +189,7 @@ The above copyright notice and this permission notice shall be included in all c
 
                             <!-- PARTE DE MIOLO DA TABELA -->
                             <div class="card-body">
-                                <!-- REAJUSTE PARA SCROLL NA TABELA -->
-                                <div class="table-responsive-sm">
+                                <div class="table-responsive">
                                     <table class="table table-sm">
                                         <thead>
                                         <tr>
@@ -206,66 +205,16 @@ The above copyright notice and this permission notice shall be included in all c
 
                                         @foreach($vacinas as $vacina)
                                             <tr>
-                                                <td align="center">{{$vacina->posto_vacinacao}}</td>
-                                                <td align="center">{{$vacina->nome_paciente}}</td>
-                                                <td align="center">{{$vacina->vacina_realizada}}</td>
-                                                <td align="center">{{$vacina->informacao_lote}}</td>
-                                                <td align="center">{{$vacina->data}}</td>
-                                                <td>
-                                                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                                        <label class="btn btn-secondary">
-                                                            <i class="material-icons">delete</i>
-                                                            <input type="radio" name="options" id="option1">
-                                                        </label>
-                                                        <label class="btn btn-secondary">
-                                                            <i class="material-icons">create</i>
-                                                            <input type="radio" name="options" id="option2">
-                                                        </label>
-                                                    </div>
-                                                </td>
+                                                <td>{{$vacina->posto_vacinacao}}</td>
+                                                <td>{{$vacina->nome_paciente}}</td>
+                                                <td>{{$vacina->vacina_realizada}}</td>
+                                                <td>{{$vacina->informacao_lote}}</td>
+                                                <td>{{$vacina->data}}</td>
                                             </tr>
                                         @endforeach
                                         </tbody>
                                     </table>
                                 </div>
-
-                            <!-- <table class="table">
-                                    <thead>
-                                    <tr>
-                                        <th scope="col" valign="top">Id</th>
-                                        <th scope="col" width="28%">Posto de Vacinação</th>
-                                        <th scope="col" width="20%">Nome Paciente</th>
-                                        <th scope="col" width="23%">Vacina Realizada</th>
-                                        <th scope="col" width="18%">Info de Lote</th>
-                                        <th scope="col" width="15%">Data</th>
-                                    </tr>
-                                    <tbody>
-
-                                    @foreach($vacinas as $vacina)
-                                <tr height="10%">
-                                    <td align="center">{{$vacina->id_vacina}}</td>
-                                            <td align="center">{{$vacina->posto_vacinacao}}</td>
-                                            <td align="center">{{$vacina->nome_paciente}}</td>
-                                            <td align="center"><{{$vacina->vacina_realizada}}/td>
-                                            <td align="center">{{$vacina->informacao_lote}}</td>
-                                            <td align="center">{{$vacina->data}}</td>
-                                            <td>
-                                                <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                                    <label class="btn btn-secondary">
-                                                        <i class="material-icons">delete</i>
-                                                        <input type="radio" name="options" id="option1">
-                                                    </label>
-                                                    <label class="btn btn-secondary">
-                                                        <i class="material-icons">create</i>
-                                                        <input type="radio" name="options" id="option2">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table> -->
-
                             </div>
                         </div>
                     </div>
@@ -284,14 +233,14 @@ The above copyright notice and this permission notice shall be included in all c
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Posto de Vacinação</label>
                                                 <input type="text" class="form-control" id="posto_vacinacao"
-                                                       name="posto_vacinacao">
+                                                       name="posto_vacinacao" required>
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Nome do paciente</label>
                                                 <input type="text" class="form-control" id="nome_paciente"
-                                                       name="nome_paciente">
+                                                       name="nome_paciente" required>
                                             </div>
                                         </div>
                                     </div>
@@ -300,26 +249,17 @@ The above copyright notice and this permission notice shall be included in all c
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Vacina Realizada</label>
                                                 <input type="text" class="form-control" id="vacina_realizada"
-                                                       name="vacina_realizada">
+                                                       name="vacina_realizada" required>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Informação de Lote</label>
                                                 <input type="text" class="form-control" id="informacao_lote"
-                                                       name="informacao_lote">
+                                                       name="informacao_lote" required>
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- <div class="row">
-                                         <div class="col-md-12">
-                                             <div class="form-group">
-                                                 <label class="bmd-label-floating">Data</label>
-                                                 <br>
-                                                 <input type="date" class="form-control" data>
-                                             </div>
-                                         </div>
-                                     </div>-->
                                     <button style="  display:block;
     width:100px;
     height:40px;
@@ -327,7 +267,7 @@ The above copyright notice and this permission notice shall be included in all c
     color:#ffffff;
     border-radius: 4px;
     background-color: #9C27B0;
-    border:none;" type="submit" class="btn btn-primary">Salvar
+    border:none;" onclick="alert('Cadastro Realizado com Sucesso')" type="submit" class="btn btn-primary">Salvar
                                     </button>
                                     <div class="clearfix"></div>
 

@@ -23,8 +23,8 @@
 <div class="wrapper ">
 
     <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/unidade.jpg">
-        <div class="logo"><a href="#" class="simple-text logo-normal">
-                Unidade São José
+        <div class="logo"><a href="{{'inicio'}}" class="simple-text logo-normal">
+                Unidade {{Auth::user()->localidade}}
             </a></div>
         <div class="sidebar-wrapper ">
             <ul class="nav">
@@ -66,7 +66,7 @@
                     </div>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link" href="{{route('cadastroVacina')}}">
+                    <a class="nav-link" href="{{route('mostraVacina')}}">
                         <i class="material-icons">format_color_reset
                         </i>
                         <p>Vacinas</p>
@@ -94,7 +94,7 @@
                     </a>
                 </li>
                 <li class="nav-item  ">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{route('controleViagem')}}">
                         <i class="material-icons">commute
                         </i>
                         <p>Gerenciamento de Viagens</p>
@@ -129,7 +129,7 @@
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }} <span class="caret"></span>
+                               {{Auth::user()->funcao}} {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -152,7 +152,6 @@
         <!-- End Navbar -->
 
         <div class="content")>
-
             <div class="container-fluid">
                <h1>BEM VINDO</h1>
             </div>

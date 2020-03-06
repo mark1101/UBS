@@ -40,6 +40,22 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="localidade" class="col-md-4 col-form-label text-md-right">{{ __('Localidade') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="localidade" type="text" class="form-control" name="localidade" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="funcao" class="col-md-4 col-form-label text-md-right">{{ __('Funcao') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="funcao" type="text" class="form-control" name="funcao" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
@@ -52,6 +68,7 @@
                                 @enderror
                             </div>
                         </div>
+
 
                         <div class="form-group row">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
