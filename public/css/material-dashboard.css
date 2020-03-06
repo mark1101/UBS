@@ -16854,13 +16854,13 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 .table>thead>tr>td,
 .table>tbody>tr>td,
 .table>tfoot>tr>td {
-  padding: 12px 8px;
+  padding: 1px 1px;
   vertical-align: middle;
   border-color: #ddd;
 }
 
 .table thead tr th {
-  font-size: 1.063rem;
+  font-size: 1.0rem;
 }
 
 .table .th-description {

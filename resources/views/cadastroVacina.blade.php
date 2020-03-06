@@ -30,318 +30,339 @@ The above copyright notice and this permission notice shall be included in all c
 </head>
 
 <body class="">
-    <div class="wrapper ">
+<div class="wrapper ">
 
-        <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/unidade.jpg">
-            <div class="logo"><a href="#" class="simple-text logo-normal">
-                    Unidade São José
-                </a></div>
-            <div class="sidebar-wrapper">
-                <ul class="nav">
-                    <li class="nav-item  ">
-                        <a class="nav-link" href="{{route('inicio')}}">
-                            <i class="material-icons">home_work</i>
-                            <p>Início</p>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="{{route('paciente')}}">
-                            <i class="material-icons">person
-                            </i>
-                            <p>Paciente</p>
-                        </a>
-                    </li>
-                    <li class="nav-item dropdown ">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                           data-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false">
-                            <i class="material-icons">content_paste</i>
-                            Exames
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{route('cadastroExame')}}">Novo Exame</a>
-                            <a class="dropdown-item" href="{{route('buscarExame')}}">Buscar Exames </a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown ">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                           data-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false">
-                            <i class="material-icons">insert_emoticon</i>
-                            Consultas
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Nova Consulta</a>
-                            <a class="dropdown-item" href="#">Buscar Consulta </a>
-                        </div>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{{route('cadastroVacina')}}">
-                            <i class="material-icons">format_color_reset
-                            </i>
-                            <p>Vacinas</p>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="{{route('encaminhamento')}}">
-                            <i class="material-icons">arrow_right_alt
-                            </i>
-                            <p>Encaminhamentos</p>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="{{route('recado')}}">
-                            <i class="material-icons">attach_file
-                            </i>
-                            <p>Recados</p>
-                        </a>
-                    </li>
-                    <li class="nav-item  ">
-                        <a class="nav-link" href="#">
-                            <i class="material-icons">history
-                            </i>
-                            <p>Histórico dos Pacientes</p>
-                        </a>
-                    </li>
-                    <li class="nav-item  ">
-                        <a class="nav-link" href="#">
-                            <i class="material-icons">commute
-                            </i>
-                            <p>Gerenciamento de Viagens</p>
-                        </a>
-                    </li>
-                </ul>
-
-            </div>
-        </div>
-
-        <div class="main-panel">
-            <!-- Navbar -->
-            <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
-                <div class="container-fluid">
-
-                    <div class="navbar-wrapper">
-                        <a class="navbar-brand" href="javascript:;">Gerenciamento de Vacinas</a>
+    <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/unidade.jpg">
+        <div class="logo"><a href="#" class="simple-text logo-normal">
+                Unidade São José
+            </a></div>
+        <div class="sidebar-wrapper">
+            <ul class="nav">
+                <li class="nav-item  ">
+                    <a class="nav-link" href="{{route('inicio')}}">
+                        <i class="material-icons">home_work</i>
+                        <p>Início</p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="{{route('paciente')}}">
+                        <i class="material-icons">person
+                        </i>
+                        <p>Paciente</p>
+                    </a>
+                </li>
+                <li class="nav-item dropdown ">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        <i class="material-icons">content_paste</i>
+                        Exames
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{route('cadastroExame')}}">Novo Exame</a>
+                        <a class="dropdown-item" href="{{route('buscarExame')}}">Buscar Exames </a>
                     </div>
+                </li>
+                <li class="nav-item dropdown ">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        <i class="material-icons">insert_emoticon</i>
+                        Consultas
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Nova Consulta</a>
+                        <a class="dropdown-item" href="#">Buscar Consulta </a>
+                    </div>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{route('cadastroVacina')}}">
+                        <i class="material-icons">format_color_reset
+                        </i>
+                        <p>Vacinas</p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="{{route('encaminhamento')}}">
+                        <i class="material-icons">arrow_right_alt
+                        </i>
+                        <p>Encaminhamentos</p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="{{route('recado')}}">
+                        <i class="material-icons">attach_file
+                        </i>
+                        <p>Recados</p>
+                    </a>
+                </li>
+                <li class="nav-item  ">
+                    <a class="nav-link" href="#">
+                        <i class="material-icons">history
+                        </i>
+                        <p>Histórico dos Pacientes</p>
+                    </a>
+                </li>
+                <li class="nav-item  ">
+                    <a class="nav-link" href="#">
+                        <i class="material-icons">commute
+                        </i>
+                        <p>Gerenciamento de Viagens</p>
+                    </a>
+                </li>
+            </ul>
 
-                    <!-- BOTAO DE RESPONSIVIDADE PARA OPCIOES DE SIDEBAR-->
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
+        </div>
+    </div>
+
+    <div class="main-panel">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+            <div class="container-fluid">
+
+                <div class="navbar-wrapper">
+                    <a class="navbar-brand" href="javascript:;">Gerenciamento de Vacinas</a>
+                </div>
+
+                <!-- BOTAO DE RESPONSIVIDADE PARA OPCIOES DE SIDEBAR-->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
                         aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="navbar-toggler-icon icon-bar"></span>
-                        <span class="navbar-toggler-icon icon-bar"></span>
-                        <span class="navbar-toggler-icon icon-bar"></span>
-                    </button>
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="navbar-toggler-icon icon-bar"></span>
+                    <span class="navbar-toggler-icon icon-bar"></span>
+                    <span class="navbar-toggler-icon icon-bar"></span>
+                </button>
 
-                    <!-- TOPO EM CIMA PARA OPCAO DE SAIDA E CONFIGURAÇÃOES DE PERFIL E SISTEMA  -->
-                    <div class="collapse navbar-collapse justify-content-end">
-                        <form class="navbar-form"> </form>
-                        <ul class="navbar-nav">
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                <!-- TOPO EM CIMA PARA OPCAO DE SAIDA E CONFIGURAÇÃOES DE PERFIL E SISTEMA  -->
+                <div class="collapse navbar-collapse justify-content-end">
+                    <form class="navbar-form"></form>
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::user()->name }} <span class="caret"></span>
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    {{ __('Sair') }}
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Sair') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                      style="display: none;">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
-            </nav>
-            <!-- End Navbar -->
 
-            <!-- CADASTRO DE EXAME COMPLETO  -->
-            <div class="content">
-                <div class="container-fluid">
-                    <div class="row">
+            </div>
+        </nav>
+        <!-- End Navbar -->
 
-                        <div class="col-md-12">
+        <!-- CADASTRO DE EXAME COMPLETO  -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
 
-                            <!-- PARTE DE CIMA DA TABELA PARA PESQUISA -->
-                            <div class="card">
-                                <div class="card-header card-header-primary">
-                                    <h4 class="card-title">Buscar Vacina</h4>
-                                    <form class="navbar-form">
-                                        <div class="input-group no-border">
-                                            <input type="text" style="color:beige;" value="" class="form-control"
-                                                placeholder="Digite o nome do paciente...">
-                                            <button type="submit" class="btn btn-white btn-round btn-just-icon">
-                                                <i class="material-icons">search</i>
-                                                <div class="ripple-container"></div>
-                                            </button>
-                                        </div>
-                                    </form>
-                                </div>
+                    <div class="col-md-12">
 
-                                <!-- PARTE DE MIOLO DA TABELA -->
-                                <div class="card-body">
-                                    <div class="table-responsive" style="overflow: auto; height: 250px;">
-                                        <!-- REAJUSTE PARA SCROLL NA TABELA -->
-                                        <table class="table">
-                                            <thead class=" text-primary">
-                                                <th>
-                                                    ID
-                                                </th>
-                                                <th>
-                                                    Nome
-                                                </th>
-                                                <th>
-                                                    Posto de Vacinação
-                                                </th>
-                                                <th>
-                                                    Vacina Realizada
-                                                </th>
-                                                <th>
-                                                    Informação de Lote
-                                                </th>
-                                                <th>
-                                                    Data
-                                                </th>
-                                                <th>
-
-                                                </th>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>
-                                                        1
-                                                    </td>
-                                                    <td>
-                                                        Mark
-                                                    </td>
-                                                    <td>
-                                                        Santa MAria do Oeste
-                                                    </td>
-                                                    <td>
-                                                        São José
-                                                    </td>
-                                                    <td class="text-primary">
-                                                        432442424324
-                                                    </td>
-                                                    <td>
-                                                        12/06/2019
-                                                    </td>
-                                                    <td>
-                                                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                                            <label class="btn btn-secondary ">
-                                                                <i class="material-icons">delete</i>
-                                                                <input type="radio" name="options" id="option1"> Apagar
-                                                            </label>
-                                                            <label class="btn btn-secondary">
-                                                                <i class="material-icons">create</i>
-                                                                <input type="radio" name="options" id="option2"> Alterar
-                                                            </label>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-
-
-                                            </tbody>
-                                        </table>
+                        <!-- PARTE DE CIMA DA TABELA PARA PESQUISA -->
+                        <div class="card">
+                            <div class="card-header card-header-primary">
+                                <h4 class="card-title">Buscar Vacina</h4>
+                                <form class="navbar-form" action="{{route('mostraVacina')}}">
+                                    @csrf
+                                    <div class="input-group no-border">
+                                        <input type="text" style="color:beige;" value="" class="form-control"
+                                               placeholder="Digite o nome do paciente...">
+                                        <button type="submit" class="btn btn-white btn-round btn-just-icon">
+                                            <i class="material-icons">search</i>
+                                            <div class="ripple-container"></div>
+                                        </button>
                                     </div>
+                                </form>
+                            </div>
+
+                            <!-- PARTE DE MIOLO DA TABELA -->
+                            <div class="card-body">
+                                <!-- REAJUSTE PARA SCROLL NA TABELA -->
+                                <div class="table-responsive-sm">
+                                    <table class="table table-sm">
+                                        <thead>
+                                        <tr>
+
+                                            <th scope="col" width="27%" align="center">Posto de Vacinação</th>
+                                            <th scope="col" width="19%">Nome Paciente</th>
+                                            <th scope="col" width="22%">Vacina Realizada</th>
+                                            <th scope="col" width="19%">Info de Lote</th>
+                                            <th scope="col" width="14%">Data</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        @foreach($vacinas as $vacina)
+                                            <tr>
+                                                <td align="center">{{$vacina->posto_vacinacao}}</td>
+                                                <td align="center">{{$vacina->nome_paciente}}</td>
+                                                <td align="center">{{$vacina->vacina_realizada}}</td>
+                                                <td align="center">{{$vacina->informacao_lote}}</td>
+                                                <td align="center">{{$vacina->data}}</td>
+                                                <td>
+                                                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                                        <label class="btn btn-secondary">
+                                                            <i class="material-icons">delete</i>
+                                                            <input type="radio" name="options" id="option1">
+                                                        </label>
+                                                        <label class="btn btn-secondary">
+                                                            <i class="material-icons">create</i>
+                                                            <input type="radio" name="options" id="option2">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
                                 </div>
+
+                            <!-- <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col" valign="top">Id</th>
+                                        <th scope="col" width="28%">Posto de Vacinação</th>
+                                        <th scope="col" width="20%">Nome Paciente</th>
+                                        <th scope="col" width="23%">Vacina Realizada</th>
+                                        <th scope="col" width="18%">Info de Lote</th>
+                                        <th scope="col" width="15%">Data</th>
+                                    </tr>
+                                    <tbody>
+
+                                    @foreach($vacinas as $vacina)
+                                <tr height="10%">
+                                    <td align="center">{{$vacina->id_vacina}}</td>
+                                            <td align="center">{{$vacina->posto_vacinacao}}</td>
+                                            <td align="center">{{$vacina->nome_paciente}}</td>
+                                            <td align="center"><{{$vacina->vacina_realizada}}/td>
+                                            <td align="center">{{$vacina->informacao_lote}}</td>
+                                            <td align="center">{{$vacina->data}}</td>
+                                            <td>
+                                                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                                    <label class="btn btn-secondary">
+                                                        <i class="material-icons">delete</i>
+                                                        <input type="radio" name="options" id="option1">
+                                                    </label>
+                                                    <label class="btn btn-secondary">
+                                                        <i class="material-icons">create</i>
+                                                        <input type="radio" name="options" id="option2">
+                                                    </label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table> -->
+
                             </div>
                         </div>
+                    </div>
 
-                        <!-- FORM DE CADASTRO DE VACINA  -->
-                        <div class="col-md-12">
-                            <div class="card">
-                                <div class="card-header card-header-primary">
-                                    <h4 class="card-title">Cadastro de Vacina</h4>
-                                </div>
-                                <div class="card-body">
-                                    <form action="{{route('cadastraVacina')}}" method="post">
-                                        @csrf
-                                        <div class="row">
-                                            <div class="col-md-5">
-                                                <div class="form-group">
-                                                    <label class="bmd-label-floating">Posto de Vacinação</label>
-                                                    <input type="text" class="form-control" id="posto_vacinacao" name="posto_vacinacao">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-7">
-                                                <div class="form-group">
-                                                    <label class="bmd-label-floating">Nome do paciente</label>
-                                                    <input type="text" class="form-control" id="nome_paciente" name="nome_paciente" >
-                                                </div>
+                    <!-- FORM DE CADASTRO DE VACINA  -->
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header card-header-primary">
+                                <h4 class="card-title">Cadastro de Vacina</h4>
+                            </div>
+                            <div class="card-body">
+                                <form action="{{route('cadastraVacina')}}" method="post">
+                                    @csrf
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Posto de Vacinação</label>
+                                                <input type="text" class="form-control" id="posto_vacinacao"
+                                                       name="posto_vacinacao">
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="bmd-label-floating">Vacina Realizada</label>
-                                                    <input type="text" class="form-control" id="vacina_realizada" name="vacina_realizada">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="bmd-label-floating">Informação de Lote</label>
-                                                    <input type="text" class="form-control" id="informacao_lote" name="informacao_lote">
-                                                </div>
+                                        <div class="col-md-7">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Nome do paciente</label>
+                                                <input type="text" class="form-control" id="nome_paciente"
+                                                       name="nome_paciente">
                                             </div>
                                         </div>
-                                       <!-- <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <label class="bmd-label-floating">Data</label>
-                                                    <br>
-                                                    <input type="date" class="form-control" data>
-                                                </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Vacina Realizada</label>
+                                                <input type="text" class="form-control" id="vacina_realizada"
+                                                       name="vacina_realizada">
                                             </div>
-                                        </div>-->
-                                        <button style="  display:block;
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Informação de Lote</label>
+                                                <input type="text" class="form-control" id="informacao_lote"
+                                                       name="informacao_lote">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="row">
+                                         <div class="col-md-12">
+                                             <div class="form-group">
+                                                 <label class="bmd-label-floating">Data</label>
+                                                 <br>
+                                                 <input type="date" class="form-control" data>
+                                             </div>
+                                         </div>
+                                     </div>-->
+                                    <button style="  display:block;
     width:100px;
     height:40px;
     font-weight:bold;
     color:#ffffff;
     border-radius: 4px;
     background-color: #9C27B0;
-    border:none;" type="submit" class="btn btn-primary">Salvar</button>
-                                        <div class="clearfix"></div>
+    border:none;" type="submit" class="btn btn-primary">Salvar
+                                    </button>
+                                    <div class="clearfix"></div>
 
-                                    </form>
-                                </div>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <footer class="footer">
-                <div class="container-fluid">
-                </div>
-            </footer>
         </div>
+        <footer class="footer">
+            <div class="container-fluid">
+            </div>
+        </footer>
     </div>
-    <!-- REFERENCIAS EM JS  -->
-    <script src="{{asset('js/core/jquery.min.js')}}"></script>
-    <script src="{{asset('js/core/popper.min.js')}}"></script>
-    <script src="{{asset('js/core/bootstrap-material-design.min.js')}}"></script>
-    <script src="{{asset('js/plugins/perfect-scrollbar.jquery.min.js')}}"></script>
-    <script src="{{asset('js/plugins/moment.min.js')}}"></script>
-    <script src="{{asset('js/plugins/sweetalert2.js')}}"></script>
-    <script src="{{asset('js/plugins/jquery.validate.min.js')}}"></script>
-    <script src="{{asset('js/plugins/jquery.bootstrap-wizard.js')}}"></script>
-    <script src="{{asset('js/plugins/bootstrap-selectpicker.js')}}"></script>
-    <script src="{{asset('js/plugins/bootstrap-datetimepicker.min.js')}}"></script>
-    <script src="{{asset('js/plugins/jquery.dataTables.min.js')}}"></script>
-    <script src="{{asset('js/plugins/bootstrap-tagsinput.js')}}"></script>
-    <script src="{{asset('js/plugins/jasny-bootstrap.min.js')}}"></script>
-    <script src="{{asset('js/plugins/fullcalendar.min.js')}}"></script>
-    <script src="{{asset('js/plugins/jquery-jvectormap.js')}}"></script>
-    <script src="{{asset('assets/js/plugins/nouislider.min.js')}}"></script>
-    <script src="{{asset('https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js')}}"></script>
-    <script src="{{asset('js/plugins/arrive.min.js')}}"></script>
+</div>
+<!-- REFERENCIAS EM JS  -->
+<script src="{{asset('js/core/jquery.min.js')}}"></script>
+<script src="{{asset('js/core/popper.min.js')}}"></script>
+<script src="{{asset('js/core/bootstrap-material-design.min.js')}}"></script>
+<script src="{{asset('js/plugins/perfect-scrollbar.jquery.min.js')}}"></script>
+<script src="{{asset('js/plugins/moment.min.js')}}"></script>
+<script src="{{asset('js/plugins/sweetalert2.js')}}"></script>
+<script src="{{asset('js/plugins/jquery.validate.min.js')}}"></script>
+<script src="{{asset('js/plugins/jquery.bootstrap-wizard.js')}}"></script>
+<script src="{{asset('js/plugins/bootstrap-selectpicker.js')}}"></script>
+<script src="{{asset('js/plugins/bootstrap-datetimepicker.min.js')}}"></script>
+<script src="{{asset('js/plugins/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('js/plugins/bootstrap-tagsinput.js')}}"></script>
+<script src="{{asset('js/plugins/jasny-bootstrap.min.js')}}"></script>
+<script src="{{asset('js/plugins/fullcalendar.min.js')}}"></script>
+<script src="{{asset('js/plugins/jquery-jvectormap.js')}}"></script>
+<script src="{{asset('assets/js/plugins/nouislider.min.js')}}"></script>
+<script src="{{asset('https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js')}}"></script>
+<script src="{{asset('js/plugins/arrive.min.js')}}"></script>
 
 
 </body>
