@@ -20,10 +20,11 @@ class VacinaController extends Controller
 
         return redirect('/mostraVacina');
     }
-    public function mostraVacina(){
+    public function mostraVacina(Request $request){
 
+        //dd($request->all());
         $vacinas = DB::table('vacinas')->select('id_vacina', 'posto_vacinacao', 'nome_paciente', 'vacina_realizada',
-            'informacao_lote', 'data')->get();
+            'informacao_lote', 'data')->where('nome_paciente', $request->input('pesquisaVacina'))->get();
 
         return view('cadastroVacina', ['vacinas' => $vacinas]);
         //return $vacinas;

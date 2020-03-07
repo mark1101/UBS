@@ -14,10 +14,10 @@ The above copyright notice and this permission notice shall be included in all c
 
 <head>
     <meta charset="utf-8"/>
-    <link rel="icon" type="image/png" href="{{asset('img/icone1.png')}}">
+    <link rel="icon" type="image/png" href="{{asset('img/log.png')}}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <title>
-        ComunityHelth
+        cUBS
     </title>
     <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport'/>
     <!--     Fonts and icons     -->
@@ -26,7 +26,6 @@ The above copyright notice and this permission notice shall be included in all c
 
     <!-- CSS Arquivos -->
     <link href="{{asset('css/material-dashboard.css')}}" rel="stylesheet"/>
-
 </head>
 
 <body class="">
@@ -205,6 +204,7 @@ The above copyright notice and this permission notice shall be included in all c
                                                 </select>
                                             </div>
                                         </div>
+
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Data</label>
@@ -219,10 +219,39 @@ The above copyright notice and this permission notice shall be included in all c
                                                 <label class="bmd-label-floating">Motorista Responsável</label>
                                                 <select class="form-control" name="" id="">
                                                     <option value="1" selected>Nenhum</option>
-                                                    <option value="2">Enfermaria</option>
-                                                    <option value="3">Recepção</option>
-                                                    <option value="4">Agente de Saúde</option>
+                                                    <option value="2">Joao</option>
+                                                    <option value="3">Matheus</option>
+                                                    <option value="4">Silver</option>
+                                                    <option value="5">Alisson</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Veículo</label>
+                                                <select class="form-control" name="" id="">
+                                                    <option value="1" selected>Nenhum</option>
+                                                    <option value="2">Van</option>
+                                                    <option value="3">Uno</option>
+                                                    <option value="4">Gol</option>
                                                     <option value="5">Outro</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Numero de Passageiros</label>
+                                                <select class="form-control" name="" id="">
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
+                                                    <option>6</option>
+                                                    <option>7</option>
+                                                    <option>8</option>
+                                                    <option>9</option>
                                                 </select>
                                             </div>
                                         </div>

@@ -34,13 +34,13 @@ class PacienteController extends Controller
 
         Paciente::create($data);
 
-        return redirect('/mostraPaciente');
+        return redirect('/paciente');
 
     }
-    public function mostraPaciente(){
+    public function mostraPaciente(Request $request){
 
         $pacientes = DB::table('pacientes')->select('nome', 'data_nascimento', 'idade', 'email', 'num_sus',
-           'cpf',  'cidade', 'bairro', 'telefone')->get();
+           'cpf',  'cidade', 'bairro', 'telefone')->where('nome' , $request->input('buscaPaciente'))->get();
 
         return view('buscaPaciente', ['pacientes' => $pacientes]);
     }

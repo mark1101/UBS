@@ -14,10 +14,10 @@ The above copyright notice and this permission notice shall be included in all c
 
 <head>
     <meta charset="utf-8"/>
-    <link rel="icon" type="image/png" href="{{asset('img/icone1.png')}}">
+    <link rel="icon" type="image/png" href="{{asset('img/log.png')}}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <title>
-        ComunityHelth
+        cUBS
     </title>
     <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport'/>
     <!--     Fonts and icons     -->
@@ -26,7 +26,6 @@ The above copyright notice and this permission notice shall be included in all c
 
     <!-- CSS Arquivos -->
     <link href="{{asset('css/material-dashboard.css')}}" rel="stylesheet"/>
-
 </head>
 
 <body class="">
@@ -180,7 +179,7 @@ The above copyright notice and this permission notice shall be included in all c
                                 <form class="navbar-form" action="{{asset('mostraPaciente')}}">
                                     @csrf
                                     <div class="input-group no-border">
-                                        <input type="text" style="color:beige;" value="" class="form-control"
+                                        <input type="text" style="color:beige;" id="buscaPaciente" name="buscaPaciente" value="" class="form-control"
                                                placeholder="Digite o nome do paciente...">
                                         <button type="submit" class="btn btn-white btn-round btn-just-icon">
                                             <i class="material-icons">search</i>
@@ -189,10 +188,7 @@ The above copyright notice and this permission notice shall be included in all c
                                     </div>
                                 </form>
                             </div>
-
-                            <!-- PARTE DE MIOLO DA TABELA -->
                             <div class="card-body">
-                                <!-- PARTE DE MIOLO DA TABELA -->
                                 <div class="card-body">
                                     <div class="table-responsive" style="overflow: auto; height: 300px;">
                                         <table class="table">

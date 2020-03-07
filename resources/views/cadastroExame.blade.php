@@ -14,10 +14,10 @@ The above copyright notice and this permission notice shall be included in all c
 
 <head>
     <meta charset="utf-8"/>
-    <link rel="icon" type="image/png" href="{{asset('img/icone1.png')}}">
+    <link rel="icon" type="image/png" href="{{asset('img/log.png')}}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <title>
-        ComunityHelth
+        cUBS
     </title>
     <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport'/>
     <!--     Fonts and icons     -->
@@ -26,7 +26,6 @@ The above copyright notice and this permission notice shall be included in all c
 
     <!-- CSS Arquivos -->
     <link href="{{asset('css/material-dashboard.css')}}" rel="stylesheet"/>
-
 </head>
 
 <body class="">
