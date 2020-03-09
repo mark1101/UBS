@@ -39,7 +39,7 @@ class PacienteController extends Controller
     }
     public function mostraPaciente(Request $request){
 
-        $pacientes = DB::table('pacientes')->select('nome', 'data_nascimento', 'idade', 'email', 'num_sus',
+        $pacientes = DB::table('pacientes')->select('nome', 'ultimo_nome' ,'data_nascimento', 'idade', 'email', 'num_sus',
            'cpf',  'cidade', 'bairro', 'telefone')->where('nome' , $request->input('buscaPaciente'))->get();
 
         return view('buscaPaciente', ['pacientes' => $pacientes]);

@@ -180,27 +180,33 @@ The above copyright notice and this permission notice shall be included in all c
                                     @csrf
                                     <p class="card-category">Dados Pessoais</p>
                                     <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Primeiro Nome</label>
+                                                <input type="text" class="form-control" maxlength="15" id="nome" name="nome" required>
+                                            </div>
+                                        </div>
                                         <div class="col-md-5">
                                             <div class="form-group">
-                                                <label class="bmd-label-floating">Nome do Paciente</label>
-                                                <input type="text" class="form-control" id="nome" name="nome" required>
+                                                <label class="bmd-label-floating">Restante nome</label>
+                                                <input type="text" class="form-control" maxlength="40" id="ultimo_nome" name="ultimo_nome" required>
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating" >Data de Nascimento</label>
-                                                <input type="text" class="form-control" id="data-nascimento" name="data_nascimento" maxlength="16" required>
+                                                <input type="text" class="form-control data" id="data-nascimento" name="data_nascimento" maxlength="16" required>
                                             </div>
                                         </div><div class="col-md-3">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating" >Idade</label>
-                                                <input type="text" class="form-control" id="idade" name="idade" required>
+                                                <input type="text" class="form-control idade" id="idade" name="idade" required>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Email</label>
-                                                <input type="email" class="form-control" id="emal" name="email">
+                                                <input type="email" class="form-control" maxlength="60"  id="emal" name="email">
                                             </div>
                                         </div>
                                     </div>
@@ -208,13 +214,13 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Numero do SUS</label>
-                                                <input type="text" class="form-control" id="num_sus" name="num_sus" required>
+                                                <input type="text" class="form-control sus" id="num_sus" name="num_sus" required>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating" >CPF</label>
-                                                <input type="text" class="form-control" id="cpf" name="cpf" maxlength="16" required>
+                                                <input type="text" class="form-control cpf" id="cpf" name="cpf" maxlength="16" required>
                                             </div>
                                         </div>
                                     </div>
@@ -224,20 +230,20 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Cidade</label>
-                                                <input type="text" class="form-control" id="cidade" name="cidade" required>
+                                                <input type="text" class="form-control" maxlength="30" id="cidade" name="cidade" required>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating" >Bairro</label>
-                                                <input type="text" class="form-control" id="bairro" name="bairro" required>
+                                                <input type="text" class="form-control" maxlength="30" id="bairro" name="bairro" required>
                                             </div>
                                         </div>
 
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Telefone</label>
-                                                <input type="text" class="form-control" id="telefone" name="telefone">
+                                                <input type="text" class="form-control telefone" id="telefone" name="telefone">
                                             </div>
                                         </div>
                                     </div>
@@ -298,6 +304,13 @@ The above copyright notice and this permission notice shall be included in all c
 <script src="{{asset('assets/js/plugins/nouislider.min.js')}}"></script>
 <script src="{{asset('https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js')}}"></script>
 <script src="{{asset('js/plugins/arrive.min.js')}}"></script>
+
+<script src="{{asset('js/mascara.js')}}"></script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 
 
 </body>

@@ -43,7 +43,7 @@ The above copyright notice and this permission notice shall be included in all c
                         <p>Início</p>
                     </a>
                 </li>
-                <li class="nav-item dropdown active">
+                <li class="nav-item dropdown ">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                        data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">
@@ -55,7 +55,7 @@ The above copyright notice and this permission notice shall be included in all c
                         <a class="dropdown-item" href="{{route('mostraPaciente')}}">Busca de Paciente</a>
                     </div>
                 </li>
-                <li class="nav-item dropdown ">
+                <li class="nav-item dropdown active">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                        data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">
@@ -125,7 +125,7 @@ The above copyright notice and this permission notice shall be included in all c
             <div class="container-fluid">
 
                 <div class="navbar-wrapper">
-                    <a class="navbar-brand" href="javascript:;">Gerenciamento de Paciente</a>
+                    <a class="navbar-brand" href="javascript:;">Gerenciamento de Exames</a>
                 </div>
 
                 <!-- BOTAO DE RESPONSIVIDADE PARA OPCIOES DE SIDEBAR-->
@@ -165,87 +165,85 @@ The above copyright notice and this permission notice shall be included in all c
         </nav>
         <!-- End Navbar -->
 
-
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <!-- DIV DE BUSCA DE PACIENTE -->
                     <div class="col-md-12">
-
-                        <!-- PARTE DE CIMA DA TABELA PARA PESQUISA -->
                         <div class="card">
                             <div class="card-header card-header-primary">
-                                <h4 class="card-title">Pesquisar Paciente</h4>
-                                <form class="navbar-form" action="{{asset('mostraPaciente')}}">
-                                    @csrf
-                                    <div class="input-group no-border">
-                                        <input type="text" style="color:beige;" id="buscaPaciente" name="buscaPaciente" value="" class="form-control"
-                                               placeholder="Digite o primeiro nome do paciente...">
-                                        <button type="submit" class="btn btn-white btn-round btn-just-icon">
-                                            <i class="material-icons">search</i>
-                                            <div class="ripple-container"></div>
-                                        </button>
-                                    </div>
-                                </form>
+                                <h4 class="card-title">Solicitação de Exame</h4>
                             </div>
-                            <div class="card-body">
-                                <div class="card-body">
-                                    <div class="table-responsive" style="overflow: auto; height: 300px;">
-                                        <table class="table">
-                                            <thead>
-                                            <tr>
-                                                <th scope="col" width="10%">Nome</th>
-                                                <th scope="col">Data Nascimento</th>
-                                                <th scope="col">Num Sus</th>
-                                                <th scope="col">CPF</th>
-                                                <th scope="col">Cidade</th>
-                                                <th scope="col">Bairro</th>
-                                                <th scope="col">Telefone</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            @foreach($pacientes as $paciente)
-                                                <tr>
-                                                    <td width="20%">{{$paciente->nome. " " .$paciente->ultimo_nome}} </td>
-                                                    <td>{{$paciente->data_nascimento}}</td>
-                                                    <td>{{$paciente->num_sus}}</td>
-                                                    <td>{{$paciente->cpf}}</td>
-                                                    <td>{{$paciente->cidade}}</td>
-                                                    <td>{{$paciente->bairro}}</td>
-                                                    <td>{{$paciente->telefone}}</td>
-                                                </tr>
-                                            @endforeach
-                                            </tbody>
-                                        </table>
+                            <div class="card-body" id="exame">
+                                <form action="{{route('cadastraSolicitacaoExame')}}" method="post">
+                                    @csrf
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Comunidade Atendida</label>
+                                                <input type="text" id="comunidade_atendida" name="comunidade_atendida" class="form-control">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Primeiro nome do paciente</label>
+                                                <input type="text" class="form-control" name="nome" id="nome">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Ultimo nome</label>
+                                                <input type="text" class="form-control" name="ultimo_nome" id="ultimo_nome">
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Nome do exame</label>
+                                                <input type="text" class="form-control" name="nome_exame" id="nome_exame">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Resultado</label>
+                                                <input type="text" class="form-control" id="resultado" name="resultado">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Localizacao de onde foi realizado o exame</label>
+                                                <input type="text" class="form-control" name="local" id="local">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Data</label>
+                                                <input type="text" class="form-control data" name="data" id="data">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button style="  display:block;
+    width:100px;
+    height:40px;
+    font-weight:bold;
+    color:#ffffff;
+    border-radius: 4px;
+    background-color: #9C27B0;
+    border:none;" type="submit" class="btn btn-primary">Salvar</button>
+                                    <!--<button type="submit" class="btn btn-primary pull-right">Solicitar Exame</button>-->
+                                </form>
                             </div>
                         </div>
                     </div>
-
-                    <!-- MOSTRAGEM COM IMAGEM EM CIMA
-                    <div class="col-md-4">
-                      <div class="card card-profile">
-                        <div class="card-avatar">
-                          <a href="javascript:;">
-                            <h1>?</h1>
-                            <img class="img" src="../assets/img/faces/interrogacao.png" />
-                          </a>
-                        </div>
-                        <div class="card-body">
-                          <p class="card-description">
-                            Aqui explicar a importancia do cadastro do cliente dentro do sistema.
-                          </p>
-                        </div>
-                      </div>
-                    </div> -->
-
-
                 </div>
             </div>
         </div>
         <footer class="footer">
             <div class="container-fluid">
+                <h4 align="left">Versão 1.0</h4>
             </div>
         </footer>
     </div>
@@ -267,10 +265,17 @@ The above copyright notice and this permission notice shall be included in all c
 <script src="{{asset('js/plugins/jasny-bootstrap.min.js')}}"></script>
 <script src="{{asset('js/plugins/fullcalendar.min.js')}}"></script>
 <script src="{{asset('js/plugins/jquery-jvectormap.js')}}"></script>
-<script src="{{asset('assets/js/plugins/nouislider.min.js')}}"></script>
+<!--<script src="{{asset('assets/js/plugins/nouislider.min.js')}}"></script> -->
 <script src="{{asset('https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js')}}"></script>
 <script src="{{asset('js/plugins/arrive.min.js')}}"></script>
 
+
+<script src="{{asset('js/mascara.js')}}"></script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 
 </body>
 

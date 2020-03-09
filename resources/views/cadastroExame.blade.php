@@ -169,75 +169,82 @@ The above copyright notice and this permission notice shall be included in all c
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-
                     <!-- FORM DE CADASTRO DE PACIENTE  -->
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header card-header-primary">
                                 <h4 class="card-title">Cadastro de Exame</h4>
                             </div>
-                            <div class="card-body">
-                                <form>
+                            <div class="card-body" id="exame">
+                                <form action="{{route('cadastrarExame')}}" method="post">
+                                    @csrf
                                     <div class="row">
-                                        <div class="col-md-5">
+                                        <div class="col-md-4">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Comunidade Atendida</label>
-                                                <input type="text" class="form-control">
+                                                <input type="text" id="comunidade_atendida" name="comunidade_atendida" class="form-control">
                                             </div>
                                         </div>
-                                        <div class="col-md-7">
+
+                                        <div class="col-md-3">
                                             <div class="form-group">
-                                                <label class="bmd-label-floating">Nome do paciente</label>
-                                                <input type="text" class="form-control">
+                                                <label class="bmd-label-floating">Primeiro nome do paciente</label>
+                                                <input type="text" class="form-control" name="nome" id="nome">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Ultimo nome</label>
+                                                <input type="text" class="form-control" name="ultimo_nome" id="ultimo_nome">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label class="bmd-label-floating">Fist Name</label>
-                                                <input type="text" class="form-control">
+                                                <label class="bmd-label-floating">Nome do exame</label>
+                                                <input type="text" class="form-control" name="nome_exame" id="nome_exame">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label class="bmd-label-floating">Last Name</label>
-                                                <input type="text" class="form-control">
+                                                <label class="bmd-label-floating">Resultado</label>
+                                                <input type="text" class="form-control" id="resultado" name="resultado">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-12">
+                                        <div class="col-md-6">
                                             <div class="form-group">
-                                                <label class="bmd-label-floating">Adress</label>
-                                                <input type="text" class="form-control">
+                                                <label class="bmd-label-floating">Localizacao de onde foi realizado o exame</label>
+                                                <input type="text" class="form-control" name="local" id="local">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Data</label>
+                                                <input type="text" class="form-control data" name="data" id="data">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">City</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Country</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Postal Code</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary pull-right">Cadastrar</button>
-                                    <button type="submit" class="btn btn-primary pull-right">Solicitar Exame</button>
-                                    <div class="clearfix"></div>
+                                    <button style="  display:block;
+    width:100px;
+    height:40px;
+    font-weight:bold;
+    color:#ffffff;
+    border-radius: 4px;
+    background-color: #9C27B0;
+    border:none;" type="submit" class="btn btn-primary">Salvar</button>
+                                    <!--<button type="submit" class="btn btn-primary pull-right">Solicitar Exame</button>-->
                                 </form>
+                                <button style="  display:block;
+    width:150px;
+    height:40px;
+    font-weight:bold;
+    color:#ffffff;
+    border-radius: 4px;
+    background-color: #9C27B0;
+    border:none;" type="submit" class="btn btn-primary " ><a style="color: #f8f9fa" href="{{route('solicitacaoExame')}}">Solicitar Exame</a></button>
                             </div>
                         </div>
                     </div>
@@ -268,10 +275,17 @@ The above copyright notice and this permission notice shall be included in all c
 <script src="{{asset('js/plugins/jasny-bootstrap.min.js')}}"></script>
 <script src="{{asset('js/plugins/fullcalendar.min.js')}}"></script>
 <script src="{{asset('js/plugins/jquery-jvectormap.js')}}"></script>
-<script src="{{asset('assets/js/plugins/nouislider.min.js')}}"></script>
+<!--<script src="{{asset('assets/js/plugins/nouislider.min.js')}}"></script> -->
 <script src="{{asset('https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js')}}"></script>
 <script src="{{asset('js/plugins/arrive.min.js')}}"></script>
 
+
+<script src="{{asset('js/mascara.js')}}"></script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 
 </body>
 

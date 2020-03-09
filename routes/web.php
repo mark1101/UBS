@@ -30,6 +30,8 @@ Route::POST('paciente/salvarPaciente', 'PacienteController@cadastraPaciente')->n
 // ROTAS DE EXAMES
 Route::get('/cadastroExame', 'ExameController@indexcadastroExame')->middleware('auth')->name('cadastroExame');
 Route::get('/buscarExame', 'ExameController@indexbuscarExame')->middleware('auth')->name('buscarExame');
+Route::get('/solicitarExame', 'ExameController@indexsolicitacaoExame')->middleware('auth')->name('solicitacaoExame');
+Route::POST('/cadastrarExame', 'ExameController@cadastraExame')->name('cadastrarExame');
 
 // ROTAS DE VACINAS
 Route::get('/mostraVacina', 'VacinaController@mostraVacina')->middleware('auth')->name('mostraVacina');

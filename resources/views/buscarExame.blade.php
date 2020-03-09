@@ -81,36 +81,31 @@ The above copyright notice and this permission notice shall be included in all c
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link" href="{{route('mostraVacina')}}">
-                        <i class="material-icons">format_color_reset
-                        </i>
+                        <i class="material-icons">format_color_reset</i>
                         <p>Vacinas</p>
                     </a>
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link" href="{{route('encaminhamento')}}">
-                        <i class="material-icons">arrow_right_alt
-                        </i>
+                        <i class="material-icons">arrow_right_alt</i>
                         <p>Encaminhamentos</p>
                     </a>
                 </li>
                 <li class="nav-item  ">
                     <a class="nav-link" href="{{route('recado')}}">
-                        <i class="material-icons">attach_file
-                        </i>
+                        <i class="material-icons">attach_file</i>
                         <p>Recados</p>
                     </a>
                 </li>
                 <li class="nav-item  ">
                     <a class="nav-link" href="#">
-                        <i class="material-icons">history
-                        </i>
+                        <i class="material-icons">history</i>
                         <p>Histórico dos Pacientes</p>
                     </a>
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link" href="{{route('controleViagem')}}">
-                        <i class="material-icons">commute
-                        </i>
+                        <i class="material-icons">commute</i>
                         <p>Gerenciamento de Viagens</p>
                     </a>
                 </li>
