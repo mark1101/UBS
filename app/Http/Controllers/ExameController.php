@@ -8,13 +8,13 @@ use Illuminate\Http\Request;
 class ExameController extends Controller
 {
     public function indexbuscarExame(){
-        return view('buscarExame');
+        return view('Usuario.buscarExame');
     }
     public function indexcadastroExame(){
-        return view('cadastroExame');
+        return view('Usuario.cadastroExame');
     }
     public function indexsolicitacaoExame(){
-        return view('solicitacaoExame');
+        return view('Usuario.solicitacaoExame');
     }
     public function cadastraExame(Request $request){
         $data = $request->all();

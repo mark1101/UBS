@@ -274,7 +274,7 @@ The above copyright notice and this permission notice shall be included in all c
                                         @foreach($vacinas as $vacina)
                                             <tr>
                                                 <td>{{$vacina->posto_vacinacao}}</td>
-                                                <td>{{$vacina->nome_paciente}}</td>
+                                                <td>{{$vacina->primeiro_nome." ".$vacina->nome_paciente}}</td>
                                                 <td>{{$vacina->vacina_realizada}}</td>
                                                 <td>{{$vacina->informacao_lote}}</td>
                                                 <td>{{$vacina->data}}</td>

@@ -7,6 +7,6 @@ use Illuminate\Http\Request;
 class ViagemController extends Controller
 {
     public function index(){
-        return view('controleViagem');
+        return view('Usuario.controleViagem');
     }
 }

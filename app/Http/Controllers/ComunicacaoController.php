@@ -7,6 +7,6 @@ use Illuminate\Http\Request;
 class ComunicacaoController extends Controller
 {
     public function index(){
-        return view('comunicacao');
+        return view('Usuario.comunicacao');
     }
 }

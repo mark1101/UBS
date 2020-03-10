@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 class VacinaController extends Controller
 {
     public function index(){
-        return view('cadastroVacina');
+        return view('Usuario.cadastroVacina');
     }
 
     public function cadastraVacina(Request $request){
@@ -25,6 +25,6 @@ class VacinaController extends Controller
         $vacinas = DB::table('vacinas')->select('id_vacina', 'posto_vacinacao', 'primeiro_nome', 'nome_paciente', 'vacina_realizada',
             'informacao_lote', 'data', 'dose')->where('primeiro_nome', $request->input('pesquisaVacina'))->get();
 
-        return view('cadastroVacina', ['vacinas' => $vacinas]);
+        return view('Usuario.cadastroVacina', ['vacinas' => $vacinas]);
     }
 }

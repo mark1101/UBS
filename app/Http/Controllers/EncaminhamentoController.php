@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class EncaminhamentoController extends Controller
 {
     public function index(){
-        return view('encaminhamento');
+        return view('Usuario.encaminhamento');
     }
 
 }

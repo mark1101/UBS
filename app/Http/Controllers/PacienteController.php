@@ -11,10 +11,10 @@ class PacienteController extends Controller
 {
     public function indexPaciente()
     {
-        return view('paciente');
+        return view('Usuario.paciente');
     }
     public function indexbuscaPaciente(){
-        return view('buscaPaciente');
+        return view('Usuario.buscaPaciente');
     }
 
     public function cadastraPaciente(Request $request)
@@ -42,6 +42,6 @@ class PacienteController extends Controller
         $pacientes = DB::table('pacientes')->select('nome', 'ultimo_nome' ,'data_nascimento', 'idade', 'email', 'num_sus',
            'cpf',  'cidade', 'bairro', 'telefone')->where('nome' , $request->input('buscaPaciente'))->get();
 
-        return view('buscaPaciente', ['pacientes' => $pacientes]);
+        return view('Usuario.buscaPaciente', ['pacientes' => $pacientes]);
     }
 }
