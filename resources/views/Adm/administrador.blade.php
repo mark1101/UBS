@@ -21,29 +21,17 @@
 <body class="">
 <div class="wrapper ">
 
-    <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/unidade.jpg">
+    <div class="sidebar" data-color="azure" data-background-color="white" data-image="../assets/img/unidade.jpg">
         <div class="logo"><a href="{{'inicio'}}" class="simple-text logo-normal">
                 {{Auth::user()->funcao}}
             </a></div>
         <div class="sidebar-wrapper ">
             <ul class="nav">
-                <li class="nav-item active ">
+                <li class="nav-item active">
                     <a class="nav-link" href="">
                         <i class="material-icons">home_work</i>
                         <p>Início</p>
                     </a>
-                </li>
-                <li class="nav-item dropdown ">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false">
-                        <i class="material-icons">person</i>
-                        Paciente
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="">Visualizar dados</a>
-                        <a class="dropdown-item" href="">Outra funcao</a>
-                    </div>
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link" href="#">
@@ -59,7 +47,7 @@
                         <p>Recados</p>
                     </a>
                 </li>
-                <li class="nav-item  ">
+                <li class="nav-item ">
                     <a class="nav-link" href="#">
                         <i class="material-icons">history
                         </i>
@@ -73,6 +61,13 @@
                         <p>Dados de viagens</p>
                     </a>
                 </li>
+                <li class="nav-item  ">
+                    <a class="nav-link" href="{{route('register')}}">
+                        <i class="material-icons">person
+                        </i>
+                        <p>Cadastrar Contratados</p>
+                    </a>
+                </li>
             </ul>
 
         </div>
@@ -83,9 +78,9 @@
         <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
             <div class="container-fluid">
 
-                <!--<div class="navbar-wrapper">
-                    <a class="navbar-brand" href="javascript:;">Tela Inicial</a>
-                </div> -->
+                <div class="navbar-wrapper">
+                    <a class="navbar-brand" href="javascript:;">Tela de Administracao</a>
+                </div>
 
                 <!-- BOTAO DE RESPONSIVIDADE PARA OPCIOES DE SIDEBAR-->
                 <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
@@ -128,29 +123,61 @@
 
         <div class="content" )>
             <div class="container-fluid">
-                <h1 align="center" style="font-family: Candara">TELA DE ADMINISTRADOR</h1>
-                <div class="row d-flex justify-content-center" > <!-- CLASSE DE ALINHAMENTO -->
-                    <div align="center" class="card" style="width: 14rem;">
+                <div class="row d-flex justify-content-center"> <!-- CLASSE DE ALINHAMENTO -->
+                    <div align="center" class="card" style="width: 13rem; height: 13rem;">
                         <div class="card-body">
-                            <h5 class="card-title">Profissionais</h5>
-                            <p class="card-text">Visualizar dados </p>
-                            <a href="#" class="btn btn-primary">Ver</a>
+                            <h5 class="card-title">Odontológico</h5>
+                            <img src="{{asset('img/dentista.png')}}">
+                            <a href="#" class="btn btn-primary-adm">Ver</a>
                         </div>
                     </div>
                     &nbsp &nbsp &nbsp
-                    <div align="center" class="card" style="width: 14rem;">
+                    <div align="center" class="card" style="width: 13rem; height: 13rem;">
                         <div class="card-body">
-                            <h5 class="card-title">Título do card</h5>
-                            <p class="card-text">Visualizar dados </p>
-                            <a href="#" class="btn btn-primary">Visitar</a>
+                            <h5 class="card-title">Carros da Saude</h5>
+                            <img src="{{asset('img/carroSaude.png')}}">
+                            <a href="#" class="btn btn-primary-adm">Ver</a>
                         </div>
                     </div>
                     &nbsp &nbsp &nbsp
-                    <div align="center" class="card" style="width: 14rem;">
+                    <div align="center" class="card" style="width: 13rem; height: 13rem;">
                         <div class="card-body">
-                            <h5 class="card-title">Título do card</h5>
-                            <p class="card-text">Visualizar dados </p>
-                            <a href="#" class="btn btn-primary">Visitar</a>
+                            <h5 class="card-title">Empregados</h5>
+                            <img src="{{asset('img/medico.jpg')}}">
+                            <a href="#" class="btn btn-primary-adm">Ver</a>
+                        </div>
+                    </div>
+                    &nbsp &nbsp &nbsp
+                    <div align="center" class="card" style="width: 13rem; height: 13rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Pacientes</h5>
+                            <img src="{{asset('img/paciente.png')}}">
+                            <a href="#" class="btn btn-primary-adm">Ver</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row d-flex justify-content-center"> <!-- CLASSE DE ALINHAMENTO -->
+                    <div align="center" class="card" style="width: 13rem; height: 13rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Exames</h5>
+                            <img src="{{asset('img/carroSaude.png')}}">
+                            <a href="#" class="btn btn-primary-adm">Ver</a>
+                        </div>
+                    </div>
+                    &nbsp &nbsp &nbsp
+                    <div align="center" class="card" style="width: 13rem; height: 13rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Vacinas</h5>
+                            <img src="{{asset('img/medico.jpg')}}">
+                            <a href="#" class="btn btn-primary-adm">Ver</a>
+                        </div>
+                    </div>
+                    &nbsp &nbsp &nbsp
+                    <div align="center" class="card" style="width: 13rem; height: 13rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Encaminhamentos</h5>
+                            <img src="{{asset('img/paciente.png')}}">
+                            <a href="#" class="btn btn-primary-adm">Ver</a>
                         </div>
                     </div>
                 </div>

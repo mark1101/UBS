@@ -25,7 +25,7 @@ Route::group(['middleware' => ['web', 'auth']], function (){
        if (Auth::user()->admin == 0){
            return view('inicio');
        }else{
-           return view('administrador');
+           return view('Adm.administrador');
        }
     });
 });
