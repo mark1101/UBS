@@ -11,15 +11,29 @@
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return redirect('/login');
-});
+});*/
 
 Auth::routes();
+Route::group(['middleware' => ['web', 'auth']], function (){
+    Route::get('/', function (){
+        return redirect('/home');
+    });
 
-Route::get('/home', function (){
+    Route::get('/home', function (){
+       if (Auth::user()->admin == 0){
+           return view('inicio');
+       }else{
+           return view('administrador');
+       }
+    });
+});
+
+
+/*Route::get('/home', function (){
     return redirect('/inicio');
-})->name('home');
+})->name('home');*/
 
 // ROTAS DE PACIENTE
 Route::get('/paciente', 'PacienteController@indexPaciente')->middleware('auth')->name('paciente');
