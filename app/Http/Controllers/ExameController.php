@@ -21,7 +21,8 @@ class ExameController extends Controller
         Exame::create($data);
         return redirect('/cadastroExame');
     }
-    public function cadastraSolicitacao(Request $request){
+    public function cadastraSolicitacaoExame(Request $request){
         $data = $request->all();
+        return redirect('/solicitacaoExame');
     }
 }

@@ -16,10 +16,12 @@ class CreateVacinasTable extends Migration
         Schema::create('vacinas', function (Blueprint $table) {
             $table->bigIncrements('id_vacina');
             $table->string('posto_vacinacao');
+            $table->string('primeiro_nome');
             $table->string('nome_paciente');
             $table->string('vacina_realizada');
             $table->string('informacao_lote');
             $table->timestamp('data');
+            $table->string('dose');
             $table->timestamps();
         });
     }

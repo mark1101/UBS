@@ -174,7 +174,7 @@ The above copyright notice and this permission notice shall be included in all c
                                 <h4 class="card-title">Solicitação de Exame</h4>
                             </div>
                             <div class="card-body" id="exame">
-                                <form action="{{route('cadastraSolicitacaoExame')}}" method="post">
+                                <form action="{{route('cadastrarExame')}}" method="post">
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-4">

@@ -158,7 +158,7 @@
 
         <div class="content")>
             <div class="container-fluid">
-                <img src="{{asset('img/cubs.png')}}" alt="">
+
             </div>
 
         </div>

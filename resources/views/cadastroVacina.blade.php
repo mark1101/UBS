@@ -181,23 +181,30 @@ The above copyright notice and this permission notice shall be included in all c
                                 <form action="{{route('cadastraVacina')}}" method="post">
                                     @csrf
                                     <div class="row">
-                                        <div class="col-md-5">
+                                        <div class="col-md-4">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Posto de Vacinação</label>
                                                 <input type="text" class="form-control" id="posto_vacinacao"
                                                        name="posto_vacinacao">
                                             </div>
                                         </div>
-                                        <div class="col-md-7">
+                                        <div class="col-md-3">
                                             <div class="form-group">
-                                                <label class="bmd-label-floating">Nome do paciente</label>
+                                                <label class="bmd-label-floating">Primeiro Nome Paciente</label>
+                                                <input type="text" class="form-control" id="primeiro_nome"
+                                                       name="primeiro_nome" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Nome Completo do Paciente</label>
                                                 <input type="text" class="form-control" id="nome_paciente"
                                                        name="nome_paciente" required>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Vacina Realizada</label>
                                                 <input type="text" class="form-control" id="vacina_realizada"
@@ -209,6 +216,12 @@ The above copyright notice and this permission notice shall be included in all c
                                                 <label class="bmd-label-floating">Informação de Lote</label>
                                                 <input type="text" class="form-control" id="informacao_lote"
                                                        name="informacao_lote" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Dose</label>
+                                                <input type="text" class="form-control" id="dose" name="dose" required>
                                             </div>
                                         </div>
                                     </div>
@@ -233,8 +246,9 @@ The above copyright notice and this permission notice shall be included in all c
                                 <form class="navbar-form" action="{{route('mostraVacina')}}">
                                     @csrf
                                     <div class="input-group no-border">
-                                        <input type="text" id="pesquisaVacina" name="pesquisaVacina" style="color:beige;" value="" class="form-control"
-                                               placeholder="Digite o nome do paciente...">
+                                        <input type="text" id="pesquisaVacina" name="pesquisaVacina"
+                                               style="color:beige;" value="" class="form-control"
+                                               placeholder="Digite o primeiro nome do paciente...">
                                         <button type="submit" class="btn btn-white btn-round btn-just-icon">
                                             <i class="material-icons">search</i>
                                             <div class="ripple-container"></div>

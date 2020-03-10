@@ -123,7 +123,7 @@ The above copyright notice and this permission notice shall be included in all c
         <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
             <div class="container-fluid">
                 <div class="navbar-wrapper">
-                    <a class="navbar-brand" href="javascript:;">User Profile</a>
+                    <a class="navbar-brand" href="javascript:;">Gerenciamento de Recados</a>
                 </div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="sr-only">Toggle navigation</span>
@@ -162,7 +162,7 @@ The above copyright notice and this permission notice shall be included in all c
 
         <div class="content">
             <div class="container-fluid">
-                <button type="submit" class="btn btn-primary pull-right" style="left: 10px">
+                <button type="submit" class="btn btn-primary pull-right" style="left: 6px">
                     <a style="color:#ffffff " href="{{route('comunicacao')}}">Nova Mensagem</a>
                 </button>
                 <div class="row">

@@ -244,7 +244,7 @@ The above copyright notice and this permission notice shall be included in all c
     color:#ffffff;
     border-radius: 4px;
     background-color: #9C27B0;
-    border:none;" type="submit" class="btn btn-primary " ><a style="color: #f8f9fa" href="{{route('solicitacaoExame')}}">Solicitar Exame</a></button>
+    border:none;" type="submit" class="btn btn-primary " ><a style="color: #f8f9fa" href="{{route('solicitarExame')}}">Solicitar Exame</a></button>
                             </div>
                         </div>
                     </div>

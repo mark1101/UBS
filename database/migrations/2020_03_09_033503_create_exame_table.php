@@ -13,7 +13,7 @@ class CreateExameTable extends Migration
      */
     public function up()
     {
-        Schema::create('exame', function (Blueprint $table) {
+        Schema::create('exames', function (Blueprint $table) {
             $table->bigIncrements('idExame');
             $table->string('comunidade_atendida');
             $table->string('nome');
