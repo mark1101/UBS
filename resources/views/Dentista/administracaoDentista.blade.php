@@ -35,37 +35,30 @@
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link" href="#">
-                        <i class="material-icons">arrow_right_alt
+                        <i class="material-icons">calendar_today
                         </i>
-                        <p>Dados de encaminhamentos</p>
+                        <p>Agenda</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">
-                        <i class="material-icons">attach_file
+                        <i class="material-icons">record_voice_over
                         </i>
-                        <p>Recados</p>
+                        <p>Cadastro de Consultas</p>
                     </a>
                 </li>
                 <li class="nav-item  ">
                     <a class="nav-link" href="#">
-                        <i class="material-icons">commute
+                        <i class="material-icons">trending_flat
                         </i>
-                        <p>Dados de viagens</p>
+                        <p>Encaminhamento</p>
                     </a>
                 </li>
                 <li class="nav-item  ">
                     <a class="nav-link" href="">
-                        <i class="material-icons">person
+                        <i class="material-icons">chat
                         </i>
-                        <p>Cadastrar Profissionais</p>
-                    </a>
-                </li>
-                <li class="nav-item  ">
-                    <a class="nav-link" href="">
-                        <i class="material-icons">directions_car
-                        </i>
-                        <p>Cadastrar Motoristas</p>
+                        <p>Recados</p>
                     </a>
                 </li>
                 <li class="nav-item ">
@@ -86,7 +79,7 @@
             <div class="container-fluid">
 
                 <div class="navbar-wrapper">
-                    <a class="navbar-brand" href="javascript:;">Tela de Administracao</a>
+                    <a class="navbar-brand" href="javascript:;">Odontologia</a>
                 </div>
 
                 <!-- BOTAO DE RESPONSIVIDADE PARA OPCIOES DE SIDEBAR-->
@@ -141,22 +134,6 @@
                     &nbsp &nbsp &nbsp
                     <div align="center" class="card" style="width: 13rem; height: 13rem;">
                         <div class="card-body">
-                            <h5 class="card-title">Carros da Saude</h5>
-                            <img src="{{asset('img/carroSaude.png')}}">
-                            <a href="#" class="btn btn-primary-adm">Ver</a>
-                        </div>
-                    </div>
-                    &nbsp &nbsp &nbsp
-                    <div align="center" class="card" style="width: 13rem; height: 13rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Empregados</h5>
-                            <img src="{{asset('img/medico.jpg')}}">
-                            <a href="#" class="btn btn-primary-adm">Ver</a>
-                        </div>
-                    </div>
-                    &nbsp &nbsp &nbsp
-                    <div align="center" class="card" style="width: 13rem; height: 13rem;">
-                        <div class="card-body">
                             <h5 class="card-title">Pacientes</h5>
                             <img src="{{asset('img/paciente.png')}}">
                             <a href="#" class="btn btn-primary-adm">Ver</a>
@@ -174,14 +151,6 @@
                     &nbsp &nbsp &nbsp
                     <div align="center" class="card" style="width: 13rem; height: 13rem;">
                         <div class="card-body">
-                            <h5 class="card-title">Vacinas</h5>
-                            <img src="{{asset('img/vacina.png')}}">
-                            <a href="#" class="btn btn-primary-adm">Ver</a>
-                        </div>
-                    </div>
-                    &nbsp &nbsp &nbsp
-                    <div align="center" class="card" style="width: 13rem; height: 13rem;">
-                        <div class="card-body">
                             <h5 class="card-title">Encaminhamentos</h5>
                             <img src="{{asset('img/encaminhamento.png')}}">
                             <a href="#" class="btn btn-primary-adm">Ver</a>
@@ -189,9 +158,7 @@
                     </div>
                 </div>
             </div>
-
         </div>
-
         <footer class="footer">
             <div class="container-fluid">
             </div>
