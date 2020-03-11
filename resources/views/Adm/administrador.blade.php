@@ -23,7 +23,7 @@
 
     <div class="sidebar" data-color="azure" data-background-color="white" data-image="../assets/img/unidade.jpg">
         <div class="logo"><a href="{{'inicio'}}" class="simple-text logo-normal">
-                {{Auth::user()->funcao}}
+            <img src="{{asset('img/adm.png')}}">
             </a></div>
         <div class="sidebar-wrapper ">
             <ul class="nav">
@@ -134,7 +134,7 @@
                     <div align="center" class="card" style="width: 13rem; height: 13rem;">
                         <div class="card-body">
                             <h5 class="card-title">Odontológico</h5>
-                            <img src="{{asset('img/dentista.png')}}">
+                            <img src="{{asset('img/DenteClicavel.png')}}">
                             <a href="#" class="btn btn-primary-adm">Ver</a>
                         </div>
                     </div>
@@ -142,15 +142,15 @@
                     <div align="center" class="card" style="width: 13rem; height: 13rem;">
                         <div class="card-body">
                             <h5 class="card-title">Carros da Saude</h5>
-                            <img src="{{asset('img/carroSaude.png')}}">
+                            <img src="{{asset('img/CarroClicavel.png')}}">
                             <a href="#" class="btn btn-primary-adm">Ver</a>
                         </div>
                     </div>
                     &nbsp &nbsp &nbsp
                     <div align="center" class="card" style="width: 13rem; height: 13rem;">
                         <div class="card-body">
-                            <h5 class="card-title">Empregados</h5>
-                            <img src="{{asset('img/medico.jpg')}}">
+                            <h5 class="card-title">Profissionais</h5>
+                            <img src="{{asset('img/ProfissionaisClicavel.png')}}">
                             <a href="#" class="btn btn-primary-adm">Ver</a>
                         </div>
                     </div>
@@ -158,7 +158,7 @@
                     <div align="center" class="card" style="width: 13rem; height: 13rem;">
                         <div class="card-body">
                             <h5 class="card-title">Pacientes</h5>
-                            <img src="{{asset('img/paciente.png')}}">
+                            <img src="{{asset('img/PacienteClicavel.png')}}">
                             <a href="#" class="btn btn-primary-adm">Ver</a>
                         </div>
                     </div>
@@ -167,7 +167,7 @@
                     <div align="center" class="card" style="width: 13rem; height: 13rem;">
                         <div class="card-body">
                             <h5 class="card-title">Exames</h5>
-                            <img src="{{asset('img/exame.png')}}">
+                            <img src="{{asset('img/ExameClicavel.png')}}">
                             <a href="#" class="btn btn-primary-adm">Ver</a>
                         </div>
                     </div>
@@ -175,7 +175,7 @@
                     <div align="center" class="card" style="width: 13rem; height: 13rem;">
                         <div class="card-body">
                             <h5 class="card-title">Vacinas</h5>
-                            <img src="{{asset('img/vacina.png')}}">
+                            <img src="{{asset('img/VacinaClicavel.png')}}">
                             <a href="#" class="btn btn-primary-adm">Ver</a>
                         </div>
                     </div>
@@ -183,7 +183,7 @@
                     <div align="center" class="card" style="width: 13rem; height: 13rem;">
                         <div class="card-body">
                             <h5 class="card-title">Encaminhamentos</h5>
-                            <img src="{{asset('img/encaminhamento.png')}}">
+                            <img src="{{asset('img/EncaminhamentoClicavel.png')}}">
                             <a href="#" class="btn btn-primary-adm">Ver</a>
                         </div>
                     </div>

@@ -23,7 +23,8 @@ Route::group(['middleware' => ['web', 'auth']], function (){
 
     Route::get('/home', function (){
        if (Auth::user()->admin == 0){
-           return view('inicio');
+           return redirect('/inicio');
+           //return view('inicio');
        }else if(Auth::user()->admin == 1){
            return view('Adm.administrador');
        }else if(Auth::user()->admin == 2){
@@ -65,8 +66,11 @@ Route::get('/encaminhamento', 'EncaminhamentoController@index')->middleware('aut
 
 
 // ROTAS DE ODONTOLOGIA
-Route::get('/administracaoOdonto', 'DentistaController@index')->middleware('auth')->name('admOdonto');
+Route::get('/administracaoOdonto', 'DentistaController@indexAdm')->middleware('auth')->name('admOdonto');
+Route::get('/odonto/consulta', 'DentistaController@indexConsulta')->middleware('auth')->name('cadastroConsultaOdonto');
 
+
+// ROTAS DE GERAL
 Route::get('/inicio', 'InicioController@index')->middleware('auth')->name('inicio');
 Route::get('/login', 'LoginController@index')->name('login');
 Route::get('/controleViagem', 'ViagemController@index')->middleware('auth')->name('controleViagem');

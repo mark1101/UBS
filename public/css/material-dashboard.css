@@ -17532,7 +17532,7 @@ html[dir="rtl"] .form-check .form-check-sign .check:before {
 .card .card-header-info:not(.card-header-icon):not(.card-header-text),
 .card.bg-info,
 .card.card-rotate.bg-info .front,
-.card.card-rotate.bg-info .back {
+.card.card-rotate.bg-info .back  {
   background: linear-gradient(60deg, #26c6da, #00acc1);
 }
 

@@ -23,12 +23,12 @@
 
     <div class="sidebar" data-color="azure" data-background-color="white" data-image="../assets/img/unidade.jpg">
         <div class="logo"><a href="{{'inicio'}}" class="simple-text logo-normal">
-                {{Auth::user()->funcao}}
+                <img src="{{asset('img/dente.png')}}">
             </a></div>
         <div class="sidebar-wrapper ">
             <ul class="nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="">
+                    <a class="nav-link" href="{{route('admOdonto')}}">
                         <i class="material-icons">home_work</i>
                         <p>Início</p>
                     </a>
@@ -41,7 +41,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{route('cadastroConsultaOdonto')}}">
                         <i class="material-icons">record_voice_over
                         </i>
                         <p>Cadastro de Consultas</p>
@@ -69,17 +69,14 @@
                     </a>
                 </li>
             </ul>
-
         </div>
     </div>
-
     <div class="main-panel">
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
             <div class="container-fluid">
-
                 <div class="navbar-wrapper">
-                    <a class="navbar-brand" href="javascript:;">Odontologia</a>
+                    <a class="navbar-brand" href="javascript:;">Pagina Inicial</a>
                 </div>
 
                 <!-- BOTAO DE RESPONSIVIDADE PARA OPCIOES DE SIDEBAR-->
@@ -93,7 +90,6 @@
 
                 <!-- TOPO EM CIMA PARA OPCAO DE SAIDA E CONFIGURAÇÃOES DE PERFIL E SISTEMA  -->
                 <div class="collapse navbar-collapse justify-content-end">
-                    <form class="navbar-form"></form>
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
@@ -109,7 +105,7 @@
                                 </a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                      style="display: none;">
+                                      style="display: none; ">
                                     @csrf
                                 </form>
                             </div>
@@ -127,7 +123,7 @@
                     <div align="center" class="card" style="width: 13rem; height: 13rem;">
                         <div class="card-body">
                             <h5 class="card-title">Odontológico</h5>
-                            <img src="{{asset('img/dentista.png')}}">
+                            <img src="{{asset('img/DenteClicavel.png')}}">
                             <a href="#" class="btn btn-primary-adm">Ver</a>
                         </div>
                     </div>
@@ -135,16 +131,16 @@
                     <div align="center" class="card" style="width: 13rem; height: 13rem;">
                         <div class="card-body">
                             <h5 class="card-title">Pacientes</h5>
-                            <img src="{{asset('img/paciente.png')}}">
+                            <img src="{{asset('img/PacienteClicavel.png')}}">
                             <a href="#" class="btn btn-primary-adm">Ver</a>
                         </div>
                     </div>
                 </div>
-                <div class="row d-flex justify-content-center"> <!-- CLASSE DE ALINHAMENTO -->
+                <div class="row d-flex justify-content-center">
                     <div align="center" class="card" style="width: 13rem; height: 13rem;">
                         <div class="card-body">
                             <h5 class="card-title">Exames</h5>
-                            <img src="{{asset('img/exame.png')}}">
+                            <img src="{{asset('img/ExameClicavel.png')}}">
                             <a href="#" class="btn btn-primary-adm">Ver</a>
                         </div>
                     </div>
@@ -152,7 +148,7 @@
                     <div align="center" class="card" style="width: 13rem; height: 13rem;">
                         <div class="card-body">
                             <h5 class="card-title">Encaminhamentos</h5>
-                            <img src="{{asset('img/encaminhamento.png')}}">
+                            <img src="{{asset('img/EncaminhamentoClicavel.png')}}">
                             <a href="#" class="btn btn-primary-adm">Ver</a>
                         </div>
                     </div>

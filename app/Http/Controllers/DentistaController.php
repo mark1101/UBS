@@ -7,11 +7,17 @@ use Illuminate\Http\Request;
 
 class DentistaController extends Controller
 {
-    public function index()
+    public function indexAdm()
     {
         return view('Dentista.administracaoDentista');
     }
-    public function cadastraDentista(Request $request){
+
+    public function indexConsulta()
+    {
+        return view('Dentista.cadastroConsultaOdonto');
+    }
+    public function cadastraDentista(Request $request)
+    {
         $data = $request->all();
         Dentista::create($data);
     }
