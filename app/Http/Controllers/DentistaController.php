@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Dentista;
+use App\Paciente;
 use Illuminate\Http\Request;
 
 class DentistaController extends Controller
@@ -14,7 +15,10 @@ class DentistaController extends Controller
 
     public function indexConsulta()
     {
-        return view('Dentista.cadastroConsultaOdonto');
+        $paciente = Paciente::all();
+        return view('Dentista.cadastroConsultaOdonto' , [
+            'pacientes' , $paciente
+        ]);
     }
     public function cadastraDentista(Request $request)
     {

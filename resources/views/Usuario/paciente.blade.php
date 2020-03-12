@@ -142,7 +142,8 @@ The above copyright notice and this permission notice shall be included in all c
                     <form class="navbar-form"></form>
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{Auth::user()->funcao}} {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
@@ -153,7 +154,8 @@ The above copyright notice and this permission notice shall be included in all c
                                     {{ __('Sair') }}
                                 </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                      style="display: none;">
                                     @csrf
                                 </form>
                             </div>
@@ -183,30 +185,36 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Primeiro Nome</label>
-                                                <input type="text" class="form-control" maxlength="15" id="nome" name="nome" required>
+                                                <input type="text" class="form-control" maxlength="15" id="nome"
+                                                       name="nome" required>
                                             </div>
                                         </div>
                                         <div class="col-md-5">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Restante nome</label>
-                                                <input type="text" class="form-control" maxlength="40" id="ultimo_nome" name="ultimo_nome" required>
+                                                <input type="text" class="form-control" maxlength="40" id="ultimo_nome"
+                                                       name="ultimo_nome" required>
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                <label class="bmd-label-floating" >Data de Nascimento</label>
-                                                <input type="text" class="form-control data" id="data-nascimento" name="data_nascimento" maxlength="16" required>
+                                                <label class="bmd-label-floating">Data de Nascimento</label>
+                                                <input type="text" class="form-control data" id="data-nascimento"
+                                                       name="data_nascimento" maxlength="16" required>
                                             </div>
-                                        </div><div class="col-md-3">
+                                        </div>
+                                        <div class="col-md-3">
                                             <div class="form-group">
-                                                <label class="bmd-label-floating" >Idade</label>
-                                                <input type="text" class="form-control idade" id="idade" name="idade" required>
+                                                <label class="bmd-label-floating">Idade</label>
+                                                <input type="text" class="form-control idade" id="idade" name="idade"
+                                                       required>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Email</label>
-                                                <input type="email" class="form-control" maxlength="60"  id="emal" name="email">
+                                                <input type="email" class="form-control" maxlength="60" id="emal"
+                                                       name="email">
                                             </div>
                                         </div>
                                     </div>
@@ -214,36 +222,36 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Numero do SUS</label>
-                                                <input type="text" class="form-control sus" id="num_sus" name="num_sus" required>
+                                                <input type="text" class="form-control sus" id="num_sus" name="num_sus"
+                                                       required>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label class="bmd-label-floating" >CPF</label>
-                                                <input type="text" class="form-control cpf" id="cpf" name="cpf" maxlength="16" required>
+                                                <label class="bmd-label-floating">CPF</label>
+                                                <input type="text" class="form-control cpf" id="cpf" name="cpf"
+                                                       maxlength="16" required>
                                             </div>
                                         </div>
                                     </div>
 
                                     <p class="card-category">Informações de Endereço</p>
+                                    <div class="container">
+                                        <div class="row">
+                                            <select class="form-control" name="id_localidade" id="id_localidade">
+                                                @foreach($localidades as $localidade)
+                                                    <option
+                                                        value="{{$localidade->id}}">{{$localidade->nome}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label class="bmd-label-floating">Cidade</label>
-                                                <input type="text" class="form-control" maxlength="30" id="cidade" name="cidade" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating" >Bairro</label>
-                                                <input type="text" class="form-control" maxlength="30" id="bairro" name="bairro" required>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-4">
-                                            <div class="form-group">
                                                 <label class="bmd-label-floating">Telefone</label>
-                                                <input type="text" class="form-control telefone" id="telefone" name="telefone">
+                                                <input type="text" class="form-control telefone" id="telefone"
+                                                       name="telefone">
                                             </div>
                                         </div>
                                     </div>
@@ -254,7 +262,8 @@ The above copyright notice and this permission notice shall be included in all c
     color:#ffffff;
     border-radius: 4px;
     background-color: #9C27B0;
-    border:none;" type="submit" class="btn btn-primary">Salvar</button>
+    border:none;" type="submit" class="btn btn-primary">Salvar
+                                    </button>
                                 </form>
                             </div>
                         </div>

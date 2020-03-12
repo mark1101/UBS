@@ -18,7 +18,7 @@ class CreateExameTable extends Migration
             $table->string('comunidade_atendida');
             $table->string('nome_exame');
             $table->integer('id_paciente')->unsigned();
-            $table->bigInteger('id_profissional')->unsigned();
+            $table->integer('id_profissional')->unsigned();
             $table->string('resultado');
             $table->string('local');
             $table->string('data');

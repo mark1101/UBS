@@ -6,31 +6,24 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateVacinasTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+
     public function up()
     {
         Schema::create('vacinas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('posto_vacinacao');
-            $table->string('primeiro_nome');
-            $table->string('nome_paciente');
+            $table->integer('id_paciente')->unsigned();
             $table->string('vacina_realizada');
             $table->string('informacao_lote');
             $table->timestamp('data');
             $table->string('dose');
             $table->timestamps();
         });
+        Schema::table('vacinas' , function (Blueprint $table){
+           $table->foreign('id_paciente')->references('id')->on('pacientes');
+        });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('vacinas');

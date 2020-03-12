@@ -6,11 +6,6 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreatePacienteTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('pacientes', function (Blueprint $table) {
@@ -22,18 +17,14 @@ class CreatePacienteTable extends Migration
             $table->string('email');
             $table->string('num_sus');
             $table->string('cpf', 16)->unique();
-            $table->string('sede');
-            $table->string('localidade');
-            $table->integer('telefone');
+            $table->integer('id_localidade')->unsigned();
+            $table->string('telefone');
             $table->timestamps();
+
+            $table->foreign('id_localidade')->references('id')->on('localidades');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('paciente');

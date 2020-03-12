@@ -40,11 +40,13 @@ Route::group(['middleware' => ['web', 'auth']], function (){
     return redirect('/inicio');
 })->name('home');*/
 
-// ROTAS DE PACIENTE
+// ROTAS DE PACIENTEmostraPaciente
 Route::get('/paciente', 'PacienteController@indexPaciente')->middleware('auth')->name('paciente');
 Route::get('/buscaPaciente', 'PacienteController@indexbuscaPaciente')->middleware('auth')->name('buscaPaciente');
 Route::get('/mostraPaciente', 'PacienteController@mostraPaciente')->middleware('auth')->name('mostraPaciente');
-Route::POST('paciente/salvarPaciente', 'PacienteController@cadastraPaciente')->name('cadastraPaciente');
+Route::POST('paciente/salvar', 'PacienteController@cadastraPaciente')->name('cadastraPaciente');
+Route::POST('paciente/buscaPaciente', 'PacienteController@cadastraPaciente')->name('cadastraPaciente');
+
 
 // ROTAS DE EXAMES
 Route::get('/cadastroExame', 'ExameController@indexcadastroExame')->middleware('auth')->name('cadastroExame');
@@ -60,6 +62,7 @@ Route::POST('vacina/cadastrarVacina', 'VacinaController@cadastraVacina')->name('
 // ROTAS DE RECADOS
 Route::get('/recado', 'RecadoController@index')->middleware('auth')->name('recado');
 Route::get('/comunicacao', 'ComunicacaoController@index')->middleware('auth')->name('comunicacao');
+Route::post('/cadastraRecado', 'RecadoController@cadastraRecado')->middleware('auth')->name('cadastraRecado');
 
 // ROTAS DE ENCAMINHAMENTO
 Route::get('/encaminhamento', 'EncaminhamentoController@index')->middleware('auth')->name('encaminhamento');

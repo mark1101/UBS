@@ -44,6 +44,8 @@ class ExameController extends Controller
     public function cadastraSolicitacaoExame(Request $request)
     {
         $data = $request->all();
+
+        $data['comunidade_atendida'] = Auth::user()->localidade;
         return redirect('/solicitacaoExame');
     }
 }

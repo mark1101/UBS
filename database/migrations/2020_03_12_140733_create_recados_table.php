@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSedesTable extends Migration
+class CreateRecadosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class CreateSedesTable extends Migration
      */
     public function up()
     {
-        Schema::create('sedes', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('recados', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('origem');
+            $table->string('mensagem');
+            $table->timestamp('data');
+
             $table->timestamps();
         });
     }
@@ -26,6 +30,6 @@ class CreateSedesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sedes');
+        Schema::dropIfExists('recados');
     }
 }

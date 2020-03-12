@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Localidade;
 use Illuminate\Http\Request;
 use App\Paciente;
 use Illuminate\Support\Facades\Auth;
@@ -11,9 +12,17 @@ class PacienteController extends Controller
 {
     public function indexPaciente()
     {
-        return view('Usuario.paciente');
+        $localidade = Localidade::all();
+        return view('Usuario.paciente', [
+            'localidades' => $localidade
+        ]);
     }
-    public function indexbuscaPaciente(){
+
+    public function indexbuscaPaciente(Request $request)
+    {
+        dd($request->all());
+
+        Paciente::with(['localidade'])->get();
         return view('Usuario.buscaPaciente');
     }
 
@@ -22,26 +31,15 @@ class PacienteController extends Controller
 
         $errors = "";
         $data = $request->all();
-        $nome = $data['nome'];
-        $data_nascimento = $data['data_nascimento'];
-        $idade = $data['idade'];
-        $email = $data['email'];
-        $num_sus = $data['num_sus'];
-        $cpf = $data['cpf'];
-        $cidade = $data['cidade'];
-        $bairro = $data['bairro'];
-        $telefone = $data['telefone'];
-
         Paciente::create($data);
-
         return redirect('/paciente');
 
     }
-    public function mostraPaciente(Request $request){
-
-        $pacientes = DB::table('pacientes')->select('nome', 'ultimo_nome' ,'data_nascimento', 'idade', 'email', 'num_sus',
-           'cpf',  'cidade', 'bairro', 'telefone')->where('nome' , $request->input('buscaPaciente'))->get();
-
-        return view('Usuario.buscaPaciente', ['pacientes' => $pacientes]);
+    public function mostraPaciente()
+    {
+        return view('Usuario.buscaPaciente', ['pacientes' => Paciente::with(['localidade'])->get()]);
     }
+
+
+
 }

@@ -176,7 +176,7 @@ The above copyright notice and this permission notice shall be included in all c
                         <div class="card">
                             <div class="card-header card-header-primary">
                                 <h4 class="card-title">Pesquisar Paciente</h4>
-                                <form class="navbar-form" action="{{asset('mostraPaciente')}}">
+                                <form class="navbar-form" action="{{route('buscaPaciente')}}">
                                     @csrf
                                     <div class="input-group no-border">
                                         <input type="text" style="color:beige;" id="buscaPaciente" name="buscaPaciente" value="" class="form-control"
@@ -198,8 +198,7 @@ The above copyright notice and this permission notice shall be included in all c
                                                 <th scope="col">Data Nascimento</th>
                                                 <th scope="col">Num Sus</th>
                                                 <th scope="col">CPF</th>
-                                                <th scope="col">Cidade</th>
-                                                <th scope="col">Bairro</th>
+                                                <th scope="col">Localidade</th>
                                                 <th scope="col">Telefone</th>
                                             </tr>
                                             </thead>
@@ -210,8 +209,7 @@ The above copyright notice and this permission notice shall be included in all c
                                                     <td>{{$paciente->data_nascimento}}</td>
                                                     <td>{{$paciente->num_sus}}</td>
                                                     <td>{{$paciente->cpf}}</td>
-                                                    <td>{{$paciente->cidade}}</td>
-                                                    <td>{{$paciente->bairro}}</td>
+                                                    <td>{{($paciente->localidade)->nome}}</td>
                                                     <td>{{$paciente->telefone}}</td>
                                                 </tr>
                                             @endforeach
