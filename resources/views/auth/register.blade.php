@@ -40,8 +40,14 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="localidade" class="col-md-4 col-form-label text-md-right">{{ __('Localidade') }}</label>
+                            <label for="cidade_sede" class="col-md-4 col-form-label text-md-right">{{ __('Cidade Sede') }}</label>
+                            <div class="col-md-6">
+                                <input id="cidade_sede" type="text" class="form-control" name="cidade_sede" required>
+                            </div>
+                        </div>
 
+                        <div class="form-group row">
+                            <label for="localidade" class="col-md-4 col-form-label text-md-right">{{ __('Localidade') }}</label>
                             <div class="col-md-6">
                                 <input id="localidade" type="text" class="form-control" name="localidade" required>
                             </div>
@@ -52,6 +58,13 @@
 
                             <div class="col-md-6">
                                 <input id="funcao" type="text" class="form-control" name="funcao" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="controle_acesso" class="col-md-4 col-form-label text-md-right">{{ __('Controle Acesso') }}</label>
+                            <div class="col-md-6">
+                                <input id="controle_acesso" type="text" class="form-control" name="controle_acesso" required>
                             </div>
                         </div>
 
@@ -75,6 +88,20 @@
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="cpf" class="col-md-4 col-form-label text-md-right">{{ __('CPF') }}</label>
+                            <div class="col-md-6">
+                                <input id="cpf" type="text" class="form-control" name="cpf" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="data_nascimento" class="col-md-4 col-form-label text-md-right">{{ __('Data Nascimento') }}</label>
+                            <div class="col-md-6">
+                                <input id="data_nascimento" type="text" class="form-control" name="data_nascimento" required>
                             </div>
                         </div>
 
