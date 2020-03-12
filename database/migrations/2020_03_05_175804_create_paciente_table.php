@@ -22,9 +22,9 @@ class CreatePacienteTable extends Migration
             $table->string('email');
             $table->string('num_sus');
             $table->string('cpf', 16)->unique();
-            $table->string('cidade');
-            $table->string('bairro');
-            $table->string('telefone');
+            $table->string('sede');
+            $table->string('localidade');
+            $table->integer('telefone');
             $table->timestamps();
         });
     }

@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Cidade extends Model
+class Sede extends Model
 {
     protected $fillable = [
-        'id' , 'nome', 'localidade',
+        'id' , 'nome',
     ];
 }
