@@ -14,16 +14,20 @@ class CreateExameTable extends Migration
     public function up()
     {
         Schema::create('exames', function (Blueprint $table) {
-            $table->bigIncrements('idExame');
+            $table->Increments('id');
             $table->string('comunidade_atendida');
-            $table->string('nome');
-            $table->string('ultimo_nome');
             $table->string('nome_exame');
+            $table->integer('id_paciente')->unsigned();
+            $table->bigInteger('id_profissional')->unsigned();
             $table->string('resultado');
             $table->string('local');
             $table->string('data');
 
             $table->timestamps();
+        });
+        Schema::table('exames', function (Blueprint $table){
+           $table->foreign('id_paciente')->references('id')->on('pacientes');
+           $table->foreign('id_profissional')->references('id')->on('users');
         });
     }
 

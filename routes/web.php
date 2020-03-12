@@ -10,7 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 /*Route::get('/', function () {
     return redirect('/login');
 });*/
@@ -24,11 +25,12 @@ Route::group(['middleware' => ['web', 'auth']], function (){
     Route::get('/home', function (){
        if (Auth::user()->admin == 0){
            return redirect('/inicio');
-           //return view('inicio');
        }else if(Auth::user()->admin == 1){
            return view('Adm.administrador');
        }else if(Auth::user()->admin == 2){
            return view('Dentista.administracaoDentista');
+       }else{
+           return redirect()->back();
        }
     });
 });
@@ -46,7 +48,7 @@ Route::POST('paciente/salvarPaciente', 'PacienteController@cadastraPaciente')->n
 
 // ROTAS DE EXAMES
 Route::get('/cadastroExame', 'ExameController@indexcadastroExame')->middleware('auth')->name('cadastroExame');
-Route::get('/buscarExame', 'ExameController@indexbuscarExame')->middleware('auth')->name('buscarExame');
+Route::get('/buscarExame', 'ExameController@indexbuscarExame')->name('buscarExame');
 Route::get('/solicitarExame', 'ExameController@indexsolicitacaoExame')->middleware('auth')->name('solicitarExame');
 Route::POST('/cadastrarExame', 'ExameController@cadastraExame')->name('cadastrarExame');
 

@@ -142,7 +142,8 @@ The above copyright notice and this permission notice shall be included in all c
                     <form class="navbar-form"></form>
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{Auth::user()->funcao}} {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
@@ -153,7 +154,8 @@ The above copyright notice and this permission notice shall be included in all c
                                     {{ __('Sair') }}
                                 </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                      style="display: none;">
                                     @csrf
                                 </form>
                             </div>
@@ -179,44 +181,41 @@ The above copyright notice and this permission notice shall be included in all c
                                 <form action="{{route('cadastrarExame')}}" method="post">
                                     @csrf
                                     <div class="row">
-                                        <div class="col-md-4">
+                                        <div class="col-md-6">
                                             <div class="form-group">
-                                                <label class="bmd-label-floating">Comunidade Atendida</label>
-                                                <input type="text" id="comunidade_atendida" name="comunidade_atendida" class="form-control">
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Primeiro nome do paciente</label>
-                                                <input type="text" class="form-control" name="nome" id="nome">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-5">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Ultimo nome</label>
-                                                <input type="text" class="form-control" name="ultimo_nome" id="ultimo_nome">
+                                                <label class="bmd-label-floating">Paciente</label>
+                                                <select class="form-control" name="id_paciente" id="id_paciente">
+                                                    @foreach($pacientes as $paciente)
+                                                        <option
+                                                            value="{{$paciente->id}}">{{$paciente->nome}} {{$paciente->ultimo_nome}}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Nome do exame</label>
-                                                <input type="text" class="form-control" name="nome_exame" id="nome_exame">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Resultado</label>
-                                                <input type="text" class="form-control" id="resultado" name="resultado">
+                                                <input type="text" class="form-control" name="nome_exame"
+                                                       id="nome_exame">
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label class="bmd-label-floating">Localizacao de onde foi realizado o exame</label>
+                                                <label class="bmd-label-floating">Resultado</label>
+                                                <input type="text" class="form-control" id="resultado"
+                                                       name="resultado">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Onde foi realizado o exame
+                                                    o exame</label>
                                                 <input type="text" class="form-control" name="local" id="local">
                                             </div>
                                         </div>
@@ -227,6 +226,7 @@ The above copyright notice and this permission notice shall be included in all c
                                             </div>
                                         </div>
                                     </div>
+
                                     <button style="  display:block;
     width:100px;
     height:40px;
@@ -234,7 +234,8 @@ The above copyright notice and this permission notice shall be included in all c
     color:#ffffff;
     border-radius: 4px;
     background-color: #9C27B0;
-    border:none;" type="submit" class="btn btn-primary">Salvar</button>
+    border:none;" type="submit" class="btn btn-primary">Salvar
+                                    </button>
                                     <!--<button type="submit" class="btn btn-primary pull-right">Solicitar Exame</button>-->
                                 </form>
                                 <button style="  display:block;
@@ -244,7 +245,8 @@ The above copyright notice and this permission notice shall be included in all c
     color:#ffffff;
     border-radius: 4px;
     background-color: #9C27B0;
-    border:none;" type="submit" class="btn btn-primary " ><a style="color: #f8f9fa" href="{{route('solicitarExame')}}">Solicitar Exame</a></button>
+    border:none;" type="submit" class="btn btn-primary "><a style="color: #f8f9fa" href="{{route('solicitarExame')}}">Solicitar
+                                        Exame</a></button>
                             </div>
                         </div>
                     </div>

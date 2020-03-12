@@ -19,6 +19,7 @@ class DentistaController extends Controller
     public function cadastraDentista(Request $request)
     {
         $data = $request->all();
+
         Dentista::create($data);
     }
 }
