@@ -37,7 +37,7 @@
                     <a class="nav-link" href="#">
                         <i class="material-icons">arrow_right_alt
                         </i>
-                        <p>Dados de encaminhamentos</p>
+                        <p>Encaminhamentos</p>
                     </a>
                 </li>
                 <li class="nav-item">

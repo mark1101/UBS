@@ -28,12 +28,10 @@ class PacienteController extends Controller
 
     public function cadastraPaciente(Request $request)
     {
-
         $errors = "";
         $data = $request->all();
         Paciente::create($data);
         return redirect('/paciente');
-
     }
     public function mostraPaciente()
     {

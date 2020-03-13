@@ -60,7 +60,6 @@ Route::POST('/cadastrarExame', 'ExameController@cadastraExame')->name('cadastrar
 
 // ROTAS DE VACINAS
 Route::get('/mostraVacina', 'VacinaController@mostraVacina')->middleware('auth')->name('mostraVacina');
-Route::get('/cadastroVacina', 'VacinaController@index')->middleware('auth')->name('cadastroVacina');
 Route::POST('vacina/cadastrarVacina', 'VacinaController@cadastraVacina')->name('cadastraVacina');
 
 // ROTAS DE RECADOS

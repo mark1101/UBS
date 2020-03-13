@@ -183,24 +183,27 @@ The above copyright notice and this permission notice shall be included in all c
                                 <form action="{{route('cadastraVacina')}}" method="post">
                                     @csrf
                                     <div class="row">
-                                        <div class="col-md-4">
+                                        <div class="col-md-5">
                                             <div class="form-group">
-                                                <label class="bmd-label-floating">Posto de Vacinação</label>
-                                                <input type="text" class="form-control" id="posto_vacinacao"
-                                                       name="posto_vacinacao">
+                                                <label class="bmd-label-floating">Nome Paciente</label>
+                                                <select class="form-control ls-select" name="id_paciente" id="id_paciente">
+                                                    @foreach($pacientes as $paciente)
+                                                        <option
+                                                            value="{{$paciente->id}}">{{$paciente->nome}} {{$paciente->ultimo_nome}}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="bmd-label-floating">Nome Paciente</label>
-                                            <select class="form-control" name="id_paciente" id="id_paciente">
-                                                @foreach($pacientes as $paciente)
-                                                    <option
-                                                        value="{{$paciente->id}}">{{$paciente->nome}} {{$paciente->ultimo_nome}}</option>
-                                                @endforeach
-                                            </select>
                                         </div>
                                     </div>
                                     <div class="row">
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Posto de Vacinação</label>
+                                                <input type="text" class="form-control" id="localidade"
+                                                       name="localidade" >
+                                            </div>
+                                        </div>
                                         <div class="col-md-5">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Vacina Realizada</label>
@@ -208,6 +211,9 @@ The above copyright notice and this permission notice shall be included in all c
                                                        name="vacina_realizada" required>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="row">
+
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Informação de Lote</label>
@@ -236,7 +242,6 @@ The above copyright notice and this permission notice shall be included in all c
                         </div>
                     </div>
                     <div class="col-md-12" style="overflow: hidden">
-                        <!-- PARTE DE CIMA DA TABELA PARA PESQUISA -->
                         <div class="card">
                             <div class="card-header card-header-primary">
                                 <h4 class="card-title">Buscar Vacina</h4>
@@ -254,7 +259,6 @@ The above copyright notice and this permission notice shall be included in all c
                                 </form>
                             </div>
 
-                            <!-- PARTE DE MIOLO DA TABELA -->
                             <div class="card-body">
                                 <div class="table-responsive" style="overflow: auto; height: 300px;">
                                     <table class="table">
@@ -263,7 +267,6 @@ The above copyright notice and this permission notice shall be included in all c
                                             <th scope="col" width="27%" align="center">Posto de Vacinação</th>
                                             <th scope="col" width="19%">Nome Paciente</th>
                                             <th scope="col" width="22%">Vacina Realizada</th>
-                                            <th scope="col" width="22%">Localidade</th>
                                             <th scope="col" width="19%">Info de Lote</th>
                                             <th scope="col" width="14%">Data</th>
                                             <th scope="col" width="5%">Dose</th>
@@ -272,11 +275,12 @@ The above copyright notice and this permission notice shall be included in all c
                                         <tbody>
                                         @foreach($vacinas as $vacina)
                                             <tr>
-                                                <td>{{$vacina->posto_vacinacao}}</td>
-                                                <td>{{($vacina->id_paciente)->nome. " ". ($vacina->id_paciente)->ultimo_nome}}</td>
+                                                <td>{{$vacina->localidade}}</td>
+                                                <td>{{($vacina->paciente)->nome . " ". ($vacina->paciente)->ultimo_nome}}</td>
                                                 <td>{{$vacina->vacina_realizada}}</td>
                                                 <td>{{$vacina->informacao_lote}}</td>
                                                 <td>{{$vacina->data}}</td>
+                                                <td>{{$vacina->dose}}</td>
                                             </tr>
                                         @endforeach
                                         </tbody>
