@@ -55,44 +55,6 @@ The above copyright notice and this permission notice shall be included in all c
                         <a class="dropdown-item" href="{{route('mostraPaciente')}}">Busca de Paciente</a>
                     </div>
                 </li>
-                <li class="nav-item dropdown ">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false">
-                        <i class="material-icons">content_paste</i>
-                        Exames
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{route('cadastroExame')}}">Novo Exame</a>
-                        <a class="dropdown-item" href="{{route('buscarExame')}}">Buscar Exames </a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown ">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false">
-                        <i class="material-icons">insert_emoticon</i>
-                        Consultas
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Nova Consulta</a>
-                        <a class="dropdown-item" href="#">Buscar Consulta </a>
-                    </div>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="{{route('mostraVacina')}}">
-                        <i class="material-icons">format_color_reset
-                        </i>
-                        <p>Vacinas</p>
-                    </a>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="{{route('encaminhamento')}}">
-                        <i class="material-icons">arrow_right_alt
-                        </i>
-                        <p>Encaminhamentos</p>
-                    </a>
-                </li>
                 <li class="nav-item ">
                     <a class="nav-link" href="{{route('recado')}}">
                         <i class="material-icons">attach_file

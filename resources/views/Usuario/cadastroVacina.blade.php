@@ -107,13 +107,15 @@ The above copyright notice and this permission notice shall be included in all c
                         <p>Histórico dos Pacientes</p>
                     </a>
                 </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="{{route('controleViagem')}}">
-                        <i class="material-icons">commute
-                        </i>
-                        <p>Gerenciamento de Viagens</p>
-                    </a>
-                </li>
+                @if(Auth::user()->controle_acesso == 4)
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{{route('controleViagem')}}">
+                            <i class="material-icons">commute
+                            </i>
+                            <p>Gerenciamento de Viagens</p>
+                        </a>
+                    </li>
+                @endif
             </ul>
 
         </div>
@@ -188,19 +190,14 @@ The above copyright notice and this permission notice shall be included in all c
                                                        name="posto_vacinacao">
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Primeiro Nome Paciente</label>
-                                                <input type="text" class="form-control" id="primeiro_nome"
-                                                       name="primeiro_nome" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Nome Completo do Paciente</label>
-                                                <input type="text" class="form-control" id="nome_paciente"
-                                                       name="nome_paciente" required>
-                                            </div>
+                                        <div class="form-group">
+                                            <label class="bmd-label-floating">Nome Paciente</label>
+                                            <select class="form-control" name="id_paciente" id="id_paciente">
+                                                @foreach($pacientes as $paciente)
+                                                    <option
+                                                        value="{{$paciente->id}}">{{$paciente->nome}} {{$paciente->ultimo_nome}}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -266,15 +263,17 @@ The above copyright notice and this permission notice shall be included in all c
                                             <th scope="col" width="27%" align="center">Posto de Vacinação</th>
                                             <th scope="col" width="19%">Nome Paciente</th>
                                             <th scope="col" width="22%">Vacina Realizada</th>
+                                            <th scope="col" width="22%">Localidade</th>
                                             <th scope="col" width="19%">Info de Lote</th>
                                             <th scope="col" width="14%">Data</th>
+                                            <th scope="col" width="5%">Dose</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         @foreach($vacinas as $vacina)
                                             <tr>
                                                 <td>{{$vacina->posto_vacinacao}}</td>
-                                                <td>{{$vacina->primeiro_nome." ".$vacina->nome_paciente}}</td>
+                                                <td>{{($vacina->id_paciente)->nome. " ". ($vacina->id_paciente)->ultimo_nome}}</td>
                                                 <td>{{$vacina->vacina_realizada}}</td>
                                                 <td>{{$vacina->informacao_lote}}</td>
                                                 <td>{{$vacina->data}}</td>

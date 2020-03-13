@@ -103,12 +103,14 @@ The above copyright notice and this permission notice shall be included in all c
                         <p>Histórico dos Pacientes</p>
                     </a>
                 </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="{{route('controleViagem')}}">
-                        <i class="material-icons">commute</i>
-                        <p>Gerenciamento de Viagens</p>
-                    </a>
-                </li>
+                @if(Auth::user()->controle_acesso == 4)
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{{route('controleViagem')}}">
+                            <i class="material-icons">commute</i>
+                            <p>Gerenciamento de Viagens</p>
+                        </a>
+                    </li>
+                @endif
             </ul>
 
         </div>
@@ -137,7 +139,8 @@ The above copyright notice and this permission notice shall be included in all c
                     <form class="navbar-form"></form>
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{Auth::user()->funcao}} {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
@@ -148,7 +151,8 @@ The above copyright notice and this permission notice shall be included in all c
                                     {{ __('Sair') }}
                                 </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                      style="display: none;">
                                     @csrf
                                 </form>
                             </div>

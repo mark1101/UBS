@@ -39,7 +39,4 @@ class PacienteController extends Controller
     {
         return view('Usuario.buscaPaciente', ['pacientes' => Paciente::with(['localidade'])->get()]);
     }
-
-
-
 }

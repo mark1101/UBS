@@ -107,13 +107,15 @@ The above copyright notice and this permission notice shall be included in all c
                         <p>Histórico dos Pacientes</p>
                     </a>
                 </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="{{route('controleViagem')}}">
-                        <i class="material-icons">commute
-                        </i>
-                        <p>Gerenciamento de Viagens</p>
-                    </a>
-                </li>
+                @if(Auth::user()->controle_acesso == 4)
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{{route('controleViagem')}}">
+                            <i class="material-icons">commute
+                            </i>
+                            <p>Gerenciamento de Viagens</p>
+                        </a>
+                    </li>
+                @endif
             </ul>
 
         </div>
@@ -142,7 +144,8 @@ The above copyright notice and this permission notice shall be included in all c
                     <form class="navbar-form"></form>
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{Auth::user()->funcao}} {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
@@ -153,7 +156,8 @@ The above copyright notice and this permission notice shall be included in all c
                                     {{ __('Sair') }}
                                 </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                      style="display: none;">
                                     @csrf
                                 </form>
                             </div>
@@ -180,7 +184,8 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Comunidade Atendida</label>
-                                                <input type="text" id="comunidade_atendida" name="comunidade_atendida" class="form-control">
+                                                <input type="text" id="comunidade_atendida" name="comunidade_atendida"
+                                                       class="form-control">
                                             </div>
                                         </div>
 
@@ -193,7 +198,8 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-5">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Ultimo nome</label>
-                                                <input type="text" class="form-control" name="ultimo_nome" id="ultimo_nome">
+                                                <input type="text" class="form-control" name="ultimo_nome"
+                                                       id="ultimo_nome">
                                             </div>
                                         </div>
                                     </div>
@@ -201,7 +207,8 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Nome do exame</label>
-                                                <input type="text" class="form-control" name="nome_exame" id="nome_exame">
+                                                <input type="text" class="form-control" name="nome_exame"
+                                                       id="nome_exame">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -214,7 +221,8 @@ The above copyright notice and this permission notice shall be included in all c
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label class="bmd-label-floating">Localizacao de onde foi realizado o exame</label>
+                                                <label class="bmd-label-floating">Localizacao de onde foi realizado o
+                                                    exame</label>
                                                 <input type="text" class="form-control" name="local" id="local">
                                             </div>
                                         </div>
@@ -232,7 +240,8 @@ The above copyright notice and this permission notice shall be included in all c
     color:#ffffff;
     border-radius: 4px;
     background-color: #9C27B0;
-    border:none;" type="submit" class="btn btn-primary">Salvar</button>
+    border:none;" type="submit" class="btn btn-primary">Salvar
+                                    </button>
                                     <!--<button type="submit" class="btn btn-primary pull-right">Solicitar Exame</button>-->
                                 </form>
                             </div>

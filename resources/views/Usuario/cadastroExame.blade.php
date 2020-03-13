@@ -107,13 +107,15 @@ The above copyright notice and this permission notice shall be included in all c
                         <p>Histórico dos Pacientes</p>
                     </a>
                 </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="{{route('controleViagem')}}">
-                        <i class="material-icons">commute
-                        </i>
-                        <p>Gerenciamento de Viagens</p>
-                    </a>
-                </li>
+                @if(Auth::user()->controle_acesso == 4)
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{{route('controleViagem')}}">
+                            <i class="material-icons">commute
+                            </i>
+                            <p>Gerenciamento de Viagens</p>
+                        </a>
+                    </li>
+                @endif
             </ul>
 
         </div>

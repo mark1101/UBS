@@ -37,7 +37,6 @@ class ExameController extends Controller
         $data['id_profissional'] = Auth::user()->id;
 
         Exame::create($data);
-
         return redirect('/cadastroExame');
     }
 

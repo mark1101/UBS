@@ -13,6 +13,7 @@ class CreateVacinasTable extends Migration
             $table->bigIncrements('id');
             $table->string('posto_vacinacao');
             $table->integer('id_paciente')->unsigned();
+            $table->string('localidade');
             $table->string('vacina_realizada');
             $table->string('informacao_lote');
             $table->timestamp('data');

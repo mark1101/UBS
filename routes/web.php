@@ -10,28 +10,32 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-/*Route::get('/', function () {
+
+Route::get('/', function () {
     return redirect('/login');
-});*/
+});
 
 Auth::routes();
-Route::group(['middleware' => ['web', 'auth']], function (){
-    Route::get('/', function (){
+Route::group(['middleware' => ['web', 'auth']], function () {
+    Route::get('/', function () {
         return redirect('/home');
     });
 
-    Route::get('/home', function (){
-       if (Auth::user()->admin == 0){
-           return redirect('/inicio');
-       }else if(Auth::user()->admin == 1){
-           return view('Adm.administrador');
-       }else if(Auth::user()->admin == 2){
-           return view('Dentista.administracaoDentista');
-       }else{
-           return redirect()->back();
-       }
+    Route::get('/home', function () {
+        if (Auth::user()->admin == 0) {
+            return redirect('/inicio');
+        } else if (Auth::user()->admin == 1) {
+            return view('Adm.administrador');
+        } else if (Auth::user()->admin == 2) {
+            return view('Dentista.administracaoDentista');
+        } else if (Auth::user()->admin == 3) {
+
+        } else {
+            return redirect()->back();
+        }
     });
 });
 

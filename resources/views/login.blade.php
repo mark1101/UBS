@@ -9,7 +9,7 @@
     <link rel="icon" type="image/png" href="{{asset('img/log.png')}}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <title>
-        ComunityHelth
+        cUBS
     </title>
 
     <!--     Fonts and icons     -->

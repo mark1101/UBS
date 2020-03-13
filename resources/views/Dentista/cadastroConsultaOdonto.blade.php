@@ -32,7 +32,7 @@ The above copyright notice and this permission notice shall be included in all c
 <div class="wrapper ">
 
     <div class="sidebar" data-color="azure" data-background-color="white" data-image="../assets/img/unidade.jpg">
-        <div class="logo"><a href="{{'inicio'}}" class="simple-text logo-normal">
+        <div class="logo"><a href="#" class="simple-text logo-normal">
                 <img src="{{asset('img/dente.png')}}">
             </a></div>
         <div class="sidebar-wrapper ">

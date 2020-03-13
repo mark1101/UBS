@@ -27,10 +27,6 @@ class VacinaController extends Controller
         return redirect('/mostraVacina');
     }
     public function mostraVacina(Request $request){
-
-        $vacinas = DB::table('vacinas')->select('id_vacina', 'posto_vacinacao', 'primeiro_nome', 'nome_paciente', 'vacina_realizada',
-            'informacao_lote', 'data', 'dose')->where('primeiro_nome', $request->input('pesquisaVacina'))->get();
-
-        return view('Usuario.cadastroVacina', ['vacinas' => $vacinas]);
+        return view('Usuario.cadastroVacina', ['vacinas' => Vacina::with(['pacientes'])->get()]);
     }
 }
