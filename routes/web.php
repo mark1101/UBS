@@ -77,6 +77,9 @@ Route::get('/encaminhamento', 'EncaminhamentoController@index')->middleware('aut
 Route::get('/administracaoOdonto', 'DentistaController@indexAdm')->middleware('auth')->name('admOdonto');
 Route::get('/odonto/consulta', 'DentistaController@indexConsulta')->middleware('auth')->name('cadastroConsultaOdonto');
 
+// ROTAS DE CONSULTA
+Route::get('/consultaCadastro' , 'ConsultaController@indexConsulta')->middleware('auth')->name('consultaCadastro');
+Route::POST('/consulta/cadastro' , 'ConsultaController@cadastroConsulta')->middleware('auth')->name('cadastroConsulta');
 
 // ROTAS DE GERAL
 Route::get('/inicio', 'InicioController@index')->middleware('auth')->name('inicio');

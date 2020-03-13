@@ -66,7 +66,7 @@
                             Consultas
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Nova Consulta</a>
+                            <a class="dropdown-item" href="{{route('consultaCadastro')}}">Nova Consulta</a>
                             <a class="dropdown-item" href="#">Buscar Consulta </a>
                         </div>
                     </li>

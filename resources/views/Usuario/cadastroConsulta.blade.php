@@ -55,44 +55,46 @@ The above copyright notice and this permission notice shall be included in all c
                         <a class="dropdown-item" href="{{route('mostraPaciente')}}">Busca de Paciente</a>
                     </div>
                 </li>
-                <li class="nav-item dropdown active">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false">
-                        <i class="material-icons">content_paste</i>
-                        Exames
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{route('cadastroExame')}}">Novo Exame</a>
-                        <a class="dropdown-item" href="{{route('buscarExame')}}">Buscar Exames </a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown acitve">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false">
-                        <i class="material-icons">insert_emoticon</i>
-                        Consultas
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{route('novaConsulta')}}">Nova Consulta</a>
-                        <a class="dropdown-item" href="{{route('buscarConsulta')}}">Buscar Consulta </a>
-                    </div>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="{{route('mostraVacina')}}">
-                        <i class="material-icons">format_color_reset
-                        </i>
-                        <p>Vacinas</p>
-                    </a>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="{{route('encaminhamento')}}">
-                        <i class="material-icons">arrow_right_alt
-                        </i>
-                        <p>Encaminhamentos</p>
-                    </a>
-                </li>
+                @if(Auth::user()->controle_acesso == 2)
+                    <li class="nav-item dropdown ">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                           data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            <i class="material-icons">content_paste</i>
+                            Exames
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{route('cadastroExame')}}">Novo Exame</a>
+                            <a class="dropdown-item" href="{{route('buscarExame')}}">Buscar Exames </a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                           data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            <i class="material-icons">insert_emoticon</i>
+                            Consultas
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{route('consultaCadastro')}}">Nova Consulta</a>
+                            <a class="dropdown-item" href="#">Buscar Consulta </a>
+                        </div>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{{route('mostraVacina')}}">
+                            <i class="material-icons">format_color_reset
+                            </i>
+                            <p>Vacinas</p>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{{route('encaminhamento')}}">
+                            <i class="material-icons">arrow_right_alt
+                            </i>
+                            <p>Encaminhamentos</p>
+                        </a>
+                    </li>
+                @endif
                 <li class="nav-item  ">
                     <a class="nav-link" href="{{route('recado')}}">
                         <i class="material-icons">attach_file
@@ -107,7 +109,7 @@ The above copyright notice and this permission notice shall be included in all c
                         <p>Histórico dos Pacientes</p>
                     </a>
                 </li>
-                @if(Auth:user()->controle_acesso == 4)
+                @if(Auth::user()->controle_acesso == 4)
                     <li class="nav-item ">
                         <a class="nav-link" href="{{route('controleViagem')}}">
                             <i class="material-icons">commute
@@ -181,66 +183,83 @@ The above copyright notice and this permission notice shall be included in all c
                                 <h4 class="card-title">Cadastro de Nova Consulta</h4>
                             </div>
                             <div class="card-body">
-                                <form>
+                                <form action="{{route('cadastroConsulta')}}" method="POST">
+                                    @csrf
+                                    <p>Pré-Consulta</p>
                                     <div class="row">
-                                        <div class="col-md-5">
+                                        <div class="col-md-1">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Peso</label>
+                                                <input type="text" class="form-control peso" name="peso" id="peso">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Altura</label>
+                                                <input type="text" class="form-control altura" name="altura"
+                                                       id="altura">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1    ">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Pressão</label>
+                                                <input type="text" class="form-control" name="pressao" id="pressao">
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <p>Consulta</p>
+                                    <div class="row">
+                                       <!-- <div class="col-md-5">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Comunidade Atendida</label>
-                                                <input type="text" class="form-control">
+                                                <input type="text" class="form-control"
+                                                       value="Sistema cadastra automaticamente" disabled>
+                                            </div>
+                                        </div> -->
+
+                                        <!-- COLOCAR AQUI O SELECT DE PACIENTE -->
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Nome Paciente</label>
+                                                <select class="form-control ls-select" name="id_paciente"
+                                                        id="id_paciente">
+                                                    @foreach($pacientes as $paciente)
+                                                        <option
+                                                            value="{{$paciente->id}}">{{$paciente->nome}} {{$paciente->ultimo_nome}}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                         </div>
-                                        <div class="col-md-7">
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-10">
                                             <div class="form-group">
-                                                <label class="bmd-label-floating">Nome do paciente</label>
-                                                <input type="text" class="form-control">
+                                                <label class="bmd-label-floating">Sintomas</label>
+                                                <textarea class="form-control" id="sintomas" name="sintomas"
+                                                          rows="3"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Observações</label>
+                                                <textarea class="form-control" id="observacoes" name="observacoes"
+                                                          rows="3"></textarea>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-10">
                                             <div class="form-group">
-                                                <label class="bmd-label-floating">Fist Name</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Last Name</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Adress</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">City</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Country</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Postal Code</label>
-                                                <input type="text" class="form-control">
+                                                <label class="bmd-label-floating">Finalização de Examinações</label>
+                                                <textarea class="form-control" id="finalizacao" name="finalizacao"
+                                                          rows="3"></textarea>
                                             </div>
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btn-primary pull-right">Cadastrar</button>
-                                    <button type="submit" class="btn btn-primary pull-right">Solicitar Exame</button>
-                                    <div class="clearfix"></div>
                                 </form>
                             </div>
                         </div>
@@ -257,6 +276,7 @@ The above copyright notice and this permission notice shall be included in all c
 </div>
 
 <!-- REFERENCIAS EM JS  -->
+<script src="{{asset('js/mascara.js')}}"></script>
 <script src="{{asset('js/core/jquery.min.js')}}"></script>
 <script src="{{asset('js/core/popper.min.js')}}"></script>
 <script src="{{asset('js/core/bootstrap-material-design.min.js')}}"></script>

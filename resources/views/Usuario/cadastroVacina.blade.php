@@ -75,7 +75,7 @@ The above copyright notice and this permission notice shall be included in all c
                         Consultas
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Nova Consulta</a>
+                        <a class="dropdown-item" href="{{route('consultaCadastro')}}">Nova Consulta</a>
                         <a class="dropdown-item" href="#">Buscar Consulta </a>
                     </div>
                 </li>
@@ -197,13 +197,20 @@ The above copyright notice and this permission notice shall be included in all c
                                     </div>
                                     <div class="row">
 
-                                        <div class="col-md-4">
+                                       <!-- <div class="col-md-4">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Posto de Vacinação</label>
                                                 <input type="text" class="form-control" id="localidade"
-                                                       name="localidade" >
+                                                       name="localidade" value="Sistema cadastra automaticamente" disabled>
                                             </div>
                                         </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Responsável</label>
+                                                <input type="text" class="form-control" id="id_profissional"
+                                                       name="id_profissional" value="Sistema cadastra automaticamente" disabled>
+                                            </div>
+                                        </div> -->
                                         <div class="col-md-5">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Vacina Realizada</label>

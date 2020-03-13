@@ -22,6 +22,7 @@ class VacinaController extends Controller
         $data = $request->all();
 
         $data['localidade'] = Auth::user()->localidade;
+        $data['id_profissional'] = Auth::user()->id;
 
         Vacina::create($data);
 

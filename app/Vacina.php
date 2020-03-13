@@ -7,11 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 class Vacina extends Model
 {
     protected $fillable = [
-        'id', 'id_paciente', 'localidade', 'vacina_realizada', 'informacao_lote', 'data', 'dose'
+        'id', 'id_paciente', 'id_profissional', 'localidade', 'vacina_realizada', 'informacao_lote', 'data', 'dose'
     ];
 
     public function paciente(){
         return $this->hasOne(Paciente::class, 'id', 'id_paciente');
+    }
+
+    public function profissional(){
+        return $this->hasOne(User::class, 'id', 'id_profissional');
     }
 
 }
