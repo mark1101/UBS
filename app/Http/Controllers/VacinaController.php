@@ -35,6 +35,5 @@ class VacinaController extends Controller
         return view('Usuario.cadastroVacina', [
             'pacientes' => $paciente
         ], ['vacinas' => Vacina::with(['paciente'])->get()] );
-       /* return view('Usuario.cadastroVacina', ['pacientes' , $paciente], ['vacinas' => Vacina::with(['pacientes'])->get()]);*/
     }
 }

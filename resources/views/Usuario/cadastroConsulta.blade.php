@@ -117,6 +117,13 @@ The above copyright notice and this permission notice shall be included in all c
                             <p>Gerenciamento de Viagens</p>
                         </a>
                     </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{{route('agendamentoDentista')}}">
+                            <i class="material-icons">airline_seat_flat_angled
+                            </i>
+                            <p>Agendamento Dentista</p>
+                        </a>
+                    </li>
                 @endif
             </ul>
 
@@ -211,15 +218,6 @@ The above copyright notice and this permission notice shall be included in all c
 
                                     <p>Consulta</p>
                                     <div class="row">
-                                       <!-- <div class="col-md-5">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Comunidade Atendida</label>
-                                                <input type="text" class="form-control"
-                                                       value="Sistema cadastra automaticamente" disabled>
-                                            </div>
-                                        </div> -->
-
-                                        <!-- COLOCAR AQUI O SELECT DE PACIENTE -->
                                         <div class="col-md-5">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Nome Paciente</label>
@@ -232,7 +230,6 @@ The above copyright notice and this permission notice shall be included in all c
                                                 </select>
                                             </div>
                                         </div>
-
                                     </div>
                                     <div class="row">
                                         <div class="col-md-10">
@@ -276,7 +273,6 @@ The above copyright notice and this permission notice shall be included in all c
 </div>
 
 <!-- REFERENCIAS EM JS  -->
-<script src="{{asset('js/mascara.js')}}"></script>
 <script src="{{asset('js/core/jquery.min.js')}}"></script>
 <script src="{{asset('js/core/popper.min.js')}}"></script>
 <script src="{{asset('js/core/bootstrap-material-design.min.js')}}"></script>
@@ -296,6 +292,12 @@ The above copyright notice and this permission notice shall be included in all c
 <script src="{{asset('https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js')}}"></script>
 <script src="{{asset('js/plugins/arrive.min.js')}}"></script>
 
+<script src="{{asset('js/mascara.js')}}"></script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 
 </body>
 

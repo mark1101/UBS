@@ -26,4 +26,7 @@ class DentistaController extends Controller
 
         Dentista::create($data);
     }
+    public function agendamentoDentista(){
+        return view('Usuario.agendamentoDentista');
+    }
 }

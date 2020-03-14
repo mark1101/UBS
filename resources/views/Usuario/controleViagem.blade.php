@@ -76,6 +76,15 @@ The above copyright notice and this permission notice shall be included in all c
                         <p>Gerenciamento de Viagens</p>
                     </a>
                 </li>
+                @if(Auth::user()->controle_acesso == 4)
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{{route('agendamentoDentista')}}">
+                            <i class="material-icons">airline_seat_flat_angled
+                            </i>
+                            <p>Agendamento Dentista</p>
+                        </a>
+                    </li>
+                @endif
             </ul>
 
         </div>

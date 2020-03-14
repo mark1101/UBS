@@ -115,6 +115,13 @@ The above copyright notice and this permission notice shall be included in all c
                             <p>Gerenciamento de Viagens</p>
                         </a>
                     </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{{route('agendamentoDentista')}}">
+                            <i class="material-icons">airline_seat_flat_angled
+                            </i>
+                            <p>Agendamento Dentista</p>
+                        </a>
+                    </li>
                 @endif
             </ul>
 
@@ -196,21 +203,6 @@ The above copyright notice and this permission notice shall be included in all c
                                         </div>
                                     </div>
                                     <div class="row">
-
-                                       <!-- <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Posto de Vacinação</label>
-                                                <input type="text" class="form-control" id="localidade"
-                                                       name="localidade" value="Sistema cadastra automaticamente" disabled>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Responsável</label>
-                                                <input type="text" class="form-control" id="id_profissional"
-                                                       name="id_profissional" value="Sistema cadastra automaticamente" disabled>
-                                            </div>
-                                        </div> -->
                                         <div class="col-md-5">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Vacina Realizada</label>
@@ -220,7 +212,6 @@ The above copyright notice and this permission notice shall be included in all c
                                         </div>
                                     </div>
                                     <div class="row">
-
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Informação de Lote</label>

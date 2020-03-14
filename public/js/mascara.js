@@ -5,7 +5,7 @@ $(function () {
     $('.data').mask('00/00/0000');
     $('.sus').mask('000 0000 0000 0000');
     $('.idade').mask('000');
-    $('.peso').mask('0,00');
+    $('.peso').mask('00,0');
     $('.altura').mask('0,00');
 
     $.ajaxSetup({

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Consulta;
 use App\Paciente;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -23,7 +24,14 @@ class ConsultaController extends Controller
         $data['id_profissional'] = Auth::user()->id;
 
         Consulta::create($data);
-
         return redirect('/consultaCadastro');
+    }
+    public function mostraConsulta(){
+        $paciente = Paciente::all();
+        $consulta = Consulta::all();
+        $profissionais = User::all();
+
+        return view('Usuario.mostraConsulta' , ['paciente' => $paciente] , ['users' => $profissionais] ,
+        ['consultas' => Consulta::with('paciente')->get()]);
     }
 }

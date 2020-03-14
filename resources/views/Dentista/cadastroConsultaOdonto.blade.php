@@ -26,6 +26,7 @@ The above copyright notice and this permission notice shall be included in all c
 
     <!-- CSS Arquivos -->
     <link href="{{asset('css/material-dashboard.css')}}" rel="stylesheet"/>
+
 </head>
 
 <body class="">
@@ -44,7 +45,7 @@ The above copyright notice and this permission notice shall be included in all c
                     </a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{route('agendaDentista')}}">
                         <i class="material-icons">calendar_today
                         </i>
                         <p>Agenda</p>

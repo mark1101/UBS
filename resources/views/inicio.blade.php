@@ -107,6 +107,13 @@
                             <p>Gerenciamento de Viagens</p>
                         </a>
                     </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{{route('agendamentoDentista')}}">
+                            <i class="material-icons">airline_seat_flat_angled
+                            </i>
+                            <p>Agendamento Dentista</p>
+                        </a>
+                    </li>
                 @endif
             </ul>
 

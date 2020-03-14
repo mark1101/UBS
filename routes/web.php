@@ -76,17 +76,26 @@ Route::get('/encaminhamento', 'EncaminhamentoController@index')->middleware('aut
 // ROTAS DE ODONTOLOGIA
 Route::get('/administracaoOdonto', 'DentistaController@indexAdm')->middleware('auth')->name('admOdonto');
 Route::get('/odonto/consulta', 'DentistaController@indexConsulta')->middleware('auth')->name('cadastroConsultaOdonto');
+Route::get('/agendamentoDentista', 'DentistaController@agendamentoDentista')->middleware('auth')->name('agendamentoDentista');
 
 // ROTAS DE CONSULTA
 Route::get('/consultaCadastro' , 'ConsultaController@indexConsulta')->middleware('auth')->name('consultaCadastro');
 Route::POST('/consulta/cadastro' , 'ConsultaController@cadastroConsulta')->middleware('auth')->name('cadastroConsulta');
+Route::get('/mostraConsulta' , 'ConsultaController@mostraConsulta')->middleware('auth')->name('mostraConsulta');
 
 // ROTAS DE GERAL
 Route::get('/inicio', 'InicioController@index')->middleware('auth')->name('inicio');
 Route::get('/login', 'LoginController@index')->name('login');
 Route::get('/controleViagem', 'ViagemController@index')->middleware('auth')->name('controleViagem');
 
+///////////// CALENDARIO DENTISTA //////////////
+Route::get('/agendaDentista', 'FullCalendarController@index')->name('agendaDentista');
 
+Route::get('/load-events', 'EventController@loadEvents')->name('routeLoadEvents');
+
+Route::put('/event-update', 'EventController@altera')->name('routeEventUpdate');
+
+Route::POST('/event-store', 'EventController@cadastra')->name('routeEventStore');
 
 
 
