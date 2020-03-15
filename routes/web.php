@@ -32,7 +32,7 @@ Route::group(['middleware' => ['web', 'auth']], function () {
         } else if (Auth::user()->admin == 2) {
             return view('Dentista.administracaoDentista');
         } else if (Auth::user()->admin == 3) {
-
+            return view('Agente.AdministracaoAgente');
         } else {
             return redirect()->back();
         }
@@ -90,19 +90,16 @@ Route::get('/controleViagem', 'ViagemController@index')->middleware('auth')->nam
 
 ///////////// CALENDARIO DENTISTA //////////////
 Route::get('/agendaDentista', 'FullCalendarController@index')->name('agendaDentista');
-
 Route::get('/load-events', 'EventController@loadEvents')->name('routeLoadEvents');
-
 Route::put('/event-update', 'EventController@altera')->name('routeEventUpdate');
-
 Route::POST('/event-store', 'EventController@cadastra')->name('routeEventStore');
-
 Route::POST('/cadastroEvento', 'EventController@cadastroEvento')->name('cadastroEvento');
 
-
-
-
-
+// ROTAS DE AGENTE DE SAUDE
+Route::get('/agente/cadastroPaciente', 'AgenteController@indexcadastraPaciente')->middleware('auth')->name('cadastroPacienteAgente');
+Route::get('/busca/paciente', 'AgenteController@mostraPacienteAgente')->middleware('auth')->name('mostraPacienteAgente');
+Route::get('/homeAgente' , 'AgenteController@indexAdmAgente')->middleware('auth')->name('admAgente');
+Route::get('recados/agente' , 'AgenteController@recadoAgente')->middleware('auth')->name('recadoAgente');
 
 
 

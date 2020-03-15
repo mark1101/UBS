@@ -31,8 +31,14 @@ class PacienteController extends Controller
         $errors = "";
         $data = $request->all();
         Paciente::create($data);
-        return redirect('/paciente');
+
+        if (Auth::user()->admin == 3) {
+            return redirect('/agente/cadastroPaciente');
+        } else {
+            return redirect('/paciente');
+        }
     }
+
     public function mostraPaciente()
     {
         return view('Usuario.buscaPaciente', ['pacientes' => Paciente::with(['localidade'])->get()]);

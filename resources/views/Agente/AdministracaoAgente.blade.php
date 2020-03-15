@@ -21,14 +21,14 @@
 <body class="">
 <div class="wrapper ">
 
-    <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/unidade.jpg">
-        <div class="logo"><a href="{{'inicio'}}" class="simple-text logo-normal">
-                Unidade {{Auth::user()->localidade}}
+    <div class="sidebar" data-color="orange" data-background-color="white" data-image="../assets/img/unidade.jpg">
+        <div class="logo"><a href="#" class="simple-text logo-normal">
+                <img src="{{asset('img/agente.png')}}">
             </a></div>
         <div class="sidebar-wrapper ">
             <ul class="nav">
-                <li class="nav-item active ">
-                    <a class="nav-link" href="{{route('inicio')}}">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{route('admAgente')}}">
                         <i class="material-icons">home_work</i>
                         <p>Início</p>
                     </a>
@@ -41,92 +41,33 @@
                         Paciente
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{route('paciente')}}">Cadastro de Paciente</a>
-                        <a class="dropdown-item" href="{{route('mostraPaciente')}}">Busca de Paciente</a>
+                        <a class="dropdown-item" href="{{route('cadastroPacienteAgente')}}">Cadastro de Paciente</a>
+                        <a class="dropdown-item" href="{{route('mostraPacienteAgente')}}">Busca de Paciente</a>
                     </div>
                 </li>
-                @if(Auth::user()->controle_acesso == 2)
-                    <li class="nav-item dropdown ">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                           data-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false">
-                            <i class="material-icons">content_paste</i>
-                            Exames
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{route('cadastroExame')}}">Novo Exame</a>
-                            <a class="dropdown-item" href="{{route('buscarExame')}}">Buscar Exames </a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown ">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                           data-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false">
-                            <i class="material-icons">insert_emoticon</i>
-                            Consultas
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{route('consultaCadastro')}}">Nova Consulta</a>
-                            <a class="dropdown-item" href="#">Buscar Consulta </a>
-                        </div>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="{{route('mostraVacina')}}">
-                            <i class="material-icons">format_color_reset
-                            </i>
-                            <p>Vacinas</p>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="{{route('encaminhamento')}}">
-                            <i class="material-icons">arrow_right_alt
-                            </i>
-                            <p>Encaminhamentos</p>
-                        </a>
-                    </li>
-                @endif
-                <li class="nav-item">
-                    <a class="nav-link" href="{{route('recado')}}">
-                        <i class="material-icons">attach_file
+                <li class="nav-item  ">
+                    <a class="nav-link" href="{{route('recadoAgente')}}">
+                        <i class="material-icons">chat
                         </i>
                         <p>Recados</p>
                     </a>
                 </li>
-                <li class="nav-item  ">
+                <li class="nav-item ">
                     <a class="nav-link" href="#">
                         <i class="material-icons">history
                         </i>
-                        <p>Histórico dos Pacientes</p>
+                        <p>Histórico de Pacientes</p>
                     </a>
                 </li>
-                @if(Auth::user()->controle_acesso == 4)
-                    <li class="nav-item  ">
-                        <a class="nav-link" href="{{route('controleViagem')}}">
-                            <i class="material-icons">commute
-                            </i>
-                            <p>Gerenciamento de Viagens</p>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="{{route('agendamentoDentista')}}">
-                            <i class="material-icons">airline_seat_flat_angled
-                            </i>
-                            <p>Agendamento Dentista</p>
-                        </a>
-                    </li>
-                @endif
             </ul>
-
         </div>
     </div>
-
     <div class="main-panel">
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
             <div class="container-fluid">
-
                 <div class="navbar-wrapper">
-                    <a class="navbar-brand" href="javascript:;">Tela Inicial</a>
+                    <a class="navbar-brand" href="javascript:;">Pagina Inicial</a>
                 </div>
 
                 <!-- BOTAO DE RESPONSIVIDADE PARA OPCIOES DE SIDEBAR-->
@@ -140,7 +81,6 @@
 
                 <!-- TOPO EM CIMA PARA OPCAO DE SAIDA E CONFIGURAÇÃOES DE PERFIL E SISTEMA  -->
                 <div class="collapse navbar-collapse justify-content-end">
-                    <form class="navbar-form"></form>
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
@@ -156,7 +96,7 @@
                                 </a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                      style="display: none;">
+                                      style="display: none; ">
                                     @csrf
                                 </form>
                             </div>
@@ -168,14 +108,44 @@
         </nav>
         <!-- End Navbar -->
 
-        <div class="content">
+        <div class="content" >
             <div class="container-fluid">
-                <h1 align="center" style="font-family: Candara">TELA DE INICÍO</h1>
-                <h1 align="center" style="font-family: Candara">BEM VINDO {{Auth::user()->name}}</h1>
+                <div class="row d-flex justify-content-center"> <!-- CLASSE DE ALINHAMENTO -->
+                    <div align="center" class="card" style="width: 13rem; height: 13rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Visitas</h5>
+                            <img src="{{asset('img/casa.png')}}">
+                            <a href="#" class="btn btn-primary-agente">Cadastrar</a>
+                        </div>
+                    </div>
+                    &nbsp &nbsp &nbsp
+                    <div align="center" class="card" style="width: 13rem; height: 13rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Pacientes</h5>
+                            <img src="{{asset('img/PacienteClicavel.png')}}">
+                            <a href="{{route('mostraPacienteAgente')}}" class="btn btn-primary-agente">Ver</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row d-flex justify-content-center">
+                    <div align="center" class="card" style="width: 13rem; height: 13rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Comunicação</h5>
+                            <img src="{{asset('img/comunicacao.png')}}">
+                            <a href="{{route('recadoAgente')}}" class="btn btn-primary-agente">Abrir</a>
+                        </div>
+                    </div>
+                    &nbsp &nbsp &nbsp
+                    <div align="center" class="card" style="width: 13rem; height: 13rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Encaminhamentos</h5>
+                            <img src="{{asset('img/EncaminhamentoClicavel.png')}}">
+                            <a href="#" class="btn btn-primary-agente">Ver</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-
         </div>
-
         <footer class="footer">
             <div class="container-fluid">
             </div>
