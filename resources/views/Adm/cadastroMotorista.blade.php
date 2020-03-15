@@ -31,32 +31,27 @@ The above copyright notice and this permission notice shall be included in all c
 <body class="">
 <div class="wrapper ">
 
-    <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/unidade.jpg">
-        <div class="logo"><a href="{{'inicio'}}" class="simple-text logo-normal">
-                Unidade {{Auth::user()->localidade}}
+    <div class="sidebar" data-color="azure" data-background-color="white" data-image="../assets/img/unidade.jpg">
+        <div class="logo"><a href="{{'/'}}" class="simple-text logo-normal">
+                <img src="{{asset('img/adm.png')}}">
             </a></div>
-        <div class="sidebar-wrapper">
+        <div class="sidebar-wrapper ">
             <ul class="nav">
-                <li class="nav-item  ">
-                    <a class="nav-link" href="{{route('inicio')}}">
+                <li class="nav-item ">
+                    <a class="nav-link" href="{{'/'}}">
                         <i class="material-icons">home_work</i>
                         <p>Início</p>
                     </a>
                 </li>
-                <li class="nav-item dropdown ">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false">
-                        <i class="material-icons">person</i>
-                        Paciente
+                <li class="nav-item ">
+                    <a class="nav-link" href="#">
+                        <i class="material-icons">arrow_right_alt
+                        </i>
+                        <p>Encaminhamentos</p>
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{route('paciente')}}">Cadastro de Paciente</a>
-                        <a class="dropdown-item" href="{{route('mostraPaciente')}}">Busca de Paciente</a>
-                    </div>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link" href="{{route('recado')}}">
+                    <a class="nav-link" href="#">
                         <i class="material-icons">attach_file
                         </i>
                         <p>Recados</p>
@@ -64,27 +59,39 @@ The above copyright notice and this permission notice shall be included in all c
                 </li>
                 <li class="nav-item  ">
                     <a class="nav-link" href="#">
-                        <i class="material-icons">history
-                        </i>
-                        <p>Histórico dos Pacientes</p>
-                    </a>
-                </li>
-                <li class="nav-item active ">
-                    <a class="nav-link" href="{{route('controleViagem')}}">
                         <i class="material-icons">commute
                         </i>
-                        <p>Gerenciamento de Viagens</p>
+                        <p>Dados de viagens</p>
                     </a>
                 </li>
-                @if(Auth::user()->controle_acesso == 4)
-                    <li class="nav-item ">
-                        <a class="nav-link" href="{{route('agendamentoDentista')}}">
-                            <i class="material-icons">airline_seat_flat_angled
-                            </i>
-                            <p>Agendamento Dentista</p>
-                        </a>
-                    </li>
-                @endif
+                <li class="nav-item  ">
+                    <a class="nav-link" href="{{route('cadastroLocalidade')}}">
+                        <i class="material-icons">house
+                        </i>
+                        <p>Cadastro Localidade</p>
+                    </a>
+                </li>
+                <li class="nav-item  ">
+                    <a class="nav-link" href="{{route('register')}}">
+                        <i class="material-icons">person
+                        </i>
+                        <p>Cadastrar Profissionais</p>
+                    </a>
+                </li>
+                <li class="nav-item  active">
+                    <a class="nav-link" href="{{route('cadastroMotorista')}}">
+                        <i class="material-icons">directions_car
+                        </i>
+                        <p>Cadastrar Motoristas</p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="#">
+                        <i class="material-icons">history
+                        </i>
+                        <p>Histórico de Pacientes</p>
+                    </a>
+                </li>
             </ul>
 
         </div>
@@ -96,7 +103,7 @@ The above copyright notice and this permission notice shall be included in all c
             <div class="container-fluid">
 
                 <div class="navbar-wrapper">
-                    <a class="navbar-brand" href="javascript:;">Controle de Viagens</a>
+                    <a class="navbar-brand" href="javascript:;">Gerenciamento de Motoristas e Automoveis</a>
                 </div>
 
                 <!-- BOTAO DE RESPONSIVIDADE PARA OPCIOES DE SIDEBAR-->
@@ -138,109 +145,102 @@ The above copyright notice and this permission notice shall be included in all c
         </nav>
         <!-- End Navbar -->
 
-
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-
                     <div class="col-md-12">
                         <div class="card">
-                            <div class="card-header card-header-primary">
-                                <h4 class="card-title">Cadastro de Nova Viagem</h4>
+                            <div class="card-header card-header-info">
+                                <h4 class="card-title">Cadastro de Motoristas</h4>
                             </div>
-                            <div class="card-body">
-                                <form>
-                                    <p class="card-category">Origem</p>
-                                    <div class="container">
-                                        <div class="row">
-                                            <select class="form-control" name="id_origem" id="id_origem">
-                                                @foreach($localidades as $localidade)
-                                                    <option
-                                                        value="{{$localidade->id}}">{{$localidade->nome}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <p class="card-category">Destino</p>
-                                    <div class="container">
-                                        <div class="row">
-                                            <select class="form-control" name="id_destino" id="id_destino">
-                                                @foreach($localidades as $localidade)
-                                                    <option
-                                                        value="{{$localidade->id}}">{{$localidade->nome}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <p class="card-category">Motorista Responsável</p>
-                                    <div class="container">
-                                        <div class="row">
-                                            <select class="form-control" name="id_motorista" id="id_motorista">
-                                                @foreach($motoristas as $motorista)
-                                                    <option
-                                                        value="{{$motorista->id}}">{{$motorista->nome}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <p class="card-category">Veículo</p>
-                                    <div class="container">
-                                        <div class="row">
-                                            <select class="form-control" name="id_carro" id="id_carro">
-                                                @foreach($carros as $carro)
-                                                    <option
-                                                        value="{{$carro->id}}">{{$carro->nome}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-
+                            <div class="card-body" id="exame">
+                                <form action="{{route('storeMotorista')}}" method="post">
+                                    @csrf
                                     <div class="row">
-                                        <div class="col-md-3">
+                                        <div class="col-md-4">
                                             <div class="form-group">
-                                                <label class="bmd-label-floating">Numero de Passageiros</label>
-                                                <select class="form-control" name="" id="">
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
-                                                    <option>5</option>
-                                                    <option>6</option>
-                                                    <option>7</option>
-                                                    <option>8</option>
-                                                    <option>9</option>
-                                                </select>
+                                                <label class="bmd-label-floating">Nome do Motorista</label>
+                                                <input type="text" class="form-control " name="nome" id="nome">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label class="bmd-label-floating">Data</label>
-                                                <input type="date" class="form-control">
+                                                <label class="bmd-label-floating">Telefone</label>
+                                                <input type="text" class="form-control telefone" name="telefone" id="telefone">
                                             </div>
                                         </div>
-                                        <div class="col-md-10">
+                                        <div class="col-md-4">
                                             <div class="form-group">
-                                                <label class="bmd-label-floating">Observação</label>
-                                                <textarea class="form-control" id="exampleFormControlTextarea1"
-                                                          rows="3"></textarea>
+                                                <label class="bmd-label-floating">CPF</label>
+                                                <input type="text" class="form-control cpf" name="cpf" id="cpf">
                                             </div>
                                         </div>
                                     </div>
-
-                                    <button type="submit" class="btn btn-primary pull-right">Enviar</button>
+                                    <div class="container">
+                                        <div class="row">
+                                            <select class="form-control" name="id_localidade" id="id_localidade">
+                                                @foreach($localidades as $localidade)
+                                                    <option
+                                                        value="{{$localidade->id}}">{{$localidade->nome}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <button type="submit" class="btn btn-primary-adm">Salvar
+                                    </button>
+                                    <!--<button type="submit" class="btn btn-primary pull-right">Solicitar Exame</button>-->
                                 </form>
                             </div>
                         </div>
                     </div>
 
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header card-header-info">
+                                <h4 class="card-title">Cadastro de Automóveis</h4>
+                            </div>
+                            <div class="card-body" id="carros">
+                                <form action="{{route('storeCarro')}}" method="post">
+                                    @csrf
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Identificador do Carro</label>
+                                                <input type="text" class="form-control " name="nome" id="nome">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Placa</label>
+                                                <input type="text" class="form-control " name="placa" id="placa">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <select class="form-control" name="id_localidade" id="id_localidade">
+                                                @foreach($localidades as $localidade)
+                                                    <option
+                                                        value="{{$localidade->id}}">{{$localidade->nome}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <button type="submit" class="btn btn-primary-adm">Salvar
+                                    </button>
+                                    <!--<button type="submit" class="btn btn-primary pull-right">Solicitar Exame</button>-->
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-
         <footer class="footer">
             <div class="container-fluid">
+                <h4 align="left">Versão 1.0</h4>
             </div>
         </footer>
     </div>
@@ -262,10 +262,17 @@ The above copyright notice and this permission notice shall be included in all c
 <script src="{{asset('js/plugins/jasny-bootstrap.min.js')}}"></script>
 <script src="{{asset('js/plugins/fullcalendar.min.js')}}"></script>
 <script src="{{asset('js/plugins/jquery-jvectormap.js')}}"></script>
-<script src="{{asset('assets/js/plugins/nouislider.min.js')}}"></script>
+<!--<script src="{{asset('assets/js/plugins/nouislider.min.js')}}"></script> -->
 <script src="{{asset('https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js')}}"></script>
 <script src="{{asset('js/plugins/arrive.min.js')}}"></script>
 
+
+<script src="{{asset('js/mascara.js')}}"></script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 
 </body>
 

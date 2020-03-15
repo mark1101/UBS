@@ -9,14 +9,5 @@ use Illuminate\Support\Facades\Auth;
 
 class CarroController extends Controller
 {
-    public function cadastraCarro(Request $request)
-    {
-        $data = $request->all();
-        Carro::create($data);
-    }
-    public function indexbuscaCarro(){
-        $carro = Carro::all();
-        return view('Adm.cadastroCarro', [
-            'carros' => $carro]);
-    }
+
 }

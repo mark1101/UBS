@@ -17,15 +17,15 @@ class CreateViagensTable extends Migration
             $table->increments('id');
             $table->integer('id_motorista')->unsigned();
             $table->integer('num_pacientes');
-            $table->string('origem');
-            $table->string('destino');
+            $table->integer('id_origem')->unsigned();
+            $table->integer('id_destino')->unsigned();
             $table->timestamp('data');
-            $table->integer('id_localidade')->unsigned();
             $table->integer('id_carro')->unsigned();
             $table->timestamps();
 
             $table->foreign('id_motorista')->references('id')->on('users');
-            $table->foreign('id_localidade')->references('id')->on('localidades');
+            $table->foreign('id_origem')->references('id')->on('localidades');
+            $table->foreign('id_destino')->references('id')->on('localidades');
             $table->foreign('id_carro')->references('id')->on('carros');
         });
     }

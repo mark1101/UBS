@@ -22,13 +22,13 @@
 <div class="wrapper ">
 
     <div class="sidebar" data-color="azure" data-background-color="white" data-image="../assets/img/unidade.jpg">
-        <div class="logo"><a href="{{'inicio'}}" class="simple-text logo-normal">
+        <div class="logo"><a href="{{'/'}}" class="simple-text logo-normal">
             <img src="{{asset('img/adm.png')}}">
             </a></div>
         <div class="sidebar-wrapper ">
             <ul class="nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="">
+                    <a class="nav-link" href="{{'/'}}">
                         <i class="material-icons">home_work</i>
                         <p>Início</p>
                     </a>
@@ -55,6 +55,13 @@
                     </a>
                 </li>
                 <li class="nav-item  ">
+                    <a class="nav-link" href="{{route('cadastroLocalidade')}}">
+                        <i class="material-icons">house
+                        </i>
+                        <p>Cadastro Localidade</p>
+                    </a>
+                </li>
+                <li class="nav-item  ">
                     <a class="nav-link" href="{{route('register')}}">
                         <i class="material-icons">person
                         </i>
@@ -62,7 +69,7 @@
                     </a>
                 </li>
                 <li class="nav-item  ">
-                    <a class="nav-link" href="">
+                    <a class="nav-link" href="{{route('cadastroMotorista')}}">
                         <i class="material-icons">directions_car
                         </i>
                         <p>Cadastrar Motoristas</p>
@@ -128,7 +135,7 @@
         </nav>
         <!-- End Navbar -->
 
-        <div class="content" )>
+        <div class="content">
             <div class="container-fluid">
                 <div class="row d-flex justify-content-center"> <!-- CLASSE DE ALINHAMENTO -->
                     <div align="center" class="card" style="width: 13rem; height: 13rem;">

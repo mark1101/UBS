@@ -4,15 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Carro extends Model
+class Motorista extends Model
 {
     protected $fillable = [
-       'id' , 'nome' , 'id_localidade' , 'placa' ,
+        'id' , 'nome' , 'cpf' , 'telefone' , 'id_localidade' ,
     ];
 
-    public function localidade()
-    {
+    public function localidade(){
         return $this->hasOne(Localidade::class, 'id', 'id_localidade');
     }
-
 }

@@ -44,62 +44,70 @@ Route::group(['middleware' => ['web', 'auth']], function () {
     return redirect('/inicio');
 })->name('home');*/
 
+Route::middleware(['auth'])->group(function () {
 // ROTAS DE PACIENTEmostraPaciente
-Route::get('/paciente', 'PacienteController@indexPaciente')->middleware('auth')->name('paciente');
-Route::get('/buscaPaciente', 'PacienteController@indexbuscaPaciente')->middleware('auth')->name('buscaPaciente');
-Route::get('/mostraPaciente', 'PacienteController@mostraPaciente')->middleware('auth')->name('mostraPaciente');
-Route::POST('paciente/salvar', 'PacienteController@cadastraPaciente')->name('cadastraPaciente');
-Route::POST('paciente/buscaPaciente', 'PacienteController@cadastraPaciente')->name('cadastraPaciente');
+    Route::get('/paciente', 'PacienteController@indexPaciente')->name('paciente');
+    Route::get('/buscaPaciente', 'PacienteController@indexbuscaPaciente')->name('buscaPaciente');
+    Route::get('/mostraPaciente', 'PacienteController@mostraPaciente')->name('mostraPaciente');
+    Route::POST('paciente/salvar', 'PacienteController@cadastraPaciente')->name('cadastraPaciente');
+    Route::POST('paciente/buscaPaciente', 'PacienteController@cadastraPaciente')->name('cadastraPaciente');
 
 
 // ROTAS DE EXAMES
-Route::get('/cadastroExame', 'ExameController@indexcadastroExame')->middleware('auth')->name('cadastroExame');
-Route::get('/buscarExame', 'ExameController@indexbuscarExame')->name('buscarExame');
-Route::get('/solicitarExame', 'ExameController@indexsolicitacaoExame')->middleware('auth')->name('solicitarExame');
-Route::POST('/cadastrarExame', 'ExameController@cadastraExame')->name('cadastrarExame');
+    Route::get('/cadastroExame', 'ExameController@indexcadastroExame')->name('cadastroExame');
+    Route::get('/buscarExame', 'ExameController@indexbuscarExame')->name('buscarExame');
+    Route::get('/solicitarExame', 'ExameController@indexsolicitacaoExame')->name('solicitarExame');
+    Route::POST('/cadastrarExame', 'ExameController@cadastraExame')->name('cadastrarExame');
 
 // ROTAS DE VACINAS
-Route::get('/mostraVacina', 'VacinaController@mostraVacina')->middleware('auth')->name('mostraVacina');
-Route::POST('vacina/cadastrarVacina', 'VacinaController@cadastraVacina')->name('cadastraVacina');
+    Route::get('/mostraVacina', 'VacinaController@mostraVacina')->name('mostraVacina');
+    Route::POST('vacina/cadastrarVacina', 'VacinaController@cadastraVacina')->name('cadastraVacina');
 
 // ROTAS DE RECADOS
-Route::get('/recado', 'RecadoController@index')->middleware('auth')->name('recado');
-Route::get('/comunicacao', 'ComunicacaoController@index')->middleware('auth')->name('comunicacao');
-Route::post('/cadastraRecado', 'RecadoController@cadastraRecado')->middleware('auth')->name('cadastraRecado');
+    Route::get('/recado', 'RecadoController@index')->name('recado');
+    Route::get('/comunicacao', 'ComunicacaoController@index')->name('comunicacao');
+    Route::post('/cadastraRecado', 'RecadoController@cadastraRecado')->name('cadastraRecado');
 
 // ROTAS DE ENCAMINHAMENTO
-Route::get('/encaminhamento', 'EncaminhamentoController@index')->middleware('auth')->name('encaminhamento');
+    Route::get('/encaminhamento', 'EncaminhamentoController@index')->name('encaminhamento');
 
 // ROTAS DE ADMINISTRACAO
+    Route::get('/cadastroMotorista', 'ViagemController@indexMotorista')->name('cadastroMotorista');
+    Route::post('/cadastrouMotorista', 'ViagemController@cadastroMotorista')->name('storeMotorista');
+    Route::post('/cadastrouCarro', 'ViagemController@cadastroCarro')->name('storeCarro');
+    Route::get('/cadastroLocalidade', 'LocalidadeController@indexCadastroLocalidade')->name('cadastroLocalidade');
+    Route::post('/cadastrouLocalidade', 'LocalidadeController@cadastroLocalidade')->name('storeLocalidade');
+    Route::post('/cadastrouSede', 'LocalidadeController@cadastroSede')->name('storeSede');
 
 
 // ROTAS DE ODONTOLOGIA
-Route::get('/administracaoOdonto', 'DentistaController@indexAdm')->middleware('auth')->name('admOdonto');
-Route::get('/odonto/consulta', 'DentistaController@indexConsulta')->middleware('auth')->name('cadastroConsultaOdonto');
-Route::get('/agendamentoDentista', 'DentistaController@agendamentoDentista')->middleware('auth')->name('agendamentoDentista');
+    Route::get('/administracaoOdonto', 'DentistaController@indexAdm')->name('admOdonto');
+    Route::get('/odonto/consulta', 'DentistaController@indexConsulta')->name('cadastroConsultaOdonto');
+    Route::get('/agendamentoDentista', 'DentistaController@agendamentoDentista')->name('agendamentoDentista');
 
 // ROTAS DE CONSULTA
-Route::get('/consultaCadastro' , 'ConsultaController@indexConsulta')->middleware('auth')->name('consultaCadastro');
-Route::POST('/consulta/cadastro' , 'ConsultaController@cadastroConsulta')->middleware('auth')->name('cadastroConsulta');
-Route::get('/mostraConsulta' , 'ConsultaController@mostraConsulta')->middleware('auth')->name('mostraConsulta');
+    Route::get('/consultaCadastro', 'ConsultaController@indexConsulta')->name('consultaCadastro');
+    Route::POST('/consulta/cadastro', 'ConsultaController@cadastroConsulta')->name('cadastroConsulta');
+    Route::get('/mostraConsulta', 'ConsultaController@mostraConsulta')->name('mostraConsulta');
 
 // ROTAS DE GERAL
-Route::get('/inicio', 'InicioController@index')->middleware('auth')->name('inicio');
-Route::get('/login', 'LoginController@index')->name('login');
-Route::get('/controleViagem', 'ViagemController@index')->middleware('auth')->name('controleViagem');
+    Route::get('/inicio', 'InicioController@index')->name('inicio');
+    //Route::get('/login', 'LoginController@index')->name('login');
+    Route::get('/controleViagem', 'ViagemController@index')->name('controleViagem');
 
 ///////////// CALENDARIO DENTISTA //////////////
-Route::get('/agendaDentista', 'FullCalendarController@index')->name('agendaDentista');
-Route::get('/load-events', 'EventController@loadEvents')->name('routeLoadEvents');
-Route::put('/event-update', 'EventController@altera')->name('routeEventUpdate');
-Route::POST('/event-store', 'EventController@cadastra')->name('routeEventStore');
-Route::POST('/cadastroEvento', 'EventController@cadastroEvento')->name('cadastroEvento');
+    Route::get('/agendaDentista', 'FullCalendarController@index')->name('agendaDentista');
+    Route::get('/load-events', 'EventController@loadEvents')->name('routeLoadEvents');
+    Route::put('/event-update', 'EventController@altera')->name('routeEventUpdate');
+    Route::POST('/event-store', 'EventController@cadastra')->name('routeEventStore');
+    Route::POST('/cadastroEvento', 'EventController@cadastroEvento')->name('cadastroEvento');
 
 // ROTAS DE AGENTE DE SAUDE
-Route::get('/agente/cadastroPaciente', 'AgenteController@indexcadastraPaciente')->middleware('auth')->name('cadastroPacienteAgente');
-Route::get('/busca/paciente', 'AgenteController@mostraPacienteAgente')->middleware('auth')->name('mostraPacienteAgente');
-Route::get('/homeAgente' , 'AgenteController@indexAdmAgente')->middleware('auth')->name('admAgente');
-Route::get('recados/agente' , 'AgenteController@recadoAgente')->middleware('auth')->name('recadoAgente');
+    Route::get('/agente/cadastroPaciente', 'AgenteController@indexcadastraPaciente')->name('cadastroPacienteAgente');
+    Route::get('/busca/paciente', 'AgenteController@mostraPacienteAgente')->name('mostraPacienteAgente');
+    Route::get('/homeAgente', 'AgenteController@indexAdmAgente')->name('admAgente');
+    Route::get('recados/agente', 'AgenteController@recadoAgente')->name('recadoAgente');
 
+});
 
-
+Route::get('/login', 'LoginController@index')->name('login');
