@@ -8,6 +8,9 @@ $(function () {
     $('.peso').mask('00,0');
     $('.altura').mask('0,00');
 
+    $('.horario').mask('0000/00/00 00:00:00');
+
+
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

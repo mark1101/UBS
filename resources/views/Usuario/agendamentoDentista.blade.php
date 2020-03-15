@@ -26,6 +26,7 @@ The above copyright notice and this permission notice shall be included in all c
 
     <!-- CSS Arquivos -->
     <link href="{{asset('css/material-dashboard.css')}}" rel="stylesheet"/>
+
 </head>
 
 <body class="">
@@ -149,25 +150,27 @@ The above copyright notice and this permission notice shall be included in all c
                                 <h4 class="card-title">Novo Agendamento</h4>
                             </div>
                             <div class="card-body">
-                                <form>
+                                <form action="{{route('cadastroEvento')}}" method="post">
+                                    @csrf
                                     <div class="row">
                                         <div class="col-md-5">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Titulo</label>
-                                                <input type="text" class="form-control">
+                                                <input type="text" class="form-control" name="title" id="title">
                                             </div>
                                         </div>
 
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Data Inicio</label>
-                                                <input type="date" class="form-control">
+                                                <input type="text" class="form-control horario" name="start" id="start" placeholder="ano/mes/dia hora/minuto/segundo">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Data Final</label>
-                                                <input type="date" class="form-control">
+                                                <input type="text" class="form-control horario" placeholder="ano/mes/dia hora/minuto/segundo"
+                                                       name="end" id="end">
                                             </div>
                                         </div>
 
@@ -177,14 +180,14 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Cor</label>
-                                                <input type="color" class="form-control">
+                                                <input type="color" class="form-control" name="color" id="color">
                                             </div>
                                         </div>
 
                                         <div class="col-md-10">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Descrição</label>
-                                                <textarea class="form-control" id="exampleFormControlTextarea1"
+                                                <textarea class="form-control" id="description" name="description"
                                                           rows="3"></textarea>
                                             </div>
                                         </div>
@@ -226,6 +229,13 @@ The above copyright notice and this permission notice shall be included in all c
 <script src="{{asset('assets/js/plugins/nouislider.min.js')}}"></script>
 <script src="{{asset('https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js')}}"></script>
 <script src="{{asset('js/plugins/arrive.min.js')}}"></script>
+
+<script src="{{asset('js/mascara.js')}}"></script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 
 
 </body>

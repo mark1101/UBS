@@ -23,4 +23,11 @@ class EventController extends Controller
         return response()->json(true);
     }
 
+    public function cadastroEvento(Request $request)
+    {
+        $data = $request->all();
+        Event::create($data);
+        return redirect('/agendamentoDentista');
+    }
+
 }

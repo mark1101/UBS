@@ -97,6 +97,8 @@ Route::put('/event-update', 'EventController@altera')->name('routeEventUpdate');
 
 Route::POST('/event-store', 'EventController@cadastra')->name('routeEventStore');
 
+Route::POST('/cadastroEvento', 'EventController@cadastroEvento')->name('cadastroEvento');
+
 
 
 
