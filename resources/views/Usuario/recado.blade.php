@@ -31,7 +31,7 @@ The above copyright notice and this permission notice shall be included in all c
 <body class="">
 <div class="wrapper ">
 
-    <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/unidade.jpg">
+    <div class="sidebar" data-color="danger" data-background-color="white" data-image="../assets/img/unidade.jpg">
         <div class="logo"><a href="{{'inicio'}}" class="simple-text logo-normal">
                 Unidade {{Auth::user()->localidade}}
             </a></div>
@@ -174,14 +174,14 @@ The above copyright notice and this permission notice shall be included in all c
 
         <div class="content">
             <div class="container-fluid">
-                <button type="submit" class="btn btn-primary pull-right" style="left: 6px">
+                <button type="submit" class="btn btn-primary-normal" style="left: 6px">
                     <a style="color:#ffffff " href="{{route('comunicacao')}}">Nova Mensagem</a>
                 </button>
                 <div class="row">
                     <div class="card-body">
                         <div class="table-responsive" style="overflow: auto; height: 250px;">
                             <table class="table">
-                                <thead class=" text-primary">
+                                <thead class=" text-danger">
                                 <th>
                                     ID
                                 </th>

@@ -17,6 +17,7 @@
                             <input type="text" class="form-control" id="title" name="title" disabled>
                         </div>
                     </div>
+
                     <div class="form-group ">
                         <label for="start" class="col-sm-4 col-form-label">Data/Hora inicio</label>
                         <div class="col-sm-8">

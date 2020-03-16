@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Event extends Model
 {
     use SoftDeletes;
-    protected $fillable = ['title', 'start', 'end', 'color', 'description'];
+    protected $fillable = ['id_localidade', 'id_paciente', 'title', 'start', 'end', 'color', 'description'];
 
     public function getStartAttribute($value){
         $dateStart = Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('Y-m-d');
@@ -23,4 +23,12 @@ class Event extends Model
 
         return $this->end = ($timeEnd == '00:00:00' ? $dateEnd : $value);
     }
+
+    public function localidade(){
+        return $this->hasOne(Localidade::class, 'id', 'id_localidade');
+    }
+    public function paciente(){
+        return $this->hasOne(Paciente::class, 'id', 'id_paciente');
+    }
+
 }

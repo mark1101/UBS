@@ -160,12 +160,12 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="form-group">
                                             <label class="bmd-label-floating">Nome da Cidade Sede</label>
                                             <input type="text" class="form-control " id="nome"
-                                                   name="nome">
+                                                   name="nome" disabled>
                                         </div>
                                     </div>
                                 </div>
                                 <br>
-                                <button type="submit" class="btn btn-primary-adm">Salvar
+                                <button type="submit" class="btn btn-primary-adm" disabled>Salvar
                                 </button>
                                 <!--<button type="submit" class="btn btn-primary pull-right">Solicitar Exame</button>-->
                             </form>

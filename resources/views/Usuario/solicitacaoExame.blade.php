@@ -31,7 +31,7 @@ The above copyright notice and this permission notice shall be included in all c
 <body class="">
 <div class="wrapper ">
 
-    <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/unidade.jpg">
+    <div class="sidebar" data-color="danger" data-background-color="white" data-image="../assets/img/unidade.jpg">
         <div class="logo"><a href="{{'inicio'}}" class="simple-text logo-normal">
                 Unidade {{Auth::user()->localidade}}
             </a></div>
@@ -181,7 +181,7 @@ The above copyright notice and this permission notice shall be included in all c
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
-                            <div class="card-header card-header-primary">
+                            <div class="card-header card-header-danger">
                                 <h4 class="card-title">Solicitação de Exame</h4>
                             </div>
                             <div class="card-body" id="exame">
@@ -240,14 +240,7 @@ The above copyright notice and this permission notice shall be included in all c
                                             </div>
                                         </div>
                                     </div>
-                                    <button style="  display:block;
-    width:100px;
-    height:40px;
-    font-weight:bold;
-    color:#ffffff;
-    border-radius: 4px;
-    background-color: #9C27B0;
-    border:none;" type="submit" class="btn btn-primary">Salvar
+                                    <button  type="submit" class="btn btn-primary-normal">Salvar
                                     </button>
                                     <!--<button type="submit" class="btn btn-primary pull-right">Solicitar Exame</button>-->
                                 </form>

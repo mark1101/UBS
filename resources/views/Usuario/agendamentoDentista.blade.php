@@ -32,7 +32,7 @@ The above copyright notice and this permission notice shall be included in all c
 <body class="">
 <div class="wrapper ">
 
-    <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/unidade.jpg">
+    <div class="sidebar" data-color="danger" data-background-color="white" data-image="../assets/img/unidade.jpg">
         <div class="logo"><a href="{{'inicio'}}" class="simple-text logo-normal">
                 Unidade {{Auth::user()->localidade}}
             </a></div>
@@ -146,12 +146,13 @@ The above copyright notice and this permission notice shall be included in all c
 
                     <div class="col-md-12">
                         <div class="card">
-                            <div class="card-header card-header-primary">
+                            <div class="card-header card-header-danger">
                                 <h4 class="card-title">Novo Agendamento</h4>
                             </div>
                             <div class="card-body">
                                 <form action="{{route('cadastroEvento')}}" method="post">
                                     @csrf
+
                                     <div class="row">
                                         <div class="col-md-5">
                                             <div class="form-group">
@@ -159,31 +160,58 @@ The above copyright notice and this permission notice shall be included in all c
                                                 <input type="text" class="form-control" name="title" id="title">
                                             </div>
                                         </div>
+                                    </div>
 
-                                        <div class="col-md-4">
+                                    <div class="container">
+                                        <div class="row">
+                                            <label class="bmd-label-floating">Localidade</label>
+                                            <select class="form-control" name="id_localidade" id="id_localidade">
+                                                @foreach($localidades as $localidade)
+                                                    <option
+                                                        value="{{$localidade->id}}">{{$localidade->nome}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+
+
+                                        <div class="row">
+                                            <label class="bmd-label-floating">Paciente</label>
+                                            <select class="form-control" name="id_paciente" id="id_paciente">
+                                                @foreach($pacientes as $paciente)
+                                                    <option
+                                                        value="{{$paciente->id}}">{{$paciente->nome}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                <br>
+
+                                    <div class="row">
+                                        <div class="col-md-2">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Data Inicio</label>
-                                                <input type="text" class="form-control horario" name="start" id="start" placeholder="ano/mes/dia hora/minuto/segundo">
+                                                <input type="text" class="form-control horario" name="start"
+                                                       id="start" placeholder="Y/m/d h/m/s">
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-2">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Data Final</label>
-                                                <input type="text" class="form-control horario" placeholder="ano/mes/dia hora/minuto/segundo"
+                                                <input type="text" class="form-control horario"
+                                                       placeholder="Y/m/d h/m/s"
                                                        name="end" id="end">
                                             </div>
                                         </div>
-
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-4">
+                                        <div class="col-md-1">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Cor</label>
                                                 <input type="color" class="form-control" name="color" id="color">
                                             </div>
                                         </div>
+                                    </div>
 
+
+                                    <div class="row">
                                         <div class="col-md-10">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Descrição</label>
@@ -193,7 +221,7 @@ The above copyright notice and this permission notice shall be included in all c
                                         </div>
                                     </div>
 
-                                    <button type="submit" class="btn btn-primary pull-right">Enviar</button>
+                                    <button type="submit" class="btn btn-primary-normal">Enviar</button>
                                 </form>
                             </div>
                         </div>

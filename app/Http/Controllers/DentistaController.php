@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Dentista;
+use App\Localidade;
 use App\Paciente;
 use Illuminate\Http\Request;
 
@@ -27,6 +28,11 @@ class DentistaController extends Controller
         Dentista::create($data);
     }
     public function agendamentoDentista(){
-        return view('Usuario.agendamentoDentista');
+
+        $localidade = Localidade::all();
+        $paciente = Paciente::all();
+        // caso quiser passar alguma variavel para ca
+        return view('Usuario.agendamentoDentista' ,
+        ['localidades' => $localidade , 'pacientes' => $paciente]);
     }
 }
