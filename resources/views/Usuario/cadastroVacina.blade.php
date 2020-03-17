@@ -193,10 +193,11 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-5">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Nome Paciente</label>
-                                                <select class="form-control ls-select" name="id_paciente" id="id_paciente">
+                                                <select style="text-transform: uppercase;" class="form-control ls-select" name="id_paciente" id="id_paciente">
                                                     @foreach($pacientes as $paciente)
                                                         <option
-                                                            value="{{$paciente->id}}">{{$paciente->nome}} {{$paciente->ultimo_nome}}</option>
+                                                            value="{{$paciente->id}}"style="text-transform: uppercase;" >
+                                                            {{$paciente->nome}} {{$paciente->ultimo_nome}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -206,7 +207,7 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-5">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Vacina Realizada</label>
-                                                <input type="text" class="form-control" id="vacina_realizada"
+                                                <input style="text-transform: uppercase;" type="text" class="form-control" id="vacina_realizada"
                                                        name="vacina_realizada" required>
                                             </div>
                                         </div>
@@ -215,14 +216,14 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Informação de Lote</label>
-                                                <input type="text" class="form-control" id="informacao_lote"
+                                                <input style="text-transform: uppercase;" type="text" class="form-control" id="informacao_lote"
                                                        name="informacao_lote" required>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Dose</label>
-                                                <input type="text" class="form-control" id="dose" name="dose" required>
+                                                <input style="text-transform: uppercase;" type="number" class="form-control" id="dose" name="dose" required>
                                             </div>
                                         </div>
                                     </div>
@@ -239,7 +240,7 @@ The above copyright notice and this permission notice shall be included in all c
                                 <form class="navbar-form" action="{{route('mostraVacina')}}">
                                     @csrf
                                     <div class="input-group no-border">
-                                        <input type="text" id="pesquisaVacina" name="pesquisaVacina"
+                                        <input style="text-transform: uppercase;" type="text" id="pesquisaVacina" name="pesquisaVacina"
                                                style="color:beige;" value="" class="form-control"
                                                placeholder="Digite o primeiro nome do paciente...">
                                         <button type="submit" class="btn btn-white btn-round btn-just-icon">
@@ -266,12 +267,12 @@ The above copyright notice and this permission notice shall be included in all c
                                         <tbody>
                                         @foreach($vacinas as $vacina)
                                             <tr>
-                                                <td>{{$vacina->localidade}}</td>
-                                                <td>{{($vacina->paciente)->nome . " ". ($vacina->paciente)->ultimo_nome}}</td>
-                                                <td>{{$vacina->vacina_realizada}}</td>
-                                                <td>{{$vacina->informacao_lote}}</td>
-                                                <td>{{$vacina->data}}</td>
-                                                <td align="center">{{$vacina->dose}}</td>
+                                                <td style="text-transform: uppercase;" >{{$vacina->localidade}}</td>
+                                                <td style="text-transform: uppercase;" >{{($vacina->paciente)->nome . " ". ($vacina->paciente)->ultimo_nome}}</td>
+                                                <td style="text-transform: uppercase;" >{{$vacina->vacina_realizada}}</td>
+                                                <td style="text-transform: uppercase;" >{{$vacina->informacao_lote}}</td>
+                                                <td style="text-transform: uppercase;" >{{$vacina->data}}</td>
+                                                <td align="center ;text-transform: uppercase;" >{{$vacina->dose}}</td>
                                             </tr>
                                         @endforeach
                                         </tbody>

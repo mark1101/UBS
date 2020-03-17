@@ -39,8 +39,8 @@ The above copyright notice and this permission notice shall be included in all c
     <link href="{{asset('css/material-dashboard.css')}}" rel="stylesheet"/>
 </head>
 
-<body class="">
-<div class="wrapper ">
+<body class="" style="background-color: white">
+<div class="wrapper " style="background-color: white">
 
     <div class="sidebar" data-color="azure" data-background-color="white" data-image="../assets/img/unidade.jpg">
         <div class="logo"><a href="#" class="simple-text logo-normal">
@@ -143,7 +143,7 @@ The above copyright notice and this permission notice shall be included in all c
 
         @include('Dentista.modal-calendar')
 
-        <div class="content">
+        <div class="content" style="background-color: white">
             <div class="container-fluid">
                 <div id='wrap'>
                     @csrf

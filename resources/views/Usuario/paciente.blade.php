@@ -196,35 +196,35 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Primeiro Nome</label>
-                                                <input type="text" class="form-control" maxlength="15" id="nome"
+                                                <input style="text-transform: uppercase;" type="text" class="form-control" maxlength="15" id="nome"
                                                        name="nome" required>
                                             </div>
                                         </div>
                                         <div class="col-md-5">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Restante nome</label>
-                                                <input type="text" class="form-control" maxlength="40" id="ultimo_nome"
+                                                <input style="text-transform: uppercase;" type="text" class="form-control" maxlength="40" id="ultimo_nome"
                                                        name="ultimo_nome" required>
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Data de Nascimento</label>
-                                                <input type="text" class="form-control data" id="data-nascimento"
+                                                <input style="text-transform: uppercase;" type="text" class="form-control data" id="data-nascimento"
                                                        name="data_nascimento" maxlength="16" required>
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Idade</label>
-                                                <input type="text" class="form-control idade" id="idade" name="idade"
+                                                <input style="text-transform: uppercase;" type="text" class="form-control idade" id="idade" name="idade"
                                                        required>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Email</label>
-                                                <input type="email" class="form-control" maxlength="60" id="emal"
+                                                <input style="text-transform: uppercase;" type="email" class="form-control" maxlength="60" id="emal"
                                                        name="email">
                                             </div>
                                         </div>
@@ -233,14 +233,14 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Numero do SUS</label>
-                                                <input type="text" class="form-control sus" id="num_sus" name="num_sus"
+                                                <input style="text-transform: uppercase;" type="text" class="form-control sus" id="num_sus" name="num_sus"
                                                        required>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">CPF</label>
-                                                <input type="text" class="form-control cpf" id="cpf" name="cpf"
+                                                <input style="text-transform: uppercase;" type="text" class="form-control cpf" id="cpf" name="cpf"
                                                        maxlength="16" required>
                                             </div>
                                         </div>
@@ -249,10 +249,11 @@ The above copyright notice and this permission notice shall be included in all c
                                     <p class="card-category">Informações de Endereço</p>
                                     <div class="container">
                                         <div class="row">
-                                            <select class="form-control" name="id_localidade" id="id_localidade">
+                                            <select style="text-transform: uppercase;" class="form-control" name="id_localidade" id="id_localidade">
                                                 @foreach($localidades as $localidade)
                                                     <option
-                                                        value="{{$localidade->id}}">{{$localidade->nome}}</option>
+                                                        value="{{$localidade->id}}"style="text-transform: uppercase;" >
+                                                        {{$localidade->nome}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -261,7 +262,7 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Telefone</label>
-                                                <input type="text" class="form-control telefone" id="telefone"
+                                                <input style="text-transform: uppercase;" type="text" class="form-control telefone" id="telefone"
                                                        name="telefone">
                                             </div>
                                         </div>

@@ -19,8 +19,12 @@ class LocalidadeController extends Controller
     public function indexCadastroLocalidade()
     {
         $sede = Sede::all();
-        $paciente = Paciente::where('id_localidade', Localidade::all())->count();
 
+        $localidades = Localidade::all();
+        foreach ($localidades as $localidade){
+            $paciente[$localidade->id] = Paciente::where('id_localidade',
+                $localidade->id)->count();
+        }
         $localidade = Localidade::where('id_sede', Auth::user()->cidade_sede)
             ->orderBy('nome')
             ->get();

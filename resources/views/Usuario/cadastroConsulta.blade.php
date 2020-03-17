@@ -197,20 +197,20 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-1">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Peso</label>
-                                                <input type="text" class="form-control peso" name="peso" id="peso">
+                                                <input style="text-transform: uppercase;" type="text" class="form-control peso" name="peso" id="peso">
                                             </div>
                                         </div>
                                         <div class="col-md-1">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Altura</label>
-                                                <input type="text" class="form-control altura" name="altura"
+                                                <input vtype="text" class="form-control altura" name="altura"
                                                        id="altura">
                                             </div>
                                         </div>
                                         <div class="col-md-1    ">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Pressão</label>
-                                                <input type="text" class="form-control" name="pressao" id="pressao">
+                                                <input style="text-transform: uppercase;" type="text" class="form-control" name="pressao" id="pressao">
                                             </div>
                                         </div>
                                     </div>
@@ -221,11 +221,12 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-5">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Nome Paciente</label>
-                                                <select class="form-control ls-select" name="id_paciente"
+                                                <select style="text-transform: uppercase;" class="form-control ls-select" name="id_paciente"
                                                         id="id_paciente">
                                                     @foreach($pacientes as $paciente)
                                                         <option
-                                                            value="{{$paciente->id}}">{{$paciente->nome}} {{$paciente->ultimo_nome}}</option>
+                                                            value="{{$paciente->id}}"style="text-transform: uppercase;" >
+                                                            {{$paciente->nome}} {{$paciente->ultimo_nome}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -235,14 +236,14 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-10">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Sintomas</label>
-                                                <textarea class="form-control" id="sintomas" name="sintomas"
+                                                <textarea style="text-transform: uppercase;" class="form-control" id="sintomas" name="sintomas"
                                                           rows="3"></textarea>
                                             </div>
                                         </div>
                                         <div class="col-md-10">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Observações</label>
-                                                <textarea class="form-control" id="observacoes" name="observacoes"
+                                                <textarea style="text-transform: uppercase;" class="form-control" id="observacoes" name="observacoes"
                                                           rows="3"></textarea>
                                             </div>
                                         </div>
@@ -251,7 +252,7 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-10">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Finalização de Examinações</label>
-                                                <textarea class="form-control" id="finalizacao" name="finalizacao"
+                                                <textarea style="text-transform: uppercase;" class="form-control" id="finalizacao" name="finalizacao"
                                                           rows="3"></textarea>
                                             </div>
                                         </div>

@@ -191,20 +191,20 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Nome do Profissional</label>
-                                                <input type="text" class="form-control">
+                                                <input style="text-transform: uppercase;" type="text" class="form-control">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Nome do Paciente</label>
-                                                <input type="text" class="form-control">
+                                                <input style="text-transform: uppercase;" type="text" class="form-control">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Especialidade de
                                                     Encaminhamento</label>
-                                                <select class="form-control" name="" id="">
+                                                <select style="text-transform: uppercase;" class="form-control" name="" id="">
                                                     <option value="1" selected>Fisioterapia</option>
                                                     <option value="2">Neurologista</option>
                                                     <option value="3">Ginecologista</option>
@@ -219,7 +219,7 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-10">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Objetivo do Encaminhamento</label>
-                                                <textarea class="form-control" id="exampleFormControlTextarea1"
+                                                <textarea style="text-transform: uppercase;" class="form-control" id="exampleFormControlTextarea1"
                                                           rows="3"></textarea>
                                             </div>
                                         </div>
@@ -228,7 +228,7 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-10">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Observação</label>
-                                                <textarea class="form-control" id="exampleFormControlTextarea1"
+                                                <textarea style="text-transform: uppercase;" class="form-control" id="exampleFormControlTextarea1"
                                                           rows="3"></textarea>
                                             </div>
                                         </div>
@@ -238,7 +238,7 @@ The above copyright notice and this permission notice shall be included in all c
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Data</label>
                                                 <br>
-                                                <input type="date" class="form-control">
+                                                <input style="text-transform: uppercase;" type="date" class="form-control">
                                             </div>
                                         </div>
                                     </div>

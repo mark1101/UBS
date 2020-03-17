@@ -195,19 +195,19 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">De</label>
-                                                <input type="text" class="form-control">
+                                                <input style="text-transform: uppercase;" type="text" class="form-control">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Para</label>
-                                                <input type="text" class="form-control">
+                                                <input style="text-transform: uppercase;" type="text" class="form-control">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Módulo de Trabalho</label>
-                                                <select class="form-control" name="" id="">
+                                                <select style="text-transform: uppercase;" class="form-control" name="" id="">
                                                     <option value="1" selected>Medico</option>
                                                     <option value="2">Enfermaria</option>
                                                     <option value="3">Recepção</option>
@@ -222,7 +222,7 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-10">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Mensagem</label>
-                                                <textarea class="form-control" id="exampleFormControlTextarea1"
+                                                <textarea style="text-transform: uppercase;" class="form-control" id="exampleFormControlTextarea1"
                                                           rows="3" maxlength="50"></textarea>
                                             </div>
                                         </div>

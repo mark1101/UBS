@@ -215,12 +215,12 @@ The above copyright notice and this permission notice shall be included in all c
                                             <tbody>
                                             @foreach($pacientes as $paciente)
                                                 <tr>
-                                                    <td width="20%">{{$paciente->nome. " " .$paciente->ultimo_nome}} </td>
-                                                    <td>{{$paciente->data_nascimento}}</td>
-                                                    <td>{{$paciente->num_sus}}</td>
-                                                    <td>{{$paciente->cpf}}</td>
-                                                    <td>{{($paciente->localidade)->nome}}</td>
-                                                    <td>{{$paciente->telefone}}</td>
+                                                    <td style="text-transform: uppercase;"  width="20%">{{$paciente->nome. " " .$paciente->ultimo_nome}} </td>
+                                                    <td style="text-transform: uppercase; text-align: center" >{{$paciente->data_nascimento}}</td>
+                                                    <td style="text-transform: uppercase;" >{{$paciente->num_sus}}</td>
+                                                    <td style="text-transform: uppercase;" >{{$paciente->cpf}}</td>
+                                                    <td style="text-transform: uppercase;" >{{($paciente->localidade)->nome}}</td>
+                                                    <td style="text-transform: uppercase;" >{{$paciente->telefone}}</td>
                                                 </tr>
                                             @endforeach
                                             </tbody>

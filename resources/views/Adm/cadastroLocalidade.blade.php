@@ -185,10 +185,11 @@ The above copyright notice and this permission notice shall be included in all c
                                 @csrf
                                 <div class="container">
                                     <div class="row">
-                                        <select class="form-control" name="id_sede" id="id_sede">
+                                        <select style="text-transform: uppercase;" class="form-control" name="id_sede" id="id_sede">
                                             @foreach($sedes as $sede)
                                                 <option
-                                                    value="{{$sede->id}}">{{$sede->nome}}</option>
+                                                    value="{{$sede->id}}" style="text-transform: uppercase;">
+                                                    {{$sede->nome}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -246,8 +247,8 @@ The above copyright notice and this permission notice shall be included in all c
                                     <tbody>
                                     @foreach($localidades as $localidade )
                                         <tr>
-                                            <td>{{$localidade->nome}}</td>
-                                            <td>{{$pacientes}}</td>
+                                            <td style="text-transform: uppercase;">{{$localidade->nome}}</td>
+                                            <td>{{$pacientes[$localidade->id]}}</td>
                                             <td></td>
                                             <td></td>
                                             <td></td>
