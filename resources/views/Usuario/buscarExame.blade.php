@@ -31,7 +31,7 @@ The above copyright notice and this permission notice shall be included in all c
 <body class="">
 <div class="wrapper ">
 
-    <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/unidade.jpg">
+    <div class="sidebar" data-color="green" data-background-color="white" data-image="../assets/img/unidade.jpg">
         <div class="logo"><a href="#" class="simple-text logo-normal">
                 Unidade São José
             </a></div>
@@ -181,7 +181,7 @@ The above copyright notice and this permission notice shall be included in all c
 
                         <!-- CARD DE CIMA PARA PESQUISA -->
                         <div class="card">
-                            <div class="card-header card-header-primary">
+                            <div class="card-header card-header-success">
                                 <h4 class="card-title">Pesquisa de Exame</h4>
                                 <form class="navbar-form">
                                     <div class="input-group no-border">
@@ -213,7 +213,7 @@ The above copyright notice and this permission notice shall be included in all c
                             <div class="card-body">
                                 <div class="table-responsive" style="overflow: auto; height: 250px;">
                                     <table class="table">
-                                        <thead class=" text-primary">
+                                        <thead class=" text-success">
                                         <th>
                                             ID
                                         </th>

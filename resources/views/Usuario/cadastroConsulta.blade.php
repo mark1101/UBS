@@ -31,7 +31,7 @@ The above copyright notice and this permission notice shall be included in all c
 <body class="">
 <div class="wrapper ">
 
-    <div class="sidebar" data-color="danger" data-background-color="white" data-image="../assets/img/unidade.jpg">
+    <div class="sidebar" data-color="green" data-background-color="white" data-image="../assets/img/unidade.jpg">
         <div class="logo"><a href="#" class="simple-text logo-normal">
                 Unidade São José
             </a></div>
@@ -186,7 +186,7 @@ The above copyright notice and this permission notice shall be included in all c
                     <!-- FORM DE CADASTRO DE CONSULTA  -->
                     <div class="col-md-12">
                         <div class="card">
-                            <div class="card-header card-header-danger">
+                            <div class="card-header card-header-success">
                                 <h4 class="card-title">Cadastro de Nova Consulta</h4>
                             </div>
                             <div class="card-body">

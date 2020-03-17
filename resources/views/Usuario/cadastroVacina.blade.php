@@ -31,7 +31,7 @@ The above copyright notice and this permission notice shall be included in all c
 <body class="">
 <div class="wrapper ">
 
-    <div class="sidebar" data-color="danger" data-background-color="white" data-image="../assets/img/unidade.jpg">
+    <div class="sidebar" data-color="green" data-background-color="white" data-image="../assets/img/unidade.jpg">
         <div class="logo"><a href="{{'inicio'}}" class="simple-text logo-normal">
                 Unidade {{Auth::user()->localidade}}
             </a></div>
@@ -183,7 +183,7 @@ The above copyright notice and this permission notice shall be included in all c
                     <!-- FORM DE CADASTRO DE VACINA  -->
                     <div class="col-md-12">
                         <div class="card">
-                            <div class="card-header card-header-danger">
+                            <div class="card-header card-header-success">
                                 <h4 class="card-title">Cadastro de Vacina</h4>
                             </div>
                             <div class="card-body">
@@ -234,7 +234,7 @@ The above copyright notice and this permission notice shall be included in all c
                     </div>
                     <div class="col-md-12" style="overflow: hidden">
                         <div class="card">
-                            <div class="card-header card-header-danger">
+                            <div class="card-header card-header-success">
                                 <h4 class="card-title">Buscar Vacina</h4>
                                 <form class="navbar-form" action="{{route('mostraVacina')}}">
                                     @csrf
@@ -271,7 +271,7 @@ The above copyright notice and this permission notice shall be included in all c
                                                 <td>{{$vacina->vacina_realizada}}</td>
                                                 <td>{{$vacina->informacao_lote}}</td>
                                                 <td>{{$vacina->data}}</td>
-                                                <td>{{$vacina->dose}}</td>
+                                                <td align="center">{{$vacina->dose}}</td>
                                             </tr>
                                         @endforeach
                                         </tbody>

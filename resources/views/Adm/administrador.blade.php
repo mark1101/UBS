@@ -21,7 +21,7 @@
 <body class="">
 <div class="wrapper ">
 
-    <div class="sidebar" data-color="azure" data-background-color="white" data-image="../assets/img/unidade.jpg">
+    <div class="sidebar" data-color="admin" data-background-color="white" data-image="../assets/img/unidade.jpg">
         <div class="logo"><a href="{{'/'}}" class="simple-text logo-normal">
             <img src="{{asset('img/adm.png')}}">
             </a></div>
@@ -142,7 +142,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Odontológico</h5>
                             <img src="{{asset('img/DenteClicavel.png')}}">
-                            <a href="#" class="btn btn-primary-adm">Ver</a>
+                            <a href="#" class="btn btn-primary-admin">Ver</a>
                         </div>
                     </div>
                     &nbsp &nbsp &nbsp
@@ -150,7 +150,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Carros da Saude</h5>
                             <img src="{{asset('img/CarroClicavel.png')}}">
-                            <a href="#" class="btn btn-primary-adm">Ver</a>
+                            <a href="#" class="btn btn-primary-admin">Ver</a>
                         </div>
                     </div>
                     &nbsp &nbsp &nbsp
@@ -158,7 +158,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Profissionais</h5>
                             <img src="{{asset('img/ProfissionaisClicavel.png')}}">
-                            <a href="#" class="btn btn-primary-adm">Ver</a>
+                            <a href="#" class="btn btn-primary-admin">Ver</a>
                         </div>
                     </div>
                     &nbsp &nbsp &nbsp
@@ -166,7 +166,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Pacientes</h5>
                             <img src="{{asset('img/PacienteClicavel.png')}}">
-                            <a href="#" class="btn btn-primary-adm">Ver</a>
+                            <a href="#" class="btn btn-primary-admin">Ver</a>
                         </div>
                     </div>
                 </div>
@@ -175,7 +175,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Exames</h5>
                             <img src="{{asset('img/ExameClicavel.png')}}">
-                            <a href="#" class="btn btn-primary-adm">Ver</a>
+                            <a href="#" class="btn btn-primary-admin">Ver</a>
                         </div>
                     </div>
                     &nbsp &nbsp &nbsp
@@ -183,7 +183,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Vacinas</h5>
                             <img src="{{asset('img/VacinaClicavel.png')}}">
-                            <a href="#" class="btn btn-primary-adm">Ver</a>
+                            <a href="#" class="btn btn-primary-admin">Ver</a>
                         </div>
                     </div>
                     &nbsp &nbsp &nbsp
@@ -191,7 +191,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Encaminhamentos</h5>
                             <img src="{{asset('img/EncaminhamentoClicavel.png')}}">
-                            <a href="#" class="btn btn-primary-adm">Ver</a>
+                            <a href="#" class="btn btn-primary-admin">Ver</a>
                         </div>
                     </div>
                 </div>

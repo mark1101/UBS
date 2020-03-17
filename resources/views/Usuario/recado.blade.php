@@ -31,7 +31,7 @@ The above copyright notice and this permission notice shall be included in all c
 <body class="">
 <div class="wrapper ">
 
-    <div class="sidebar" data-color="danger" data-background-color="white" data-image="../assets/img/unidade.jpg">
+    <div class="sidebar" data-color="green" data-background-color="white" data-image="../assets/img/unidade.jpg">
         <div class="logo"><a href="{{'inicio'}}" class="simple-text logo-normal">
                 Unidade {{Auth::user()->localidade}}
             </a></div>
@@ -181,7 +181,7 @@ The above copyright notice and this permission notice shall be included in all c
                     <div class="card-body">
                         <div class="table-responsive" style="overflow: auto; height: 250px;">
                             <table class="table">
-                                <thead class=" text-danger">
+                                <thead class=" text-success">
                                 <th>
                                     ID
                                 </th>

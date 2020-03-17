@@ -31,7 +31,7 @@ The above copyright notice and this permission notice shall be included in all c
 <body class="">
 <div class="wrapper ">
 
-    <div class="sidebar" data-color="azure" data-background-color="white" data-image="../assets/img/unidade.jpg">
+    <div class="sidebar" data-color="admin" data-background-color="white" data-image="../assets/img/unidade.jpg">
         <div class="logo"><a href="{{'/'}}" class="simple-text logo-normal">
                 <img src="{{asset('img/adm.png')}}">
             </a></div>
@@ -150,7 +150,7 @@ The above copyright notice and this permission notice shall be included in all c
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
-                            <div class="card-header card-header-info">
+                            <div class="card-header card-header-admin">
                                 <h4 class="card-title">Cadastro de Motoristas</h4>
                             </div>
                             <div class="card-body" id="exame">
@@ -187,7 +187,7 @@ The above copyright notice and this permission notice shall be included in all c
                                         </div>
                                     </div>
                                     <br>
-                                    <button type="submit" class="btn btn-primary-adm">Salvar
+                                    <button type="submit" class="btn btn-primary-admin">Salvar
                                     </button>
                                     <!--<button type="submit" class="btn btn-primary pull-right">Solicitar Exame</button>-->
                                 </form>
@@ -197,7 +197,7 @@ The above copyright notice and this permission notice shall be included in all c
 
                     <div class="col-md-12">
                         <div class="card">
-                            <div class="card-header card-header-info">
+                            <div class="card-header card-header-admin">
                                 <h4 class="card-title">Cadastro de Automóveis</h4>
                             </div>
                             <div class="card-body" id="carros">
@@ -228,7 +228,7 @@ The above copyright notice and this permission notice shall be included in all c
                                         </div>
                                     </div>
                                     <br>
-                                    <button type="submit" class="btn btn-primary-adm">Salvar
+                                    <button type="submit" class="btn btn-primary-admin">Salvar
                                     </button>
                                     <!--<button type="submit" class="btn btn-primary pull-right">Solicitar Exame</button>-->
                                 </form>

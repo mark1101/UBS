@@ -21,7 +21,7 @@
 <body class="">
 <div class="wrapper ">
 
-    <div class="sidebar" data-color="danger" data-background-color="white" data-image="../assets/img/unidade.jpg">
+    <div class="sidebar" data-color="green" data-background-color="white" data-image="../assets/img/unidade.jpg">
         <div class="logo"><a href="{{'inicio'}}" class="simple-text logo-normal">
                 Unidade {{Auth::user()->localidade}}
             </a></div>
@@ -171,7 +171,7 @@
         <div class="content">
             <div class="container-fluid">
                 <h1 align="center" style="font-family: Candara">TELA DE INICÍO</h1>
-                <h1 align="center" style="font-family: Candara">BEM VINDO {{Auth::user()->name}}</h1>
+                <h1 align="center" style="font-family: Candara">BEM VINDO </h1>
             </div>
 
         </div>

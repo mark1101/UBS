@@ -31,7 +31,7 @@ The above copyright notice and this permission notice shall be included in all c
 <body class="">
 <div class="wrapper ">
 
-    <div class="sidebar" data-color="azure" data-background-color="white" data-image="../assets/img/unidade.jpg">
+    <div class="sidebar" data-color="admin" data-background-color="white" data-image="../assets/img/unidade.jpg">
         <div class="logo"><a href="{{'/'}}" class="simple-text logo-normal">
                 <img src="{{asset('img/adm.png')}}">
             </a></div>
@@ -147,36 +147,37 @@ The above copyright notice and this permission notice shall be included in all c
 
         <div class="content">
             <div class="container-fluid">
-                <div class="col-md-12">
+
+            <!-- <div class="col-md-12">
                     <div class="card">
-                        <div class="card-header card-header-info">
+                        <div class="card-header card-header-admin">
                             <h4 class="card-title">Cadastro de Sede</h4>
                         </div>
                         <div class="card-body" id="exame">
                             <form action="{{route('storeSede')}}" method="post">
                                 @csrf
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="bmd-label-floating">Nome da Cidade Sede</label>
-                                            <input type="text" class="form-control " id="nome"
-                                                   name="nome" disabled>
-                                        </div>
-                                    </div>
-                                </div>
-                                <br>
-                                <button type="submit" class="btn btn-primary-adm" disabled>Salvar
-                                </button>
-                                <!--<button type="submit" class="btn btn-primary pull-right">Solicitar Exame</button>-->
-                            </form>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="bmd-label-floating">Nome da Cidade Sede</label>
+                            <input type="text" class="form-control " id="nome"
+                                   name="nome" disabled>
                         </div>
                     </div>
                 </div>
+                <br>
+                <button type="submit" class="btn btn-admin" disabled>
+                    Funcionalidade somente para o gerenciador do sistema
+                </button>
+            </form>
+        </div>
+    </div>
+</div> -->
 
 
                 <div class="col-md-12">
                     <div class="card">
-                        <div class="card-header card-header-info">
+                        <div class="card-header card-header-admin">
                             <h4 class="card-title">Cadastro de Localidade</h4>
                         </div>
                         <div class="card-body" id="exame">
@@ -202,10 +203,61 @@ The above copyright notice and this permission notice shall be included in all c
                                     </div>
                                 </div>
                                 <br>
-                                <button type="submit" class="btn btn-primary-adm">Salvar
+                                <button type="submit" class="btn btn-primary-admin">Salvar
                                 </button>
                                 <!--<button type="submit" class="btn btn-primary pull-right">Solicitar Exame</button>-->
                             </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12" style="overflow: hidden">
+                    <div class="card">
+                        <div class="card-header card-header-admin">
+                            <h4 class="card-title">Comunidades Cadastradas</h4>
+                            <form class="navbar-form" action="#">
+                                @csrf
+                                <div class="input-group no-border">
+                                    <input type="text" id="pesquisaVacina" name="pesquisaVacina"
+                                           style="color:beige;" value="" class="form-control"
+                                           placeholder="Digite a primeira letra da comunidade...">
+                                    <button type="submit" class="btn btn-white btn-round btn-just-icon">
+                                        <i class="material-icons">search</i>
+                                        <div class="ripple-container"></div>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="table-responsive" style="overflow: auto; height: 300px;">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>Nome</th>
+                                        <th>Pacientes</th>
+                                        <th>Consultas</th>
+                                        <th>Exames</th>
+                                        <th>Encaminhamentos</th>
+                                        <th>Vacinas</th>
+                                        <th>Odontológico</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($localidades as $localidade )
+                                        <tr>
+                                            <td>{{$localidade->nome}}</td>
+                                            <td>{{$pacientes}}</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -31,7 +31,7 @@ The above copyright notice and this permission notice shall be included in all c
 <body class="">
 <div class="wrapper ">
 
-    <div class="sidebar" data-color="danger" data-background-color="white" data-image="../assets/img/unidade.jpg">
+    <div class="sidebar" data-color="green" data-background-color="white" data-image="../assets/img/unidade.jpg">
         <div class="logo"><a href="{{'inicio'}}" class="simple-text logo-normal">
                 Unidade {{Auth::user()->localidade}}
             </a></div>
@@ -183,7 +183,7 @@ The above copyright notice and this permission notice shall be included in all c
                     <!-- FORM DE CADASTRO DE PACIENTE  -->
                     <div class="col-md-12">
                         <div class="card">
-                            <div class="card-header card-header-danger">
+                            <div class="card-header card-header-success">
                                 <h4 class="card-title">Cadastro de Exame</h4>
                             </div>
                             <div class="card-body" id="exame">
