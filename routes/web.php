@@ -78,6 +78,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/cadastroLocalidade', 'LocalidadeController@indexCadastroLocalidade')->name('cadastroLocalidade');
     Route::post('/cadastrouLocalidade', 'LocalidadeController@cadastroLocalidade')->name('storeLocalidade');
     Route::post('/cadastrouSede', 'LocalidadeController@cadastroSede')->name('storeSede');
+    Route::get('/cadastraProfissional' , 'ProfissionalController@indexProfissional')->name('cadastraProfissional');
+    Route::post('/cadastrouProfissional' , 'ProfissionalController@cadastroProfissional')->name('storeProfisional');
 
 
 // ROTAS DE ODONTOLOGIA

@@ -32,71 +32,26 @@ The above copyright notice and this permission notice shall be included in all c
 <div class="wrapper ">
 
     <div class="sidebar" data-color="admin" data-background-color="white" data-image="../assets/img/unidade.jpg">
-        <div class="logo"><a href="{{'inicio'}}" class="simple-text logo-normal">
-                Unidade {{Auth::user()->localidade}}
+        <div class="logo"><a href="{{'/'}}" class="simple-text logo-normal">
+                <img src="{{asset('img/adm.png')}}">
             </a></div>
-        <div class="sidebar-wrapper">
+        <div class="sidebar-wrapper ">
             <ul class="nav">
-                <li class="nav-item  ">
-                    <a class="nav-link" href="{{route('inicio')}}">
+                <li class="nav-item ">
+                    <a class="nav-link" href="{{'/'}}">
                         <i class="material-icons">home_work</i>
                         <p>Início</p>
                     </a>
                 </li>
-                <li class="nav-item dropdown active">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false">
-                        <i class="material-icons">person</i>
-                        Paciente
+                <li class="nav-item ">
+                    <a class="nav-link" href="#">
+                        <i class="material-icons">arrow_right_alt
+                        </i>
+                        <p>Encaminhamentos</p>
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{route('paciente')}}">Cadastro de Paciente</a>
-                        <a class="dropdown-item" href="{{route('mostraPaciente')}}">Busca de Paciente</a>
-                    </div>
                 </li>
-                @if(Auth::user()->controle_acesso == 2)
-                    <li class="nav-item dropdown ">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                           data-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false">
-                            <i class="material-icons">content_paste</i>
-                            Exames
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{route('cadastroExame')}}">Novo Exame</a>
-                            <a class="dropdown-item" href="{{route('buscarExame')}}">Buscar Exames </a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown ">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                           data-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false">
-                            <i class="material-icons">insert_emoticon</i>
-                            Consultas
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{route('consultaCadastro')}}">Nova Consulta</a>
-                            <a class="dropdown-item" href="#">Buscar Consulta </a>
-                        </div>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="{{route('mostraVacina')}}">
-                            <i class="material-icons">format_color_reset
-                            </i>
-                            <p>Vacinas</p>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="{{route('encaminhamento')}}">
-                            <i class="material-icons">arrow_right_alt
-                            </i>
-                            <p>Encaminhamentos</p>
-                        </a>
-                    </li>
-                @endif
-                <li class="nav-item  ">
-                    <a class="nav-link" href="{{route('recado')}}">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
                         <i class="material-icons">attach_file
                         </i>
                         <p>Recados</p>
@@ -104,27 +59,39 @@ The above copyright notice and this permission notice shall be included in all c
                 </li>
                 <li class="nav-item  ">
                     <a class="nav-link" href="#">
-                        <i class="material-icons">history
+                        <i class="material-icons">commute
                         </i>
-                        <p>Histórico dos Pacientes</p>
+                        <p>Dados de viagens</p>
                     </a>
                 </li>
-                @if(Auth::user()->controle_acesso == 4)
-                    <li class="nav-item ">
-                        <a class="nav-link" href="{{route('controleViagem')}}">
-                            <i class="material-icons">commute
-                            </i>
-                            <p>Gerenciamento de Viagens</p>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="{{route('agendamentoDentista')}}">
-                            <i class="material-icons">airline_seat_flat_angled
-                            </i>
-                            <p>Agendamento Dentista</p>
-                        </a>
-                    </li>
-                @endif
+                <li class="nav-item  ">
+                    <a class="nav-link" href="{{route('cadastroLocalidade')}}">
+                        <i class="material-icons">house
+                        </i>
+                        <p>Cadastro Localidade</p>
+                    </a>
+                </li>
+                <li class="nav-item  active">
+                    <a class="nav-link" href="{{route('cadastraProfissional')}}">
+                        <i class="material-icons">person
+                        </i>
+                        <p>Cadastrar Profissionais</p>
+                    </a>
+                </li>
+                <li class="nav-item  ">
+                    <a class="nav-link" href="{{route('cadastroMotorista')}}">
+                        <i class="material-icons">directions_car
+                        </i>
+                        <p>Cadastrar Motoristas</p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="#">
+                        <i class="material-icons">history
+                        </i>
+                        <p>Histórico de Pacientes</p>
+                    </a>
+                </li>
             </ul>
 
         </div>
@@ -182,98 +149,118 @@ The above copyright notice and this permission notice shall be included in all c
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <!-- CADASTRO DE PACIENTE -->
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header card-header-admin">
-                                <h4 class="card-title">Cadastro de paciente</h4>
+                                <h4 class="card-title">Cadastro de Novos Profissionais</h4>
                             </div>
                             <div class="card-body">
-                                <form action="{{route('cadastraPaciente')}}" method="post">
+                                <form action="{{route('storeProfisional')}}" method="post">
                                     @csrf
                                     <p class="card-category">Dados Pessoais</p>
                                     <div class="row">
-                                        <div class="col-md-3">
+                                        <div class="col-md-7">
                                             <div class="form-group">
-                                                <label class="bmd-label-floating">Primeiro Nome</label>
-                                                <input type="text" class="form-control" maxlength="15" id="nome"
-                                                       name="nome" required>
+                                                <label class="bmd-label-floating">Nome</label>
+                                                <input type="text" class="form-control" maxlength="15" id="name"
+                                                       name="name" required>
                                             </div>
                                         </div>
-                                        <div class="col-md-5">
+                                        <div class="col-md-2">
                                             <div class="form-group">
-                                                <label class="bmd-label-floating">Restante nome</label>
-                                                <input type="text" class="form-control" maxlength="40" id="ultimo_nome"
-                                                       name="ultimo_nome" required>
+                                                <label class="bmd-label-floating">CPF</label>
+                                                <input type="text" class="form-control cpf" id="cpf"
+                                                       name="cpf" required>
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-md-2">
                                             <div class="form-group">
-                                                <label class="bmd-label-floating">Data de Nascimento</label>
-                                                <input type="text" class="form-control data" id="data-nascimento"
-                                                       name="data_nascimento" maxlength="16" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Idade</label>
-                                                <input type="text" class="form-control idade" id="idade" name="idade"
-                                                       required>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Email</label>
-                                                <input type="email" class="form-control" maxlength="60" id="emal"
-                                                       name="email">
+                                                <label class="bmd-label-floating">Data Nascimento</label>
+                                                <input type="text" class="form-control data" id="data_nascimento"
+                                                       name="data_nascimento" required>
                                             </div>
                                         </div>
                                     </div>
+                                    <p class="card-category">Informaçao de Endereço</p>
+
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label class="bmd-label-floating">Numero do SUS</label>
-                                                <input type="text" class="form-control sus" id="num_sus" name="num_sus"
-                                                       required>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">CPF</label>
-                                                <input type="text" class="form-control cpf" id="cpf" name="cpf"
-                                                       maxlength="16" required>
+                                                <label class="bmd-label-floating">Área de Trabalho</label>
+                                                <select style="text-transform: uppercase;" class="form-control"
+                                                        name="funcao" id="funcao" required>
+                                                    <option selected>Recepcao</option>
+                                                    <option>Medicina</option>
+                                                    <option>Enfermagem</option>
+                                                    <option>Agente de Saúde</option>
+                                                    <option>Odontologia</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
-
-                                    <p class="card-category">Informações de Endereço</p>
                                     <div class="container">
+
                                         <div class="row">
-                                            <select class="form-control" name="id_localidade" id="id_localidade">
+                                            <p class="card-category">Cidade Sede</p>
+                                            <select style="text-transform: uppercase;" class="form-control"
+                                                    name="cidade_sede" id="cidade_sede">
+                                                @foreach($sedes as $sede)
+                                                    <option
+                                                        value="{{$sede->id}}" style="text-transform: uppercase;">
+                                                        {{$sede->nome}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="container">
+
+                                        <div class="row">
+                                            <p class="card-category">Localidade</p>
+                                            <select style="text-transform: uppercase;" class="form-control"
+                                                    name="localidade" id="localidade">
                                                 @foreach($localidades as $localidade)
                                                     <option
-                                                        value="{{$localidade->id}}">{{$localidade->nome}}</option>
+                                                        value="{{$localidade->id}}" style="text-transform: uppercase;">
+                                                        {{$localidade->nome}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
                                     </div>
                                     <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Email</label>
+                                                <input type="email" class="form-control" maxlength="60" id="email"
+                                                       name="email" required>
+                                            </div>
+                                        </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label class="bmd-label-floating">Telefone</label>
-                                                <input type="text" class="form-control telefone" id="telefone"
-                                                       name="telefone">
+                                                <label class="bmd-label-floating">Senha</label>
+                                                <input type="text" class="form-control" id="password" name="password"
+                                                       required>
                                             </div>
                                         </div>
                                     </div>
-                                    <button style="  display:block;
-    width:100px;
-    height:40px;
-    font-weight:bold;
-    color:#ffffff;
-    border-radius: 4px;
-    background-color: #9C27B0;
-    border:none;" type="submit" class="btn btn-primary">Salvar
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Controle de Acesso</label>
+                                                <input type="text" class="form-control" maxlength="60"
+                                                       id="controle_acesso"
+                                                       name="controle_acesso" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Número de N</label>
+                                                <input type="text" class="form-control" maxlength="60"
+                                                       id="admin"
+                                                       name="admin" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary-admin">Salvar
                                     </button>
                                 </form>
                             </div>
