@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Localidade;
 use App\Paciente;
 use App\Vacina;
 use Illuminate\Http\Request;
@@ -21,7 +22,7 @@ class VacinaController extends Controller
 
         $data = $request->all();
 
-        $data['localidade'] = Auth::user()->localidade;
+        $data['id_localidade'] = Auth::user()->localidade;
         $data['id_profissional'] = Auth::user()->id;
 
         Vacina::create($data);
@@ -31,9 +32,11 @@ class VacinaController extends Controller
     public function mostraVacina(Request $request){
 
         $paciente = Paciente::all();
+        $localidade = Localidade::all();
 
         return view('Usuario.cadastroVacina', [
-            'pacientes' => $paciente
-        ], ['vacinas' => Vacina::with(['paciente'])->get()] );
+            'pacientes' => $paciente,
+            'localidades' => $localidade
+        ], ['vacinas' => Vacina::with(['paciente'])->get(), 'vacinas' => Vacina::with(['localidade'])->get()] );
     }
 }

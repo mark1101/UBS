@@ -20,7 +20,7 @@ class ConsultaController extends Controller
     {
         $data = $request->all();
 
-        $data['localidade'] = Auth::user()->localidade;
+        $data['id_localidade'] = Auth::user()->localidade;
         $data['id_profissional'] = Auth::user()->id;
 
         Consulta::create($data);
@@ -31,7 +31,10 @@ class ConsultaController extends Controller
         $consulta = Consulta::all();
         $profissionais = User::all();
 
-        return view('Usuario.mostraConsulta' , ['paciente' => $paciente] , ['users' => $profissionais] ,
-        ['consultas' => Consulta::with('paciente')->get()]);
+        return view('Usuario.mostraConsulta' , ['paciente' => $paciente, 'users' => $profissionais ,
+            'consultas' => Consulta::with(['paciente'])->get(),
+            'consultas' => Consulta::with(['profissional'])->get(),
+            'consultas' => Consulta::with(['localidade'])->get()
+        ]);
     }
 }

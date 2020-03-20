@@ -77,7 +77,7 @@ The above copyright notice and this permission notice shall be included in all c
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{route('consultaCadastro')}}">Nova Consulta</a>
-                            <a class="dropdown-item" href="#">Buscar Consulta </a>
+                            <a class="dropdown-item" href="{{route('mostraConsulta')}}">Buscar Consulta </a>
                         </div>
                     </li>
                     <li class="nav-item ">
@@ -205,7 +205,7 @@ The above copyright notice and this permission notice shall be included in all c
                                             <thead>
                                             <tr>
                                                 <th scope="col" width="10%">Nome</th>
-                                                <th scope="col">Data Nascimento</th>
+                                                <th scope="col" align="center">Data Nascimento</th>
                                                 <th scope="col">Num Sus</th>
                                                 <th scope="col">CPF</th>
                                                 <th scope="col">Localidade</th>

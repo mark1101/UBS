@@ -7,14 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 class Consulta extends Model
 {
     protected $fillable = [
-      'id_profissional' , 'peso' , 'altura' , 'pressao' , 'localidade' , 'id_paciente',
+      'id_profissional' , 'peso' , 'altura' , 'pressao' , 'id_localidade' , 'id_paciente',
       'sintomas' , 'observacoes' , 'finalizacao' , 'data',
     ];
 
     public function profissional(){
-        return $this->hasOne(User::class , 'id_profissional' , 'id');
+        return $this->hasOne(User::class , 'id' , 'id_profissional');
     }
     public function paciente(){
-        return $this->hasOne(Paciente::class , 'id_paciente' ,'id');
+        return $this->hasOne(Paciente::class , 'id' ,'id_paciente');
     }
+    public function localidade(){
+        return $this->hasOne(Localidade::class, 'id', 'id_localidade');
+    }
+
+
 }

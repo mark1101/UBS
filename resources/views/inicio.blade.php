@@ -67,7 +67,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{route('consultaCadastro')}}">Nova Consulta</a>
-                            <a class="dropdown-item" href="#">Buscar Consulta </a>
+                            <a class="dropdown-item" href="{{route('mostraConsulta')}}">Buscar Consulta </a>
                         </div>
                     </li>
                     <li class="nav-item ">

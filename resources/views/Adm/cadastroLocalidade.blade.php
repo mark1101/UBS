@@ -198,7 +198,7 @@ The above copyright notice and this permission notice shall be included in all c
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="bmd-label-floating">Nome da Localidade</label>
-                                            <input type="text" class="form-control " id="nome"
+                                            <input style="text-transform: uppercase;" type="text" class="form-control " id="nome"
                                                    name="nome">
                                         </div>
                                     </div>

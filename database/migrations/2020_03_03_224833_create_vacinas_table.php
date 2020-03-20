@@ -13,7 +13,7 @@ class CreateVacinasTable extends Migration
             $table->bigIncrements('id');
             $table->integer('id_paciente')->unsigned();
             $table->integer('id_profissional')->nullable()->unsigned();
-            $table->string('localidade');
+            $table->integer('id_localidade')->unsigned();
             $table->string('vacina_realizada');
             $table->string('informacao_lote');
             $table->timestamp('data');
@@ -23,6 +23,7 @@ class CreateVacinasTable extends Migration
         Schema::table('vacinas' , function (Blueprint $table){
            $table->foreign('id_paciente')->references('id')->on('pacientes');
            $table->foreign('id_profissional')->references('id')->on('users');
+           $table->foreign('id_localidade')->references('id')->on('localidades');
         });
     }
 

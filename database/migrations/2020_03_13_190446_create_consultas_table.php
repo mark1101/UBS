@@ -19,7 +19,7 @@ class CreateConsultasTable extends Migration
             $table->string('peso');
             $table->string('altura');
             $table->string('pressao');
-            $table->string('localidade');
+            $table->integer('id_localidade')->unsigned();
             $table->integer('id_paciente')->unsigned();
             $table->string('sintomas');
             $table->string('observacoes');
@@ -29,6 +29,8 @@ class CreateConsultasTable extends Migration
 
             $table->foreign('id_profissional')->references('id')->on('users');
             $table->foreign('id_paciente')->references('id')->on('pacientes');
+            $table->foreign('id_localidade')->references('id')->on('localidades');
+
 
         });
     }

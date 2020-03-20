@@ -76,7 +76,7 @@ The above copyright notice and this permission notice shall be included in all c
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{route('consultaCadastro')}}">Nova Consulta</a>
-                        <a class="dropdown-item" href="#">Buscar Consulta </a>
+                        <a class="dropdown-item" href="{{route('mostraConsulta')}}">Buscar Consulta </a>
                     </div>
                 </li>
                 <li class="nav-item active">
@@ -267,7 +267,7 @@ The above copyright notice and this permission notice shall be included in all c
                                         <tbody>
                                         @foreach($vacinas as $vacina)
                                             <tr>
-                                                <td style="text-transform: uppercase;" >{{$vacina->localidade}}</td>
+                                                <td style="text-transform: uppercase;" >{{($vacina->localidade)->nome}}</td>
                                                 <td style="text-transform: uppercase;" >{{($vacina->paciente)->nome . " ". ($vacina->paciente)->ultimo_nome}}</td>
                                                 <td style="text-transform: uppercase;" >{{$vacina->vacina_realizada}}</td>
                                                 <td style="text-transform: uppercase;" >{{$vacina->informacao_lote}}</td>

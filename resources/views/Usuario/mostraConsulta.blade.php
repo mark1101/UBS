@@ -31,7 +31,7 @@ The above copyright notice and this permission notice shall be included in all c
 <body class="">
 <div class="wrapper ">
 
-    <div class="sidebar" data-color="danger" data-background-color="white" data-image="../assets/img/unidade.jpg">
+    <div class="sidebar" data-color="green" data-background-color="white" data-image="../assets/img/unidade.jpg">
         <div class="logo"><a href="{{'inicio'}}" class="simple-text logo-normal">
                 Unidade {{Auth::user()->localidade}}
             </a></div>
@@ -181,7 +181,7 @@ The above copyright notice and this permission notice shall be included in all c
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
-                            <div class="card-header card-header-danger">
+                            <div class="card-header card-header-success">
                                 <h4 class="card-title">Pesquisar Paciente</h4>
                                 <form class="navbar-form" action="{{route('mostraConsulta')}}">
                                     @csrf
@@ -198,7 +198,7 @@ The above copyright notice and this permission notice shall be included in all c
                             <div class="card-body">
                                 <div class="card-body">
                                     <div class="table-responsive" style="overflow: auto; height: 300px;">
-                                        <table class="table">
+                                        <table class="table" style="font-size: small">
                                             <thead>
                                             <tr>
                                                 <th scope="col">Nome</th>
@@ -213,13 +213,13 @@ The above copyright notice and this permission notice shall be included in all c
                                             <tbody>
                                             @foreach($consultas as $consulta)
                                                 <tr>
-                                                    <td>{{($consulta->paciente)->nome. " " .($consulta->paciente)->ultimo_nome}} </td>
-                                                    <td>{{($consulta->users)->nome}}</td>
+                                                    <td>{{($consulta->paciente)->nome . " " .($consulta->paciente)->ultimo_nome}} </td>
+                                                    <td>{{($consulta->profissional)->name}}</td>
                                                     <td>{{$consulta->pressao}}</td>
-                                                    <td>{{$consulta->localidade}}</td>
+                                                    <td>{{($consulta->localidade)->nome}}</td>
                                                     <td>{{$consulta->sintomas}}</td>
-                                                    <td>{{$paciente->observacao}}</td>
-                                                    <td>{{$paciente->data}}</td>
+                                                    <td>{{$consulta->observacoes}}</td>
+                                                    <td>{{$consulta->data}}</td>
                                                 </tr>
                                             @endforeach
                                             </tbody>
