@@ -186,30 +186,47 @@ The above copyright notice and this permission notice shall be included in all c
                                 <h4 class="card-title">Ficha de Encaminhamento</h4>
                             </div>
                             <div class="card-body">
-                                <form>
+                                <form action="{{route('storeEnxaminhamento')}}" method="post">
+                                    @csrf
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-3">
                                             <div class="form-group">
-                                                <label class="bmd-label-floating">Nome do Profissional</label>
-                                                <input style="text-transform: uppercase;" type="text" class="form-control">
+                                                <label class="bmd-label-floating">Nome Paciente</label>
+                                                <select style="text-transform: uppercase;"
+                                                        class="form-control ls-select" name="id_paciente"
+                                                        id="id_paciente">
+                                                    @foreach($pacientes as $paciente)
+                                                        <option
+                                                            value="{{$paciente->id}}"
+                                                            style="text-transform: uppercase;">
+                                                            {{$paciente->nome}} {{$paciente->ultimo_nome}}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-3">
                                             <div class="form-group">
-                                                <label class="bmd-label-floating">Nome do Paciente</label>
-                                                <input style="text-transform: uppercase;" type="text" class="form-control">
+                                                <label class="bmd-label-floating">Email do
+                                                    Responsável</label>
+                                                <select class="form-control ls-select" name="id_profissional" id="id_profissional">
+                                                    @foreach($profissionais as $pro)
+                                                        <option value="{{$pro->id}}">{{$pro->email}} </option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Especialidade de
                                                     Encaminhamento</label>
-                                                <select style="text-transform: uppercase;" class="form-control" name="" id="">
-                                                    <option value="1" selected>Fisioterapia</option>
-                                                    <option value="2">Neurologista</option>
-                                                    <option value="3">Ginecologista</option>
-                                                    <option value="4">Ortopedista</option>
-                                                    <option value="5">Outro</option>
+                                                <select style="text-transform: uppercase;" class="form-control"
+                                                        name="especialidade_encaminhamento"
+                                                        id="especialidade_encaminhamento">
+                                                    <option selected>Fisioterapia</option>
+                                                    <option>Neurologista</option>
+                                                    <option>Ginecologista</option>
+                                                    <option>Ortopedista</option>
+                                                    <option>Outro</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -219,7 +236,8 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-10">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Objetivo do Encaminhamento</label>
-                                                <textarea style="text-transform: uppercase;" class="form-control" id="exampleFormControlTextarea1"
+                                                <textarea style="text-transform: uppercase;" class="form-control"
+                                                          id="objetivo" name="objetivo"
                                                           rows="3"></textarea>
                                             </div>
                                         </div>
@@ -228,7 +246,8 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-10">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Observação</label>
-                                                <textarea style="text-transform: uppercase;" class="form-control" id="exampleFormControlTextarea1"
+                                                <textarea style="text-transform: uppercase;" class="form-control"
+                                                          id="observacao" name="observacao"
                                                           rows="3"></textarea>
                                             </div>
                                         </div>
@@ -238,14 +257,14 @@ The above copyright notice and this permission notice shall be included in all c
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Data</label>
                                                 <br>
-                                                <input style="text-transform: uppercase;" type="date" class="form-control">
+                                                <input style="text-transform: uppercase;" type="date"
+                                                       class="form-control" id="data" name="data">
                                             </div>
                                         </div>
                                     </div>
-                                    <button type="submit" class="btn btn-primary-normal">Gerar
+                                    <button type="submit" class="btn btn-primary-normal"> Salvar e Gerar
                                         Impressão
                                     </button>
-                                    <div class="clearfix"></div>
                                 </form>
                             </div>
                         </div>

@@ -249,10 +249,10 @@ The above copyright notice and this permission notice shall be included in all c
                                         <tr>
                                             <td style="text-transform: uppercase;">{{$localidade->nome}}</td>
                                             <td>{{$pacientes[$localidade->id]}}</td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
+                                            <td>{{$consultas[$localidade->id]}}</td>
+                                            <td>{{$exames[$localidade->id]}}</td>
+                                            <td>{{$encaminhamentos[$localidade->id]}}</td>
+                                            <td>{{$vacinas[$localidade->id]}}</td>
                                             <td></td>
                                         </tr>
                                     @endforeach

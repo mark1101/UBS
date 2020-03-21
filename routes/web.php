@@ -69,7 +69,10 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/cadastraRecado', 'RecadoController@cadastraRecado')->name('cadastraRecado');
 
 // ROTAS DE ENCAMINHAMENTO
-    Route::get('/encaminhamento', 'EncaminhamentoController@index')->name('encaminhamento');
+    Route::get('/encaminhamento', 'EncaminhamentoController@index')
+        ->name('encaminhamento');
+    Route::post('/cadastrouEncaminhamento' , 'EncaminhamentoController@cadastroEncaminhamento')
+        ->name('storeEnxaminhamento');
 
 // ROTAS DE ADMINISTRACAO
     Route::get('/cadastroMotorista', 'ViagemController@indexMotorista')->name('cadastroMotorista');
