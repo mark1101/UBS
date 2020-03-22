@@ -29,7 +29,7 @@ class ProfissionalController extends Controller
             $data['controle_acesso'] = 2;
         }else if($data['funcao'] == 'Odontologia'){
             $data['admin'] = 2;
-        }else if($data['funcao'] == 'Agente de Saude'){
+        }else if($data['funcao'] == 'Agente de Saúde'){
             $data['admin'] = 3;
         }
 
