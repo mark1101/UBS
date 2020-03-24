@@ -75,14 +75,22 @@ Route::middleware(['auth'])->group(function () {
         ->name('storeEnxaminhamento');
 
 // ROTAS DE ADMINISTRACAO
-    Route::get('/cadastroMotorista', 'ViagemController@indexMotorista')->name('cadastroMotorista');
-    Route::post('/cadastrouMotorista', 'ViagemController@cadastroMotorista')->name('storeMotorista');
-    Route::post('/cadastrouCarro', 'ViagemController@cadastroCarro')->name('storeCarro');
-    Route::get('/cadastroLocalidade', 'LocalidadeController@indexCadastroLocalidade')->name('cadastroLocalidade');
-    Route::post('/cadastrouLocalidade', 'LocalidadeController@cadastroLocalidade')->name('storeLocalidade');
-    Route::post('/cadastrouSede', 'LocalidadeController@cadastroSede')->name('storeSede');
-    Route::get('/cadastraProfissional' , 'ProfissionalController@indexProfissional')->name('cadastraProfissional');
-    Route::post('/cadastrouProfissional' , 'ProfissionalController@cadastroProfissional')->name('storeProfisional');
+    Route::get('/cadastroMotorista', 'ViagemController@indexMotorista')
+        ->name('cadastroMotorista');
+    Route::post('/cadastrouMotorista', 'ViagemController@cadastroMotorista')
+        ->name('storeMotorista');
+    Route::post('/cadastrouCarro', 'ViagemController@cadastroCarro')
+        ->name('storeCarro');
+    Route::get('/cadastroLocalidade', 'LocalidadeController@indexCadastroLocalidade')
+        ->name('cadastroLocalidade');
+    Route::post('/cadastrouLocalidade', 'LocalidadeController@cadastroLocalidade')
+        ->name('storeLocalidade');
+    Route::post('/cadastrouSede', 'LocalidadeController@cadastroSede')
+        ->name('storeSede');
+    Route::get('/cadastraProfissional' , 'ProfissionalController@indexProfissional')
+        ->name('cadastraProfissional');
+    Route::post('/cadastrouProfissional' , 'ProfissionalController@cadastroProfissional')
+        ->name('storeProfisional');
 
 
 // ROTAS DE ODONTOLOGIA

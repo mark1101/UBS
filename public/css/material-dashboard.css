@@ -9360,6 +9360,10 @@ a.text-secondary:focus {
     color: #4caf50 !important;
 }
 
+.text-orange {
+    color: orange !important;
+}
+
 a.text-success:hover,
 a.text-success:focus {
     color: #3d8b40 !important;

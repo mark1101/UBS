@@ -24,7 +24,6 @@ class DentistaController extends Controller
     public function cadastraDentista(Request $request)
     {
         $data = $request->all();
-
         Dentista::create($data);
     }
     public function agendamentoDentista(){
@@ -34,5 +33,11 @@ class DentistaController extends Controller
         // caso quiser passar alguma variavel para ca
         return view('Usuario.agendamentoDentista' ,
         ['localidades' => $localidade , 'pacientes' => $paciente]);
+    }
+
+    public function cadastraConsultaDentista(Request $request)
+    {
+        $data = $request->all();
+
     }
 }

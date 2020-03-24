@@ -124,7 +124,7 @@ The above copyright notice and this permission notice shall be included in all c
                     <div class="card-body">
                         <div class="table-responsive" style="overflow: auto; height: 250px;">
                             <table class="table">
-                                <thead class=" text-primary">
+                                <thead class=" text-orange">
                                 <th>
                                     ID
                                 </th>
