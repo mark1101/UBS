@@ -51,12 +51,17 @@ The above copyright notice and this permission notice shall be included in all c
                         <p>Agenda</p>
                     </a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{route('cadastroConsultaOdonto')}}">
-                        <i class="material-icons">record_voice_over
-                        </i>
-                        <p>Cadastro de Consultas</p>
+                <li class="nav-item dropdown active">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        <i class="material-icons">record_voice_over</i>
+                        Consultas
                     </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{route('cadastroConsultaOdonto')}}">Nova Consulta</a>
+                        <a class="dropdown-item" href="{{route('tratamentoOdonto')}}">Ficha Tratamento</a>
+                    </div>
                 </li>
                 <li class="nav-item  ">
                     <a class="nav-link" href="#">
@@ -106,7 +111,8 @@ The above copyright notice and this permission notice shall be included in all c
                     <form class="navbar-form"></form>
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{Auth::user()->funcao}} {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
@@ -117,7 +123,8 @@ The above copyright notice and this permission notice shall be included in all c
                                     {{ __('Sair') }}
                                 </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                      style="display: none;">
                                     @csrf
                                 </form>
                             </div>
@@ -138,66 +145,243 @@ The above copyright notice and this permission notice shall be included in all c
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header card-header-info">
-                                <h4 class="card-title">Cadastro de Nova Consulta</h4>
+                                <h4 class="card-title">Ficha de Consulta Inicial</h4>
                             </div>
                             <div class="card-body">
-                                <form>
+                                <form action="{{route('storeConsultaOdonto')}}" method="post">
+                                    @csrf
+                                    <h3 align="center">Identificação</h3>
                                     <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Profissional</label>
+                                                <input value="{{Auth::user()->id}}" style="text-transform: uppercase" type="text" class="form-control" id="id_profissional"
+                                                       name="id_profissional" readonly = "true">
+                                            </div>
+                                        </div>
+                                        <div class="container">
+                                            <label class="bmd-label-floating">Comunidade Atendida</label>
+                                            <select style="text-transform: uppercase" class="form-control"
+                                                    name="id_localidade" id="id_localidade">
+                                                @foreach($localidades as $localidade)
+                                                    <option
+                                                        value="{{$localidade->id}}">{{$localidade->nome}}</option>
+                                                @endforeach
+                                            </select>
+                                            <label class="bmd-label-floating">Paciente</label>
+                                            <select style="text-transform: uppercase" class="form-control"
+                                                    name="id_paciente" id="id_paciente">
+                                                @foreach($pacientes as $paciente)
+                                                    <option
+                                                        value="{{$paciente->id}}">{{$paciente->nome}} {{$paciente->ultimo_nome}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <h3 align="center">Anamnese</h3>
+
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                            <div class="form-group">
+                                                <label for="condicoes_higiene">Higiene</label>
+                                                <select class="form-control" id="condicoes_higiene"
+                                                        name="condicoes_higiene">
+                                                    <option value="boa">Boa</option>
+                                                    <option value="regular">Regular</option>
+                                                    <option value="ruim">Ruim</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label for="uso_medicamento">Medicação</label>
+                                                <select class="form-control" id="uso_medicamento"
+                                                        name="uso_medicamento">
+                                                    <option>Sim</option>
+                                                    <option>Não</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <div class="form-group">
+                                                <label for="alergia">Alergia</label>
+                                                <select class="form-control" id="alergia" name="alergia">
+                                                    <option>Sim</option>
+                                                    <option>Não</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label for="problemas_cardiaco">Problema Cardíaco</label>
+                                                <select class="form-control" id="problemas_cardiaco"
+                                                        name="problemas_cardiaco">
+                                                    <option>Sim</option>
+                                                    <option>Não</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <div class="form-group">
+                                                <label for="diabete">Diabetes</label>
+                                                <select class="form-control" id="diabete" name="diabete">
+                                                    <option>Sim</option>
+                                                    <option>Não</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="sensibilidade">Sensibilidade nos Dentes</label>
+                                                <select class="form-control" id="sensibilidade" name="sensibilidade">
+                                                    <option>Sim</option>
+                                                    <option>Não</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Outras Doenças</label>
+                                                <input style="text-transform: uppercase" type="text" class="form-control" id="outras_doencas"
+                                                       name="outras_doencas">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <h3 align="center"> Exame Intra-Oral</h3>
+
+                                    <p class="card-category">Geral</p>
+                                    <div class="row">
+
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label for="halitose">Halitose</label>
+                                                <select class="form-control" id="halitose" name="halitose">
+                                                    <option>Ausente</option>
+                                                    <option>Leve</option>
+                                                    <option>Forte</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label for="mucosa">Mucosa</label>
+                                                <select class="form-control" id="mucosa" name="mucosa">
+                                                    <option>Normal</option>
+                                                    <option>Alterada</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Língua</label>
+                                                <input style="text-transform: uppercase"type="text" class="form-control" id="lingua" name="lingua">
+                                            </div>
+                                        </div>
                                         <div class="col-md-5">
                                             <div class="form-group">
-                                                <label class="bmd-label-floating">Comunidade Atendida</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-7">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Nome do paciente</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Fist Name</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Last Name</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Adress</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">City</label>
-                                                <input type="text" class="form-control">
+                                                <label class="bmd-label-floating">Palato Mole</label>
+                                                <input style="text-transform: uppercase"type="text" class="form-control" id="palato_mole"
+                                                       name="palato_mole">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label class="bmd-label-floating">Country</label>
-                                                <input type="text" class="form-control">
+                                                <label class="bmd-label-floating">Assoalho Bucal</label>
+                                                <input style="text-transform: uppercase"type="text" class="form-control" id="assoalho_bucal"
+                                                       name="assoalho_bucal">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label class="bmd-label-floating">Postal Code</label>
-                                                <input type="text" class="form-control">
+                                                <label class="bmd-label-floating">Labios</label>
+                                                <input style="text-transform: uppercase"type="text" class="form-control" id="labios" name="labios">
                                             </div>
                                         </div>
                                     </div>
+                                    <p class="card-category">Periodal</p>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label for="mucosa">Placa Bacteriana</label>
+                                                <select class="form-control" id="placa_bacteriana"
+                                                        name="placa_bacteriana">
+                                                    <option>Ausente</option>
+                                                    <option>Presente</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="mucosa">Sangramento Gengival</label>
+                                                <select class="form-control" id="sangramento_gengival"
+                                                        name="sangramento_gengival">
+                                                    <option>Ausente</option>
+                                                    <option>Presente</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label for="mucosa">Tartaro</label>
+                                                <select class="form-control" id="tartaro" name="tartaro">
+                                                    <option>Ausente</option>
+                                                    <option>Presente</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label for="mucosa">Mobilidade Dental</label>
+                                                <select class="form-control" id="mobilidade_dental"
+                                                        name="mobilidade_dental">
+                                                    <option>Ausente</option>
+                                                    <option>Presente</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="card-category">Ortodôntico</p>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label for="mucosa">Apinhamento</label>
+                                                <select class="form-control" id="apinhamento" name="apinhamento">
+                                                    <option>Ausente</option>
+                                                    <option>Leve</option>
+                                                    <option>Severo</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label for="mucosa">Diastemas</label>
+                                                <select class="form-control" id="diastemas" name="diastemas">
+                                                    <option>Ausente</option>
+                                                    <option>Presente</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Observações</label>
+                                                <textarea style="text-transform: uppercase;" class="form-control"
+                                                          id="observacoes" name="observacoes" rows="3"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Plano Tratamento</label>
+                                                <textarea style="text-transform: uppercase;" class="form-control"
+                                                          id="plano_tratamento" name="plano_tratamento"
+                                                          rows="3"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <button type="submit" class="btn btn-primary-adm">Cadastrar</button>
                                     <button type="submit" class="btn btn-primary-adm">Solicitar Exame</button>
                                     <div class="clearfix"></div>

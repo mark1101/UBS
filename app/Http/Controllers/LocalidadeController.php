@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Consulta;
+use App\ConsultaDentista;
 use App\Encaminhamento;
 use App\Exame;
+use App\FichaTratamento;
 use App\Localidade;
 use App\Paciente;
 use App\Sede;
@@ -45,6 +47,14 @@ class LocalidadeController extends Controller
             $encaminhamento[$localidade->id] = Encaminhamento::where('id_localidade',
                 $localidade->id)->count();
         }
+        foreach ($localidades as $localidade){ //MOSTRA QUANTIDADE DE ENCAMINHAMENTOS
+            $consultaOdonto[$localidade->id] = ConsultaDentista::where('id_localidade',
+                $localidade->id)->count();
+        }
+        foreach ($localidades as $localidade){ //MOSTRA QUANTIDADE DE ENCAMINHAMENTOS
+            $tratamentoOdonto[$localidade->id] = FichaTratamento::where('id_localidade',
+                $localidade->id)->count();
+        }
 
         $localidade = Localidade::where('id_sede', Auth::user()->cidade_sede)
             ->orderBy('nome')
@@ -57,7 +67,9 @@ class LocalidadeController extends Controller
             'consultas' => $consulta,
             'exames' => $exame,
             'vacinas' => $vacina,
-            'encaminhamentos' => $encaminhamento
+            'encaminhamentos' => $encaminhamento,
+            'consultaOdonto' => $consultaOdonto,
+            'tratamentoOdonto' => $tratamentoOdonto
 
         ]);
     }

@@ -241,7 +241,9 @@ The above copyright notice and this permission notice shall be included in all c
                                         <th>Exames</th>
                                         <th>Encaminhamentos</th>
                                         <th>Vacinas</th>
-                                        <th>Odontológico</th>
+                                        <th>Tratamento Odonto</th>
+                                        <th>Consulta Odonto</th>
+
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -253,7 +255,8 @@ The above copyright notice and this permission notice shall be included in all c
                                             <td>{{$exames[$localidade->id]}}</td>
                                             <td>{{$encaminhamentos[$localidade->id]}}</td>
                                             <td>{{$vacinas[$localidade->id]}}</td>
-                                            <td></td>
+                                            <td>{{$consultaOdonto[$localidade->id]}}</td>
+                                            <td>{{$tratamentoOdonto[$localidade->id]}}</td>
                                         </tr>
                                     @endforeach
                                     </tbody>

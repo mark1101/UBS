@@ -19,11 +19,11 @@ class CreateConsultaDentistasTable extends Migration
             $table->integer('id_profissional')->unsigned();
             $table->integer('id_localidade')->unsigned();
             $table->timestamp('inicio_tratamento');
-            $table->string('condicoes_higiete');
+            $table->string('condicoes_higiene');
             $table->string('uso_medicamento');
             $table->string('alergia');
             $table->string('problemas_cardiaco');
-            $table->string('diabetes');
+            $table->string('diabete');
             $table->string('outras_doencas');
             $table->string('sensibilidade');
             $table->string('halitose');

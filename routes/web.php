@@ -114,6 +114,10 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/event-update', 'EventController@altera')->name('routeEventUpdate');
     Route::POST('/event-store', 'EventController@cadastra')->name('routeEventStore');
     Route::POST('/cadastroEvento', 'EventController@cadastroEvento')->name('cadastroEvento');
+    Route::POST('/cadatrouConsultaOdonto' , 'DentistaController@cadastraConsultaDentista')
+        ->name('storeConsultaOdonto');
+    Route::get('/fichaTratamento' ,'DentistaController@indexTratamento')->name('tratamentoOdonto');
+    Route::POST('/cadastrouficha' , 'DentistaController@cadastraTratamentoDentista')->name('storeTratamentoOdonto');
 
 // ROTAS DE AGENTE DE SAUDE
     Route::get('/agente/cadastroPaciente', 'AgenteController@indexcadastraPaciente')->name('cadastroPacienteAgente');

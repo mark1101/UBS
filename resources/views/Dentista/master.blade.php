@@ -61,12 +61,17 @@ The above copyright notice and this permission notice shall be included in all c
                         <p>Agenda</p>
                     </a>
                 </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="{{route('cadastroConsultaOdonto')}}">
-                        <i class="material-icons">record_voice_over
-                        </i>
-                        <p>Cadastro de Consultas</p>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        <i class="material-icons">record_voice_over</i>
+                        Consultas
                     </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{route('cadastroConsultaOdonto')}}">Nova Consulta</a>
+                        <a class="dropdown-item" href="">Consulta Andamento</a>
+                    </div>
                 </li>
                 <li class="nav-item  ">
                     <a class="nav-link" href="#">
