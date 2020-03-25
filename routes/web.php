@@ -45,7 +45,7 @@ Route::group(['middleware' => ['web', 'auth']], function () {
 })->name('home');*/
 
 Route::middleware(['auth'])->group(function () {
-// ROTAS DE PACIENTEmostraPaciente
+// ROTAS DE PACIENTE
     Route::get('/paciente', 'PacienteController@indexPaciente')->name('paciente');
     Route::get('/buscaPaciente', 'PacienteController@indexbuscaPaciente')->name('buscaPaciente');
     Route::get('/mostraPaciente', 'PacienteController@mostraPaciente')->name('mostraPaciente');
@@ -66,7 +66,7 @@ Route::middleware(['auth'])->group(function () {
 // ROTAS DE RECADOS
     Route::get('/recado', 'RecadoController@index')->name('recado');
     Route::get('/comunicacao', 'ComunicacaoController@index')->name('comunicacao');
-    Route::post('/cadastraRecado', 'RecadoController@cadastraRecado')->name('cadastraRecado');
+    Route::post('/cadastraRecado', 'RecadoController@cadastraRecado')->name('storeRecado');
 
 // ROTAS DE ENCAMINHAMENTO
     Route::get('/encaminhamento', 'EncaminhamentoController@index')
@@ -124,6 +124,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/busca/paciente', 'AgenteController@mostraPacienteAgente')->name('mostraPacienteAgente');
     Route::get('/homeAgente', 'AgenteController@indexAdmAgente')->name('admAgente');
     Route::get('recados/agente', 'AgenteController@recadoAgente')->name('recadoAgente');
+
+
+//ROTOAS DE VIAGENS
+    Route::post('/cadastrouViagem', 'ViagemController@cadastroViagem')->name('storeViagem');
 
 });
 

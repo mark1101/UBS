@@ -27,7 +27,7 @@
         font-family: 'Mukta', sans-serif;
         height: 100vh;
         min-height: 550px;
-        background-image: url("{{asset('img/unidade.jpg')}}");
+        background-image: url("{{asset('img/inicio.jpg')}}");
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
@@ -50,7 +50,7 @@
         left: 0;
         margin: auto;
         height: 400px;
-        background-color: #9C27B0;
+        background-color: rgba(128,0,128, 0.55);
         border-radius: 10px;
     }
 
@@ -232,11 +232,6 @@
 
 <div class="login-reg-panel">
 
-
-
-    <div class="register-info-box" >
-        <img  src="{{asset('img/imagem.png')}}" alt="">
-    </div>
 
     <div class="white-panel">
         <div class="login-show">

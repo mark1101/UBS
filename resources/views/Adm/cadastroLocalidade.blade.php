@@ -72,7 +72,7 @@ The above copyright notice and this permission notice shall be included in all c
                     </a>
                 </li>
                 <li class="nav-item  ">
-                    <a class="nav-link" href="{{route('register')}}">
+                    <a class="nav-link" href="{{route('cadastraProfissional')}}">
                         <i class="material-icons">person
                         </i>
                         <p>Cadastrar Profissionais</p>
@@ -82,7 +82,7 @@ The above copyright notice and this permission notice shall be included in all c
                     <a class="nav-link" href="{{route('cadastroMotorista')}}">
                         <i class="material-icons">directions_car
                         </i>
-                        <p>Cadastrar Motoristas</p>
+                        <p>Gestão de Viagens</p>
                     </a>
                 </li>
                 <li class="nav-item ">
@@ -235,12 +235,13 @@ The above copyright notice and this permission notice shall be included in all c
                                 <table class="table">
                                     <thead>
                                     <tr>
-                                        <th>Nome</th>
+                                        <th >Nome</th>
                                         <th>Pacientes</th>
                                         <th>Consultas</th>
                                         <th>Exames</th>
                                         <th>Encaminhamentos</th>
                                         <th>Vacinas</th>
+                                        <th>Viagens Realizadas</th>
                                         <th>Consulta Odonto</th>
                                         <th>Tratamento Odonto</th>
 
@@ -248,13 +249,14 @@ The above copyright notice and this permission notice shall be included in all c
                                     </thead>
                                     <tbody>
                                     @foreach($localidades as $localidade )
-                                        <tr>
-                                            <td style="text-transform: uppercase;">{{$localidade->nome}}</td>
+                                        <tr >
+                                            <td style="text-transform: uppercase">{{$localidade->nome}}</td>
                                             <td>{{$pacientes[$localidade->id]}}</td>
                                             <td>{{$consultas[$localidade->id]}}</td>
                                             <td>{{$exames[$localidade->id]}}</td>
                                             <td>{{$encaminhamentos[$localidade->id]}}</td>
                                             <td>{{$vacinas[$localidade->id]}}</td>
+                                            <td>{{$viagens[$localidade->id]}}</td>
                                             <td>{{$consultaOdonto[$localidade->id]}}</td>
                                             <td>{{$tratamentoOdonto[$localidade->id]}}</td>
                                         </tr>

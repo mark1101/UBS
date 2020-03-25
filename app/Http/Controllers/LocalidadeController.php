@@ -11,6 +11,7 @@ use App\Localidade;
 use App\Paciente;
 use App\Sede;
 use App\Vacina;
+use App\Viagens;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -44,15 +45,19 @@ class LocalidadeController extends Controller
             $vacina[$localidade->id] = Vacina::where('id_localidade',
                 $localidade->id)->count();
         }
+        foreach ($localidades as $localidade){ //MOSTRA QUANTIDADE DE VIAGENS DE ORIGEM DA LOCALIDADE
+            $viagem[$localidade->id] = Viagens::where('id_origem',
+                $localidade->id)->count();
+        }
         foreach ($localidades as $localidade){ //MOSTRA QUANTIDADE DE ENCAMINHAMENTOS
             $encaminhamento[$localidade->id] = Encaminhamento::where('id_localidade',
                 $localidade->id)->count();
         }
-        foreach ($localidades as $localidade){ //MOSTRA QUANTIDADE DE ENCAMINHAMENTOS
+        foreach ($localidades as $localidade){ //MOSTRA QUANTIDADE DE CONSULTAS ODONTOLOGICAS
             $consultaOdonto[$localidade->id] = ConsultaDentista::where('id_localidade',
                 $localidade->id)->count();
         }
-        foreach ($localidades as $localidade){ //MOSTRA QUANTIDADE DE ENCAMINHAMENTOS
+        foreach ($localidades as $localidade){ //MOSTRA QUANTIDADE DE TRATAMENTOS ODONTOLOGICOS
             $tratamentoOdonto[$localidade->id] = FichaTratamento::where('id_localidade',
                 $localidade->id)->count();
         }
@@ -68,6 +73,7 @@ class LocalidadeController extends Controller
             'consultas' => $consulta,
             'exames' => $exame,
             'vacinas' => $vacina,
+            'viagens' => $viagem,
             'encaminhamentos' => $encaminhamento,
             'consultaOdonto' => $consultaOdonto,
             'tratamentoOdonto' => $tratamentoOdonto

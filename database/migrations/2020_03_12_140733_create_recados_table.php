@@ -15,9 +15,14 @@ class CreateRecadosTable extends Migration
     {
         Schema::create('recados', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('origem');
+            $table->integer('origem');
+            $table->string('modulo_trabalho');
+            $table->integer('destino');
             $table->string('mensagem');
             $table->timestamp('data');
+
+            $table->foreign('destino')->references('id')->on('users');
+            $table->foreign('origem')->references('id')->on('users');
 
             $table->timestamps();
         });

@@ -72,7 +72,7 @@
                     <a class="nav-link" href="{{route('cadastroMotorista')}}">
                         <i class="material-icons">directions_car
                         </i>
-                        <p>Cadastrar Motoristas</p>
+                        <p>Gestão de Viagens</p>
                     </a>
                 </li>
                 <li class="nav-item ">

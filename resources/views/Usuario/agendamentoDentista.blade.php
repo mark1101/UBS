@@ -29,7 +29,7 @@ The above copyright notice and this permission notice shall be included in all c
 
 </head>
 
-<body class="">
+<body class="" style="background-image: url({{asset('img/inicio.jpg')}}) ; background-size: 100% 100%;">
 <div class="wrapper ">
 
     <div class="sidebar" data-color="green" data-background-color="white" data-image="../assets/img/unidade.jpg">
@@ -157,7 +157,7 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-5">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Titulo</label>
-                                                <input type="text" class="form-control" name="title" id="title">
+                                                <input style="text-transform: uppercase" type="text" class="form-control" name="title" id="title">
                                             </div>
                                         </div>
                                     </div>
@@ -165,7 +165,7 @@ The above copyright notice and this permission notice shall be included in all c
                                     <div class="container">
                                         <div class="row">
                                             <label class="bmd-label-floating">Localidade</label>
-                                            <select class="form-control" name="id_localidade" id="id_localidade">
+                                            <select style="text-transform: uppercase" class="form-control" name="id_localidade" id="id_localidade">
                                                 @foreach($localidades as $localidade)
                                                     <option
                                                         value="{{$localidade->id}}">{{$localidade->nome}}</option>
@@ -176,7 +176,7 @@ The above copyright notice and this permission notice shall be included in all c
 
                                         <div class="row">
                                             <label class="bmd-label-floating">Paciente</label>
-                                            <select class="form-control" name="id_paciente" id="id_paciente">
+                                            <select style="text-transform: uppercase" class="form-control" name="id_paciente" id="id_paciente">
                                                 @foreach($pacientes as $paciente)
                                                     <option
                                                         value="{{$paciente->id}}">{{$paciente->nome}} {{$paciente->ultimo_nome}}</option>
@@ -215,7 +215,7 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-10">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Descrição</label>
-                                                <textarea class="form-control" id="description" name="description"
+                                                <textarea style="text-transform: uppercase" class="form-control" id="description" name="description"
                                                           rows="3"></textarea>
                                             </div>
                                         </div>

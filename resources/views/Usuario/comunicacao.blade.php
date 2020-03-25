@@ -28,7 +28,7 @@ The above copyright notice and this permission notice shall be included in all c
     <link href="{{asset('css/material-dashboard.css')}}" rel="stylesheet"/>
 </head>
 
-<body class="">
+<body class=""style="background-image: url({{asset('img/inicio.jpg')}}) ; background-size: 100% 100%;">
 <div class="wrapper ">
 
     <div class="sidebar" data-color="green" data-background-color="white" data-image="../assets/img/unidade.jpg">
@@ -198,41 +198,37 @@ The above copyright notice and this permission notice shall be included in all c
                                 <h4 class="card-title">Nova Mensagem</h4>
                             </div>
                             <div class="card-body">
-                                <form>
-
+                                <form action="{{route('storeRecado')}}" method="post">
+                                    @csrf
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label class="bmd-label-floating">De</label>
-                                                <input style="text-transform: uppercase;" type="text" class="form-control">
+                                                <label class="bmd-label-floating">Módulo de Trabalho</label>
+                                                <select style="text-transform: uppercase;" class="form-control" name="modulo_trabalho" id="modulo_trabalho">
+                                                    <option selected>Recepcao</option>
+                                                    <option>Medicina</option>
+                                                    <option>Enfermagem</option>
+                                                    <option>Agente de Saúde</option>
+                                                    <option>Odontologia</option>
+                                                </select>
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Para</label>
-                                                <input style="text-transform: uppercase;" type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Módulo de Trabalho</label>
-                                                <select style="text-transform: uppercase;" class="form-control" name="" id="">
-                                                    <option value="1" selected>Medico</option>
-                                                    <option value="2">Enfermaria</option>
-                                                    <option value="3">Recepção</option>
-                                                    <option value="4">Agente de Saúde</option>
-                                                    <option value="5">Outro</option>
+                                                <select class="form-control ls-select" name="destino" id="destino">
+                                                    @foreach($profissionais as $pro)
+                                                        <option value="{{$pro->id}}">{{$pro->name}} </option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="row">
                                         <div class="col-md-10">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Mensagem</label>
-                                                <textarea style="text-transform: uppercase;" class="form-control" id="exampleFormControlTextarea1"
-                                                          rows="3" maxlength="50"></textarea>
+                                                <textarea name="mensagem" id="mensagem" style="text-transform: uppercase;" class="form-control" id="exampleFormControlTextarea1" rows="3" maxlength="50"></textarea>
                                             </div>
                                         </div>
                                     </div>

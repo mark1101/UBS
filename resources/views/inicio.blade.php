@@ -18,7 +18,7 @@
 
 </head>
 
-<body class="">
+<body class="" style="background-image: url({{asset('img/inicio.jpg')}}) ; background-size: 100% 100%;">
 <div class="wrapper ">
 
     <div class="sidebar" data-color="green" data-background-color="white" data-image="../assets/img/unidade.jpg">
@@ -179,8 +179,7 @@
 
         <div class="content">
             <div class="container-fluid">
-                <h1 align="center" style="font-family: Candara">TELA DE INICÍO</h1>
-                <h1 align="center" style="font-family: Candara">BEM VINDO </h1>
+                <h1 align="center" style="font-family: Candara ; font-size: 100px ; color: black" >BEM VINDO </h1>
             </div>
 
         </div>

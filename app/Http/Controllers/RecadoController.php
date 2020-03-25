@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Paciente;
+use App\Localidade;
 use App\Recado;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -9,13 +11,30 @@ use Illuminate\Support\Facades\Auth;
 class RecadoController extends Controller
 {
     public function index(){
-        return view('Usuario.recado');
+
+        $recado = Recado::where('destino' , Auth::user()->id)->get();
+
+        return view('Usuario.recado' , [
+            'rs' => $recado,
+            'recados' => Recado::with(['localidade'])->get()
+        ]);
     }
     public function mostraRecado(){
         $recado = Recado::all();
         return view('Usuario.recado', [
             'recados' => $recado
         ]);
+    }
+
+    public function cadastraRecado(Request $request)
+    {
+        $data = $request->all();
+        $data['origem'] = Auth::user()->id;
+
+        Recado::create($data);
+
+        return redirect('/comunicacao');
+
     }
 
 }

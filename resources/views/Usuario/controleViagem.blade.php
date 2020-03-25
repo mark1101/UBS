@@ -28,7 +28,7 @@ The above copyright notice and this permission notice shall be included in all c
     <link href="{{asset('css/material-dashboard.css')}}" rel="stylesheet"/>
 </head>
 
-<body class="">
+<body class="" style="background-image: url({{asset('img/inicio.jpg')}}) ; background-size: 100% 100%;">
 <div class="wrapper ">
 
     <div class="sidebar" data-color="green" data-background-color="white" data-image="../assets/img/unidade.jpg">
@@ -149,11 +149,12 @@ The above copyright notice and this permission notice shall be included in all c
                                 <h4 class="card-title">Cadastro de Nova Viagem</h4>
                             </div>
                             <div class="card-body">
-                                <form>
+                                <form action="{{route('storeViagem')}}" method="post">
+                                    @csrf
                                     <p class="card-category">Origem</p>
                                     <div class="container">
                                         <div class="row">
-                                            <select class="form-control" name="id_origem" id="id_origem">
+                                            <select style="text-transform: uppercase" class="form-control" name="id_origem" id="id_origem">
                                                 @foreach($localidades as $localidade)
                                                     <option
                                                         value="{{$localidade->id}}">{{$localidade->nome}}</option>
@@ -164,7 +165,7 @@ The above copyright notice and this permission notice shall be included in all c
                                     <p class="card-category">Destino</p>
                                     <div class="container">
                                         <div class="row">
-                                            <select class="form-control" name="id_destino" id="id_destino">
+                                            <select style="text-transform: uppercase" class="form-control" name="id_destino" id="id_destino">
                                                 @foreach($localidades as $localidade)
                                                     <option
                                                         value="{{$localidade->id}}">{{$localidade->nome}}</option>
@@ -176,10 +177,10 @@ The above copyright notice and this permission notice shall be included in all c
                                     <p class="card-category">Motorista Responsável</p>
                                     <div class="container">
                                         <div class="row">
-                                            <select class="form-control" name="id_motorista" id="id_motorista">
+                                            <select style="text-transform: uppercase" class="form-control" name="id_motorista" id="id_motorista">
                                                 @foreach($motoristas as $motorista)
                                                     <option
-                                                        value="{{$motorista->id}}">{{$motorista->nome}}</option>
+                                                        value="{{$motorista->id}}">{{$motorista->nome}} ----- {{$motorista->telefone}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -188,10 +189,10 @@ The above copyright notice and this permission notice shall be included in all c
                                     <p class="card-category">Veículo</p>
                                     <div class="container">
                                         <div class="row">
-                                            <select class="form-control" name="id_carro" id="id_carro">
+                                            <select style="text-transform: uppercase" class="form-control" name="id_carro" id="id_carro">
                                                 @foreach($carros as $carro)
                                                     <option
-                                                        value="{{$carro->id}}">{{$carro->nome}}</option>
+                                                        value="{{$carro->id}}">{{$carro->nome}} ---- {{$carro->placa}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -201,7 +202,7 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Numero de Passageiros</label>
-                                                <select class="form-control" name="" id="">
+                                                <select class="form-control" name="num_pacientes" id="num_pacientes">
                                                     <option>1</option>
                                                     <option>2</option>
                                                     <option>3</option>
@@ -217,14 +218,14 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Data</label>
-                                                <input type="date" class="form-control">
+                                                <input style="text-transform: uppercase" type="text" class="form-control data" maxlength="10" name="data" id="data" required>
                                             </div>
                                         </div>
                                         <div class="col-md-10">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Observação</label>
-                                                <textarea class="form-control" id="exampleFormControlTextarea1"
-                                                          rows="3"></textarea>
+                                                <textarea id = "observacao" name="observacao" style="text-transform: uppercase" class="form-control" id="exampleFormControlTextarea1"
+                                                          rows="3" required></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -262,9 +263,18 @@ The above copyright notice and this permission notice shall be included in all c
 <script src="{{asset('js/plugins/jasny-bootstrap.min.js')}}"></script>
 <script src="{{asset('js/plugins/fullcalendar.min.js')}}"></script>
 <script src="{{asset('js/plugins/jquery-jvectormap.js')}}"></script>
-<script src="{{asset('assets/js/plugins/nouislider.min.js')}}"></script>
+<!--<script src="{{asset('assets/js/plugins/nouislider.min.js')}}"></script> -->
 <script src="{{asset('https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js')}}"></script>
 <script src="{{asset('js/plugins/arrive.min.js')}}"></script>
+
+
+<script src="{{asset('js/mascara.js')}}"></script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+
 
 
 </body>

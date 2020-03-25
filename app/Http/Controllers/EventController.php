@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\Auth;
 class EventController extends Controller
 {
     public function loadEvents(){
-        $events = Event::all();
+
+        $events = Event::where('id_localidade', Auth::user()->localidade)->get();
         return response()->json($events);
     }
     public function cadastra(Request $request){

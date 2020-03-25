@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Carro;
 use App\Localidade;
 use App\Motorista;
+use App\Viagens;
 use Illuminate\Http\Request;
 
 class ViagemController extends Controller
@@ -33,5 +34,11 @@ class ViagemController extends Controller
         $data = $request->all();
         Carro::create($data);
         return redirect('/cadastroMotorista');
+    }
+    public function cadastroViagem(Request $request){
+        $data = $request->all();
+        Viagens::create($data);
+
+        return redirect('/controleViagem');
     }
 }

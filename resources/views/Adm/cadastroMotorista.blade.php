@@ -78,11 +78,11 @@ The above copyright notice and this permission notice shall be included in all c
                         <p>Cadastrar Profissionais</p>
                     </a>
                 </li>
-                <li class="nav-item  active">
+                <li class="nav-item  ">
                     <a class="nav-link" href="{{route('cadastroMotorista')}}">
                         <i class="material-icons">directions_car
                         </i>
-                        <p>Cadastrar Motoristas</p>
+                        <p>Gestão de Viagens</p>
                     </a>
                 </li>
                 <li class="nav-item ">
@@ -160,13 +160,13 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Nome do Motorista</label>
-                                                <input type="text" class="form-control " name="nome" id="nome">
+                                                <input style="text-transform: uppercase" type="text" class="form-control " name="nome" id="nome">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Telefone</label>
-                                                <input type="text" class="form-control telefone" name="telefone" id="telefone">
+                                                <input style="text-transform: uppercase"type="text" class="form-control telefone" name="telefone" id="telefone">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
@@ -178,7 +178,7 @@ The above copyright notice and this permission notice shall be included in all c
                                     </div>
                                     <div class="container">
                                         <div class="row">
-                                            <select class="form-control" name="id_localidade" id="id_localidade">
+                                            <select style="text-transform: uppercase"class="form-control" name="id_localidade" id="id_localidade">
                                                 @foreach($localidades as $localidade)
                                                     <option
                                                         value="{{$localidade->id}}">{{$localidade->nome}}</option>
@@ -207,19 +207,19 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Identificador do Carro</label>
-                                                <input type="text" class="form-control " name="nome" id="nome">
+                                                <input style="text-transform: uppercase"type="text" class="form-control " name="nome" id="nome">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Placa</label>
-                                                <input type="text" class="form-control " name="placa" id="placa">
+                                                <input style="text-transform: uppercase"type="text" class="form-control " name="placa" id="placa">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="container">
                                         <div class="row">
-                                            <select class="form-control" name="id_localidade" id="id_localidade">
+                                            <select style="text-transform: uppercase"class="form-control" name="id_localidade" id="id_localidade">
                                                 @foreach($localidades as $localidade)
                                                     <option
                                                         value="{{$localidade->id}}">{{$localidade->nome}}</option>
