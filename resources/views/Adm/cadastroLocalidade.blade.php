@@ -241,8 +241,8 @@ The above copyright notice and this permission notice shall be included in all c
                                         <th>Exames</th>
                                         <th>Encaminhamentos</th>
                                         <th>Vacinas</th>
-                                        <th>Tratamento Odonto</th>
                                         <th>Consulta Odonto</th>
+                                        <th>Tratamento Odonto</th>
 
                                     </tr>
                                     </thead>

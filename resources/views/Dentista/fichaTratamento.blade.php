@@ -152,14 +152,6 @@ The above copyright notice and this permission notice shall be included in all c
                                     @csrf
                                     <h3 align="center">Identificação</h3>
                                     <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Profissional</label>
-                                                <input value="{{Auth::user()->id}}" style="text-transform: uppercase"
-                                                       type="text" class="form-control" id="id_profissional"
-                                                       name="id_profissional" readonly="true">
-                                            </div>
-                                        </div>
                                         <div class="container">
                                             <label class="bmd-label-floating">Comunidade Atendida</label>
                                             <select style="text-transform: uppercase" class="form-control"

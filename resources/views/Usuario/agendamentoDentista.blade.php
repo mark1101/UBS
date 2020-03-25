@@ -179,7 +179,7 @@ The above copyright notice and this permission notice shall be included in all c
                                             <select class="form-control" name="id_paciente" id="id_paciente">
                                                 @foreach($pacientes as $paciente)
                                                     <option
-                                                        value="{{$paciente->id}}">{{$paciente->nome}}</option>
+                                                        value="{{$paciente->id}}">{{$paciente->nome}} {{$paciente->ultimo_nome}}</option>
                                                 @endforeach
                                             </select>
                                         </div>

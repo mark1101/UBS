@@ -152,13 +152,6 @@ The above copyright notice and this permission notice shall be included in all c
                                     @csrf
                                     <h3 align="center">Identificação</h3>
                                     <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Profissional</label>
-                                                <input value="{{Auth::user()->id}}" style="text-transform: uppercase" type="text" class="form-control" id="id_profissional"
-                                                       name="id_profissional" readonly = "true">
-                                            </div>
-                                        </div>
                                         <div class="container">
                                             <label class="bmd-label-floating">Comunidade Atendida</label>
                                             <select style="text-transform: uppercase" class="form-control"
@@ -244,7 +237,7 @@ The above copyright notice and this permission notice shall be included in all c
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Outras Doenças</label>
                                                 <input style="text-transform: uppercase" type="text" class="form-control" id="outras_doencas"
-                                                       name="outras_doencas">
+                                                       name="outras_doencas" required>
                                             </div>
                                         </div>
                                     </div>
@@ -276,27 +269,27 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Língua</label>
-                                                <input style="text-transform: uppercase"type="text" class="form-control" id="lingua" name="lingua">
+                                                <input style="text-transform: uppercase"type="text" class="form-control" id="lingua" name="lingua" required>
                                             </div>
                                         </div>
                                         <div class="col-md-5">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Palato Mole</label>
                                                 <input style="text-transform: uppercase"type="text" class="form-control" id="palato_mole"
-                                                       name="palato_mole">
+                                                       name="palato_mole" required>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Assoalho Bucal</label>
                                                 <input style="text-transform: uppercase"type="text" class="form-control" id="assoalho_bucal"
-                                                       name="assoalho_bucal">
+                                                       name="assoalho_bucal" required>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Labios</label>
-                                                <input style="text-transform: uppercase"type="text" class="form-control" id="labios" name="labios">
+                                                <input style="text-transform: uppercase"type="text" class="form-control" id="labios" name="labios" required>
                                             </div>
                                         </div>
                                     </div>
@@ -369,7 +362,7 @@ The above copyright notice and this permission notice shall be included in all c
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Observações</label>
                                                 <textarea style="text-transform: uppercase;" class="form-control"
-                                                          id="observacoes" name="observacoes" rows="3"></textarea>
+                                                          id="observacoes" name="observacoes" rows="3" required></textarea>
                                             </div>
                                         </div>
                                         <div class="col-md-10">
@@ -377,7 +370,7 @@ The above copyright notice and this permission notice shall be included in all c
                                                 <label class="bmd-label-floating">Plano Tratamento</label>
                                                 <textarea style="text-transform: uppercase;" class="form-control"
                                                           id="plano_tratamento" name="plano_tratamento"
-                                                          rows="3"></textarea>
+                                                          rows="3" required></textarea>
                                             </div>
                                         </div>
                                     </div>

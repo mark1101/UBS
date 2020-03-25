@@ -115,6 +115,15 @@
                         </a>
                     </li>
                 @endif
+                @if(Auth::user()->funcao == "Medicina")
+                    <li class="nav-item  ">
+                        <a class="nav-link" href="{{route('controleViagem')}}">
+                            <i class="material-icons">assignment_late
+                            </i>
+                            <p>Atestado Medico</p>
+                        </a>
+                    </li>
+                @endif
             </ul>
 
         </div>
