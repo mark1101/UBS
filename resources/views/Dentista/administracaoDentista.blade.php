@@ -50,6 +50,7 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{route('cadastroConsultaOdonto')}}">Nova Consulta</a>
                         <a class="dropdown-item" href="{{route('tratamentoOdonto')}}">Ficha Tratamento</a>
+                        <a class="dropdown-item" href="{{route('solicitacaoExameOdonto')}}">Solicitação de Exame Complementar</a>
                     </div>
                 </li>
                 <li class="nav-item  ">

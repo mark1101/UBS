@@ -7,6 +7,8 @@ use App\Dentista;
 use App\FichaTratamento;
 use App\Localidade;
 use App\Paciente;
+use App\SolicitacaoExameOdonto;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -36,6 +38,18 @@ class DentistaController extends Controller
             'localidades' => $localidade
         ]);
     }
+
+    public function indexSolicitacaoExame()
+    {
+        $paciente = Paciente::all();
+        $localidade = Localidade::all();
+
+        return view('Dentista.solicitacaoExameOdonto' , [
+            'pacientes' => $paciente,
+            'localidades' => $localidade
+        ]);
+    }
+
     public function agendamentoDentista(){ // FUNCAO USADA PELO RECEPCIONISTA
 
         $localidade = Localidade::all();
@@ -61,5 +75,15 @@ class DentistaController extends Controller
         FichaTratamento::create($data);
 
         return redirect('/fichaTratamento');
+    }
+
+    public function cadastraSolicitacaoExame(Request $request)
+    {
+        $data = $request->all();
+        $data['id_profissional'] = Auth::user()->id;
+
+        SolicitacaoExameOdonto::create($data);
+
+        return redirect('/solicitacaoExameOdonto');
     }
 }

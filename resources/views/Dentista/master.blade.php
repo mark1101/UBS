@@ -61,7 +61,7 @@ The above copyright notice and this permission notice shall be included in all c
                         <p>Agenda</p>
                     </a>
                 </li>
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown ">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                        data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">
@@ -70,7 +70,8 @@ The above copyright notice and this permission notice shall be included in all c
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{route('cadastroConsultaOdonto')}}">Nova Consulta</a>
-                        <a class="dropdown-item" href="">Consulta Andamento</a>
+                        <a class="dropdown-item" href="{{route('tratamentoOdonto')}}">Ficha Tratamento</a>
+                        <a class="dropdown-item" href="{{route('solicitacaoExameOdonto')}}">Solicitação de Exame Complementar</a>
                     </div>
                 </li>
                 <li class="nav-item  ">

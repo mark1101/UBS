@@ -93,11 +93,6 @@ Route::middleware(['auth'])->group(function () {
         ->name('storeProfisional');
 
 
-// ROTAS DE ODONTOLOGIA
-    Route::get('/administracaoOdonto', 'DentistaController@indexAdm')->name('admOdonto');
-    Route::get('/odonto/consulta', 'DentistaController@indexConsulta')->name('cadastroConsultaOdonto');
-    Route::get('/agendamentoDentista', 'DentistaController@agendamentoDentista')->name('agendamentoDentista');
-
 // ROTAS DE CONSULTA
     Route::get('/consultaCadastro', 'ConsultaController@indexConsulta')->name('consultaCadastro');
     Route::POST('/consulta/cadastro', 'ConsultaController@cadastroConsulta')->name('cadastroConsulta');
@@ -108,16 +103,22 @@ Route::middleware(['auth'])->group(function () {
     //Route::get('/login', 'LoginController@index')->name('login');
     Route::get('/controleViagem', 'ViagemController@index')->name('controleViagem');
 
-///////////// CALENDARIO DENTISTA //////////////
+// ROTAS DE ODONTOLOGIA
+    Route::get('/administracaoOdonto', 'DentistaController@indexAdm')->name('admOdonto');
+    Route::get('/odonto/consulta', 'DentistaController@indexConsulta')->name('cadastroConsultaOdonto');
+    Route::get('/agendamentoDentista', 'DentistaController@agendamentoDentista')->name('agendamentoDentista');
+    Route::get('/solicitacaoExameOdonto', 'DentistaController@indexSolicitacaoExame')->name('solicitacaoExameOdonto');
     Route::get('/agendaDentista', 'FullCalendarController@index')->name('agendaDentista');
     Route::get('/load-events', 'EventController@loadEvents')->name('routeLoadEvents');
+    Route::get('/fichaTratamento' ,'DentistaController@indexTratamento')->name('tratamentoOdonto');
+
     Route::put('/event-update', 'EventController@altera')->name('routeEventUpdate');
+
     Route::POST('/event-store', 'EventController@cadastra')->name('routeEventStore');
     Route::POST('/cadastroEvento', 'EventController@cadastroEvento')->name('cadastroEvento');
-    Route::POST('/cadatrouConsultaOdonto' , 'DentistaController@cadastraConsultaDentista')
-        ->name('storeConsultaOdonto');
-    Route::get('/fichaTratamento' ,'DentistaController@indexTratamento')->name('tratamentoOdonto');
+    Route::POST('/cadatrouConsultaOdonto' , 'DentistaController@cadastraConsultaDentista')->name('storeConsultaOdonto');
     Route::POST('/cadastrouficha' , 'DentistaController@cadastraTratamentoDentista')->name('storeTratamentoOdonto');
+    Route::post('/cadastrouSolicitacao' , 'DentistaController@cadastraSolicitacaoExame')->name('storeSolicitacaoExameOdonto');
 
 // ROTAS DE AGENTE DE SAUDE
     Route::get('/agente/cadastroPaciente', 'AgenteController@indexcadastraPaciente')->name('cadastroPacienteAgente');
