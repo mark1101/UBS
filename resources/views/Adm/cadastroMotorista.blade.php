@@ -28,7 +28,7 @@ The above copyright notice and this permission notice shall be included in all c
     <link href="{{asset('css/material-dashboard.css')}}" rel="stylesheet"/>
 </head>
 
-<body class="">
+<body class=""  style="background-image: url({{asset('img/administracao.jpg')}}) ; background-size: 100% 100%;">
 <div class="wrapper ">
 
     <div class="sidebar" data-color="admin" data-background-color="white" data-image="../assets/img/unidade.jpg">
@@ -120,7 +120,7 @@ The above copyright notice and this permission notice shall be included in all c
                     <form class="navbar-form"></form>
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                            <a style="color: #f8f9fa" id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{Auth::user()->funcao}} {{ Auth::user()->name }} <span class="caret"></span>
                             </a>

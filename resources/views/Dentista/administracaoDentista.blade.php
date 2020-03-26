@@ -18,7 +18,7 @@
 
 </head>
 
-<body class="">
+<body class="" style="background-image: url({{asset('img/odonto.jpg')}}) ; background-size: 100% 100%;">
 <div class="wrapper ">
 
     <div class="sidebar" data-color="azure" data-background-color="white" data-image="../assets/img/unidade.jpg">

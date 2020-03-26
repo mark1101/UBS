@@ -50,7 +50,7 @@
         left: 0;
         margin: auto;
         height: 400px;
-        background-color: rgba(128,0,128, 0.55);
+        background-color: rgba(128, 0, 128, 0.55);
         border-radius: 10px;
     }
 
@@ -232,15 +232,17 @@
 
 <div class="login-reg-panel">
 
-
     <div class="white-panel">
         <div class="login-show">
-            <h2 align="center">ENTRAR</h2>
+            <div align="center">
+                <img src="{{asset('img/iconLogin.png')}}">
+            </div>
 
             <form method="POST" action="{{ route('login') }}">
                 @csrf
 
-                <input style="border-radius: 4px" id="email" type="text" placeholder="Digite seu Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                <input style="border-radius: 4px" id="email" type="text" placeholder="Digite seu Email"
+                       pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                        class="form-control" @error('email') is-invalid @enderror" name="email"
                 value="{{ old('email') }}" required autocomplete="email" autofocus>
                 @error('email')
@@ -267,10 +269,10 @@
     color:#ffffff;
     border-radius: 4px;
     background-color: #9C27B0;
-    border:none;" type="submit" class="btn btn-primary">Entrar</button>
+    border:none;" type="submit" class="btn btn-primary">Entrar
+                </button>
 
             </form>
         </div>
-
     </div>
 </div>
