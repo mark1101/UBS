@@ -188,18 +188,18 @@ The above copyright notice and this permission notice shall be included in all c
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
+
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header card-header-success">
-                                <h4 class="card-title">Pesquisar Paciente</h4>
-                                <form class="navbar-form" action="{{route('searchConsulta')}}" method="post">
+                                <h4 class="card-title">Pesquisar Consulta</h4>
+                                <form id="buscaConsulta" class="navbar-form">
                                     @csrf
                                     <div class="input-group no-border">
-                                        <input type="text" style="color:beige;" id="criterio" name="criterio" value="" class="form-control"
-                                               placeholder="Digite o primeiro nome do paciente...">
+                                        <input type="text" style="color:beige;" id="criterio" name="criterio" class="form-control"
+                                               placeholder="A busca pode ser feita por nome, CPF ou número do SUS">
                                         <button type="submit" class="btn btn-white btn-round btn-just-icon">
                                             <i class="material-icons">search</i>
-                                            <div class="ripple-container"></div>
                                         </button>
                                     </div>
                                 </form>
@@ -207,30 +207,14 @@ The above copyright notice and this permission notice shall be included in all c
                             <div class="card-body">
                                 <div class="card-body">
                                     <div class="table-responsive" style="overflow: auto; height: 300px;">
-                                        <table class="table" style="font-size: small">
+                                        <table id="tableSearch" class="table" style="font-size: small">
+
                                             <thead>
-                                            <tr>
-                                                <th scope="col">Nome</th>
-                                                <th scope="col">Profissional</th>
-                                                <th scope="col">Pressao</th>
-                                                <th scope="col">Localidade</th>
-                                                <th scope="col">Sintomas</th>
-                                                <th scope="col">Observação</th>
-                                                <th scope="col">Data</th>
-                                            </tr>
+
                                             </thead>
                                             <tbody>
-                                            @foreach($consultas as $consulta)
-                                                <tr>
-                                                    <td>{{($consulta->paciente)->nome . " " .($consulta->paciente)->ultimo_nome}} </td>
-                                                    <td>{{($consulta->profissional)->name}}</td>
-                                                    <td>{{$consulta->pressao}}</td>
-                                                    <td>{{($consulta->localidade)->nome}}</td>
-                                                    <td>{{$consulta->sintomas}}</td>
-                                                    <td>{{$consulta->observacoes}}</td>
-                                                    <td>{{$consulta->data}}</td>
-                                                </tr>
-                                            @endforeach
+
+
                                             </tbody>
                                         </table>
                                     </div>
@@ -238,9 +222,69 @@ The above copyright notice and this permission notice shall be included in all c
                             </div>
                         </div>
                     </div>
+
+                    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
+
+                    <script>
+
+                        $(function () {
+                            $('form[id="buscaConsulta"]').submit(function (event) {
+                                event.preventDefault();
+                                $.ajax({
+                                    url: "{{route('searchConsulta')}}",
+                                    type: "post",
+                                    data: $(this).serialize(),
+                                    dataType: 'json',
+                                    success: function (response) {
+                                        if (response.success === true) {
+                                            var newRow = $("<tr>");
+                                            var cols = "";
+                                            cols += '<th>Nome</th>';
+                                            cols += '<th>Profissional</th>';
+                                            cols += '<th>Pressao</th>';
+                                            cols += '<th>Localidade</th>';
+                                            cols += '<th>Sintomas</th>';
+                                            cols += '<th>Observação</th>';
+                                            cols += '<th>Data</th>';
+                                            newRow.append(cols);
+
+                                            $("#tableSearch").html("").append(newRow).fadeIn();
+                                            //funcionou
+                                            $.each(response.data, function (item, value) {
+
+                                                var newRow = $("<tr>");
+                                                var cols = "";
+
+                                                cols += '<td>' + response.data[item]["paciente"]["nome"] + " " + response.data[item]["paciente"]["ultimo_nome"] + '</td>';
+                                                cols += '<td>' + response.data[item]["profissional"]['name'] + '</td>';
+                                                cols += '<td>' + response.data[item]["pressao"] + '</td>';
+                                                cols += '<td>' + response.data[item]['localidade']['nome'] + '</td>';
+                                                cols += '<td>' + response.data[item]["sintomas"] + '</td>';
+                                                cols += '<td>' + response.data[item]['observacao'] + '</td>';
+                                                cols += '<td>' + response.data[item]['data'] + '</td>';
+                                                cols += '<td><a onclick="getPacienteForEdit(' + response.data[item].id + ')" data-toggle="modal" data-target="#modalExemplo" style="width: 55px;"> <i class="material-icons" style="color: black;"title="Salvar Paciente">visibility\n</i></a>\n</td>';
+
+                                                newRow.append(cols);
+                                                $("#tableSearch").append(newRow).fadeIn();
+                                            });
+                                        } else {
+                                            //erro
+                                        }
+                                    }
+                                });
+                            });
+                        });
+
+                    </script>
+
+
                 </div>
             </div>
         </div>
+
+
+
         <footer class="footer">
             <div class="container-fluid">
             </div>

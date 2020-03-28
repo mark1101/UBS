@@ -193,15 +193,13 @@ The above copyright notice and this permission notice shall be included in all c
                         <div class="card">
                             <div class="card-header card-header-success">
                                 <h4 class="card-title">Pesquisar Paciente</h4>
-                                <form class="navbar-form" action="{{route('searchPaciente')}}" method="post">
+                                <form id="buscaPaciente" class="navbar-form">
                                     @csrf
                                     <div class="input-group no-border">
-                                        <input type="text" style="color:beige;" id="criterio" name="criterio"
-                                               class="form-control"
+                                        <input type="text" style="color:beige;" id="criterio" name="criterio" class="form-control"
                                                placeholder="A busca pode ser feita por nome, CPF ou número do SUS">
                                         <button type="submit" class="btn btn-white btn-round btn-just-icon">
                                             <i class="material-icons">search</i>
-                                            <div class="ripple-container"></div>
                                         </button>
                                     </div>
                                 </form>
@@ -209,33 +207,12 @@ The above copyright notice and this permission notice shall be included in all c
                             <div class="card-body">
                                 <div class="card-body">
                                     <div class="table-responsive" style="overflow: auto; height: 300px;">
-                                        <table class="table">
+                                        <table id="tableSearch" class="table">
                                             <thead>
-                                            <tr>
-                                                <th scope="col" width="10%">Nome</th>
-                                                <th scope="col" align="center">Data Nascimento</th>
-                                                <th scope="col">Num Sus</th>
-                                                <th scope="col">CPF</th>
-                                                <th scope="col">Localidade</th>
-                                                <th scope="col">Telefone</th>
 
-                                                <th></th>
-                                            </tr>
                                             </thead>
                                             <tbody>
-                                            @foreach($pacientes as $paciente)
-                                                <tr>
-                                                    <td width="20%">{{$paciente->nome. " " .$paciente->ultimo_nome}} </td>
-                                                    <td style="text-transform: uppercase; text-align: center">{{$paciente->data_nascimento}}</td>
-                                                    <td style="text-transform: uppercase;">{{$paciente->num_sus}}</td>
-                                                    <td style="text-transform: uppercase;">{{$paciente->cpf}}</td>
-                                                    <td style="text-transform: uppercase;">{{($paciente->localidade)->nome}}</td>
-                                                    <td style="text-transform: uppercase;">{{$paciente->telefone}}</td>
-                                                    <td><a style="color: #1a252f" href="#"><span class="material-icons">
-create
-</span></a></td>
-                                                </tr>
-                                            @endforeach
+
                                             </tbody>
                                         </table>
                                     </div>
@@ -244,6 +221,106 @@ create
                         </div>
                     </div>
 
+                    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
+
+
+                    @foreach($pacientes as $paciente)
+                        <div class="modal fade" id="modalExemplo" tabindex="-1" role="dialog"
+                             aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Título do modal</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div id="editPaciente" class="modal-body">
+                                        <form action="{{route('updatePaciente')}}" method="post">
+
+                                            Nome: <label for="name{{$paciente->id}}"></label>
+                                            <input id="name{{$paciente->id}}" class="form-control" value="{{$paciente->nome}} {{$paciente->ultimo_nome}}">
+                                            <br>
+                                            Telefone: <label for="name{{$paciente->id}}"></label>
+                                            <input id="name{{$paciente->id}}" class="form-control" value="{{$paciente->telefone}}">
+
+                                        </form>
+                                        <script>
+
+                                        </script>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar
+                                        </button>
+                                        <button type="button" class="btn btn-success">Salvar mudanças</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                    <script>
+
+                        $(function () {
+                            $('form[id="buscaPaciente"]').submit(function (event) {
+                                event.preventDefault();
+                                $.ajax({
+                                    url: "{{route('searchPaciente')}}",
+                                    type: "post",
+                                    data: $(this).serialize(),
+                                    dataType: 'json',
+                                    success: function (response) {
+                                        if (response.success === true) {
+                                            var newRow = $("<tr>");
+                                            var cols = "";
+                                            cols += '<th>Nome</th>';
+                                            cols += '<th>Data Nascimento</th>';
+                                            cols += '<th>Num Sus</th>';
+                                            cols += '<th>CPF</th>';
+                                            cols += '<th>Localidade</th>';
+                                            cols += '<th>Telefone</th>';
+                                            newRow.append(cols);
+
+                                            $("#tableSearch").html("").append(newRow).fadeIn();
+                                            //funcionou
+                                            $.each(response.data, function (item, value) {
+                                                var newRow = $("<tr>");
+                                                var cols = "";
+                                                cols += '<td>' + response.data[item]["nome"] + " " + response.data[item]["ultimo_nome"] + '</td>';
+                                                cols += '<td>' + response.data[item]["data_nascimento"] + '</td>';
+                                                cols += '<td>' + response.data[item]["num_sus"] + '</td>';
+                                                cols += '<td>' + response.data[item]["cpf"] + '</td>';
+                                                cols += '<td>' + response.data[item]['localidade']['nome'] + '</td>';
+                                                cols += '<td>' + response.data[item]['telefone'] + '</td>';
+                                                cols += '<td><a onclick="getPacienteForEdit(' + response.data[item].id + ')" data-toggle="modal" data-target="#modalExemplo" style="width: 55px;"> <i class="material-icons" style="color: black;"title="Salvar Paciente">edit</i></a>\n</td>';
+
+                                                newRow.append(cols);
+                                                $("#tableSearch").append(newRow).fadeIn();
+                                            });
+                                        } else {
+                                            //erro
+                                        }
+                                    }
+                                });
+                            });
+                        });
+                    </script>
+                    <script>
+                        function getPacienteForEdit(id) {
+                            $.ajax({
+                                url: "{{route('puxaPacinete',['id' => '_replace_'])}}".replace('_replace_', id),
+                                type: "get",
+                                data: $(this).serialize(),
+                                dataType: 'json',
+                                success: function (response) {
+                                    if (response.success === true) {
+                                        $("#editPaciente").html('<p class="text-success">Teste</p>');
+
+                                    }
+                                }
+                            });
+                        }
+                    </script>
                     <!-- MOSTRAGEM COM IMAGEM EM CIMA
                     <div class="col-md-4">
                       <div class="card card-profile">

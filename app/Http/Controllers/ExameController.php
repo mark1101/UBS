@@ -36,8 +36,12 @@ class ExameController extends Controller
         $data['comunidade_atendida'] = Auth::user()->localidade;
         $data['id_profissional'] = Auth::user()->id;
 
+        if($request->file('arquivo')->isValid()){
+
+        }
+
         Exame::create($data);
-        return redirect('/cadastroExame');
+        return redirect('/exame/cadastro');
     }
 
     public function cadastraSolicitacaoExame(Request $request)
@@ -45,6 +49,6 @@ class ExameController extends Controller
         $data = $request->all();
 
         $data['comunidade_atendida'] = Auth::user()->localidade;
-        return redirect('/solicitacaoExame');
+        return redirect('/exame/solicitacao');
     }
 }

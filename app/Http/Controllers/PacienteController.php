@@ -46,13 +46,43 @@ class PacienteController extends Controller
 
     public function buscaPaciente(Request $request)
     {
+        //tratar request de entrada
         $data = Paciente::where('nome', 'like', '%' . $request->criterio . '%')
-            ->orWhere('cpf' , 'like' , '%' . $request->criterio . '%')
-            ->orWhere('num_sus' , 'like' , '%'. $request->criterio . '%')
-            ->orWhere('ultimo_nome' , 'like', '%' . $request->criterio . '%')
+            ->orWhere('cpf', 'like', '%' . $request->criterio . '%')
+            ->orWhere('num_sus', 'like', '%' . $request->criterio . '%')
+            ->orWhere('ultimo_nome', 'like', '%' . $request->criterio . '%')
+            ->with(['localidade'])
             ->get();
 
-        return view('Usuario.buscaPaciente' , ['pacientes' => Paciente::with(['localidade'])->get(),
-            'pacientes' => $data]);
+        for ($i = 0; $i < count($data); $i++){
+            $data[$i]['localidade'] = ($data[$i]->localidade)->nome;
+        }
+
+
+
+        $response['success'] = true;
+        $response['data'] = $data;
+
+        echo json_encode($response);
+    }
+
+    public function puxaPaciente($id){
+
+        $data = Paciente::where('id', $id)->get();
+        if(count($data) == 0){
+            $response['sucess'] = true;
+            $response['message'] = "Nenhum usuário encontrado com essas identificações.";
+
+            echo json_encode($response);
+        }else{
+            $response['sucess'] = true;
+            $response['data'] = $data;
+
+            echo json_encode($response);
+        }
+    }
+
+    public function editaPaciente(Request $request , $id){
+
     }
 }

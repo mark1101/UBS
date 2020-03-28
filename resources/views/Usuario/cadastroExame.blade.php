@@ -196,7 +196,7 @@ The above copyright notice and this permission notice shall be included in all c
                                 <h4 class="card-title">Cadastro de Exame</h4>
                             </div>
                             <div class="card-body" id="exame">
-                                <form action="{{route('cadastrarExame')}}" method="post">
+                                <form action="{{route('cadastrarExame')}}" method="post" enctype="multipart/form-data">
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-6">
@@ -245,6 +245,13 @@ The above copyright notice and this permission notice shall be included in all c
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label class="bmd-label-floating">Caso preciso guarda de arquivo</label>
+                                            <input type="file" class="form-control data" name="arquivo" id="arquivo">
+                                        </div>
+                                    </div>
+                                    <br>
 
                                     <button type="submit" class="btn btn-primary-normal">Salvar
                                     </button>

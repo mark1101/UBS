@@ -203,19 +203,6 @@ The above copyright notice and this permission notice shall be included in all c
                                     </div>
                                 </form>
 
-                                <!-- FORM PARA SELECAO DOS EXAMES REALIZADOS PARA PESQUISA -->
-                                <form action="">
-                                    <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" id="customRadioInline1" name="customRadioInline1"
-                                               class="custom-control-input">
-                                        <label class="custom-control-label" for="customRadioInline1">Exame 1</label>
-                                    </div>
-                                    <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" id="customRadioInline2" name="customRadioInline2"
-                                               class="custom-control-input">
-                                        <label class="custom-control-label" for="customRadioInline2">Exame 2</label>
-                                    </div>
-                                </form>
                             </div>
 
                             <!-- MIOLO DE TABELA PARA MEXER -->
@@ -223,45 +210,24 @@ The above copyright notice and this permission notice shall be included in all c
                                 <div class="table-responsive" style="overflow: auto; height: 250px;">
                                     <table class="table">
                                         <thead class=" text-success">
-                                        <th>
-                                            ID
-                                        </th>
-                                        <th>
-                                            Nome
-                                        </th>
-                                        <th>
-                                            Localidade
-                                        </th>
-                                        <th>
-                                            Exame Realizado
-                                        </th>
-                                        <th>
-                                            Procedimento
-                                        </th>
-                                        <th>
-                                            Finalização
-                                        </th>
+
+                                        <th></th>
+                                        <th>Nome</th>
+                                        <th>Localidade</th>
+                                        <th>Exame Realizado</th>
+                                        <th>Procedimento</th>
+                                        <th>Finalização</th>
+
                                         </thead>
                                         <tbody>
                                         <tr>
-                                            <td>
-                                                1
-                                            </td>
-                                            <td>
-                                                FordFox
-                                            </td>
-                                            <td>
-                                                Vila Verde
-                                            </td>
-                                            <td>
-                                                Colesterol
-                                            </td>
-                                            <td>
-                                                Realizado em outra localidade
-                                            </td>
-                                            <td class="text-primary">
-                                                Normal
-                                            </td>
+
+                                            <td>1</td>
+                                            <td>FordFox</td>
+                                            <td>Vila Verde</td>
+                                            <td>Colesterol</td>
+                                            <td>Realizado em outra localidade</td>
+                                            <td class="text-primary">Normal</td>
 
                                         </tr>
 

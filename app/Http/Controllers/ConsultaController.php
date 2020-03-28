@@ -36,42 +36,29 @@ class ConsultaController extends Controller
 
         return view('Usuario.mostraConsulta', ['paciente' => $paciente, 'users' => $profissionais,
             'consultas' => Consulta::with(['paciente', 'profissional', 'localidade'])->get()
-
         ]);
     }
 
     public function buscaConsulta(Request $request)
     {
 
-        $paciente = "";
-        $todas = "";
-        $profissionais = "";
-
-
-        if ($request->criterio == "") {
-            return view('Usuario.mostraConsulta', [
-                'consultas' => Consulta::with(['paciente', 'profissional', 'localidade'])->get()
-            ]);
-        }
-
         $data = Paciente::where('nome', 'like', '%' . $request->criterio . '%')
+            ->with(['localidade' , 'profissional' , 'paciente'])
             ->get();
 
-
-        if (count($data) == 0) {
-            return view('Usuario.mostraConsulta', [
-                'consultas' => $data
-            ]);
+        for ($i = 0; $i < count($data); $i++){
+            $data[$i]['localidade'] = ($data[$i]->localidade)->nome;
+        }
+        for ($i = 0; $i < count($data); $i++){
+            $data[$i]['profissional'] = ($data[$i]->profissional)->name;
+        }
+        for ($i = 0; $i < count($data); $i++){
+            $data[$i]['paciente'] = ($data[$i]->paciente)->nome + ($data[$i]->paciente)->ultimo_nome;
         }
 
-        foreach ($data as $d) {
-            $todas = Consulta::where('id_paciente', $d->id)->get();
-        }
+        $response['success'] = true;
+        $response['data'] = $data;
 
-        return view('Usuario.mostraConsulta', [
-            'paciente' => $paciente,
-            'users' => $profissionais,
-            'consultas' => $todas
-        ]);
+        echo json_encode($response);
     }
 }

@@ -53,12 +53,19 @@ Route::middleware(['auth'])->group(function () {
     Route::POST('paciente/buscaPaciente', 'PacienteController@cadastraPaciente')->name('cadastraPaciente');
     Route::post('/buscaPaciente', 'PacienteController@buscaPaciente')->name('searchPaciente');
 
+    Route::post('/editaPaciente' , 'PacienteController@editaPaciente')->name('updatePaciente');
+
+    Route::get('/puxaPaciente/{id}' , 'PacienteController@puxaPaciente')->name('puxaPacinete');
+
 
 // ROTAS DE EXAMES
-    Route::get('/cadastroExame', 'ExameController@indexcadastroExame')->name('cadastroExame');
-    Route::get('/buscarExame', 'ExameController@indexbuscarExame')->name('buscarExame');
-    Route::get('/solicitarExame', 'ExameController@indexsolicitacaoExame')->name('solicitarExame');
-    Route::POST('/cadastrarExame', 'ExameController@cadastraExame')->name('cadastrarExame');
+    Route::group(['prefix'=>'/exame'], function(){
+        Route::get('/cadastro', 'ExameController@indexcadastroExame')->name('cadastroExame');
+        Route::get('/buscar', 'ExameController@indexbuscarExame')->name('buscarExame');
+        Route::get('/solicitar', 'ExameController@indexsolicitacaoExame')->name('solicitarExame');
+        Route::POST('/cadastrar', 'ExameController@cadastraExame')->name('cadastrarExame');
+    });
+
 
 // ROTAS DE VACINAS
     Route::get('/mostraVacina', 'VacinaController@mostraVacina')->name('mostraVacina');
@@ -95,10 +102,11 @@ Route::middleware(['auth'])->group(function () {
 
 
 // ROTAS DE CONSULTA
+
     Route::get('/consultaCadastro', 'ConsultaController@indexConsulta')->name('consultaCadastro');
     Route::POST('/consulta/cadastro', 'ConsultaController@cadastroConsulta')->name('cadastroConsulta');
     Route::get('/mostraConsulta', 'ConsultaController@mostraConsulta')->name('mostraConsulta');
-    Route::post('/buscaConsulta', 'ConsultaController@buscaConsulta')->name('searchConsulta');
+    Route::POST('/buscaConsulta', 'ConsultaController@buscaConsulta')->name('searchConsulta');
 
 // ROTAS DE GERAL
     Route::get('/inicio', 'InicioController@index')->name('inicio');
