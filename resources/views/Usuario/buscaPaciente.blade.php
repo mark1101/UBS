@@ -198,7 +198,7 @@ The above copyright notice and this permission notice shall be included in all c
                                     <div class="input-group no-border">
                                         <input type="text" style="color:beige;" id="criterio" name="criterio"
                                                class="form-control"
-                                               placeholder="Digite o primeiro nome do paciente...">
+                                               placeholder="A busca pode ser feita por nome, CPF ou número do SUS">
                                         <button type="submit" class="btn btn-white btn-round btn-just-icon">
                                             <i class="material-icons">search</i>
                                             <div class="ripple-container"></div>

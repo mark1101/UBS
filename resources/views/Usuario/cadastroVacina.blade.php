@@ -248,7 +248,7 @@ The above copyright notice and this permission notice shall be included in all c
                                 <form class="navbar-form" action="{{route('mostraVacina')}}">
                                     @csrf
                                     <div class="input-group no-border">
-                                        <input style="text-transform: uppercase;" type="text" id="pesquisaVacina" name="pesquisaVacina"
+                                        <input type="text" id="criterio" name="criterio"
                                                style="color:beige;" value="" class="form-control"
                                                placeholder="Digite o primeiro nome do paciente...">
                                         <button type="submit" class="btn btn-white btn-round btn-just-icon">
@@ -276,7 +276,7 @@ The above copyright notice and this permission notice shall be included in all c
                                         @foreach($vacinas as $vacina)
                                             <tr>
                                                 <td style="text-transform: uppercase;" >{{($vacina->localidade)->nome}}</td>
-                                                <td style="text-transform: uppercase;" >{{($vacina->paciente)->nome . " ". ($vacina->paciente)->ultimo_nome}}</td>
+                                                <td>{{($vacina->paciente)->nome . " ". ($vacina->paciente)->ultimo_nome}}</td>
                                                 <td style="text-transform: uppercase;" >{{$vacina->vacina_realizada}}</td>
                                                 <td style="text-transform: uppercase;" >{{$vacina->informacao_lote}}</td>
                                                 <td style="text-transform: uppercase;" >{{$vacina->data}}</td>
