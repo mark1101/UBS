@@ -143,10 +143,6 @@ The above copyright notice and this permission notice shall be included in all c
         <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
             <div class="container-fluid">
 
-                <div class="navbar-wrapper">
-                    <a class="navbar-brand" href="javascript:;">Gerenciamento de Paciente</a>
-                </div>
-
                 <!-- BOTAO DE RESPONSIVIDADE PARA OPCIOES DE SIDEBAR-->
                 <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -161,7 +157,8 @@ The above copyright notice and this permission notice shall be included in all c
                     <form class="navbar-form"></form>
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{Auth::user()->funcao}} {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
@@ -172,7 +169,8 @@ The above copyright notice and this permission notice shall be included in all c
                                     {{ __('Sair') }}
                                 </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                      style="display: none;">
                                     @csrf
                                 </form>
                             </div>
@@ -195,10 +193,11 @@ The above copyright notice and this permission notice shall be included in all c
                         <div class="card">
                             <div class="card-header card-header-success">
                                 <h4 class="card-title">Pesquisar Paciente</h4>
-                                <form class="navbar-form" action="{{route('buscaPaciente')}}">
+                                <form class="navbar-form" action="{{route('searchPaciente')}}" method="post">
                                     @csrf
                                     <div class="input-group no-border">
-                                        <input type="text" style="color:beige;" id="buscaPaciente" name="buscaPaciente" value="" class="form-control"
+                                        <input type="text" style="color:beige;" id="criterio" name="criterio"
+                                               class="form-control"
                                                placeholder="Digite o primeiro nome do paciente...">
                                         <button type="submit" class="btn btn-white btn-round btn-just-icon">
                                             <i class="material-icons">search</i>
@@ -219,17 +218,22 @@ The above copyright notice and this permission notice shall be included in all c
                                                 <th scope="col">CPF</th>
                                                 <th scope="col">Localidade</th>
                                                 <th scope="col">Telefone</th>
+
+                                                <th></th>
                                             </tr>
                                             </thead>
                                             <tbody>
                                             @foreach($pacientes as $paciente)
                                                 <tr>
-                                                    <td style="text-transform: uppercase;"  width="20%">{{$paciente->nome. " " .$paciente->ultimo_nome}} </td>
-                                                    <td style="text-transform: uppercase; text-align: center" >{{$paciente->data_nascimento}}</td>
-                                                    <td style="text-transform: uppercase;" >{{$paciente->num_sus}}</td>
-                                                    <td style="text-transform: uppercase;" >{{$paciente->cpf}}</td>
-                                                    <td style="text-transform: uppercase;" >{{($paciente->localidade)->nome}}</td>
-                                                    <td style="text-transform: uppercase;" >{{$paciente->telefone}}</td>
+                                                    <td width="20%">{{$paciente->nome. " " .$paciente->ultimo_nome}} </td>
+                                                    <td style="text-transform: uppercase; text-align: center">{{$paciente->data_nascimento}}</td>
+                                                    <td style="text-transform: uppercase;">{{$paciente->num_sus}}</td>
+                                                    <td style="text-transform: uppercase;">{{$paciente->cpf}}</td>
+                                                    <td style="text-transform: uppercase;">{{($paciente->localidade)->nome}}</td>
+                                                    <td style="text-transform: uppercase;">{{$paciente->telefone}}</td>
+                                                    <td><a style="color: #1a252f" href="#"><span class="material-icons">
+create
+</span></a></td>
                                                 </tr>
                                             @endforeach
                                             </tbody>

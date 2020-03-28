@@ -26,15 +26,52 @@ class ConsultaController extends Controller
         Consulta::create($data);
         return redirect('/consultaCadastro');
     }
-    public function mostraConsulta(){
+
+    public function mostraConsulta()
+    {
+
         $paciente = Paciente::all();
         $consulta = Consulta::all();
         $profissionais = User::all();
 
-        return view('Usuario.mostraConsulta' , ['paciente' => $paciente, 'users' => $profissionais ,
-            'consultas' => Consulta::with(['paciente'])->get(),
-            'consultas' => Consulta::with(['profissional'])->get(),
-            'consultas' => Consulta::with(['localidade'])->get()
+        return view('Usuario.mostraConsulta', ['paciente' => $paciente, 'users' => $profissionais,
+            'consultas' => Consulta::with(['paciente', 'profissional', 'localidade'])->get()
+
+        ]);
+    }
+
+    public function buscaConsulta(Request $request)
+    {
+
+        $paciente = "";
+        $todas = "";
+        $profissionais = "";
+
+
+        if ($request->criterio == "") {
+            return view('Usuario.mostraConsulta', [
+                'consultas' => Consulta::with(['paciente', 'profissional', 'localidade'])->get()
+            ]);
+        }
+
+        $data = Paciente::where('nome', 'like', '%' . $request->criterio . '%')
+            ->get();
+
+
+        if (count($data) == 0) {
+            return view('Usuario.mostraConsulta', [
+                'consultas' => $data
+            ]);
+        }
+
+        foreach ($data as $d) {
+            $todas = Consulta::where('id_paciente', $d->id)->get();
+        }
+
+        return view('Usuario.mostraConsulta', [
+            'paciente' => $paciente,
+            'users' => $profissionais,
+            'consultas' => $todas
         ]);
     }
 }

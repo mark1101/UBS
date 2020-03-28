@@ -51,6 +51,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/mostraPaciente', 'PacienteController@mostraPaciente')->name('mostraPaciente');
     Route::POST('paciente/salvar', 'PacienteController@cadastraPaciente')->name('cadastraPaciente');
     Route::POST('paciente/buscaPaciente', 'PacienteController@cadastraPaciente')->name('cadastraPaciente');
+    Route::post('/buscaPaciente', 'PacienteController@buscaPaciente')->name('searchPaciente');
 
 
 // ROTAS DE EXAMES
@@ -97,6 +98,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/consultaCadastro', 'ConsultaController@indexConsulta')->name('consultaCadastro');
     Route::POST('/consulta/cadastro', 'ConsultaController@cadastroConsulta')->name('cadastroConsulta');
     Route::get('/mostraConsulta', 'ConsultaController@mostraConsulta')->name('mostraConsulta');
+    Route::post('/buscaConsulta', 'ConsultaController@buscaConsulta')->name('searchConsulta');
 
 // ROTAS DE GERAL
     Route::get('/inicio', 'InicioController@index')->name('inicio');

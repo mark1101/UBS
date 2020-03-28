@@ -43,4 +43,16 @@ class PacienteController extends Controller
     {
         return view('Usuario.buscaPaciente', ['pacientes' => Paciente::with(['localidade'])->get()]);
     }
+
+    public function buscaPaciente(Request $request)
+    {
+        $data = Paciente::where('nome', 'like', '%' . $request->criterio . '%')
+            ->orWhere('cpf' , 'like' , '%' . $request->criterio . '%')
+            ->orWhere('num_sus' , 'like' , '%'. $request->criterio . '%')
+            ->orWhere('ultimo_nome' , 'like', '%' . $request->criterio . '%')
+            ->get();
+
+        return view('Usuario.buscaPaciente' , ['pacientes' => Paciente::with(['localidade'])->get(),
+            'pacientes' => $data]);
+    }
 }

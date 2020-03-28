@@ -246,17 +246,17 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-2">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Controle de Acesso</label>
-                                                <input type="text" class="form-control" maxlength="60"
+                                                <input value="0" type="text" class="form-control" maxlength="60"
                                                        id="controle_acesso"
-                                                       name="controle_acesso" required>
+                                                       name="controle_acesso" readonly = "true" required>
                                             </div>
                                         </div>
                                         <div class="col-md-2">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Número de N</label>
-                                                <input type="text" class="form-control" maxlength="60"
+                                                <input value="0" type="text" class="form-control" maxlength="60"
                                                        id="admin"
-                                                       name="admin" required>
+                                                       name="admin" readonly = "true" required>
                                             </div>
                                         </div>
                                     </div>

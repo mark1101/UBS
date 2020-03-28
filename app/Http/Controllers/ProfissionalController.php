@@ -21,6 +21,7 @@ class ProfissionalController extends Controller
 
         $data = $request->all();
 
+
         $data['password'] = Hash::make($data['password']);
 
         if($data['funcao'] == 'Recepcao'){

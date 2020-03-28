@@ -192,10 +192,10 @@ The above copyright notice and this permission notice shall be included in all c
                         <div class="card">
                             <div class="card-header card-header-success">
                                 <h4 class="card-title">Pesquisar Paciente</h4>
-                                <form class="navbar-form" action="{{route('mostraConsulta')}}">
+                                <form class="navbar-form" action="{{route('searchConsulta')}}" method="post">
                                     @csrf
                                     <div class="input-group no-border">
-                                        <input type="text" style="color:beige;" id="mostraConsulta" name="mostraConsulta" value="" class="form-control"
+                                        <input type="text" style="color:beige;" id="criterio" name="criterio" value="" class="form-control"
                                                placeholder="Digite o primeiro nome do paciente...">
                                         <button type="submit" class="btn btn-white btn-round btn-just-icon">
                                             <i class="material-icons">search</i>
