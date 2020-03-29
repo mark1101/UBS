@@ -196,7 +196,7 @@ The above copyright notice and this permission notice shall be included in all c
                                 <form id="buscaPaciente" class="navbar-form">
                                     @csrf
                                     <div class="input-group no-border">
-                                        <input type="text" style="color:beige;" id="criterio" name="criterio"
+                                        <input onkeyup="submitForm()" type="text" style="color:beige;" id="criterio" name="criterio"
                                                class="form-control"
                                                placeholder="A busca pode ser feita por nome, CPF ou número do SUS">
                                         <button type="submit" class="btn btn-white btn-round btn-just-icon">
@@ -221,6 +221,16 @@ The above copyright notice and this permission notice shall be included in all c
                             </div>
                         </div>
                     </div>
+
+                    <script>
+                        function submitForm() {
+                            if($("#criterio").val() === ""){
+                                $("#tableSearch").html("");
+                            }else{
+                                $("#buscaPaciente").submit();
+                            }
+                        }
+                    </script>
 
                     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
                     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
@@ -331,7 +341,6 @@ The above copyright notice and this permission notice shall be included in all c
                                                 cols += '<td>' + response.data[item]["cpf"] + '</td>';
                                                 cols += '<td>' + response.data[item]['localidade']['nome'] + '</td>';
                                                 cols += '<td>' + response.data[item]['telefone'] + '</td>';
-                                                cols += '<td>' + response.data[item]['id'] + '</td>';
                                                 cols += '<td><a  data-toggle="modal" data-target="#modal' + response.data[item]['id'] + '" style="width: 55px;"> <i class="material-icons" style="color: black;"title="Salvar Paciente">edit</i></a>\n</td>';
 
                                                 newRow.append(cols);

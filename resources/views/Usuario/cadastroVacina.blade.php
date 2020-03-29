@@ -277,10 +277,10 @@ The above copyright notice and this permission notice shall be included in all c
                                             <tr>
                                                 <td style="text-transform: uppercase;" >{{($vacina->localidade)->nome}}</td>
                                                 <td>{{($vacina->paciente)->nome . " ". ($vacina->paciente)->ultimo_nome}}</td>
-                                                <td style="text-transform: uppercase;" >{{$vacina->vacina_realizada}}</td>
-                                                <td style="text-transform: uppercase;" >{{$vacina->informacao_lote}}</td>
-                                                <td style="text-transform: uppercase;" >{{$vacina->data}}</td>
-                                                <td align="center ;text-transform: uppercase;" >{{$vacina->dose}}</td>
+                                                <td >{{$vacina->vacina_realizada}}</td>
+                                                <td  >{{$vacina->informacao_lote}}</td>
+                                                <td >{{$vacina->data}}</td>
+                                                <td align="center" >{{$vacina->dose}}</td>
                                             </tr>
                                         @endforeach
                                         </tbody>
