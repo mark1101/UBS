@@ -161,7 +161,8 @@ The above copyright notice and this permission notice shall be included in all c
                     <form class="navbar-form"></form>
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{Auth::user()->funcao}} {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
@@ -172,7 +173,8 @@ The above copyright notice and this permission notice shall be included in all c
                                     {{ __('Sair') }}
                                 </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                      style="display: none;">
                                     @csrf
                                 </form>
                             </div>
@@ -196,7 +198,8 @@ The above copyright notice and this permission notice shall be included in all c
                                 <form id="buscaConsulta" class="navbar-form">
                                     @csrf
                                     <div class="input-group no-border">
-                                        <input type="text" style="color:beige;" id="criterio" name="criterio" class="form-control"
+                                        <input onkeyup="submitForm()" type="text" style="color:beige;" id="criterio"
+                                               name="criterio" class="form-control"
                                                placeholder="A busca pode ser feita por nome, CPF ou número do SUS">
                                         <button type="submit" class="btn btn-white btn-round btn-just-icon">
                                             <i class="material-icons">search</i>
@@ -223,6 +226,16 @@ The above copyright notice and this permission notice shall be included in all c
                         </div>
                     </div>
 
+                    <script>
+                        function submitForm() {
+                            if($("#criterio").val() === ""){
+                                $("#tableSearch").html("");
+                            }else{
+                                $("#buscaConsulta").submit();
+                            }
+                        }
+                    </script>
+
                     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
                     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
 
@@ -233,41 +246,47 @@ The above copyright notice and this permission notice shall be included in all c
                                 event.preventDefault();
                                 $.ajax({
                                     url: "{{route('searchConsulta')}}",
-                                    type: "post",
+                                    type: "get",
                                     data: $(this).serialize(),
                                     dataType: 'json',
                                     success: function (response) {
                                         if (response.success === true) {
-                                            var newRow = $("<tr>");
-                                            var cols = "";
-                                            cols += '<th>Nome</th>';
-                                            cols += '<th>Profissional</th>';
-                                            cols += '<th>Pressao</th>';
-                                            cols += '<th>Localidade</th>';
-                                            cols += '<th>Sintomas</th>';
-                                            cols += '<th>Observação</th>';
-                                            cols += '<th>Data</th>';
-                                            newRow.append(cols);
-
-                                            $("#tableSearch").html("").append(newRow).fadeIn();
-                                            //funcionou
-                                            $.each(response.data, function (item, value) {
-
+                                            if (response.data !== "no data") {
                                                 var newRow = $("<tr>");
                                                 var cols = "";
-
-                                                cols += '<td>' + response.data[item]["paciente"]["nome"] + " " + response.data[item]["paciente"]["ultimo_nome"] + '</td>';
-                                                cols += '<td>' + response.data[item]["profissional"]['name'] + '</td>';
-                                                cols += '<td>' + response.data[item]["pressao"] + '</td>';
-                                                cols += '<td>' + response.data[item]['localidade']['nome'] + '</td>';
-                                                cols += '<td>' + response.data[item]["sintomas"] + '</td>';
-                                                cols += '<td>' + response.data[item]['observacao'] + '</td>';
-                                                cols += '<td>' + response.data[item]['data'] + '</td>';
-                                                cols += '<td><a onclick="getPacienteForEdit(' + response.data[item].id + ')" data-toggle="modal" data-target="#modalExemplo" style="width: 55px;"> <i class="material-icons" style="color: black;"title="Salvar Paciente">visibility\n</i></a>\n</td>';
-
+                                                cols += '<th>Nome</th>';
+                                                cols += '<th>Profissional</th>';
+                                                cols += '<th>Pressao</th>';
+                                                cols += '<th>Localidade</th>';
+                                                cols += '<th>Sintomas</th>';
+                                                cols += '<th>Observação</th>';
+                                                cols += '<th>Data</th>';
                                                 newRow.append(cols);
-                                                $("#tableSearch").append(newRow).fadeIn();
-                                            });
+
+                                                $("#tableSearch").html("").append(newRow).fadeIn();
+                                                //funcionou
+                                                $.each(response.data, function (item, value) {
+
+                                                    let data = response.data[item]["created_at"];
+                                                    let split = data.split(' '); //separa a data da hora
+                                                    let formmated = split[0].split('-');
+
+                                                    var newRow = $("<tr>");
+                                                    var cols = "";
+
+                                                    cols += '<td>' + response.data[item]["paciente"].nome + " " + response.data[item]["paciente"].ultimo_nome + '</td>';
+                                                    cols += '<td>' + response.data[item]["profissional"].name + '</td>';
+                                                    cols += '<td>' + response.data[item]["pressao"] + '</td>';
+                                                    cols += '<td>' + response.data[item]['localidade'].nome + '</td>';
+                                                    cols += '<td>' + response.data[item]["sintomas"] + '</td>';
+                                                    cols += '<td>' + response.data[item]['observacao'] + '</td>';
+                                                    cols += '<td>' + formmated[2] + '/' + formmated[1] + '/' + formmated[0] + '</td>';
+                                                    cols += '<td><a onclick="getPacienteForEdit(' + response.data[item].id + ')" data-toggle="modal" data-target="#modalExemplo" style="width: 55px;"> <i class="material-icons" style="color: black;"title="Salvar Paciente">visibility\n</i></a>\n</td>';
+
+                                                    newRow.append(cols);
+                                                    $("#tableSearch").append(newRow).fadeIn();
+                                                });
+                                            }
                                         } else {
                                             //erro
                                         }
@@ -282,7 +301,6 @@ The above copyright notice and this permission notice shall be included in all c
                 </div>
             </div>
         </div>
-
 
 
         <footer class="footer">
@@ -308,7 +326,7 @@ The above copyright notice and this permission notice shall be included in all c
 <script src="{{asset('js/plugins/jasny-bootstrap.min.js')}}"></script>
 <script src="{{asset('js/plugins/fullcalendar.min.js')}}"></script>
 <script src="{{asset('js/plugins/jquery-jvectormap.js')}}"></script>
-<script src="{{asset('assets/js/plugins/nouislider.min.js')}}"></script>
+<script src="{{asset('js/plugins/nouislider.min.js')}}"></script>
 <script src="{{asset('https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js')}}"></script>
 <script src="{{asset('js/plugins/arrive.min.js')}}"></script>
 

@@ -85,13 +85,6 @@ The above copyright notice and this permission notice shall be included in all c
                         <p>Gestão de Viagens</p>
                     </a>
                 </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="#">
-                        <i class="material-icons">history
-                        </i>
-                        <p>Histórico de Pacientes</p>
-                    </a>
-                </li>
             </ul>
 
         </div>

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Localidade;
 use App\Paciente;
+use App\Recado;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AgenteController extends Controller
 {
@@ -22,6 +24,12 @@ class AgenteController extends Controller
         return view('Agente.AdministracaoAgente');
     }
     public function recadoAgente(){
-        return view('Agente.recadosAgente');
+
+        $recado = Recado::where('destino' , Auth::user()->id)->get();
+
+        return view('Agente.recadosAgente' , [
+            'rs' => $recado,
+            'recados' => Recado::with(['localidade'])->get()
+        ]);
     }
 }

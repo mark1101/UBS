@@ -324,7 +324,7 @@ The above copyright notice and this permission notice shall be included in all c
 <script src="{{asset('js/plugins/jasny-bootstrap.min.js')}}"></script>
 <script src="{{asset('js/plugins/fullcalendar.min.js')}}"></script>
 <script src="{{asset('js/plugins/jquery-jvectormap.js')}}"></script>
-<script src="{{asset('assets/js/plugins/nouislider.min.js')}}"></script>
+<script src="{{asset('js/plugins/nouislider.min.js')}}"></script>
 <script src="{{asset('https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js')}}"></script>
 <script src="{{asset('js/plugins/arrive.min.js')}}"></script>
 

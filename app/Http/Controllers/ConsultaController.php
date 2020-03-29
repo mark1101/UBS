@@ -41,24 +41,41 @@ class ConsultaController extends Controller
 
     public function buscaConsulta(Request $request)
     {
+        try {
+            $data = Paciente::where('nome', 'like', '%' . $request->criterio . '%')
+                ->get();
+            foreach ($data as $item) {
+                if (Consulta::where('id_paciente', $item->id)->with(['localidade', 'profissional', 'paciente'])->count() > 0) {
+                    $consultasAux[] = Consulta::where('id_paciente', $item->id)->with(['localidade', 'profissional', 'paciente'])->get();
+                }
+            }
 
-        $data = Paciente::where('nome', 'like', '%' . $request->criterio . '%')
-            ->with(['localidade' , 'profissional' , 'paciente'])
-            ->get();
+            foreach ($consultasAux as $item) {
+                foreach ($item as $consults) {
+                    $consultas[] = $consults;
+                }
 
-        for ($i = 0; $i < count($data); $i++){
-            $data[$i]['localidade'] = ($data[$i]->localidade)->nome;
+            }
+
+            for ($i = 0; $i < count($consultas); $i++) {
+
+                $consultas[$i]['localidade'] = ($consultas[$i]->localidade)->nome;
+                $consultas[$i]['profissional'] = ($consultas[$i]->profissional)->name;
+                $consultas[$i]['paciente'] = ($consultas[$i]->paciente)->nome . "" . ($consultas[$i]->paciente)->ultimo_nome;
+
+            }
+
+            $response['data'] = $consultas;
+            $response['success'] = true;
+
+            echo json_encode($response);
+        } catch (\Exception $e) {
+            $response['data'] = "no data";
+            $response['success'] = true;
+
+            echo json_encode($response);
         }
-        for ($i = 0; $i < count($data); $i++){
-            $data[$i]['profissional'] = ($data[$i]->profissional)->name;
-        }
-        for ($i = 0; $i < count($data); $i++){
-            $data[$i]['paciente'] = ($data[$i]->paciente)->nome + ($data[$i]->paciente)->ultimo_nome;
-        }
 
-        $response['success'] = true;
-        $response['data'] = $data;
 
-        echo json_encode($response);
     }
 }

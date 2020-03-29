@@ -28,48 +28,72 @@ The above copyright notice and this permission notice shall be included in all c
     <link href="{{asset('css/material-dashboard.css')}}" rel="stylesheet"/>
 </head>
 
-<body class="">
+<body class="" style="background-color: white">
 <div class="wrapper ">
 
-    <div class="sidebar" data-color="orange" data-background-color="white" data-image="../assets/img/unidade.jpg">
-        <div class="logo"><a href="#" class="simple-text logo-normal">
-                <img src="{{asset('img/agente.png')}}">
+    <div class="sidebar" data-color="admin" data-background-color="white" data-image="../assets/img/unidade.jpg">
+        <div class="logo"><a href="{{'/'}}" class="simple-text logo-normal">
+                <img src="{{asset('img/adm.png')}}">
             </a></div>
         <div class="sidebar-wrapper ">
             <ul class="nav">
                 <li class="nav-item ">
-                    <a class="nav-link" href="{{route('admAgente')}}">
+                    <a class="nav-link" href="{{'/'}}">
                         <i class="material-icons">home_work</i>
                         <p>Início</p>
                     </a>
                 </li>
-                <li class="nav-item dropdown active">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false">
-                        <i class="material-icons">person</i>
-                        Paciente
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{route('cadastroPacienteAgente')}}">Cadastro de Paciente</a>
-                        <a class="dropdown-item" href="{{route('mostraPacienteAgente')}}">Busca de Paciente</a>
-                    </div>
-                </li>
-                <li class="nav-item  ">
-                    <a class="nav-link" href="{{route('recadoAgente')}}">
-                        <i class="material-icons">chat
+                <li class="nav-item ">
+                    <a class="nav-link" href="#">
+                        <i class="material-icons">arrow_right_alt
                         </i>
-                        <p>Recados</p>
+                        <p>Encaminhamentos</p>
                     </a>
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link" href="#">
+                        <i class="material-icons">attach_file
+                        </i>
+                        <p>Recados</p>
+                    </a>
+                </li>
+                <li class="nav-item  ">
+                    <a class="nav-link" href="#">
+                        <i class="material-icons">commute
+                        </i>
+                        <p>Dados de viagens</p>
+                    </a>
+                </li>
+                <li class="nav-item  ">
+                    <a class="nav-link" href="{{route('cadastroLocalidade')}}">
+                        <i class="material-icons">house
+                        </i>
+                        <p>Cadastro Localidade</p>
+                    </a>
+                </li>
+                <li class="nav-item  ">
+                    <a class="nav-link" href="{{route('cadastraProfissional')}}">
+                        <i class="material-icons">person
+                        </i>
+                        <p>Cadastrar Profissionais</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('cadastroMotorista')}}">
+                        <i class="material-icons">directions_car
+                        </i>
+                        <p>Gestão de Viagens</p>
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">
                         <i class="material-icons">history
                         </i>
-                        <p>Histórico de Pacientes</p>
+                        <p>Dados Gráficos</p>
                     </a>
                 </li>
             </ul>
+
         </div>
     </div>
 
@@ -79,7 +103,7 @@ The above copyright notice and this permission notice shall be included in all c
             <div class="container-fluid">
 
                 <div class="navbar-wrapper">
-                    <a class="navbar-brand" href="javascript:;">Gerenciamento de Paciente</a>
+                    <a class="navbar-brand" href="javascript:;">Gerenciamento de Motoristas e Automoveis</a>
                 </div>
 
                 <!-- BOTAO DE RESPONSIVIDADE PARA OPCIOES DE SIDEBAR-->
@@ -96,7 +120,8 @@ The above copyright notice and this permission notice shall be included in all c
                     <form class="navbar-form"></form>
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <a style="color: #f8f9fa" id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{Auth::user()->funcao}} {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
@@ -107,7 +132,8 @@ The above copyright notice and this permission notice shall be included in all c
                                     {{ __('Sair') }}
                                 </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                      style="display: none;">
                                     @csrf
                                 </form>
                             </div>
@@ -119,66 +145,46 @@ The above copyright notice and this permission notice shall be included in all c
         </nav>
         <!-- End Navbar -->
 
-
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <!-- DIV DE BUSCA DE PACIENTE -->
-                    <div class="col-md-12">
 
-                        <!-- PARTE DE CIMA DA TABELA PARA PESQUISA -->
-                        <div class="card">
-                            <div class="card-header card-header-warning">
-                                <h4 class="card-title">Pesquisar Paciente</h4>
-                                <form class="navbar-form" action="{{route('buscaPaciente')}}">
-                                    @csrf
-                                    <div class="input-group no-border">
-                                        <input type="text" style="color: white;" id="buscaPaciente" name="buscaPaciente" value="" class="form-control"
-                                               placeholder="Digite o primeiro nome do paciente...">
-                                        <button type="submit" class="btn btn-white btn-round btn-just-icon">
-                                            <i class="material-icons">search</i>
-                                            <div class="ripple-container"></div>
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="card-body">
-                                <div class="card-body">
-                                    <div class="table-responsive" style="overflow: auto; height: 300px;">
-                                        <table class="table">
-                                            <thead>
-                                            <tr>
-                                                <th scope="col" width="10%">Nome</th>
-                                                <th scope="col">Data Nascimento</th>
-                                                <th scope="col">Num Sus</th>
-                                                <th scope="col">CPF</th>
-                                                <th scope="col">Localidade</th>
-                                                <th scope="col">Telefone</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            @foreach($pacientes as $paciente)
-                                                <tr>
-                                                    <td width="20%">{{$paciente->nome. " " .$paciente->ultimo_nome}} </td>
-                                                    <td>{{$paciente->data_nascimento}}</td>
-                                                    <td>{{$paciente->num_sus}}</td>
-                                                    <td>{{$paciente->cpf}}</td>
-                                                    <td>{{($paciente->localidade)->nome}}</td>
-                                                    <td>{{$paciente->telefone}}</td>
-                                                </tr>
-                                            @endforeach
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                    <script type="text/javascript">
+                        google.charts.load('current', {'packages':['bar']});
+                        google.charts.setOnLoadCallback(drawChart);
+
+                        function drawChart() {
+                            var data = google.visualization.arrayToDataTable([
+                                ['Year', 'Sales', 'Expenses', 'Profit'],
+                                ['2014', 1000, 400, 200],
+                                ['2015', 1170, 460, 250],
+                                ['2016', 660, 1120, 300],
+                                ['2017', 1030, 540, 350]
+                            ]);
+
+                            var options = {
+                                chart: {
+                                    title: 'Pacientes Cadastrados',
+                                    subtitle: '',
+                                },
+                                bars: 'horizontal' // Required for Material Bar Charts.
+                            };
+
+                            var chart = new google.charts.Bar(document.getElementById('barchart_material'));
+
+                            chart.draw(data, google.charts.Bar.convertOptions(options));
+                        }
+                    </script>
+
+                    <div id="barchart_material" style="width: 900px; height: 500px;"></div>
+
                 </div>
             </div>
         </div>
         <footer class="footer">
             <div class="container-fluid">
+                <h4 align="left">Versão 1.0</h4>
             </div>
         </footer>
     </div>
@@ -200,10 +206,17 @@ The above copyright notice and this permission notice shall be included in all c
 <script src="{{asset('js/plugins/jasny-bootstrap.min.js')}}"></script>
 <script src="{{asset('js/plugins/fullcalendar.min.js')}}"></script>
 <script src="{{asset('js/plugins/jquery-jvectormap.js')}}"></script>
-<script src="{{asset('js/plugins/nouislider.min.js')}}"></script>
+<!--<script src="{{asset('assets/js/plugins/nouislider.min.js')}}"></script> -->
 <script src="{{asset('https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js')}}"></script>
 <script src="{{asset('js/plugins/arrive.min.js')}}"></script>
 
+
+<script src="{{asset('js/mascara.js')}}"></script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 
 </body>
 

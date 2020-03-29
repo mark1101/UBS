@@ -54,10 +54,9 @@ class PacienteController extends Controller
             ->with(['localidade'])
             ->get();
 
-        for ($i = 0; $i < count($data); $i++){
+        for ($i = 0; $i < count($data); $i++) {
             $data[$i]['localidade'] = ($data[$i]->localidade)->nome;
         }
-
 
 
         $response['success'] = true;
@@ -66,15 +65,17 @@ class PacienteController extends Controller
         echo json_encode($response);
     }
 
-    public function puxaPaciente($id){
+    public function puxaPaciente($id)
+    {
+
 
         $data = Paciente::where('id', $id)->get();
-        if(count($data) == 0){
+        if (count($data) == 0) {
             $response['sucess'] = true;
             $response['message'] = "Nenhum usuário encontrado com essas identificações.";
 
             echo json_encode($response);
-        }else{
+        } else {
             $response['sucess'] = true;
             $response['data'] = $data;
 
@@ -82,7 +83,15 @@ class PacienteController extends Controller
         }
     }
 
-    public function editaPaciente(Request $request , $id){
+    public function editaPaciente(Request $request, $id)
+    {
+        $data = $request->all();
+        unset($data['_token']);
+        Paciente::where('id', $id)->update($data);
 
+        $response['success'] = true;
+        $response['message'] = "Paciente editado com sucesso!";
+
+        echo json_encode($response);
     }
 }

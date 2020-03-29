@@ -28,7 +28,7 @@ The above copyright notice and this permission notice shall be included in all c
     <link href="{{asset('css/material-dashboard.css')}}" rel="stylesheet"/>
 </head>
 
-<body class="">
+<body class="" style="background-image: url({{asset('img/inicio.jpg')}}) ; background-size: 100% 100%;">
 <div class="wrapper ">
 
     <div class="sidebar" data-color="orange" data-background-color="white" data-image="../assets/img/unidade.jpg">
@@ -55,7 +55,7 @@ The above copyright notice and this permission notice shall be included in all c
                         <a class="dropdown-item" href="{{route('mostraPacienteAgente')}}">Busca de Paciente</a>
                     </div>
                 </li>
-                <li class="nav-item active ">
+                <li class="nav-item  active">
                     <a class="nav-link" href="{{route('recadoAgente')}}">
                         <i class="material-icons">chat
                         </i>
@@ -121,62 +121,36 @@ The above copyright notice and this permission notice shall be included in all c
                     <a style="color:#ffffff " href="{{route('comunicacao')}}">Nova Mensagem</a>
                 </button>
                 <div class="row">
-                    <div class="card-body">
-                        <div class="table-responsive" style="overflow: auto; height: 250px;">
-                            <table class="table">
-                                <thead class=" text-orange">
-                                <th>
-                                    ID
-                                </th>
-                                <th>
-                                    Módulo de Recebimento
-                                </th>
-                                <th>
-                                    Mensagem
-                                </th>
-                                <th>
-                                    Data
-                                </th>
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header card-header-warning">
+                                <h4>Mensagens Recebidas</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive" style="overflow: auto; height: 250px;">
+                                    <table class="table">
 
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>
-                                        1
-                                    </td>
-                                    <td>
-                                        Enfermaria
-                                    </td>
-                                    <td>
-                                        aqui vai o texto que vai ser recebido
-                                    </td>
-                                    <td>
-                                        20/12/2018
+                                        <thead>
+                                        <tr>
+                                            <th>Localidade Recebimento</th>
+                                            <th>Mensagem</th>
+                                            <th>Data</th>
+                                        </tr>
+                                        </thead>
 
-                                    </td>
-
-                                </tr>
-                                <tr>
-                                    <td>
-                                        1
-                                    </td>
-                                    <td>
-                                        Enfermaria
-                                    </td>
-                                    <td>
-                                        aqui vai o texto que vai se
-                                    </td>
-                                    <td>
-                                        20/12/2018
-
-                                    </td>
-
-                                </tr>
-
-                            </table>
+                                        <tbody>
+                                        @foreach($rs as $recado)
+                                            <tr>
+                                                <td>{{($recado->localidade)->nome}}</td>
+                                                <td>{{$recado->mensagem}}</td>
+                                                <td>{{$recado->data}}</td>
+                                            </tr>
+                                        @endforeach
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -204,7 +178,7 @@ The above copyright notice and this permission notice shall be included in all c
 <script src="{{asset('js/plugins/jasny-bootstrap.min.js')}}"></script>
 <script src="{{asset('js/plugins/fullcalendar.min.js')}}"></script>
 <script src="{{asset('js/plugins/jquery-jvectormap.js')}}"></script>
-<script src="{{asset('assets/js/plugins/nouislider.min.js')}}"></script>
+<script src="{{asset('js/plugins/nouislider.min.js')}}"></script>
 <script src="{{asset('https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js')}}"></script>
 <script src="{{asset('js/plugins/arrive.min.js')}}"></script>
 
