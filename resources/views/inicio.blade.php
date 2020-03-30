@@ -117,7 +117,7 @@
                 @endif
                 @if(Auth::user()->funcao == "Medicina")
                     <li class="nav-item  ">
-                        <a class="nav-link" href="{{route('controleViagem')}}">
+                        <a class="nav-link" href="">
                             <i class="material-icons">assignment_late
                             </i>
                             <p>Atestado Medico</p>
@@ -134,10 +134,6 @@
         <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
             <div class="container-fluid">
 
-                <div class="navbar-wrapper">
-                    <a class="navbar-brand" href="javascript:;">Tela Inicial</a>
-                </div>
-
                 <!-- BOTAO DE RESPONSIVIDADE PARA OPCIOES DE SIDEBAR-->
                 <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -152,7 +148,7 @@
                     <form class="navbar-form"></form>
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                            <a style="color: white" id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{Auth::user()->funcao}} {{ Auth::user()->name }} <span class="caret"></span>
                             </a>

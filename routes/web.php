@@ -124,6 +124,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/fichaTratamento' ,'DentistaController@indexTratamento')->name('tratamentoOdonto');
 
     Route::put('/event-update', 'EventController@altera')->name('routeEventUpdate');
+    Route::get('/pacienteOdonto', 'PacienteOdontoController@mostraPacienteOdonto')->name('showPaciente');
+    Route::post('/mostrandoPacienteOdonto', 'PacienteOdontoController@buscaPacienteOdonto')->name('odontoPaciente');
+    Route::get('/dadosDentista' , 'DentistaController@indexOdontologico')->name('odontologico');
 
     Route::POST('/event-store', 'EventController@cadastra')->name('routeEventStore');
     Route::POST('/cadastroEvento', 'EventController@cadastroEvento')->name('cadastroEvento');

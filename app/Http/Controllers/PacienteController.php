@@ -12,7 +12,7 @@ class PacienteController extends Controller
 {
     public function indexPaciente()
     {
-        $localidade = Localidade::all();
+        $localidade = Localidade::where('id_sede' , Auth::user()->cidade_sede)->get();
         return view('Usuario.paciente', [
             'localidades' => $localidade
         ]);
@@ -30,6 +30,9 @@ class PacienteController extends Controller
     {
         $errors = "";
         $data = $request->all();
+
+        $data['id_sede'] = Auth::user()->cidade_sede;
+
         Paciente::create($data);
 
         if (Auth::user()->admin == 3) {
@@ -46,7 +49,9 @@ class PacienteController extends Controller
 
     public function buscaPaciente(Request $request)
     {
-        //tratar request de entrada
+
+        $valor = Auth::user()->cidade_sede;
+
         $data = Paciente::where('nome', 'like', '%' . $request->criterio . '%')
             ->orWhere('cpf', 'like', '%' . $request->criterio . '%')
             ->orWhere('num_sus', 'like', '%' . $request->criterio . '%')
@@ -67,7 +72,6 @@ class PacienteController extends Controller
 
     public function puxaPaciente($id)
     {
-
 
         $data = Paciente::where('id', $id)->get();
         if (count($data) == 0) {

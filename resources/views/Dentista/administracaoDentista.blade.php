@@ -130,7 +130,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Odontológico</h5>
                             <img src="{{asset('img/DenteClicavel.png')}}">
-                            <a href="#" class="btn btn-primary-adm">Ver</a>
+                            <a href="{{route('odontologico')}}" class="btn btn-primary-adm">Ver</a>
                         </div>
                     </div>
                     &nbsp &nbsp &nbsp
@@ -138,7 +138,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Pacientes</h5>
                             <img src="{{asset('img/PacienteClicavel.png')}}">
-                            <a href="#" class="btn btn-primary-adm">Ver</a>
+                            <a href="{{route('showPaciente')}}" class="btn btn-primary-adm">Ver</a>
                         </div>
                     </div>
                 </div>

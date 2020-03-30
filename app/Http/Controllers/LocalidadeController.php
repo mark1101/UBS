@@ -25,7 +25,7 @@ class LocalidadeController extends Controller
 
     public function indexCadastroLocalidade()
     {
-        $sede = Sede::all();
+        $sede = Sede::where('id', Auth::user()->cidade_sede)->get();
         $localidades = Localidade::all();
         $paciente = Paciente::all();
 
@@ -94,6 +94,9 @@ class LocalidadeController extends Controller
     {
 
         $data = $request->all();
+
+        $data['cidade_sede'] = Auth::user()->cidade_sede;
+
         Localidade::create($data);
         return redirect('/cadastroLocalidade');
     }

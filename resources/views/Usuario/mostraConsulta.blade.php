@@ -28,7 +28,7 @@ The above copyright notice and this permission notice shall be included in all c
     <link href="{{asset('css/material-dashboard.css')}}" rel="stylesheet"/>
 </head>
 
-<body class="" style="background-image: url({{asset('img/inicio.jpg')}}) ; background-size: 100% 100%;">
+<body class="" >
 <div class="wrapper ">
 
     <div class="sidebar" data-color="green" data-background-color="white" data-image="../assets/img/unidade.jpg">
@@ -127,7 +127,7 @@ The above copyright notice and this permission notice shall be included in all c
                 @endif
                 @if(Auth::user()->funcao == "Medicina")
                     <li class="nav-item  ">
-                        <a class="nav-link" href="{{route('controleViagem')}}">
+                        <a class="nav-link" href="">
                             <i class="material-icons">assignment_late
                             </i>
                             <p>Atestado Medico</p>
@@ -194,13 +194,12 @@ The above copyright notice and this permission notice shall be included in all c
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header card-header-success">
-                                <h4 class="card-title">Pesquisar Consulta</h4>
+                                <h4 class="card-title">A busca pode ser feita por nome, CPF ou número do SUS</h4>
                                 <form id="buscaConsulta" class="navbar-form">
                                     @csrf
                                     <div class="input-group no-border">
                                         <input onkeyup="submitForm()" type="text" style="color:beige;" id="criterio"
-                                               name="criterio" class="form-control"
-                                               placeholder="A busca pode ser feita por nome, CPF ou número do SUS">
+                                               name="criterio" class="form-control">
                                         <button type="submit" class="btn btn-white btn-round btn-just-icon">
                                             <i class="material-icons">search</i>
                                         </button>
@@ -228,9 +227,9 @@ The above copyright notice and this permission notice shall be included in all c
 
                     <script>
                         function submitForm() {
-                            if($("#criterio").val() === ""){
+                            if ($("#criterio").val() === "") {
                                 $("#tableSearch").html("");
-                            }else{
+                            } else {
                                 $("#buscaConsulta").submit();
                             }
                         }
@@ -279,9 +278,9 @@ The above copyright notice and this permission notice shall be included in all c
                                                     cols += '<td>' + response.data[item]["pressao"] + '</td>';
                                                     cols += '<td>' + response.data[item]['localidade'].nome + '</td>';
                                                     cols += '<td>' + response.data[item]["sintomas"] + '</td>';
-                                                    cols += '<td>' + response.data[item]['observacao'] + '</td>';
+                                                    cols += '<td>' + response.data[item]['observacoes'] + '</td>';
                                                     cols += '<td>' + formmated[2] + '/' + formmated[1] + '/' + formmated[0] + '</td>';
-                                                    cols += '<td><a onclick="getPacienteForEdit(' + response.data[item].id + ')" data-toggle="modal" data-target="#modalExemplo" style="width: 55px;"> <i class="material-icons" style="color: black;"title="Salvar Paciente">visibility\n</i></a>\n</td>';
+                                                    cols += '<td><a href="#" data-toggle="modal" data-target="#modalVisu' + response.data[item]['id'] + '" style="width: 55px;"> <i class="material-icons" style="color: black;>visibility\n</i></a>\n</td>';
 
                                                     newRow.append(cols);
                                                     $("#tableSearch").append(newRow).fadeIn();

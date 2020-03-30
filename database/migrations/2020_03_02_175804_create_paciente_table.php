@@ -18,10 +18,12 @@ class CreatePacienteTable extends Migration
             $table->string('num_sus');
             $table->string('cpf', 16)->unique();
             $table->integer('id_localidade')->unsigned();
+            $table->integer('id_sede')->unsigned();
             $table->string('telefone');
             $table->timestamps();
 
             $table->foreign('id_localidade')->references('id')->on('localidades');
+            $table->foreign('id_sede')->references('id')->on('sedes');
         });
     }
 

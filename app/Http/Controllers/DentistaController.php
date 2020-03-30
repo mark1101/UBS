@@ -50,6 +50,18 @@ class DentistaController extends Controller
         ]);
     }
 
+    public function indexOdontologico()
+    {
+        $consultas = ConsultaDentista::where('id_profissional', Auth::user()->id)->count();
+        $tratamentos = FichaTratamento::where('id_profissional' , Auth::user()->id)->count();
+
+        return view('Dentista.odontologico' , [
+           'consultas' => $consultas,
+           'tratamentos' => $tratamentos
+        ]);
+
+    }
+
     public function agendamentoDentista(){ // FUNCAO USADA PELO RECEPCIONISTA
 
         $localidade = Localidade::all();

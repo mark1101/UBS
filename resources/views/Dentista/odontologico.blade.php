@@ -28,123 +28,73 @@ The above copyright notice and this permission notice shall be included in all c
     <link href="{{asset('css/material-dashboard.css')}}" rel="stylesheet"/>
 </head>
 
-<body class="" >
+<body class="">
 <div class="wrapper ">
 
-    <div class="sidebar" data-color="green" data-background-color="white" data-image="../assets/img/unidade.jpg">
-        <div class="logo"><a href="{{'inicio'}}" class="simple-text logo-normal">
-                Unidade {{Auth::user()->localidade}}
+    <div class="sidebar" data-color="azure" data-background-color="white" data-image="../assets/img/unidade.jpg">
+        <div class="logo"><a href="#" class="simple-text logo-normal">
+                <img src="{{asset('img/dente.png')}}">
             </a></div>
-        <div class="sidebar-wrapper">
+        <div class="sidebar-wrapper ">
             <ul class="nav">
-                <li class="nav-item  ">
-                    <a class="nav-link" href="{{route('inicio')}}">
+                <li class="nav-item ">
+                    <a class="nav-link" href="{{route('admOdonto')}}">
                         <i class="material-icons">home_work</i>
                         <p>Início</p>
                     </a>
                 </li>
-                <li class="nav-item dropdown ">
+                <li class="nav-item ">
+                    <a class="nav-link" href="{{route('agendaDentista')}}">
+                        <i class="material-icons">calendar_today
+                        </i>
+                        <p>Agenda</p>
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                        data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">
-                        <i class="material-icons">person</i>
-                        Paciente
+                        <i class="material-icons">record_voice_over</i>
+                        Consultas
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{route('paciente')}}">Cadastro de Paciente</a>
-                        <a class="dropdown-item" href="{{route('mostraPaciente')}}">Busca de Paciente</a>
+                        <a class="dropdown-item" href="{{route('cadastroConsultaOdonto')}}">Nova Consulta</a>
+                        <a class="dropdown-item" href="{{route('tratamentoOdonto')}}">Ficha Tratamento</a>
+                        <a class="dropdown-item" href="{{route('solicitacaoExameOdonto')}}">Solicitação de Exame
+                            Complementar</a>
                     </div>
                 </li>
-                @if(Auth::user()->controle_acesso == 2)
-                    <li class="nav-item dropdown ">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                           data-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false">
-                            <i class="material-icons">content_paste</i>
-                            Exames
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{route('cadastroExame')}}">Novo Exame</a>
-                            <a class="dropdown-item" href="{{route('buscarExame')}}">Buscar Exames </a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown ">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                           data-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false">
-                            <i class="material-icons">insert_emoticon</i>
-                            Consultas
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{route('consultaCadastro')}}">Nova Consulta</a>
-                            <a class="dropdown-item" href="{{route('mostraConsulta')}}">Buscar Consulta </a>
-                        </div>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="{{route('mostraVacina')}}">
-                            <i class="material-icons">format_color_reset
-                            </i>
-                            <p>Vacinas</p>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="{{route('encaminhamento')}}">
-                            <i class="material-icons">arrow_right_alt
-                            </i>
-                            <p>Encaminhamentos</p>
-                        </a>
-                    </li>
-                @endif
-                <li class="nav-item active ">
-                    <a class="nav-link" href="{{route('recado')}}">
-                        <i class="material-icons">attach_file
+                <li class="nav-item  ">
+                    <a class="nav-link" href="#">
+                        <i class="material-icons">trending_flat
+                        </i>
+                        <p>Encaminhamento</p>
+                    </a>
+                </li>
+                <li class="nav-item  ">
+                    <a class="nav-link" href="">
+                        <i class="material-icons">chat
                         </i>
                         <p>Recados</p>
                     </a>
                 </li>
-                <li class="nav-item  ">
+                <li class="nav-item ">
                     <a class="nav-link" href="#">
                         <i class="material-icons">history
                         </i>
-                        <p>Histórico dos Pacientes</p>
+                        <p>Histórico de Pacientes</p>
                     </a>
                 </li>
-                @if(Auth::user()->controle_acesso == 4)
-                    <li class="nav-item  ">
-                        <a class="nav-link" href="{{route('controleViagem')}}">
-                            <i class="material-icons">commute
-                            </i>
-                            <p>Gerenciamento de Viagens</p>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="{{route('agendamentoDentista')}}">
-                            <i class="material-icons">airline_seat_flat_angled
-                            </i>
-                            <p>Agendamento Dentista</p>
-                        </a>
-                    </li>
-                @endif
-                @if(Auth::user()->funcao == "Medicina")
-                    <li class="nav-item  ">
-                        <a class="nav-link" href="">
-                            <i class="material-icons">assignment_late
-                            </i>
-                            <p>Atestado Medico</p>
-                        </a>
-                    </li>
-                @endif
             </ul>
-
         </div>
     </div>
 
     <div class="main-panel">
+        <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
             <div class="container-fluid">
-                <div class="navbar-wrapper">
-                    <a class="navbar-brand" href="javascript:;">Gerenciamento de Recados</a>
-                </div>
+
+                <!-- BOTAO DE RESPONSIVIDADE PARA OPCIOES DE SIDEBAR-->
                 <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="sr-only">Toggle navigation</span>
@@ -152,8 +102,10 @@ The above copyright notice and this permission notice shall be included in all c
                     <span class="navbar-toggler-icon icon-bar"></span>
                     <span class="navbar-toggler-icon icon-bar"></span>
                 </button>
-                <div class="collapse navbar-collapse justify-content-end">
 
+                <!-- TOPO EM CIMA PARA OPCAO DE SAIDA E CONFIGURAÇÃOES DE PERFIL E SISTEMA  -->
+                <div class="collapse navbar-collapse justify-content-end">
+                    <form class="navbar-form"></form>
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
@@ -176,6 +128,7 @@ The above copyright notice and this permission notice shall be included in all c
                         </li>
                     </ul>
                 </div>
+
             </div>
         </nav>
         <!-- End Navbar -->
@@ -183,44 +136,58 @@ The above copyright notice and this permission notice shall be included in all c
 
         <div class="content">
             <div class="container-fluid">
-                <button type="submit" class="btn btn-primary-normal" style="left: 6px">
-                    <a style="color:#ffffff " href="{{route('comunicacao')}}">Nova Mensagem</a>
-                </button>
                 <div class="row">
+                    <!-- DIV DE BUSCA DE PACIENTE -->
                     <div class="col-md-12">
+
+                        <!-- PARTE DE CIMA DA TABELA PARA PESQUISA -->
                         <div class="card">
-                            <div class="card-header card-header-success">
-                                <h4>Mensagens Recebidas</h4>
+                            <div class="card-header card-header-info">
+                                <h4 class="card-title">Dados de Trabalho</h4>
+                                <form id="buscaPaciente" class="navbar-form">
+                                    @csrf
+
+                                </form>
                             </div>
                             <div class="card-body">
-                                <div class="table-responsive" style="overflow: auto; height: 250px;">
-                                    <table class="table">
+                                <div class="card-body">
+                                    <div class="table-responsive" style="overflow: auto; height: 300px;">
+                                        <table id="tableSearch" class="table">
+                                            <thead>
 
-                                        <thead>
-                                        <tr>
-                                            <th>Localidade Recebimento</th>
-                                            <th>Mensagem</th>
-                                            <th>Data</th>
-                                        </tr>
-                                        </thead>
-
-                                        <tbody>
-                                        @foreach($rs as $recado)
                                             <tr>
-                                                <td>{{($recado->localidade)->nome}}</td>
-                                                <td>{{$recado->mensagem}}</td>
-                                                <td>{{$recado->data}}</td>
+                                                <th >Consultas realizadas</th>
+                                                <th>Tratamentos realizados</th>
+                                                <th>Exames pedidos</th>
+                                                <th>Encaminhamentos realizados</th>
                                             </tr>
-                                        @endforeach
-                                    </table>
+
+                                            </thead>
+                                            <tbody>
+
+
+                                            <tr align="center" style="font-size: large">
+                                                <td>{{$consultas}}</td>
+                                                <td>{{$tratamentos}}</td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+
+                    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
+
+
                 </div>
             </div>
         </div>
-
         <footer class="footer">
             <div class="container-fluid">
             </div>

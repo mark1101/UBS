@@ -70,6 +70,7 @@ class ConsultaController extends Controller
 
             echo json_encode($response);
         } catch (\Exception $e) {
+
             $response['data'] = "no data";
             $response['success'] = true;
 

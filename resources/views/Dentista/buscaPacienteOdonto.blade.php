@@ -31,109 +31,59 @@ The above copyright notice and this permission notice shall be included in all c
 <body class="" >
 <div class="wrapper ">
 
-    <div class="sidebar" data-color="green" data-background-color="white" data-image="../assets/img/unidade.jpg">
-        <div class="logo"><a href="{{'inicio'}}" class="simple-text logo-normal">
-                Unidade {{Auth::user()->localidade}}
+    <div class="sidebar" data-color="azure" data-background-color="white" data-image="../assets/img/unidade.jpg">
+        <div class="logo"><a href="#" class="simple-text logo-normal">
+                <img src="{{asset('img/dente.png')}}">
             </a></div>
-        <div class="sidebar-wrapper">
+        <div class="sidebar-wrapper ">
             <ul class="nav">
-                <li class="nav-item  ">
-                    <a class="nav-link" href="{{route('inicio')}}">
+                <li class="nav-item ">
+                    <a class="nav-link" href="{{route('admOdonto')}}">
                         <i class="material-icons">home_work</i>
                         <p>Início</p>
                     </a>
                 </li>
-                <li class="nav-item dropdown active">
+                <li class="nav-item ">
+                    <a class="nav-link" href="{{route('agendaDentista')}}">
+                        <i class="material-icons">calendar_today
+                        </i>
+                        <p>Agenda</p>
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                        data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">
-                        <i class="material-icons">person</i>
-                        Paciente
+                        <i class="material-icons">record_voice_over</i>
+                        Consultas
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{route('paciente')}}">Cadastro de Paciente</a>
-                        <a class="dropdown-item" href="{{route('mostraPaciente')}}">Busca de Paciente</a>
+                        <a class="dropdown-item" href="{{route('cadastroConsultaOdonto')}}">Nova Consulta</a>
+                        <a class="dropdown-item" href="{{route('tratamentoOdonto')}}">Ficha Tratamento</a>
+                        <a class="dropdown-item" href="{{route('solicitacaoExameOdonto')}}">Solicitação de Exame Complementar</a>
                     </div>
                 </li>
-                @if(Auth::user()->controle_acesso == 2)
-                    <li class="nav-item dropdown ">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                           data-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false">
-                            <i class="material-icons">content_paste</i>
-                            Exames
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{route('cadastroExame')}}">Novo Exame</a>
-                            <a class="dropdown-item" href="{{route('buscarExame')}}">Buscar Exames </a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown ">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                           data-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false">
-                            <i class="material-icons">insert_emoticon</i>
-                            Consultas
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{route('consultaCadastro')}}">Nova Consulta</a>
-                            <a class="dropdown-item" href="{{route('mostraConsulta')}}">Buscar Consulta </a>
-                        </div>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="{{route('mostraVacina')}}">
-                            <i class="material-icons">format_color_reset
-                            </i>
-                            <p>Vacinas</p>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="{{route('encaminhamento')}}">
-                            <i class="material-icons">arrow_right_alt
-                            </i>
-                            <p>Encaminhamentos</p>
-                        </a>
-                    </li>
-                @endif
                 <li class="nav-item  ">
-                    <a class="nav-link" href="{{route('recado')}}">
-                        <i class="material-icons">attach_file
+                    <a class="nav-link" href="#">
+                        <i class="material-icons">trending_flat
+                        </i>
+                        <p>Encaminhamento</p>
+                    </a>
+                </li>
+                <li class="nav-item  ">
+                    <a class="nav-link" href="">
+                        <i class="material-icons">chat
                         </i>
                         <p>Recados</p>
                     </a>
                 </li>
-                <li class="nav-item  ">
+                <li class="nav-item ">
                     <a class="nav-link" href="#">
                         <i class="material-icons">history
                         </i>
-                        <p>Histórico dos Pacientes</p>
+                        <p>Histórico de Pacientes</p>
                     </a>
                 </li>
-                @if(Auth::user()->controle_acesso == 4)
-                    <li class="nav-item ">
-                        <a class="nav-link" href="{{route('controleViagem')}}">
-                            <i class="material-icons">commute
-                            </i>
-                            <p>Gerenciamento de Viagens</p>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="{{route('agendamentoDentista')}}">
-                            <i class="material-icons">airline_seat_flat_angled
-                            </i>
-                            <p>Agendamento Dentista</p>
-                        </a>
-                    </li>
-                @endif
-                @if(Auth::user()->funcao == "Medicina")
-                    <li class="nav-item  ">
-                        <a class="nav-link" href="">
-                            <i class="material-icons">assignment_late
-                            </i>
-                            <p>Atestado Medico</p>
-                        </a>
-                    </li>
-                @endif
             </ul>
         </div>
     </div>
@@ -191,12 +141,12 @@ The above copyright notice and this permission notice shall be included in all c
 
                         <!-- PARTE DE CIMA DA TABELA PARA PESQUISA -->
                         <div class="card">
-                            <div class="card-header card-header-success">
+                            <div class="card-header card-header-info">
                                 <h4 class="card-title">A busca pode ser feita por nome, CPF ou número do SUS</h4>
                                 <form id="buscaPaciente" class="navbar-form">
                                     @csrf
                                     <div class="input-group no-border">
-                                        <input onkeyup="submitForm()" type="text" style="color:beige;" id="criterio" name="criterio"
+                                        <input onkeyup="submitForm()" type="text" style="color:white;" id="criterio" name="criterio"
                                                class="form-control">
                                         <button type="submit" class="btn btn-white btn-round btn-just-icon">
                                             <i class="material-icons">search</i>
@@ -252,56 +202,19 @@ The above copyright notice and this permission notice shall be included in all c
                                                 @csrf
                                                 Nome: <label for="name{{$paciente->id}}"></label>
                                                 <input id="name{{$paciente->id}}" name="nome" class="form-control"
-                                                       value="{{$paciente->nome}}" required>
+                                                       value="{{$paciente->nome}}" required disabled>
                                                 <br>
                                                 Ultimo nome: <label for="ultimo{{$paciente->id}}"></label>
                                                 <input id="ultimo{{$paciente->id}}" name="ultimo_nome"
                                                        class="form-control"
-                                                       value="{{$paciente->ultimo_nome}}" required>
+                                                       value="{{$paciente->ultimo_nome}}" required disabled>
                                                 <br>
                                                 Telefone: <label for="name{{$paciente->id}}"></label>
                                                 <input id="name{{$paciente->id}}" name="telefone" class="form-control"
-                                                       value="{{$paciente->telefone}}" required>
+                                                       value="{{$paciente->telefone}}" required disabled>
                                                 <br>
-                                                <div class="row" style="float: right; left: 30%">
-                                                    <button type="submit" class="btn btn-success">Salvar mudanças
-                                                    </button>
-                                                </div>
                                             </form>
                                         </div>
-                                        <script>
-                                            $(function () {
-                                                $('form[id="form{{$paciente->id}}"]').submit(function (event) {
-                                                    event.preventDefault();
-                                                    $.ajax({
-                                                        url: "{{route('updatePaciente',['id'=>$paciente->id])}}",
-                                                        type: "post",
-                                                        data: $(this).serialize(),
-                                                        dataType: 'json',
-                                                        success: function (response) {
-                                                            if (response.success === true) {
-                                                                $("#footer{{$paciente->id}}").fadeIn();
-                                                                $("#message{{$paciente->id}}").text(response.message);
-                                                                $.wait(function () {
-                                                                    $("#footer{{$paciente->id}}").fadeOut();
-                                                                }, 5);
-                                                                $("#buscaPaciente").submit();
-                                                            }
-                                                        }
-                                                    });
-                                                });
-                                                $.wait = function (callback, seconds) {
-                                                    return window.setTimeout(callback, seconds * 1000);
-                                                }
-                                            });
-                                        </script>
-                                    </div>
-                                    <div class="modal-footer" id="footer{{$paciente->id}}" style="display: none">
-                                        <span id="message{{$paciente->id}}" style="color: green"></span>
-                                    </div>
-                                    <div class="modal-footer" id="footerError{{$paciente->id}}"
-                                         style="display: none">
-                                        <span id="message{{$paciente->id}}" style="color: red"></span>
                                     </div>
                                 </div>
                             </div>
@@ -313,7 +226,7 @@ The above copyright notice and this permission notice shall be included in all c
                             $('form[id="buscaPaciente"]').submit(function (event) {
                                 event.preventDefault();
                                 $.ajax({
-                                    url: "{{route('searchPaciente')}}",
+                                    url: "{{route('odontoPaciente')}}",
                                     type: "post",
                                     data: $(this).serialize(),
                                     dataType: 'json',
@@ -369,23 +282,6 @@ The above copyright notice and this permission notice shall be included in all c
                             });
                         }
                     </script>
-                    <!-- MOSTRAGEM COM IMAGEM EM CIMA
-                    <div class="col-md-4">
-                      <div class="card card-profile">
-                        <div class="card-avatar">
-                          <a href="javascript:;">
-                            <h1>?</h1>
-                            <img class="img" src="../assets/img/faces/interrogacao.png" />
-                          </a>
-                        </div>
-                        <div class="card-body">
-                          <p class="card-description">
-                            Aqui explicar a importancia do cadastro do cliente dentro do sistema.
-                          </p>
-                        </div>
-                      </div>
-                    </div> -->
-
 
                 </div>
             </div>

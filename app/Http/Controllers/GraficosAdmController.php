@@ -9,8 +9,11 @@ class GraficosAdmController extends Controller
 {
     public function index(){
         $pacientes = Paciente::all();
+
+
+        $p = count($pacientes);
         return view('Adm.graficos' , [
-            'pacientes' => count($pacientes)
+            'pacientes' => $p
         ]);
     }
 }

@@ -29,7 +29,7 @@ The above copyright notice and this permission notice shall be included in all c
 
 </head>
 
-<body class="" style="background-image: url({{asset('img/odonto.jpg')}}) ; background-size: 100% 100%;">
+<body class="" >
 <div class="wrapper ">
 
     <div class="sidebar" data-color="azure" data-background-color="white" data-image="../assets/img/unidade.jpg">
@@ -95,7 +95,7 @@ The above copyright notice and this permission notice shall be included in all c
             <div class="container-fluid">
 
                 <div class="navbar-wrapper">
-                    <a class="navbar-brand" href="javascript:;">{{Auth::user()->localidade}}</a>
+                    <a class="navbar-brand" href="javascript:;"></a>
                 </div>
 
                 <!-- BOTAO DE RESPONSIVIDADE PARA OPCIOES DE SIDEBAR-->

@@ -12,10 +12,12 @@ use Illuminate\Support\Facades\Hash;
 class ProfissionalController extends Controller
 {
     public function indexProfissional(){
-        $localidade = Localidade::all();
-        $sede = Sede::all();
 
-        return view('Adm.cadastroProfissionais' , ['localidades' => $localidade , 'sedes' => $sede]);
+        $sedeUser = Auth::user()->cidade_sede;
+        $localidade = Localidade::where('id_sede', $sedeUser)->get();
+
+
+        return view('Adm.cadastroProfissionais' , ['localidades' => $localidade]);
     }
     public function cadastroProfissional(Request $request){
 
@@ -34,7 +36,7 @@ class ProfissionalController extends Controller
             $data['admin'] = 3;
         }
 
-        $data['cidade_sede'] == Auth::user()->cidade_sede;
+        $data['cidade_sede'] = Auth::user()->cidade_sede;
 
         User::create($data);
         return redirect('/cadastraProfissional');

@@ -20,6 +20,10 @@ class User extends Authenticatable
         , 'password', 'admin', 'cpf' , 'data_nascimento',
     ];
 
+    public function localidade()
+    {
+        $this->hasOne(Localidade::class, 'id' , 'localidade');
+    }
     /**
      * The attributes that should be hidden for arrays.
      *

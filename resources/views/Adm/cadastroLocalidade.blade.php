@@ -28,7 +28,7 @@ The above copyright notice and this permission notice shall be included in all c
     <link href="{{asset('css/material-dashboard.css')}}" rel="stylesheet"/>
 </head>
 
-<body class=""  style="background-image: url({{asset('img/administracao.jpg')}}) ; background-size: 100% 100%;">
+<body class=""  >
 <div class="wrapper ">
 
     <div class="sidebar" data-color="admin" data-background-color="white" data-image="../assets/img/unidade.jpg">
@@ -178,6 +178,7 @@ The above copyright notice and this permission notice shall be included in all c
                                 @csrf
                                 <div class="container">
                                     <div class="row">
+                                        <label class="bmd-label-floating">Nome da Sede</label>
                                         <select style="text-transform: uppercase;" class="form-control" name="id_sede" id="id_sede">
                                             @foreach($sedes as $sede)
                                                 <option

@@ -105,7 +105,7 @@ The above copyright notice and this permission notice shall be included in all c
             <div class="container-fluid">
 
                 <div class="navbar-wrapper">
-                    <a style="text-transform: uppercase;" class="navbar-brand" href="javascript:;">{{Auth::user()->localidade}}</a>
+                    <a style="text-transform: uppercase;" class="navbar-brand" href="javascript:;"></a>
                 </div>
 
                 <!-- BOTAO DE RESPONSIVIDADE PARA OPCIOES DE SIDEBAR-->

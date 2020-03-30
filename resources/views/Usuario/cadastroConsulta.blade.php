@@ -28,7 +28,7 @@ The above copyright notice and this permission notice shall be included in all c
     <link href="{{asset('css/material-dashboard.css')}}" rel="stylesheet"/>
 </head>
 
-<body class="" style="background-image: url({{asset('img/inicio.jpg')}}) ; background-size: 100% 100%;">
+<body class="">
 <div class="wrapper ">
 
     <div class="sidebar" data-color="green" data-background-color="white" data-image="../assets/img/unidade.jpg">
@@ -127,7 +127,7 @@ The above copyright notice and this permission notice shall be included in all c
                 @endif
                 @if(Auth::user()->funcao == "Medicina")
                     <li class="nav-item  ">
-                        <a class="nav-link" href="{{route('controleViagem')}}">
+                        <a class="nav-link" href="">
                             <i class="material-icons">assignment_late
                             </i>
                             <p>Atestado Medico</p>
