@@ -229,6 +229,7 @@ The above copyright notice and this permission notice shall be included in all c
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btn-primary-adm">Cadastrar e Imprimir</button>
+                                    <button type="submit" class="btn btn-primary-adm"><a href="{{route('pdfExame')}}" style="color: white">Gerar Impressão</a></button>
                                 </form>
                             </div>
                         </div>

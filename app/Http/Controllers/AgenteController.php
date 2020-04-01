@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Auth;
 
 class AgenteController extends Controller
 {
+    // SELECT ID FROM nomeTabela ORDER BY ID DESC LIMIT 1
+
     public function indexcadastraPaciente(){
         $localidade = Localidade::all();
         return view('Agente.cadastroPaciente', [

@@ -134,6 +134,11 @@ Route::middleware(['auth'])->group(function () {
     Route::POST('/cadastrouficha' , 'DentistaController@cadastraTratamentoDentista')->name('storeTratamentoOdonto');
     Route::post('/cadastrouSolicitacao' , 'DentistaController@cadastraSolicitacaoExame')->name('storeSolicitacaoExameOdonto');
 
+    //// GERACAO DE PDF
+    Route::get('pdf', 'DentistaController@pdfTratamento')->name('pdfTratamento');
+    Route::get('pdf2', 'DentistaController@pdfConsulta')->name('pdfConsulta');
+    Route::get('pdf3', 'DentistaController@pdfExame')->name('pdfExame');
+
 // ROTAS DE AGENTE DE SAUDE
     Route::get('/agente/cadastroPaciente', 'AgenteController@indexcadastraPaciente')->name('cadastroPacienteAgente');
     Route::get('/busca/paciente', 'AgenteController@mostraPacienteAgente')->name('mostraPacienteAgente');
