@@ -146,7 +146,7 @@ The above copyright notice and this permission notice shall be included in all c
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header card-header-info">
-                                <h4 class="card-title">Ficha de Consulta Inicial</h4>
+                                <h4 class="card-title">Ficha de Tratamento</h4>
                             </div>
                             <div class="card-body">
                                 <form action="{{route('storeTratamentoOdonto')}}" method="post">

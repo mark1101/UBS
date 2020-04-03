@@ -82,6 +82,12 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/cadastrouEncaminhamento' , 'EncaminhamentoController@cadastroEncaminhamento')
         ->name('storeEnxaminhamento');
 
+// ROTAS DE ATESTADO MEDICO
+    Route::get('/solicitaAtestado' , 'AtestadoMedicoController@index')->name('atestadoMedico');
+    Route::post('/pdfAtestadoCreate' , 'AtestadoMedicoController@create')->name('atestado');
+
+    Route::get('/pdfAtestado' , 'AtestadoMedicoController@createPdf')->name('createPdf');
+
 // ROTAS DE ADMINISTRACAO
     Route::get('/cadastroMotorista', 'ViagemController@indexMotorista')
         ->name('cadastroMotorista');
@@ -111,7 +117,6 @@ Route::middleware(['auth'])->group(function () {
 
 // ROTAS DE GERAL
     Route::get('/inicio', 'InicioController@index')->name('inicio');
-    //Route::get('/login', 'LoginController@index')->name('login');
     Route::get('/controleViagem', 'ViagemController@index')->name('controleViagem');
 
 // ROTAS DE ODONTOLOGIA

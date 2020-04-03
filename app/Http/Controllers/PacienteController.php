@@ -20,7 +20,6 @@ class PacienteController extends Controller
 
     public function indexbuscaPaciente(Request $request)
     {
-        dd($request->all());
 
         Paciente::with(['localidade'])->get();
         return view('Usuario.buscaPaciente');

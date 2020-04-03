@@ -117,7 +117,7 @@
                 @endif
                 @if(Auth::user()->funcao == "Medicina")
                     <li class="nav-item  ">
-                        <a class="nav-link" href="">
+                        <a class="nav-link" href="{{route('atestadoMedico')}}">
                             <i class="material-icons">assignment_late
                             </i>
                             <p>Atestado Medico</p>

@@ -103,7 +103,6 @@ class DentistaController extends Controller
         $data['id_profissional'] = Auth::user()->id;
 
         SolicitacaoExameOdonto::create($data);
-        $this->pdfExame();
 
         return redirect('/solicitacaoExameOdonto');
     }

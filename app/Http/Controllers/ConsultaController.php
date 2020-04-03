@@ -12,7 +12,7 @@ class ConsultaController extends Controller
 {
     public function indexConsulta()
     {
-        $paciente = Paciente::all();
+        $paciente = Paciente::where('id_localidade' , Auth::user()->localidade)->get();
         return view('Usuario.cadastroConsulta', ['pacientes' => $paciente]);
     }
 

@@ -378,7 +378,7 @@ The above copyright notice and this permission notice shall be included in all c
 
                                     <button type="submit" class="btn btn-primary-adm">Cadastrar</button>
                                     <button class="btn btn-primary-adm"><a style="color: white" href="{{route('solicitacaoExameOdonto')}}">Solicitar Exame</a></button>
-                                    <button class="btn btn-primary-adm"><a style="color: white" href="{{route('pdfConsulta')}}">Imprimir ultimo registro</a></button>
+                                    <button class="btn btn-primary-adm"><a style="color: white" href="{{route('pdfConsulta')}}">Imprimir Ultima Consulta</a></button>
                                     <div class="clearfix"></div>
                                 </form>
                             </div>

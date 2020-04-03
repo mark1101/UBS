@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Exame;
 use App\Paciente;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Notifications\Action;
 use Illuminate\Support\Facades\Auth;
@@ -11,13 +12,13 @@ use Illuminate\Support\Facades\Auth;
 class ExameController extends Controller
 {
     public function indexbuscarExame()
-    {        //dd(($exame->paciente)->nome);
+    {
         return view('Usuario.buscarExame',['exames'=>Exame::with(['paciente'])->get()]);
     }
 
     public function indexcadastroExame()
     {
-        $paciente = Paciente::all();
+        $paciente = Paciente::where('id_localidade', Auth::user()->localidade)->get();
         return view('Usuario.cadastroExame', [
             'pacientes' => $paciente
         ]);

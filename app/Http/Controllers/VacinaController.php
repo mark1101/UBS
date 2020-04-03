@@ -13,7 +13,8 @@ class VacinaController extends Controller
 {
     public function index()
     {
-        $paciente = Paciente::all();
+        $paciente = Paciente::where('id_localidade', Auth::user()->localidade)->get();
+
         return view('Usuario.cadastroVacina', [
             'pacientes', $paciente
         ]);
@@ -35,14 +36,18 @@ class VacinaController extends Controller
     public function mostraVacina(Request $request)
     {
 
-        $paciente = Paciente::all();
+        $paciente = Paciente::where('id_localidade', Auth::user()->localidade)->get();
         $localidade = Localidade::all();
+        $vacina = Vacina::where('id_localidade' , Auth::user()->localidade)
+            ->with(['paciente', 'localidade'])->get();
 
         if ($request->criterio == "") {
             return view('Usuario.cadastroVacina', [
                 'pacientes' => $paciente,
                 'localidades' => $localidade,
-                'vacinas' => Vacina::with(['paciente'])->get(), 'vacinas' => Vacina::with(['localidade'])->get()]);
+                'vacinas' => $vacina
+            ]);
+
         }
 
         $data = Paciente::where('nome', 'like', '%' . $request->criterio . '%')->get();
@@ -54,7 +59,7 @@ class VacinaController extends Controller
             ]);
         }
 
-        foreach ($data as $d){
+        foreach ($data as $d) {
             $todas = Vacina::where('id_paciente', $d->id)->get();
         }
 
@@ -63,11 +68,6 @@ class VacinaController extends Controller
             'vacinas' => $todas
         ]);
 
-
-        /*return view('Usuario.cadastroVacina', [
-            'pacientes' => $paciente,
-            'localidades' => $localidade,
-            'vacinas' => Vacina::with(['paciente'])->get(), 'vacinas' => Vacina::with(['localidade'])->get()]); */
     }
 
 }
