@@ -44,6 +44,7 @@ class ConsultaController extends Controller
         try {
             $data = Paciente::where('nome', 'like', '%' . $request->criterio . '%')
                 ->get();
+
             foreach ($data as $item) {
                 if (Consulta::where('id_paciente', $item->id)->with(['localidade', 'profissional', 'paciente'])->count() > 0) {
                     $consultasAux[] = Consulta::where('id_paciente', $item->id)->with(['localidade', 'profissional', 'paciente'])->get();

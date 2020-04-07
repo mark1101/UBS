@@ -71,7 +71,7 @@
                         </div>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="{{route('mostraVacina')}}">
+                        <a class="nav-link" href="{{route('indexVacina')}}">
                             <i class="material-icons">format_color_reset
                             </i>
                             <p>Vacinas</p>

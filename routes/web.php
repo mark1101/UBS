@@ -51,6 +51,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/mostraPaciente', 'PacienteController@mostraPaciente')->name('mostraPaciente');
     Route::POST('paciente/salvar', 'PacienteController@cadastraPaciente')->name('cadastraPaciente');
     Route::POST('paciente/buscaPaciente', 'PacienteController@cadastraPaciente')->name('cadastraPaciente');
+
     Route::post('/buscaPaciente', 'PacienteController@buscaPaciente')->name('searchPaciente');
 
     Route::post('/editaPaciente/{id}' , 'PacienteController@editaPaciente')->name('updatePaciente');
@@ -68,8 +69,12 @@ Route::middleware(['auth'])->group(function () {
 
 
 // ROTAS DE VACINAS
-    Route::get('/mostraVacina', 'VacinaController@mostraVacina')->name('mostraVacina');
+
+    Route::get('/vacina', 'VacinaController@index')->name('indexVacina');
     Route::POST('vacina/cadastrarVacina', 'VacinaController@cadastraVacina')->name('cadastraVacina');
+    Route::get('/busca_Vacinas', 'VacinaController@searchVacina')->name('searchVacina');
+
+
 
 // ROTAS DE RECADOS
     Route::get('/recado', 'RecadoController@index')->name('recado');
@@ -77,10 +82,11 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/cadastraRecado', 'RecadoController@cadastraRecado')->name('storeRecado');
 
 // ROTAS DE ENCAMINHAMENTO
-    Route::get('/encaminhamento', 'EncaminhamentoController@index')
-        ->name('encaminhamento');
-    Route::post('/cadastrouEncaminhamento' , 'EncaminhamentoController@cadastroEncaminhamento')
-        ->name('storeEnxaminhamento');
+    Route::get('/encaminhamento', 'EncaminhamentoController@index')->name('encaminhamento');
+    Route::post('/cadastrouEncaminhamento' , 'EncaminhamentoController@cadastroEncaminhamento')->name('storeEnxaminhamento');
+
+    Route::get('/pdfEncaminhamento' , 'EncaminhamentoController@createPdf')->name('createPdfEncaminhamento');
+
 
 // ROTAS DE ATESTADO MEDICO
     Route::get('/solicitaAtestado' , 'AtestadoMedicoController@index')->name('atestadoMedico');

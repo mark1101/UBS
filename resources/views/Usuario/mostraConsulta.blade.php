@@ -81,7 +81,7 @@ The above copyright notice and this permission notice shall be included in all c
                         </div>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="{{route('mostraVacina')}}">
+                        <a class="nav-link" href="{{route('indexVacina')}}">
                             <i class="material-icons">format_color_reset
                             </i>
                             <p>Vacinas</p>
@@ -194,7 +194,7 @@ The above copyright notice and this permission notice shall be included in all c
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header card-header-success">
-                                <h4 class="card-title">A busca pode ser feita por nome, CPF ou número do SUS</h4>
+                                <h4 class="card-title">A busca pode ser feita por nome do paciente</h4>
                                 <form id="buscaConsulta" class="navbar-form">
                                     @csrf
                                     <div class="input-group no-border">

@@ -42,6 +42,5 @@ class AtestadoMedicoController extends Controller
 
         $pdf = PDF::loadView('Usuario.pdfAtestadoMedico', compact('data'));
         return $pdf->setPaper('a4')->stream('AtestadoMedico.pdf');
-
     }
 }

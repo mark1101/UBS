@@ -80,7 +80,7 @@ The above copyright notice and this permission notice shall be included in all c
                     </div>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link" href="{{route('mostraVacina')}}">
+                    <a class="nav-link" href="{{route('indexVacina')}}">
                         <i class="material-icons">format_color_reset
                         </i>
                         <p>Vacinas</p>
@@ -271,9 +271,8 @@ The above copyright notice and this permission notice shall be included in all c
                                             </div>
                                         </div>
                                     </div>
-                                    <button type="submit" class="btn btn-primary-normal"> Salvar e Gerar
-                                        Impressão
-                                    </button>
+                                    <button type="submit" class="btn btn-primary-normal"> Salvar</button>
+                                    <button type="submit" class="btn btn-primary-normal"><a style="color: white" href="{{route('createPdfEncaminhamento')}}">Imprimir Ultimo Registro Cadastrado</a></button>
                                 </form>
                             </div>
                         </div>

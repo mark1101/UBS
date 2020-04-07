@@ -16,7 +16,7 @@ class VacinaController extends Controller
         $paciente = Paciente::where('id_localidade', Auth::user()->localidade)->get();
 
         return view('Usuario.cadastroVacina', [
-            'pacientes', $paciente
+            'pacientes' => $paciente
         ]);
     }
 
@@ -30,44 +30,47 @@ class VacinaController extends Controller
 
         Vacina::create($data);
 
-        return redirect('/mostraVacina');
+        return redirect('/vacina');
     }
 
-    public function mostraVacina(Request $request)
+    public function searchVacina(Request $request)
     {
+        try {
+            $data = Paciente::where('nome', 'like', '%' . $request->criterio . '%')
+                ->get();
+            foreach ($data as $item) {
+                if (Vacina::where('id_paciente', $item->id)->with(['localidade', 'paciente'])->count() > 0) {
+                    $vacinasAux[] = Vacina::where('id_paciente', $item->id)->with(['localidade', 'paciente'])
+                        ->get();
+                }
+            }
+            foreach ($vacinasAux as $item) {
+                foreach ($item as $v) {
+                    $vacinas[] = $v;
+                }
 
-        $paciente = Paciente::where('id_localidade', Auth::user()->localidade)->get();
-        $localidade = Localidade::all();
-        $vacina = Vacina::where('id_localidade' , Auth::user()->localidade)
-            ->with(['paciente', 'localidade'])->get();
+            }
+            for ($i = 0; $i < count($vacinas); $i++) {
 
-        if ($request->criterio == "") {
-            return view('Usuario.cadastroVacina', [
-                'pacientes' => $paciente,
-                'localidades' => $localidade,
-                'vacinas' => $vacina
-            ]);
+                $vacinas[$i]['localidade'] = ($vacinas[$i]->localidade)->nome;
+                $vacinas[$i]['profissional'] = ($vacinas[$i]->profissional)->name;
+                $vacinas[$i]['paciente'] = ($vacinas[$i]->paciente)->nome . "" . ($vacinas[$i]->paciente)->ultimo_nome;
 
+            }
+
+            $response['data'] = $vacinas;
+            $response['success'] = true;
+
+            echo json_encode($response);
+
+        } catch (\Exception $e) {
+
+            $response['data'] = "no data";
+            $response['success'] = true;
+
+            echo json_encode($response);
         }
 
-        $data = Paciente::where('nome', 'like', '%' . $request->criterio . '%')->get();
-
-        if (count($data) == 0) {
-            return view('Usuario.cadastroVacina', [
-                'pacientes' => $paciente,
-                'vacinas' => $data
-            ]);
-        }
-
-        foreach ($data as $d) {
-            $todas = Vacina::where('id_paciente', $d->id)->get();
-        }
-
-        return view('Usuario.cadastroVacina', [
-            'pacientes' => $paciente,
-            'vacinas' => $todas
-        ]);
 
     }
-
 }

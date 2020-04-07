@@ -28,7 +28,7 @@ The above copyright notice and this permission notice shall be included in all c
     <link href="{{asset('css/material-dashboard.css')}}" rel="stylesheet"/>
 </head>
 
-<body class="" >
+<body class="">
 <div class="wrapper ">
 
     <div class="sidebar" data-color="green" data-background-color="white" data-image="../assets/img/unidade.jpg">
@@ -80,7 +80,7 @@ The above copyright notice and this permission notice shall be included in all c
                     </div>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{route('mostraVacina')}}">
+                    <a class="nav-link" href="{{route('indexVacina')}}">
                         <i class="material-icons">format_color_reset
                         </i>
                         <p>Vacinas</p>
@@ -201,10 +201,13 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-5">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Nome Paciente</label>
-                                                <select style="text-transform: uppercase;" class="form-control ls-select" name="id_paciente" id="id_paciente">
+                                                <select style="text-transform: uppercase;"
+                                                        class="form-control ls-select" name="id_paciente"
+                                                        id="id_paciente">
                                                     @foreach($pacientes as $paciente)
                                                         <option
-                                                            value="{{$paciente->id}}"style="text-transform: uppercase;" >
+                                                            value="{{$paciente->id}}"
+                                                            style="text-transform: uppercase;">
                                                             {{$paciente->nome}} {{$paciente->ultimo_nome}}</option>
                                                     @endforeach
                                                 </select>
@@ -215,7 +218,8 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-5">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Vacina Realizada</label>
-                                                <input style="text-transform: uppercase;" type="text" class="form-control" id="vacina_realizada"
+                                                <input style="text-transform: uppercase;" type="text"
+                                                       class="form-control" id="vacina_realizada"
                                                        name="vacina_realizada" required>
                                             </div>
                                         </div>
@@ -224,18 +228,20 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Informação de Lote</label>
-                                                <input style="text-transform: uppercase;" type="text" class="form-control" id="informacao_lote"
+                                                <input style="text-transform: uppercase;" type="text"
+                                                       class="form-control" id="informacao_lote"
                                                        name="informacao_lote" required>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Dose</label>
-                                                <input style="text-transform: uppercase;" type="number" class="form-control" id="dose" name="dose" required>
+                                                <input style="text-transform: uppercase;" type="number"
+                                                       class="form-control" id="dose" name="dose" required>
                                             </div>
                                         </div>
                                     </div>
-                                    <button  type="submit" class="btn btn-primary-normal">Salvar
+                                    <button type="submit" class="btn btn-primary-normal">Salvar
                                     </button>
                                 </form>
                             </div>
@@ -244,13 +250,12 @@ The above copyright notice and this permission notice shall be included in all c
                     <div class="col-md-12" style="overflow: hidden">
                         <div class="card">
                             <div class="card-header card-header-success">
-                                <h4 class="card-title">Buscar Vacina</h4>
-                                <form class="navbar-form" action="{{route('mostraVacina')}}">
+                                <h4 class="card-title">Buscar da vacina pode ser feita pelo nome do paciente</h4>
+                                <form id="buscaVacina" class="navbar-form">
                                     @csrf
                                     <div class="input-group no-border">
-                                        <input type="text" id="criterio" name="criterio"
-                                               style="color:beige;" value="" class="form-control"
-                                               placeholder="Digite o primeiro nome do paciente...">
+                                        <input onkeyup="submitForm()" type="text" id="criterio" name="criterio"
+                                               style="color:beige;" value="" class="form-control">
                                         <button type="submit" class="btn btn-white btn-round btn-just-icon">
                                             <i class="material-icons">search</i>
                                             <div class="ripple-container"></div>
@@ -260,33 +265,82 @@ The above copyright notice and this permission notice shall be included in all c
                             </div>
 
                             <div class="card-body">
-                                <div class="table-responsive" style="overflow: auto; height: 300px;">
-                                    <table class="table">
-                                        <thead>
-                                        <tr>
-                                            <th scope="col" width="27%" align="center">Posto de Vacinação</th>
-                                            <th scope="col" width="19%">Nome Paciente</th>
-                                            <th scope="col" width="22%">Vacina Realizada</th>
-                                            <th scope="col" width="19%">Info de Lote</th>
-                                            <th scope="col" width="14%">Data</th>
-                                            <th scope="col" width="5%">Dose</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        @foreach($vacinas as $vacina)
-                                            <tr>
-                                                <td style="text-transform: uppercase;" >{{($vacina->localidade)->nome}}</td>
-                                                <td>{{($vacina->paciente)->nome . " ". ($vacina->paciente)->ultimo_nome}}</td>
-                                                <td >{{$vacina->vacina_realizada}}</td>
-                                                <td  >{{$vacina->informacao_lote}}</td>
-                                                <td >{{$vacina->data}}</td>
-                                                <td align="center" >{{$vacina->dose}}</td>
-                                            </tr>
-                                        @endforeach
-                                        </tbody>
-                                    </table>
+                                <div class="card-body">
+                                    <div class="table-responsive" style="overflow: auto; height: 300px;">
+                                        <table id="tableSearch" class="table">
+                                            <thead>
+
+                                            </thead>
+                                            <tbody>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
+
+                            <script>
+                                function submitForm() {
+                                    if ($("#criterio").val() === "") {
+                                        $("#tableSearch").html("");
+                                    } else {
+                                        $("#buscaVacina").submit();
+                                    }
+                                }
+                            </script>
+
+
+                            <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+                            <script
+                                src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
+
+                            <script>
+                                $(function () {
+                                    $('form[id="buscaVacina"]').submit(function (event) {
+                                        event.preventDefault();
+                                        $.ajax({
+                                            url: "{{route('searchVacina')}}",
+                                            type: "get",
+                                            data: $(this).serialize(),
+                                            dataType: 'json',
+                                            success: function (response) {
+                                                if (response.success === true) {
+                                                    var newRow = $("<tr>");
+                                                    var cols = "";
+                                                    cols += '<th>Posto de Vacinação</th>';
+                                                    cols += '<th>Nome Paciente</th>';
+                                                    cols += '<th>Vacina Realizada</th>';
+                                                    cols += '<th>Info de Lote</th>';
+                                                    cols += '<th>Data</th>';
+                                                    cols += '<th>Dose</th>';
+                                                    newRow.append(cols);
+
+                                                    $("#tableSearch").html("").append(newRow).fadeIn();
+
+                                                    $.each(response.data, function (item, value) {
+                                                        var newRow = $("<tr>");
+                                                        var cols = "";
+                                                        cols += '<td>' + response.data[item]['localidade']['nome'] + '</td>';
+                                                        cols += '<td>' + response.data[item]["paciente"].nome + " " + response.data[item]["paciente"].ultimo_nome + '</td>';
+                                                        cols += '<td>' + response.data[item]["vacina_realizada"] + '</td>';
+                                                        cols += '<td>' + response.data[item]["informacao_lote"] + '</td>';
+                                                        cols += '<td>' + response.data[item]["data"] + '</td>';
+                                                        cols += '<td>' + response.data[item]['dose'] + '</td>';
+                                                        cols += '<td><a  data-toggle="modal" data-target="#modal' + response.data[item]['id'] + '" style="width: 55px;"> <i class="material-icons" style="color: black;"title="Salvar Paciente">print</i></a>\n</td>';
+
+                                                        newRow.append(cols);
+                                                        $("#tableSearch").append(newRow).fadeIn();
+                                                    });
+                                                } else {
+                                                    //erro
+                                                }
+                                            }
+                                        });
+                                    });
+                                });
+                            </script>
+
+
                         </div>
                     </div>
                 </div>

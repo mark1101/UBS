@@ -6,6 +6,7 @@ use App\Encaminhamento;
 use App\Paciente;
 use App\User;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Support\Facades\Auth;
 
 class EncaminhamentoController extends Controller
@@ -31,4 +32,14 @@ class EncaminhamentoController extends Controller
         return redirect('/encaminhamento');
     }
 
+    public function createPdf()
+    {
+        $data = Encaminhamento::where('id', Encaminhamento::max('id'))
+            ->with(['paciente', 'localidade'])
+            ->get();
+
+
+        $pdf = PDF::loadView('Usuario.pdfEncaminhamento', compact('data'));
+        return $pdf->setPaper('a4')->stream('Encaminhamento.pdf');
+    }
 }

@@ -81,7 +81,7 @@ The above copyright notice and this permission notice shall be included in all c
                         </div>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="{{route('mostraVacina')}}">
+                        <a class="nav-link" href="{{route('indexVacina')}}">
                             <i class="material-icons">format_color_reset
                             </i>
                             <p>Vacinas</p>
