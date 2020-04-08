@@ -79,6 +79,7 @@ class DentistaController extends Controller
     {
         $data = $request->all();
         $data['id_profissional'] = Auth::user()->id;
+        $data['id_sede'] = Auth::user()->cidade_sede;
 
         ConsultaDentista::create($data);
         $this->pdfConsulta();
@@ -90,6 +91,7 @@ class DentistaController extends Controller
     {
         $data = $request->all();
         $data['id_profissional'] = Auth::user()->id;
+        $data['id_sede'] = Auth::user()->cidade_sede;
 
         FichaTratamento::create($data);
         $this->pdfTratamento();
@@ -101,6 +103,7 @@ class DentistaController extends Controller
     {
         $data = $request->all();
         $data['id_profissional'] = Auth::user()->id;
+        $data['id_sede'] = Auth::user()->cidade_sede;
 
         SolicitacaoExameOdonto::create($data);
 

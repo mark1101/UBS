@@ -33,25 +33,11 @@
                         <p>Início</p>
                     </a>
                 </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="#">
-                        <i class="material-icons">arrow_right_alt
-                        </i>
-                        <p>Encaminhamentos</p>
-                    </a>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">
                         <i class="material-icons">attach_file
                         </i>
                         <p>Recados</p>
-                    </a>
-                </li>
-                <li class="nav-item  ">
-                    <a class="nav-link" href="#">
-                        <i class="material-icons">commute
-                        </i>
-                        <p>Dados de viagens</p>
                     </a>
                 </li>
                 <li class="nav-item  ">
@@ -131,7 +117,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Odontológico</h5>
                             <img src="{{asset('img/DenteClicavel.png')}}">
-                            <a href="#" class="btn btn-primary-admin">Ver</a>
+                            <a href="{{route('veOdontologico')}}" class="btn btn-primary-admin">Ver</a>
                         </div>
                     </div>
                     &nbsp &nbsp &nbsp

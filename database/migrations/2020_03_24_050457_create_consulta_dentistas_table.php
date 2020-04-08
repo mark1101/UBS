@@ -18,6 +18,7 @@ class CreateConsultaDentistasTable extends Migration
             $table->integer('id_paciente')->unsigned();
             $table->integer('id_profissional')->unsigned();
             $table->integer('id_localidade')->unsigned();
+            $table->integer('id_sede');
             $table->timestamp('inicio_tratamento');
             $table->string('condicoes_higiene');
             $table->string('uso_medicamento');

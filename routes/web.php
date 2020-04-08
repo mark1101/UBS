@@ -113,6 +113,10 @@ Route::middleware(['auth'])->group(function () {
         ->name('storeProfisional');
     Route::get('/graficos' , 'GraficosAdmController@index')->name('graficos');
 
+    /////////// DADOS PARA VISU
+
+    Route::get('/veOdontologico', 'veOdontologicoController@index')->name('veOdontologico');
+
 
 // ROTAS DE CONSULTA
 

@@ -13,7 +13,7 @@ class ConsultaDentista extends Model
         'sensibilidade', 'halitose', 'mucosa', 'lingua', 'palato_mole',
         'assoalho_bucal', 'labios', 'placa_bacteriana', 'sangramento_gengival',
         'tartaro', 'mobilidade_dental', 'apinhamento', 'diastemas', 'observacoes',
-        'plano_tratamento',
+        'plano_tratamento', 'id_sede',
     ];
     public function paciente()
     {

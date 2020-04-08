@@ -8,7 +8,7 @@ class FichaTratamento extends Model
 {
     protected $fillable = [
       'id' , 'id_paciente' , 'id_profissional' , 'id_localidade' ,
-      'data' , 'tratamento_executado' , 'tipo' ,
+      'data' , 'tratamento_executado' , 'tipo', 'id_sede',
     ];
     public function paciente()
     {
