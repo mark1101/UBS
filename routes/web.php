@@ -116,6 +116,7 @@ Route::middleware(['auth'])->group(function () {
     /////////// DADOS PARA VISU
 
     Route::get('/veOdontologico', 'veOdontologicoController@index')->name('veOdontologico');
+    Route::get('/veConsultas', 'veConsultasController@index')->name('veConsultas');
 
 
 // ROTAS DE CONSULTA

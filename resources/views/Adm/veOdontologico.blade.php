@@ -61,8 +61,8 @@ The above copyright notice and this permission notice shall be included in all c
                     </a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link" href="#">
-                        <i class="material-icons">attach_file
+                    <a class="nav-link" href="{{route('veConsultas')}}">
+                        <i class="material-icons">insert_emoticon
                         </i>
                         <p>Consultas</p>
                     </a>
@@ -76,9 +76,15 @@ The above copyright notice and this permission notice shall be included in all c
                 </li>
                 <li class="nav-item  ">
                     <a class="nav-link" href="#">
-                        <i class="material-icons">house
+                        <i class="material-icons">content_paste
                         </i>
                         <p>Exames</p>
+                    </a>
+                </li><li class="nav-item  ">
+                    <a class="nav-link" href="#">
+                        <i class="material-icons">format_color_reset
+                        </i>
+                        <p>Vacinas</p>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -228,10 +234,10 @@ The above copyright notice and this permission notice shall be included in all c
                                         <table class="table">
                                             <thead>
                                             <tr>
-                                                <th  style="color: black ; text-transform: uppercase">Nome</th>
-                                                <th  style="color: black ; text-transform: uppercase">Email</th>
-                                                <th  style="color: black ; text-transform: uppercase">Cpf</th>
-                                                <th  style="color: black ; text-transform: uppercase">Data Nascimento</th>
+                                                <th  style="color: black ; text-transform: uppercase"><strong>Nome</strong></th>
+                                                <th  style="color: black ; text-transform: uppercase"><strong>Email</strong></th>
+                                                <th  style="color: black ; text-transform: uppercase"><strong>Cpf</strong></th>
+                                                <th  style="color: black ; text-transform: uppercase"><strong>Data Nascimento</strong></th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -274,9 +280,9 @@ The above copyright notice and this permission notice shall be included in all c
                                     <table class="table">
                                         <thead>
                                         <tr>
-                                            <th  style="color: black ; text-transform: uppercase">Nome Paciente</th>
-                                            <th  style="color: black ; text-transform: uppercase">Comunidade</th>
-                                            <th  style="color: black ; text-transform: uppercase">Profissional</th>
+                                            <th  style="color: black ; text-transform: uppercase"><strong>Nome Paciente</strong></th>
+                                            <th  style="color: black ; text-transform: uppercase"><strong>Comunidade</strong></th>
+                                            <th  style="color: black ; text-transform: uppercase"><strong>Profissional</strong></th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -317,15 +323,17 @@ The above copyright notice and this permission notice shall be included in all c
                                     <table class="table">
                                         <thead>
                                         <tr>
-                                            <th  style="color: black ; text-transform: uppercase">Nome Paciente</th>
-                                            <th  style="color: black ; text-transform: uppercase">Comunidade</th>
-                                            <th  style="color: black ; text-transform: uppercase">Profissional</th>
+                                            <th  style="color: black"><strong>Nome Paciente</strong></th>
+                                            <th  style="color: black ; width: 30%"><strong>Tratamento Realizado</strong></th>
+                                            <th  style="color: black"><strong>Comunidade</strong></th>
+                                            <th  style="color: black"><strong>Profissional</strong></th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         @foreach($tratamentosAll as $tratamento)
                                             <tr >
                                                 <td>{{($tratamento->paciente)->nome}} {{($tratamento->paciente)->ultimo_nome}}</td>
+                                                <td>{{$tratamento->tratamento_executado}}</td>
                                                 <td>{{($tratamento->localidade)->nome}}</td>
                                                 <td>{{($tratamento->profissional)->name}}</td>
                                             </tr>

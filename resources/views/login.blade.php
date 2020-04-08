@@ -260,7 +260,7 @@
                 </span>
                 @enderror
 
-                <a href="">Esqueceu a Senha ? </a>
+                {{--<a href="">Esqueceu a Senha ? </a>--}}
                 <br>
                 <button style="  display:block;
     width:100px;
