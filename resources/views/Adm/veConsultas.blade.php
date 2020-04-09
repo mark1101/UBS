@@ -46,6 +46,13 @@ The above copyright notice and this permission notice shall be included in all c
                     </a>
                 </li>
                 <li class="nav-item ">
+                    <a class="nav-link" href="{{route('veProfissionais')}}">
+                        <i class="material-icons">person
+                        </i>
+                        <p>Profissionais</p>
+                    </a>
+                </li>
+                <li class="nav-item ">
                     <a class="nav-link" href="#">
                         <i class="material-icons">arrow_right_alt
                         </i>
@@ -203,20 +210,21 @@ The above copyright notice and this permission notice shall be included in all c
                                     <table class="table">
                                         <thead>
                                         <tr>
-                                            <th style="color: black"><strong>Nome</strong></th>
-                                            <th style="color: black"><strong>Email</strong></th>
-                                            <th style="color: black"><strong>Cpf</strong></th>
-                                            <th style="color: black"><strong>Módulo de Trabalho</strong></th>
-                                            <th style="color: black"><strong>Consultas Realizadas</strong></th>
+                                            <th><strong>Nome</strong></th>
+                                            <th><strong>Cpf</strong></th>
+                                            <th><strong>Módulo de Trabalho</strong></th>
+                                            <th><strong>Comunidade de Trabalho</strong></th>
+                                            <th><strong>Consultas Realizadas</strong></th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         @foreach($pro as $p)
                                             <tr>
                                                 <td>{{$p['data']->name}}</td>
-                                                <td>{{$p['data']->email}}</td>
                                                 <td>{{$p['data']->cpf}}</td>
                                                 <td>{{$p['data']->funcao}}</td>
+                                                <td>{{$p['localidade']->nome}}</td>
+
                                                 <td align="center">{{$p['count']}}</td>
 
                                             </tr>

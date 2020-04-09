@@ -70,6 +70,7 @@
         <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
             <div class="container-fluid">
 
+
                 <!-- BOTAO DE RESPONSIVIDADE PARA OPCIOES DE SIDEBAR-->
                 <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -132,7 +133,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Profissionais</h5>
                             <img src="{{asset('img/ProfissionaisClicavel.png')}}">
-                            <a href="#" class="btn btn-primary-admin">Ver</a>
+                            <a href="{{route('veProfissionais')}}" class="btn btn-primary-admin">Ver</a>
                         </div>
                     </div>
                     &nbsp &nbsp &nbsp
@@ -145,6 +146,14 @@
                     </div>
                 </div>
                 <div class="row d-flex justify-content-center"> <!-- CLASSE DE ALINHAMENTO -->
+                    <div align="center" class="card" style="width: 13rem; height: 13rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Consultas</h5>
+                            <img src="{{asset('img/ConsultaClicavel.png')}}">
+                            <a href="{{route('veConsultas')}}" class="btn btn-primary-admin">Ver</a>
+                        </div>
+                    </div>
+                    &nbsp &nbsp &nbsp
                     <div align="center" class="card" style="width: 13rem; height: 13rem;">
                         <div class="card-body">
                             <h5 class="card-title">Exames</h5>
@@ -175,6 +184,7 @@
 
         <footer class="footer">
             <div class="container-fluid">
+                <div>Ícones feitos por <a href="https://www.flaticon.com/br/autores/srip" title="srip">srip</a> from <a href="https://www.flaticon.com/br/" title="Flaticon">www.flaticon.com</a></div>
             </div>
         </footer>
     </div>

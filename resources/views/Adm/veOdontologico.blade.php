@@ -46,6 +46,13 @@ The above copyright notice and this permission notice shall be included in all c
                     </a>
                 </li>
                 <li class="nav-item ">
+                    <a class="nav-link" href="{{route('veProfissionais')}}">
+                        <i class="material-icons">person
+                        </i>
+                        <p>Profissionais</p>
+                    </a>
+                </li>
+                <li class="nav-item ">
                     <a class="nav-link" href="#">
                         <i class="material-icons">arrow_right_alt
                         </i>

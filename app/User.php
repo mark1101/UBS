@@ -22,7 +22,7 @@ class User extends Authenticatable
 
     public function localidade()
     {
-        $this->hasOne(Localidade::class, 'id' , 'localidade');
+        $this->hasOne(Localidade::class, 'localidade' , 'id');
     }
     /**
      * The attributes that should be hidden for arrays.

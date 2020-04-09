@@ -187,9 +187,8 @@ The above copyright notice and this permission notice shall be included in all c
             <div class="container-fluid">
                 <div class="row">
                     <!-- DIV DE BUSCA DE PACIENTE -->
-                    <div class="col-md-12">
 
-                        <!-- PARTE DE CIMA DA TABELA PARA PESQUISA -->
+                    <div class="col-md-12">
                         <div class="card">
                             <div class="card-header card-header-success">
                                 <h4 class="card-title">A busca pode ser feita por nome, CPF ou número do SUS</h4>
