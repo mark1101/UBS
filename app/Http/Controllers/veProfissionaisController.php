@@ -19,14 +19,7 @@ class veProfissionaisController extends Controller
         $data = User::where('name', 'like', '%' . $request->criterio . '%')
             ->orWhere('funcao', 'like' , '%'. $request->criterio. '%')
             ->where('cidade_sede', (int)Auth::user()->cidade_sede)
-            //->with(['localidade'])
             ->get();
-
-        //dd($data);
-
-       /* for ($i = 0; $i < count($data); $i++) {
-            $data[$i]['localidade'] = ($data[$i]->localidade)->nome;
-        }*/
 
 
         $response['success'] = true;

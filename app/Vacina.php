@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Vacina extends Model
 {
     protected $fillable = [
-        'id', 'id_paciente', 'id_profissional', 'id_localidade', 'vacina_realizada', 'informacao_lote', 'data', 'dose'
+        'id', 'id_paciente', 'id_profissional', 'id_localidade', 'vacina_realizada',
+        'informacao_lote', 'data', 'dose', 'id_sede',
     ];
 
     public function paciente(){

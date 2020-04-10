@@ -68,7 +68,7 @@ The above copyright notice and this permission notice shall be included in all c
                     </a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{route('veConsultas')}}">
                         <i class="material-icons">insert_emoticon
                         </i>
                         <p>Consultas</p>
@@ -89,7 +89,7 @@ The above copyright notice and this permission notice shall be included in all c
                     </a>
                 </li>
                 <li class="nav-item  ">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{route('veVacinas')}}">
                         <i class="material-icons">format_color_reset
                         </i>
                         <p>Vacinas</p>
@@ -179,8 +179,8 @@ The above copyright notice and this permission notice shall be included in all c
                     &nbsp &nbsp &nbsp
                     <div align="center" class="card" style="width: 13rem; height: 13rem;">
                         <div class="card-body">
-                            <h5>Comunidades / Consultas</h5>
-                            <br><br>
+                            <h5>Comunidade/Consulta</h5>
+                            <br><br><br>
                             <button type="button" class="btn btn-primary-admin" data-toggle="modal"
                                     data-target="#modalLocalidade">
                                 Ver Detalhes

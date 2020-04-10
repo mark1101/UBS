@@ -59,7 +59,7 @@ The above copyright notice and this permission notice shall be included in all c
                         <p>Encaminhamentos</p>
                     </a>
                 </li>
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="{{route('veOdontologico')}}">
                         <i class="material-icons">airline_seat_flat_angled
 
@@ -87,8 +87,9 @@ The above copyright notice and this permission notice shall be included in all c
                         </i>
                         <p>Exames</p>
                     </a>
-                </li><li class="nav-item  ">
-                    <a class="nav-link" href="{{route('veVacinas')}}">
+                </li>
+                <li class="nav-item active ">
+                    <a class="nav-link" href="#">
                         <i class="material-icons">format_color_reset
                         </i>
                         <p>Vacinas</p>
@@ -158,41 +159,18 @@ The above copyright notice and this permission notice shall be included in all c
                 <div class="row d-flex justify-content-center"> <!-- CLASSE DE ALINHAMENTO -->
                     <div align="center" class="card" style="width: 13rem; height: 13rem;">
                         <div class="card-body">
-                            <h5 class="card-title">Pacientes Atendidos</h5>
+                            <h5 class="card-title">Total de Vacinas</h5>
                             <br>
-                            <h1>{{$pacientes_atendidos}}</h1>
+                            <h1>{{$vacinastotal}}</h1>
                         </div>
                     </div>
                     &nbsp &nbsp &nbsp
                     <div align="center" class="card" style="width: 13rem; height: 13rem;">
                         <div class="card-body">
-                            <h5 class="card-title">Dentistas Cadastrados</h5>
-                            <h1>{{$dentistas}}</h1>
+                            <h5>Comunidade/Vacinas</h5>
+                            <br><br><br>
                             <button type="button" class="btn btn-primary-admin" data-toggle="modal"
-                                    data-target="#modalDentistas">
-                                Ver Detalhes
-                            </button>
-                        </div>
-                    </div>
-                    &nbsp &nbsp &nbsp
-                    <div align="center" class="card" style="width: 13rem; height: 13rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Consultas Realizadas</h5>
-                            <br>
-                            <h1>{{$consultas}}</h1>
-                            <button type="button" class="btn btn-primary-admin" data-toggle="modal"
-                                    data-target="#modalConsultas">
-                                Ver Detalhes
-                            </button>
-                        </div>
-                    </div>
-                    &nbsp &nbsp &nbsp
-                    <div align="center" class="card" style="width: 13rem; height: 13rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Tratamentos Realizados</h5>
-                            <h1>{{$tratamentos}}</h1>
-                            <button type="button" class="btn btn-primary-admin" data-toggle="modal"
-                                    data-target="#modalTratamentos">
+                                    data-target="#modalLocalidade">
                                 Ver Detalhes
                             </button>
                         </div>
@@ -202,80 +180,13 @@ The above copyright notice and this permission notice shall be included in all c
             </div>
 
 
-            <div class="modal fade bd-example-modal-lg" id="modalPacientes" tabindex="-1" role="dialog"
+            <div class="modal fade bd-example-modal-lg" id="modalProfissionalConsulta" tabindex="-1" role="dialog"
                  aria-labelledby="myLargeModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Dados de Pacientes Atentidos</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-
-
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-primary-admin" data-dismiss="modal">Fechar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-                <div class="modal fade bd-example-modal-lg" id="modalDentistas" tabindex="-1" role="dialog"
-                     aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Dentistas Cadastrados</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-
-                                <div class="card-body">
-                                    <div class="table-responsive" style="overflow: auto; height: 300px;">
-                                        <table class="table">
-                                            <thead>
-                                            <tr>
-                                                <th  style="color: black ; text-transform: uppercase"><strong>Nome</strong></th>
-                                                <th  style="color: black ; text-transform: uppercase"><strong>Email</strong></th>
-                                                <th  style="color: black ; text-transform: uppercase"><strong>Cpf</strong></th>
-                                                <th  style="color: black ; text-transform: uppercase"><strong>Data Nascimento</strong></th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            @foreach($dentistasAll as $profissionais)
-                                                <tr >
-                                                    <td>{{$profissionais->name}}</td>
-                                                    <td>{{$profissionais->email}}</td>
-                                                    <td>{{$profissionais->cpf}}</td>
-                                                    <td>{{$profissionais->data_nascimento}}</td>
-                                                </tr>
-                                            @endforeach
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary-admin" data-dismiss="modal">Fechar</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-            <div class="modal fade bd-example-modal-lg" id="modalConsultas" tabindex="-1" role="dialog"
-                 aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Consultas Realizadas ({{$consultas}})</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Profissionais Capacitados a Realizar
+                                Consulta</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -287,19 +198,115 @@ The above copyright notice and this permission notice shall be included in all c
                                     <table class="table">
                                         <thead>
                                         <tr>
-                                            <th  style="color: black ; text-transform: uppercase"><strong>Nome Paciente</strong></th>
-                                            <th  style="color: black ; text-transform: uppercase"><strong>Comunidade</strong></th>
-                                            <th  style="color: black ; text-transform: uppercase"><strong>Profissional</strong></th>
+                                            <th><strong>Nome</strong></th>
+                                            <th><strong>Cpf</strong></th>
+                                            <th><strong>Módulo de Trabalho</strong></th>
+                                            <th><strong>Comunidade de Trabalho</strong></th>
+                                            <th><strong>Consultas Realizadas</strong></th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($consultasAll as $consulta)
-                                            <tr >
-                                                <td>{{($consulta->paciente)->nome}} {{($consulta->paciente)->ultimo_nome}}</td>
-                                                <td>{{($consulta->localidade)->nome}}</td>
-                                                <td>{{($consulta->profissional)->name}}</td>
+                                        {{--@foreach($pro as $p)
+                                            <tr>
+                                                <td>{{$p['data']->name}}</td>
+                                                <td>{{$p['data']->cpf}}</td>
+                                                <td>{{$p['data']->funcao}}</td>
+                                                <td>{{$p['localidade']->nome}}</td>
+
+                                                <td align="center">{{$p['count']}}</td>
+
+                                            </tr>
+                                        @endforeach--}}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary-admin" data-dismiss="modal">Fechar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="modal fade bd-example-modal-lg" id="modalLocalidade" tabindex="-1" role="dialog"
+                 aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Dentistas Cadastrados</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+
+                            <div class="card-body">
+                                <div class="table-responsive" style="overflow: auto; height: 300px;">
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th style="color: black"><strong>Comunidade</strong></th>
+                                            <th style="color: black"><strong>Quantidade de Vacinas realizadas</strong></th>
+
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($localidade as $key => $value)
+                                            <tr>
+                                                <td>{{$key}}</td>
+                                                <td>{{$value}}</td>
                                             </tr>
                                         @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary-admin" data-dismiss="modal">Fechar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="modal fade bd-example-modal-lg" id="modalConsultas" tabindex="-1" role="dialog"
+                 aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            {{--
+                                                        <h5 class="modal-title" id="exampleModalLabel">Consultas Realizadas ({{$consultas}})</h5>
+                            --}}
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+
+                            <div class="card-body">
+                                <div class="table-responsive" style="overflow: auto; height: 300px;">
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th style="color: black ; text-transform: uppercase">Nome Paciente</th>
+                                            <th style="color: black ; text-transform: uppercase">Comunidade</th>
+                                            <th style="color: black ; text-transform: uppercase">Profissional</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {{-- @foreach($consultasAll as $consulta)
+                                             <tr >
+                                                 <td>{{($consulta->paciente)->nome}} {{($consulta->paciente)->ultimo_nome}}</td>
+                                                 <td>{{($consulta->localidade)->nome}}</td>
+                                                 <td>{{($consulta->profissional)->name}}</td>
+                                             </tr>
+                                         @endforeach--}}
                                         </tbody>
                                     </table>
                                 </div>
@@ -318,7 +325,9 @@ The above copyright notice and this permission notice shall be included in all c
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Tratamentos Realizados ({{$tratamentos}})</h5>
+                            {{--
+                                                        <h5 class="modal-title" id="exampleModalLabel">Tratamentos Realizados ({{$tratamentos}})</h5>
+                            --}}
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -330,21 +339,21 @@ The above copyright notice and this permission notice shall be included in all c
                                     <table class="table">
                                         <thead>
                                         <tr>
-                                            <th  style="color: black"><strong>Nome Paciente</strong></th>
-                                            <th  style="color: black ; width: 30%"><strong>Tratamento Realizado</strong></th>
-                                            <th  style="color: black"><strong>Comunidade</strong></th>
-                                            <th  style="color: black"><strong>Profissional</strong></th>
+                                            <th style="color: black">Nome Paciente</th>
+                                            <th style="color: black ; width: 30%">Tratamento Realizado</th>
+                                            <th style="color: black">Comunidade</th>
+                                            <th style="color: black">Profissional</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($tratamentosAll as $tratamento)
+                                        {{--@foreach($tratamentosAll as $tratamento)
                                             <tr >
                                                 <td>{{($tratamento->paciente)->nome}} {{($tratamento->paciente)->ultimo_nome}}</td>
                                                 <td>{{$tratamento->tratamento_executado}}</td>
                                                 <td>{{($tratamento->localidade)->nome}}</td>
                                                 <td>{{($tratamento->profissional)->name}}</td>
                                             </tr>
-                                        @endforeach
+                                        @endforeach--}}
                                         </tbody>
                                     </table>
                                 </div>

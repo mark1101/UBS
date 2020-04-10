@@ -68,7 +68,7 @@ The above copyright notice and this permission notice shall be included in all c
                     </a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{route('veConsultas')}}">
                         <i class="material-icons">insert_emoticon
                         </i>
                         <p>Consultas</p>
@@ -89,7 +89,7 @@ The above copyright notice and this permission notice shall be included in all c
                     </a>
                 </li>
                 <li class="nav-item  ">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{route('veVacinas')}}">
                         <i class="material-icons">format_color_reset
                         </i>
                         <p>Vacinas</p>
@@ -158,7 +158,7 @@ The above copyright notice and this permission notice shall be included in all c
                     <div class="card">
                         <div class="card-header card-header-admin">
                             <h4 class="card-title">A busca pode ser feita por nome ou módulo de trabalho do profissional</h4>
-                            <form id="buscaProfissional" class="navbar-form">
+                            <form {{--action="{{route('searchProfissional')}}" method="get" --}}id="buscaProfissional" class="navbar-form">
                                 @csrf
                                 <div class="input-group no-border">
                                     <input onkeyup="submitForm()" type="text" style="color:beige;" id="criterio"
@@ -291,7 +291,7 @@ The above copyright notice and this permission notice shall be included in all c
                                     cols += '<th>Função</th>';
                                     cols += '<th>Data Nascimento</th>';
                                     cols += '<th>CPF</th>';
-                                    //cols += '<th>Localidade</th>';
+                                    cols += '<th>Localidade</th>';
                                     cols += '<th>Email</th>';
                                     newRow.append(cols);
 
@@ -304,7 +304,7 @@ The above copyright notice and this permission notice shall be included in all c
                                         cols += '<td>' + response.data[item]["funcao"] + '</td>';
                                         cols += '<td>' + response.data[item]["data_nascimento"] + '</td>';
                                         cols += '<td>' + response.data[item]["cpf"] + '</td>';
-                                        //cols += '<td>' + response.data[item]['localidade']['nome'] + '</td>';
+                                        cols += '<td>' + response.data[item]["localidade"] + '</td>';
                                         cols += '<td>' + response.data[item]['email']+ '</td>';
                                         cols += '<td><a href="#" data-toggle="modal" data-target="#modal' + response.data[item]['id'] + '" style="width: 55px;"> <i class="material-icons" style="color: black;"title="Salvar Paciente">visibility</i></a>\n</td>';
 
