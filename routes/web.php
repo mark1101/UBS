@@ -33,7 +33,9 @@ Route::group(['middleware' => ['web', 'auth']], function () {
             return view('Dentista.administracaoDentista');
         } else if (Auth::user()->admin == 3) {
             return view('Agente.AdministracaoAgente');
-        } else {
+        }/*else if(Auth::user()->admin == 4){
+            return view('Motorista.administracaoViagem');
+        }*/ else {
             return redirect()->back();
         }
     });
@@ -120,6 +122,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/veProfissionais', 'veProfissionaisController@index')->name('veProfissionais');
     Route::get('/veVacinas', 'veVacinasController@index')->name('veVacinas');
     Route::get('/vePro', 'veProfissionaisController@mostraProfissional')->name('searchProfissional');
+    Route::get('/veViagens', 'veViagensController@index')->name('veViagens');
+    Route::post('/mostraViagem','veViagensController@mostraViagem')->name('mostraViagem');
 
 
 // ROTAS DE CONSULTA
@@ -167,6 +171,7 @@ Route::middleware(['auth'])->group(function () {
 
 //ROTOAS DE VIAGENS
     Route::post('/cadastrouViagem', 'ViagemController@cadastroViagem')->name('storeViagem');
+    Route::get('/confirmaViagem', 'ViagemController@indexConfirma')->name('confirmaViagem');
 
 });
 

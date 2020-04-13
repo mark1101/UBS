@@ -8,7 +8,7 @@ class Encaminhamento extends Model
 {
     protected $fillable = [
         'id', 'id_profissional', 'id_paciente', 'id_localidade',
-        'especialidade_encaminhamento', 'objetivo', 'observacao', 'data' ,
+        'especialidade_encaminhamento', 'objetivo', 'observacao', 'data' , 'id_sede',
     ];
 
     public function profissional()

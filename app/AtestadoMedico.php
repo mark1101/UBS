@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class AtestadoMedico extends Model
 {
     protected $fillable = [
-        'id' , 'id_paciente' , 'id_profissional' , 'id_localidade' , 'dias', 'data'
+        'id' , 'id_paciente' , 'id_profissional' , 'id_localidade' , 'dias', 'data', 'id_sede'
     ];
 
     public function paciente()

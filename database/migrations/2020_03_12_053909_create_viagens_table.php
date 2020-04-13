@@ -22,6 +22,7 @@ class CreateViagensTable extends Migration
             $table->timestamp('data');
             $table->integer('id_carro')->unsigned();
             $table->string('observacao');
+            $table->integer('ativo')->default(0);
             $table->timestamps();
 
             $table->foreign('id_motorista')->references('id')->on('users');

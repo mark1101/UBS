@@ -18,7 +18,7 @@ class CreateFichaTratamentosTable extends Migration
             $table->integer('id_paciente')->unsigned();
             $table->integer('id_profissional')->unsigned();
             $table->integer('id_localidade')->unsigned();
-            $table->integer('id_sede');
+            $table->integer('id_sede')->default(1);
             $table->string('data');
             $table->string('tratamento_executado');
             $table->string('tipo');

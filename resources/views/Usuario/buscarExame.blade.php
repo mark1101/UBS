@@ -117,6 +117,13 @@ The above copyright notice and this permission notice shall be included in all c
                             <p>Agendamento Dentista</p>
                         </a>
                     </li>
+                    <li class="nav-item  ">
+                        <a class="nav-link" href="{{route('confirmaViagem')}}">
+                            <i class="material-icons">commute
+                            </i>
+                            <p>Confirmação de Viagens</p>
+                        </a>
+                    </li>
                 @endif
                 @if(Auth::user()->funcao == "Medicina")
                     <li class="nav-item  ">

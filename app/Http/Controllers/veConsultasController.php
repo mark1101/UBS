@@ -56,11 +56,18 @@ class veConsultasController extends Controller
             $localidasCount[$item->nome] = Consulta::where('id_localidade',$item->id)->count();
         }
 
+        $date1 = date("Y-m-d");
+        $consultaDia = Consulta::where('id_sede', Auth::user()->cidade_sede)
+            ->where('created_at','like', '%'. $date1. '%')
+            ->get();
+
+
         return view('Adm.veConsultas', ['consultas' => $consultasTotal,
             //'profissionaisConsultas' => $consulta,
             'profissionaisTotal' => count($medico) + count($enfermeiro), // numero em quantidade que mostra no card
             'pro' => $profissionais,
             'localidade' => $localidasCount,
+            'consultasDia' => $consultaDia
         ]);
 
     }

@@ -23,6 +23,7 @@ class CreateSolicitacaoExameOdontosTable extends Migration
             $table->string('tomografia');
             $table->string('ressonancia');
             $table->string('descricao');
+            $table->integer('id_sede')->default(1);
 
             $table->timestamps();
 

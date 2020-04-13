@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Carro extends Model
 {
     protected $fillable = [
-       'id' , 'nome' , 'id_localidade' , 'placa' ,
+       'id' , 'nome' , 'id_localidade' , 'placa' , 'id_sede',
     ];
 
     public function localidade()

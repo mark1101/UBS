@@ -26,6 +26,7 @@ class EncaminhamentoController extends Controller
         unset($data["_token"]);
 
         $data['id_localidade'] = Auth::user()->localidade;
+        $data['id_sede'] = Auth::user()->cidade_sede;
         Encaminhamento::create($data);
 
 

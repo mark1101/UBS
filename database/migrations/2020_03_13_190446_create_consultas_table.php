@@ -25,6 +25,7 @@ class CreateConsultasTable extends Migration
             $table->string('observacoes');
             $table->string('finalizacao');
             $table->timestamp('data');
+            $table->integer('id_sede')->default(1);
             $table->timestamps();
 
             $table->foreign('id_profissional')->references('id')->on('users');

@@ -125,7 +125,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Carros da Saude</h5>
                             <img src="{{asset('img/CarroClicavel.png')}}">
-                            <a href="#" class="btn btn-primary-admin">Ver</a>
+                            <a href="{{route('veViagens')}}" class="btn btn-primary-admin">Ver</a>
                         </div>
                     </div>
                     &nbsp &nbsp &nbsp
@@ -166,7 +166,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Vacinas</h5>
                             <img src="{{asset('img/VacinaClicavel.png')}}">
-                            <a href="#" class="btn btn-primary-admin">Ver</a>
+                            <a href="{{route('veVacinas')}}" class="btn btn-primary-admin">Ver</a>
                         </div>
                     </div>
                     &nbsp &nbsp &nbsp

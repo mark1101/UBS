@@ -20,6 +20,7 @@ class CreateAtestadoMedicosTable extends Migration
             $table->integer('id_profissional')->unsigned();
             $table->string('dias');
             $table->string('data');
+            $table->integer('id_sede')->default(1);
             $table->timestamps();
 
             $table->foreign('id_paciente')->references('id')->on('pacientes');

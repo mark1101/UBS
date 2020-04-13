@@ -26,9 +26,10 @@ The above copyright notice and this permission notice shall be included in all c
 
     <!-- CSS Arquivos -->
     <link href="{{asset('css/material-dashboard.css')}}" rel="stylesheet"/>
+
 </head>
 
-<body class="" >
+<body class="">
 <div class="wrapper ">
 
     <div class="sidebar" data-color="green" data-background-color="white" data-image="../assets/img/unidade.jpg">
@@ -69,7 +70,7 @@ The above copyright notice and this permission notice shall be included in all c
                         <p>Histórico dos Pacientes</p>
                     </a>
                 </li>
-                <li class="nav-item active ">
+                <li class="nav-item  ">
                     <a class="nav-link" href="{{route('controleViagem')}}">
                         <i class="material-icons">commute
                         </i>
@@ -84,7 +85,7 @@ The above copyright notice and this permission notice shall be included in all c
                             <p>Agendamento Dentista</p>
                         </a>
                     </li>
-                    <li class="nav-item  ">
+                    <li class="nav-item  active">
                         <a class="nav-link" href="{{route('confirmaViagem')}}">
                             <i class="material-icons">commute
                             </i>
@@ -103,7 +104,7 @@ The above copyright notice and this permission notice shall be included in all c
             <div class="container-fluid">
 
                 <div class="navbar-wrapper">
-                    <a class="navbar-brand" href="javascript:;">Controle de Viagens</a>
+                    <a class="navbar-brand" href="javascript:;">Gerenciamento de controle de viagens</a>
                 </div>
 
                 <!-- BOTAO DE RESPONSIVIDADE PARA OPCIOES DE SIDEBAR-->
@@ -148,102 +149,62 @@ The above copyright notice and this permission notice shall be included in all c
 
         <div class="content">
             <div class="container-fluid">
-                <div class="row">
 
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-header card-header-success">
-                                <h4 class="card-title">Cadastro de Nova Viagem</h4>
-                            </div>
+                <div class="col-md-12" style="overflow: hidden">
+                    <div class="card">
+                        <div class="card-header card-header-success">
+                            <h4 class="card-title">Viagens ainda nao confirmadas</h4>
+                            {{--<form id="buscaVacina" class="navbar-form">
+                                @csrf
+                                <div class="input-group no-border">
+                                    <input onkeyup="submitForm()" type="text" id="criterio" name="criterio"
+                                           style="color:beige;" value="" class="form-control">
+                                    <button type="submit" class="btn btn-white btn-round btn-just-icon">
+                                        <i class="material-icons">search</i>
+                                        <div class="ripple-container"></div>
+                                    </button>
+                                </div>
+                            </form>--}}
+                        </div>
+
+                        <div class="card-body">
                             <div class="card-body">
-                                <form action="{{route('storeViagem')}}" method="post">
-                                    @csrf
-                                    <p class="card-category">Origem</p>
-                                    <div class="container">
-                                        <div class="row">
-                                            <select style="text-transform: uppercase" class="form-control" name="id_origem" id="id_origem">
-                                                @foreach($localidades as $localidade)
-                                                    <option
-                                                        value="{{$localidade->id}}">{{$localidade->nome}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <p class="card-category">Destino</p>
-                                    <div class="container">
-                                        <div class="row">
-                                            <select style="text-transform: uppercase" class="form-control" name="id_destino" id="id_destino">
-                                                @foreach($localidades as $localidade)
-                                                    <option
-                                                        value="{{$localidade->id}}">{{$localidade->nome}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
+                                <div class="table-responsive" style="overflow: auto; height: 300px;">
+                                    <table id="tableSearch" class="table">
+                                        <thead>
 
-                                    <p class="card-category">Motorista Responsável</p>
-                                    <div class="container">
-                                        <div class="row">
-                                            <select style="text-transform: uppercase" class="form-control" name="id_motorista" id="id_motorista">
-                                                @foreach($motoristas as $motorista)
-                                                    <option
-                                                        value="{{$motorista->id}}">{{$motorista->nome}} ----- {{$motorista->telefone}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
+                                        <tr>
+                                            <th>Origem</th>
+                                            <th>Destino</th>
+                                            <th>Motorista</th>
+                                            <th>Num Passageiros</th>
+                                            <th>Data</th>
+                                            <th>Ativo</th>
 
-                                    <p class="card-category">Veículo</p>
-                                    <div class="container">
-                                        <div class="row">
-                                            <select style="text-transform: uppercase" class="form-control" name="id_carro" id="id_carro">
-                                                @foreach($carros as $carro)
-                                                    <option
-                                                        value="{{$carro->id}}">{{$carro->nome}} ---- {{$carro->placa}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
+                                        </tr>
 
-                                    <div class="row">
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Numero de Passageiros</label>
-                                                <select class="form-control" name="num_pacientes" id="num_pacientes">
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
-                                                    <option>5</option>
-                                                    <option>6</option>
-                                                    <option>7</option>
-                                                    <option>8</option>
-                                                    <option>9</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Data</label>
-                                                <input style="text-transform: uppercase" type="text" class="form-control data" maxlength="10" name="data" id="data" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-10">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Observação</label>
-                                                <textarea id = "observacao" name="observacao" style="text-transform: uppercase" class="form-control" id="exampleFormControlTextarea1"
-                                                          rows="3" required></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
+                                        </thead>
+                                        <tbody>
 
-                                    <button type="submit" class="btn btn-primary-normal">Enviar</button>
-                                </form>
+                                        @foreach($viagens as $v)
+                                            <tr>
+                                                <td>{{($v->localidadeOrigem)->nome}}</td>
+                                                <td>{{($v->localidadeDestino)->nome}}</td>
+                                                <td>{{($v->motorista)->nome}}</td>
+                                                <td>{{$v->num_pacientes}}</td>
+                                                <td>{{$v->data}}</td>
+                                                <td>{{$v->ativo}}</td>
+                                            </tr>
+                                        @endforeach
+
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
+
             </div>
         </div>
 
@@ -270,10 +231,9 @@ The above copyright notice and this permission notice shall be included in all c
 <script src="{{asset('js/plugins/jasny-bootstrap.min.js')}}"></script>
 <script src="{{asset('js/plugins/fullcalendar.min.js')}}"></script>
 <script src="{{asset('js/plugins/jquery-jvectormap.js')}}"></script>
-<!--<script src="{{asset('assets/js/plugins/nouislider.min.js')}}"></script> -->
+<script src="{{asset('assets/js/plugins/nouislider.min.js')}}"></script>
 <script src="{{asset('https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js')}}"></script>
 <script src="{{asset('js/plugins/arrive.min.js')}}"></script>
-
 
 <script src="{{asset('js/mascara.js')}}"></script>
 
@@ -281,7 +241,6 @@ The above copyright notice and this permission notice shall be included in all c
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-
 
 
 </body>

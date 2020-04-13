@@ -41,6 +41,7 @@ class CreateConsultaDentistasTable extends Migration
             $table->string('diastemas');
             $table->string('observacoes');
             $table->string('plano_tratamento');
+            $table->integer('id_sede')->default(1);
 
             $table->foreign('id_paciente')->references('id')->on('pacientes');
             $table->foreign('id_profissional')->references('id')->on('users');

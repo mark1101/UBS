@@ -75,7 +75,7 @@ The above copyright notice and this permission notice shall be included in all c
                     </a>
                 </li>
                 <li class="nav-item  ">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{route('veViagens')}}">
                         <i class="material-icons">commute
                         </i>
                         <p>Viagens</p>
@@ -189,6 +189,43 @@ The above copyright notice and this permission notice shall be included in all c
                     </div>
                 </div>
 
+                <br><br><br>
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header card-header-admin">
+                            <h2>Consultas Realizadas no dia</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-body">
+                                <div class="table-responsive" style="overflow: auto; height: 450px;">
+                                    <table id="tableSearch" class="table">
+                                        <thead>
+
+                                        <tr>
+                                            <th><strong>Localidade</strong></th>
+                                            <th><strong>Paciente</strong></th>
+                                            <th><strong>Profissional</strong></th>
+                                        </tr>
+
+                                        </thead>
+                                        <tbody>
+
+                                        @foreach($consultasDia as $c)
+                                            <tr>
+                                                <td>{{($c->localidade)->nome}}</td>
+                                                <td>{{($c->paciente)->nome}} {{($c->paciente)->ultimo_nome}}</td>
+                                                <td>{{($c->profissional)->name}}</td>
+                                            </tr>
+                                        @endforeach
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
 
@@ -226,7 +263,6 @@ The above copyright notice and this permission notice shall be included in all c
                                                 <td>{{$p['localidade']->nome}}</td>
 
                                                 <td align="center">{{$p['count']}}</td>
-
                                             </tr>
                                         @endforeach
                                         </tbody>
@@ -268,11 +304,11 @@ The above copyright notice and this permission notice shall be included in all c
                                         </thead>
                                         <tbody>
                                         @foreach($localidade as $key => $value)
-                                             <tr>
-                                                 <td>{{$key}}</td>
-                                                 <td>{{$value}}</td>
-                                             </tr>
-                                         @endforeach
+                                            <tr>
+                                                <td>{{$key}}</td>
+                                                <td>{{$value}}</td>
+                                            </tr>
+                                        @endforeach
                                         </tbody>
                                     </table>
                                 </div>

@@ -19,6 +19,7 @@ class CreateMotoristasTable extends Migration
             $table->string('cpf');
             $table->string('telefone');
             $table->integer('id_localidade');
+            $table->integer('id_sede')->default(1);
             $table->timestamps();
         });
     }

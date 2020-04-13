@@ -22,6 +22,7 @@ class CreateEncaminhamentosTable extends Migration
             $table->string('observacao');
             $table->string('objetivo');
             $table->string('data');
+            $table->integer('id_sede')->default(1);
 
             $table->timestamps();
 

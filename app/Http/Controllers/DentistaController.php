@@ -66,11 +66,11 @@ class DentistaController extends Controller
     }
 
     public function agendamentoDentista()
-    { // FUNCAO USADA PELO RECEPCIONISTA
+    {
 
         $localidade = Localidade::all();
         $paciente = Paciente::all();
-        // caso quiser passar alguma variavel para ca
+
         return view('Usuario.agendamentoDentista',
             ['localidades' => $localidade, 'pacientes' => $paciente]);
     }

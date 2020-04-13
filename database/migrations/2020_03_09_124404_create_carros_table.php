@@ -18,6 +18,7 @@ class CreateCarrosTable extends Migration
             $table->string('nome');
             $table->string('placa');
             $table->string('id_localidade');
+            $table->integer('id_sede')->default(1);
             $table->timestamps();
         });
     }

@@ -18,7 +18,7 @@ class CreateVacinasTable extends Migration
             $table->string('informacao_lote');
             $table->timestamp('data');
             $table->string('dose');
-            $table->integer('id_sede');
+            $table->integer('id_sede')->default(1);
             $table->timestamps();
         });
         Schema::table('vacinas' , function (Blueprint $table){

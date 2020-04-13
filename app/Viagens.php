@@ -8,12 +8,12 @@ class Viagens extends Model
 {
     protected $fillable = [
         'id' ,'num_pacientes', 'id_origem' , 'id_destino' , 'id_motorista' ,
-        'id_carro', 'data', 'observacao',
+        'id_carro', 'data', 'observacao', 'ativo'
         ];
 
     public function motorista()
     {
-        return $this->hasOne(User::class, 'id', 'id_motorista');
+        return $this->hasOne(Motorista::class, 'id', 'id_motorista');
     }
     public function carro()
     {
