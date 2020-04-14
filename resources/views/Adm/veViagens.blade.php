@@ -222,7 +222,11 @@ The above copyright notice and this permission notice shall be included in all c
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header card-header-admin">
-                            <h2>Viagens Realizadas no Dia</h2>
+                            <h2>Viagens Realizadas no Dia </h2>
+                            <?php
+                            date_default_timezone_set('America/Bahia');
+                            echo 'Ultima atualização hoje ', date('\à\s H:i');
+                            ?>
                         </div>
                         <div class="card-body">
                             <div class="card-body">

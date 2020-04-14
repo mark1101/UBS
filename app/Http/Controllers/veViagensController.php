@@ -48,13 +48,14 @@ class veViagensController extends Controller
 
 
         $date1 = date("Y-m-d");
+
         $viagemDia = Viagens::where('id_sede', Auth::user()->cidade_sede)
             ->where('created_at', 'like', '%' . $date1 . '%')
             ->get();
 
         return view('Adm.veViagens', [
             'local' => $localidade,
-            'viagemDia' => $viagemDia
+            'viagemDia' => $viagemDia,
         ]);
     }
 }

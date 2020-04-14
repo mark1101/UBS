@@ -232,6 +232,23 @@
 
 <div class="login-reg-panel">
 
+    <div class="register-info-box">
+        <h2>Sistema de Gestão para UBSs de Pequenos Municípios</h2>
+    </div>
+
+
+    <script>
+        function typeWriter(elemento) {
+            const textoArray = elemento.innerHTML.split('');
+            elemento.innerHTML = '';
+            textoArray.forEach((letra, i) => {
+                setTimeout(() => elemento.innerHTML += letra, 75 * i);
+            });
+        }
+        const titulo = document.querySelector('h2');
+        typeWriter(titulo);
+    </script>
+
     <div class="white-panel">
         <div class="login-show">
             <div align="center">
