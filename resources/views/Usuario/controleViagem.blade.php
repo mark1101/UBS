@@ -231,7 +231,7 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-10">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Observação</label>
-                                                <textarea id = "observacao" name="observacao" style="text-transform: uppercase" class="form-control" id="exampleFormControlTextarea1"
+                                                <textarea id = "observacao" name="observacao" class="form-control" id="exampleFormControlTextarea1"
                                                           rows="3" required></textarea>
                                             </div>
                                         </div>

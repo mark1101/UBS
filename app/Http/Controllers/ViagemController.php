@@ -22,8 +22,11 @@ class ViagemController extends Controller
 
     public function indexConfirma()
     {
-        $viagens = Viagens::where('id_origem', Auth::user()->localidade)
+        //$viagens = Viagens::where('id_origem', Auth::user()->localidade)
+
+        $viagens = Viagens::where('id_sede', Auth::user()->cidade_sede)
             ->where('ativo', 1)
+            ->orderBy('created_at')
             ->get();
         return view('Usuario.confirmacaoViagem' ,[
             'viagens' => $viagens
@@ -56,8 +59,8 @@ class ViagemController extends Controller
     public function cadastroViagem(Request $request){
 
         $data = $request->all();
-        dd($data);
         $data['id_sede'] = Auth::user()->cidade_sede;
+        $data['ativo'] = 1;
 
         Viagens::create($data);
 
