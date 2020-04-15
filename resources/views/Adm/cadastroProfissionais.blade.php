@@ -141,7 +141,7 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-7">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Nome</label>
-                                                <input type="text" class="form-control" maxlength="15" id="name"
+                                                <input type="text" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" class="form-control" maxlength="15" id="name"
                                                        name="name" required>
                                             </div>
                                         </div>
@@ -208,24 +208,7 @@ The above copyright notice and this permission notice shall be included in all c
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Controle de Acesso</label>
-                                                <input value="0" type="text" class="form-control" maxlength="60"
-                                                       id="controle_acesso"
-                                                       name="controle_acesso" readonly = "true" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Número de N</label>
-                                                <input value="0" type="text" class="form-control" maxlength="60"
-                                                       id="admin"
-                                                       name="admin" readonly = "true" required>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <br>
                                     <button type="submit" class="btn btn-primary-admin">Salvar
                                     </button>
                                 </form>

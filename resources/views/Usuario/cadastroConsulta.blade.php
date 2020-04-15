@@ -210,23 +210,23 @@ The above copyright notice and this permission notice shall be included in all c
                                     @csrf
                                     <p>Pré-Consulta</p>
                                     <div class="row">
-                                        <div class="col-md-1">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Peso</label>
-                                                <input style="text-transform: uppercase;" type="text" class="form-control peso" name="peso" id="peso">
+                                                <input type="text" placeholder="ex: 50,50" class="form-control peso" name="peso" id="peso">
                                             </div>
                                         </div>
-                                        <div class="col-md-1">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Altura</label>
-                                                <input vtype="text" class="form-control altura" name="altura"
+                                                <input vtype="text" placeholder="ex: 1,74" class="form-control altura" name="altura"
                                                        id="altura">
                                             </div>
                                         </div>
-                                        <div class="col-md-1    ">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Pressão</label>
-                                                <input style="text-transform: uppercase;" type="text" class="form-control" name="pressao" id="pressao">
+                                                <input type="text" placeholder="ex: normal, alta, baixa..." pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$"  class="form-control" name="pressao" id="pressao">
                                             </div>
                                         </div>
                                     </div>
@@ -252,14 +252,14 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-10">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Sintomas</label>
-                                                <textarea style="text-transform: uppercase;" class="form-control" id="sintomas" name="sintomas"
+                                                <textarea class="form-control" id="sintomas" name="sintomas"
                                                           rows="3"></textarea>
                                             </div>
                                         </div>
                                         <div class="col-md-10">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Observações</label>
-                                                <textarea style="text-transform: uppercase;" class="form-control" id="observacoes" name="observacoes"
+                                                <textarea  class="form-control" id="observacoes" name="observacoes"
                                                           rows="3"></textarea>
                                             </div>
                                         </div>
@@ -268,7 +268,7 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-10">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Finalização de Examinações</label>
-                                                <textarea style="text-transform: uppercase;" class="form-control" id="finalizacao" name="finalizacao"
+                                                <textarea  class="form-control" id="finalizacao" name="finalizacao"
                                                           rows="3"></textarea>
                                             </div>
                                         </div>

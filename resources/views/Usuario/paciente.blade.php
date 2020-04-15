@@ -212,15 +212,15 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Primeiro Nome</label>
-                                                <input style="text-transform: uppercase;" type="text" class="form-control" maxlength="15" id="nome"
-                                                       name="nome" required>
+                                                <input type="text" class="form-control" maxlength="15" id="nome"
+                                                       name="nome" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" required>
                                             </div>
                                         </div>
                                         <div class="col-md-5">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Restante nome</label>
-                                                <input style="text-transform: uppercase;" type="text" class="form-control" maxlength="40" id="ultimo_nome"
-                                                       name="ultimo_nome" required>
+                                                <input  type="text" class="form-control" maxlength="40" id="ultimo_nome"
+                                                       name="ultimo_nome" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$"  required>
                                             </div>
                                         </div>
                                         <div class="col-md-3">

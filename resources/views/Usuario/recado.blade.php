@@ -198,6 +198,10 @@ The above copyright notice and this permission notice shall be included in all c
                         <div class="card">
                             <div class="card-header card-header-success">
                                 <h4>Mensagens Recebidas</h4>
+                                <?php
+                                date_default_timezone_set('America/Bahia');
+                                echo 'Ultima atualização hoje ', date('\à\s H:i');
+                                ?>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive" style="overflow: auto; height: 250px;">
@@ -206,6 +210,7 @@ The above copyright notice and this permission notice shall be included in all c
                                         <thead>
                                         <tr>
                                             <th>Localidade Recebimento</th>
+                                            <th>De</th>
                                             <th>Mensagem</th>
                                             <th>Data</th>
                                         </tr>
@@ -215,6 +220,7 @@ The above copyright notice and this permission notice shall be included in all c
                                         @foreach($rs as $recado)
                                             <tr>
                                                 <td>{{($recado->localidade)->nome}}</td>
+                                                <td>{{($recado->profissional)->name}}</td>
                                                 <td>{{$recado->mensagem}}</td>
                                                 <td>{{$recado->data}}</td>
                                             </tr>

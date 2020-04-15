@@ -139,19 +139,20 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Nome do Motorista</label>
-                                                <input style="text-transform: uppercase" type="text" class="form-control " name="nome" id="nome">
+                                                <input type="text" class="form-control" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$"
+                                                       name="nome" id="nome" required>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Telefone</label>
-                                                <input style="text-transform: uppercase"type="text" class="form-control telefone" name="telefone" id="telefone">
+                                                <input style="text-transform: uppercase"type="text" class="form-control telefone" name="telefone" id="telefone" required>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">CPF</label>
-                                                <input type="text" class="form-control cpf" name="cpf" id="cpf">
+                                                <input type="text" class="form-control cpf" name="cpf" id="cpf" required>
                                             </div>
                                         </div>
                                     </div>

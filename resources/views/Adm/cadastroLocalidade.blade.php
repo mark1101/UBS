@@ -179,7 +179,7 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="form-group">
                                             <label class="bmd-label-floating">Nome da Localidade</label>
                                             <input style="text-transform: uppercase;" type="text" class="form-control " id="nome"
-                                                   name="nome">
+                                                   name="nome" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" required>
                                         </div>
                                     </div>
                                 </div>

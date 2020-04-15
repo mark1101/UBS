@@ -252,7 +252,7 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-10">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Objetivo do Encaminhamento</label>
-                                                <textarea style="text-transform: uppercase;" class="form-control"
+                                                <textarea  class="form-control"
                                                           id="objetivo" name="objetivo"
                                                           rows="3"></textarea>
                                             </div>
@@ -262,7 +262,7 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-10">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Observação</label>
-                                                <textarea style="text-transform: uppercase;" class="form-control"
+                                                <textarea  class="form-control"
                                                           id="observacao" name="observacao"
                                                           rows="3"></textarea>
                                             </div>

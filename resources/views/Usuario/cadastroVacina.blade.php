@@ -225,9 +225,7 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-5">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Vacina Realizada</label>
-                                                <input style="text-transform: uppercase;" type="text"
-                                                       class="form-control" id="vacina_realizada"
-                                                       name="vacina_realizada" required>
+                                                <input type="text" class="form-control" id="vacina_realizada" name="vacina_realizada" required>
                                             </div>
                                         </div>
                                     </div>
@@ -235,7 +233,7 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Informação de Lote</label>
-                                                <input style="text-transform: uppercase;" type="text"
+                                                <input type="text"
                                                        class="form-control" id="informacao_lote"
                                                        name="informacao_lote" required>
                                             </div>

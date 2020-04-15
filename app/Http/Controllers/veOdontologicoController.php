@@ -18,15 +18,26 @@ class veOdontologicoController extends Controller
 
         $dentistasAll = User::where('funcao', 'like', '%'.'Odontologia'. '%')
             ->where('cidade_sede', Auth::user()->cidade_sede)
+            ->orderBy('name')
             ->get();
 
-        $consultasAll = ConsultaDentista::where('id_sede' , Auth::user()->cidade_sede)->get();
-        $tratamentosAll = FichaTratamento::where('id_sede', Auth::user()->cidade_sede)->get();
+        $consultasAll = ConsultaDentista::where('id_sede' , Auth::user()->cidade_sede)->orderBy('created_at')->get();
+        $tratamentosAll = FichaTratamento::where('id_sede', Auth::user()->cidade_sede)->orderBy('created_at')->get();
 
         $consulta = ConsultaDentista::where('id_sede', Auth::user()->cidade_sede)->count();
         $tratamento = FichaTratamento::where('id_sede', Auth::user()->cidade_sede)->count();
 
         $total = $consulta + $tratamento;
+
+        $date1 = date("Y-m-d");
+
+        $consultaDia = ConsultaDentista::where('id_sede', Auth::user()->cidade_sede)
+            ->where('created_at', 'like', '%' . $date1 . '%')
+            ->get();
+
+        $tratamentoDia = FichaTratamento::where('id_sede', Auth::user()->cidade_sede)
+            ->where('created_at', 'like', '%' . $date1 . '%')
+            ->get();
 
         return view('Adm.veOdontologico', [
             'dentistas' => $dentistas,
@@ -35,7 +46,9 @@ class veOdontologicoController extends Controller
             'tratamentos' => $tratamento,
             'dentistasAll' => $dentistasAll,
             'consultasAll' => $consultasAll,
-            'tratamentosAll' => $tratamentosAll
+            'tratamentosAll' => $tratamentosAll,
+            'consultaDia' => $consultaDia,
+            'tratamentoDia' => $tratamentoDia
         ]);
     }
 }

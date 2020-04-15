@@ -359,6 +359,58 @@ The above copyright notice and this permission notice shall be included in all c
                 </div>
             </div>
 
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-admin">
+                        <h2>Procedimento Odontológicos Realizados no Dia</h2>
+                        <?php
+                        date_default_timezone_set('America/Bahia');
+                        echo 'Ultima atualização hoje ', date('\à\s H:i');
+                        ?>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-body">
+                            <div class="table-responsive" style="overflow: auto; height: 450px;">
+                                <table id="tableSearch" class="table">
+                                    <thead>
+
+                                    <tr>
+                                        <th><strong>Localidade</strong></th>
+                                        <th><strong>Profissional</strong></th>
+                                        <th><strong>Procedimento Realizado</strong></th>
+                                        <th><strong>Conclusão</strong></th>
+                                    </tr>
+
+                                    </thead>
+                                    <tbody>
+
+                                    @foreach($consultaDia as $cdia)
+                                        <tr>
+                                            <td>{{($cdia->localidade)->nome}}</td>
+                                            <td>{{($cdia->profissional)->name}}</td>
+                                            <td>Consulta</td>
+                                            <td>{{$cdia->plano_tratamento}}</td>
+                                        </tr>
+                                    @endforeach
+
+                                    @foreach($tratamentoDia as $tdia)
+                                        <tr>
+                                            <td>{{($tdia->localidade)->nome}}</td>
+                                            <td>{{($tdia->profissional)->name}}</td>
+                                            <td>Tratamento</td>
+                                            <td>{{$tdia->tratamento_executado}}</td>
+                                        </tr>
+                                    @endforeach
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
 
         </div>
         <footer class="footer">

@@ -20,6 +20,7 @@ class RecadoController extends Controller
         ]);
     }
     public function mostraRecado(){
+
         $recado = Recado::all();
         return view('Usuario.recado', [
             'recados' => $recado
@@ -29,7 +30,8 @@ class RecadoController extends Controller
     public function cadastraRecado(Request $request)
     {
         $data = $request->all();
-        $data['origem'] = Auth::user()->id;
+        $data['origem'] = Auth::user()->localidade;
+        $data['mandante'] = Auth::user()->id;
 
         Recado::create($data);
 

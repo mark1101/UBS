@@ -25,6 +25,9 @@ class ProfissionalController extends Controller
 
 
         $data['password'] = Hash::make($data['password']);
+        $data['controle_acesso'] = 0;
+        $data['admin'] = 0;
+
 
         if($data['funcao'] == 'Recepcao'){
             $data['controle_acesso'] = 4;

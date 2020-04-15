@@ -19,10 +19,12 @@ class CreateRecadosTable extends Migration
             $table->string('modulo_trabalho');
             $table->integer('destino');
             $table->string('mensagem');
+            $table->integer('mandante')->unsigned();
             $table->timestamp('data');
 
             $table->foreign('destino')->references('id')->on('users');
-            $table->foreign('origem')->references('id')->on('users');
+            $table->foreign('origem')->references('id')->on('localidade');
+            $table->foreign('mandante')->references('id')->on('users');
 
             $table->timestamps();
         });

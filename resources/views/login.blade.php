@@ -233,7 +233,7 @@
 <div class="login-reg-panel">
 
     <div class="register-info-box">
-        <h2>Sistema de Gestão para UBSs de Pequenos Municípios</h2>
+        <h2>Sistema de Gestão a UBSs para Pequenos Municípios</h2>
     </div>
 
 
