@@ -210,7 +210,8 @@ The above copyright notice and this permission notice shall be included in all c
                                         <thead>
                                         <tr>
                                             <th>Localidade Recebimento</th>
-                                            <th>De</th>
+                                            <th>Enviado por</th>
+                                            <th>Módulo de Trabalho</th>
                                             <th>Mensagem</th>
                                             <th>Data</th>
                                         </tr>
@@ -221,6 +222,7 @@ The above copyright notice and this permission notice shall be included in all c
                                             <tr>
                                                 <td>{{($recado->localidade)->nome}}</td>
                                                 <td>{{($recado->profissional)->name}}</td>
+                                                <td>{{($recado->profissional)->funcao}}</td>
                                                 <td>{{$recado->mensagem}}</td>
                                                 <td>{{$recado->data}}</td>
                                             </tr>

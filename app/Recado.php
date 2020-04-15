@@ -16,7 +16,7 @@ class Recado extends Model
     }
 
     public function profissional(){
-        return $this->hasOne(Localidade::class , 'id', 'mandante');
+        return $this->hasOne(User::class , 'id', 'mandante');
     }
 
     public function destino()

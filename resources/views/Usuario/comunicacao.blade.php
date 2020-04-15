@@ -208,7 +208,7 @@ The above copyright notice and this permission notice shall be included in all c
                                 <form action="{{route('storeRecado')}}" method="post">
                                     @csrf
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        {{--<div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Módulo de Trabalho</label>
                                                 <select style="text-transform: uppercase;" class="form-control" name="modulo_trabalho" id="modulo_trabalho">
@@ -219,7 +219,7 @@ The above copyright notice and this permission notice shall be included in all c
                                                     <option>Odontologia</option>
                                                 </select>
                                             </div>
-                                        </div>
+                                        </div>--}}
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Para</label>
@@ -235,7 +235,7 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-10">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Mensagem</label>
-                                                <textarea name="mensagem" id="mensagem" style="text-transform: uppercase;" class="form-control" id="exampleFormControlTextarea1" rows="3" maxlength="50"></textarea>
+                                                <textarea name="mensagem" id="mensagem" class="form-control" id="exampleFormControlTextarea1" rows="3" maxlength="50"></textarea>
                                             </div>
                                         </div>
                                     </div>

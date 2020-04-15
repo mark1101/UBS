@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Auth;
 class ComunicacaoController extends Controller
 {
     public function index(){
-        $user = User::all();
+        $user = User::where('localidade', Auth::user()->localidade)
+            ->get();
         return view('Usuario.comunicacao' , [
             'profissionais' => $user
         ]);
