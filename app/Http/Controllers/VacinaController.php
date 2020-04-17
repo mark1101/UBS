@@ -36,6 +36,10 @@ class VacinaController extends Controller
 
     public function searchVacina(Request $request)
     {
+        $dataa = $request->all();
+        unset($dataa['_token']);
+
+
         try {
             $data = Paciente::where('nome', 'like', '%' . $request->criterio . '%')
                 ->get();

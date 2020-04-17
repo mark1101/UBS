@@ -18,6 +18,7 @@ class veViagensController extends Controller
             ->get();
 
         $date1 = date("Y-m-d");
+
         $viagemDia = Viagens::where('id_sede', Auth::user()->cidade_sede)
             ->where('created_at', 'like', '%' . $date1 . '%')
             ->get();
@@ -43,9 +44,7 @@ class veViagensController extends Controller
             $total = $item;
         }
 
-
         $manda = Viagens::where('id_origem', $total->id)->orderBy('data')->get();
-
 
         $date1 = date("Y-m-d");
 
@@ -53,9 +52,13 @@ class veViagensController extends Controller
             ->where('created_at', 'like', '%' . $date1 . '%')
             ->get();
 
+        $valores = Viagens::where('id_sede', Auth::user()->cidade_sede)
+            ->get();
+
         return view('Adm.veViagens', [
             'local' => $localidade,
             'viagemDia' => $viagemDia,
+            'valores' => $manda
         ]);
     }
 }

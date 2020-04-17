@@ -22,5 +22,11 @@ class ComunicacaoController extends Controller
         $data['origem'] = Auth::user()->localidade;
 
         Recado::create($data);
+
+        $response['success'] = true;
+        $response['data'] = $data;
+
+        echo json_encode($response);
+
     }
 }

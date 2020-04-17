@@ -158,7 +158,7 @@ The above copyright notice and this permission notice shall be included in all c
                     <div class="card">
                         <div class="card-header card-header-admin">
                             <h4 class="card-title">A busca pode ser feita por nome ou módulo de trabalho do profissional</h4>
-                            <form {{--action="{{route('searchProfissional')}}" method="get" --}}id="buscaProfissional" class="navbar-form">
+                            <form id="buscaProfissional" class="navbar-form">
                                 @csrf
                                 <div class="input-group no-border">
                                     <input onkeyup="submitForm()" type="text" style="color:beige;" id="criterio"

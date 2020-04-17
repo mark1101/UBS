@@ -161,9 +161,10 @@ The above copyright notice and this permission notice shall be included in all c
                             <form action="{{route('mostraViagem')}}" method="POST" id="buscaViagemNome"
                                   class="navbar-form">
                                 @csrf
-                                <h4>Pesquisa por Localidade</h4>
+                                <h4>Pesquisa por Localidade de Origem</h4>
                                 <div class="input-group no-border">
-                                    <select class="form-control " name="localidade" id="localidade">
+                                    <select style="text-transform: uppercase" class="form-control " name="localidade"
+                                            id="localidade">
                                         @foreach($local as $item)
                                             <option>{{$item->nome}}</option>
                                         @endforeach
@@ -196,6 +197,7 @@ The above copyright notice and this permission notice shall be included in all c
                                         <tbody>
 
                                         @foreach($valores as $mostra)
+
                                             <tr>
                                                 <td>{{($mostra->motorista)->nome}}</td>
                                                 <td>{{$mostra->num_pacientes}}</td>

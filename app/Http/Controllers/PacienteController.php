@@ -48,8 +48,11 @@ class PacienteController extends Controller
 
     public function buscaPaciente(Request $request)
     {
+        $data = $request->all();
+        unset($data['_token']);
 
         $valor = Auth::user()->cidade_sede;
+
 
         $data = Paciente::where('nome', 'like', '%' . $request->criterio . '%')
             ->orWhere('cpf', 'like', '%' . $request->criterio . '%')

@@ -28,7 +28,7 @@ class ConsultaController extends Controller
         return redirect('/consultaCadastro');
     }
 
-    /*public function mostraConsulta()
+    public function mostraConsulta()
     {
 
         $paciente = Paciente::all();
@@ -38,11 +38,15 @@ class ConsultaController extends Controller
         return view('Usuario.mostraConsulta', ['paciente' => $paciente, 'users' => $profissionais,
             'consultas' => Consulta::with(['paciente', 'profissional', 'localidade'])->get()
         ]);
-    }*/
+    }
 
     public function buscaConsulta(Request $request)
     {
+        $dataa = $request->all();
+        unset($dataa['_token']);
+
         try {
+
             $data = Paciente::where('nome', 'like', '%' . $request->criterio . '%')
                 ->get();
 

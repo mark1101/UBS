@@ -15,6 +15,8 @@ class veProfissionaisController extends Controller
 
     public function mostraProfissional(Request $request)
     {
+        $dataa = $request->all();
+        unset($dataa['_token']);
 
         $data = User::where('name', 'like', '%' . $request->criterio . '%')
             ->orWhere('funcao', 'like' , '%'. $request->criterio. '%')

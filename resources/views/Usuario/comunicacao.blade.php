@@ -205,21 +205,9 @@ The above copyright notice and this permission notice shall be included in all c
                                 <h4 class="card-title">Nova Mensagem</h4>
                             </div>
                             <div class="card-body">
-                                <form action="{{route('storeRecado')}}" method="post">
+                                <form id="cadastroMensagem" action="{{route('storeRecado')}}" method="post">
                                     @csrf
                                     <div class="row">
-                                        {{--<div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Módulo de Trabalho</label>
-                                                <select style="text-transform: uppercase;" class="form-control" name="modulo_trabalho" id="modulo_trabalho">
-                                                    <option selected>Recepcao</option>
-                                                    <option>Medicina</option>
-                                                    <option>Enfermagem</option>
-                                                    <option>Agente de Saúde</option>
-                                                    <option>Odontologia</option>
-                                                </select>
-                                            </div>
-                                        </div>--}}
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Para</label>
@@ -245,6 +233,33 @@ The above copyright notice and this permission notice shall be included in all c
                             </div>
                         </div>
                     </div>
+
+                    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
+
+                    <script>
+                        $(function () {
+                            $('form[id="cadastroMensagem"]').submit(function (event) {
+                                event.preventDefault();
+                                $.ajax({
+                                    url: "{{route('storeRecado')}}",
+                                    type: "post",
+                                    data: $(this).serialize(),
+                                    dataType: 'json',
+                                    success: function (response) {
+                                        if (response.success === true) {
+
+
+                                        } else {
+
+
+                                        }
+                                    }
+                                });
+                            });
+                        });
+                    </script>
+
 
                 </div>
             </div>
