@@ -30,7 +30,10 @@ class RecadoController extends Controller
 
         Recado::create($data);
 
-        return redirect('/comunicacao');
+        $response['success'] = true;
+
+        echo json_encode($response);
+
 
     }
 

@@ -16,17 +16,18 @@ class ComunicacaoController extends Controller
             'profissionais' => $user
         ]);
     }
-    public function cadastraRecado(Request $request){
+   /* public function cadastraRecado(Request $request){
         $data = $request->all();
 
         $data['origem'] = Auth::user()->localidade;
 
         Recado::create($data);
 
+
         $response['success'] = true;
-        $response['data'] = $data;
+        $response['mensagem enviada com sucesso'];
 
         echo json_encode($response);
 
-    }
+    }*/
 }

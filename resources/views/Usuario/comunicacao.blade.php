@@ -202,10 +202,10 @@ The above copyright notice and this permission notice shall be included in all c
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header card-header-success">
-                                <h4 class="card-title">Nova Mensagem</h4>
+                                <h4 class="card-title">Nova Mensagem (as mensagens serão mandadas somente internamente)</h4>
                             </div>
                             <div class="card-body">
-                                <form id="cadastroMensagem" action="{{route('storeRecado')}}" method="post">
+                                <form id="cadastroMensagem" {{--action="{{route('storeRecado')}}" method="post"--}}>
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-3">
@@ -234,30 +234,74 @@ The above copyright notice and this permission notice shall be included in all c
                         </div>
                     </div>
 
+                    <div id="modalSuccess" class="modal" tabindex="-1" role="dialog">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" style="color: green">Sucesso!</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Mensagem enviada com Sucesso!</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="modalError" class="modal" tabindex="-1" role="dialog">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" style="color: green">Ops!</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Algo de errado aconteceu :(!</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
                     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
 
                     <script>
+
                         $(function () {
                             $('form[id="cadastroMensagem"]').submit(function (event) {
                                 event.preventDefault();
+
                                 $.ajax({
                                     url: "{{route('storeRecado')}}",
-                                    type: "post",
+                                    type: "POST",
                                     data: $(this).serialize(),
                                     dataType: 'json',
-                                    success: function (response) {
-                                        if (response.success === true) {
+                                    success : function (response) {
+                                        if(response.success === true){
 
+                                            $('#mensagem').val("");
+                                            $('#modalSuccess').modal('show');
 
-                                        } else {
+                                        }else{
 
+                                            $('#modalError').modal('show');
 
                                         }
                                     }
-                                });
-                            });
-                        });
+                                })
+                            })
+                        })
+
                     </script>
 
 

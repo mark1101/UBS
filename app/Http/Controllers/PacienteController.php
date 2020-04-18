@@ -34,11 +34,16 @@ class PacienteController extends Controller
 
         Paciente::create($data);
 
-        if (Auth::user()->admin == 3) {
+
+        $response['success'] = true;
+        echo json_encode($response);
+
+
+        /*if (Auth::user()->admin == 3) {
             return redirect('/agente/cadastroPaciente');
         } else {
             return redirect('/paciente');
-        }
+        }*/
     }
 
     public function mostraPaciente()

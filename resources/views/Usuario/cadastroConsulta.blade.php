@@ -206,7 +206,7 @@ The above copyright notice and this permission notice shall be included in all c
                                 <h4 class="card-title">Cadastro de Nova Consulta</h4>
                             </div>
                             <div class="card-body">
-                                <form action="{{route('cadastroConsulta')}}" method="POST">
+                                <form id="cadastroConsulta" action="{{route('cadastroConsulta')}}" method="POST">
                                     @csrf
                                     <p>Pré-Consulta</p>
                                     <div class="row">
@@ -281,6 +281,45 @@ The above copyright notice and this permission notice shall be included in all c
                 </div>
             </div>
         </div>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
+
+        <script>
+
+            $(function () {
+                $('form[id="cadastroConsulta"]').submit(function (event) {
+                    event.preventDefault();
+
+                    $.ajax({
+                        url: "{{route('cadastroConsulta')}}",
+                        type: "POST",
+                        data: $(this).serialize(),
+                        dataType: 'json',
+                        success : function (response) {
+                            if(response.success === true){
+
+                                $('#peso').val("");
+                                $('#altura').val("");
+                                $('#pressao').val("");
+                                $('#sintomas').val("");
+                                $('#observacoes').val("");
+                                $('#finalizacao').val("");
+
+                                alert('Consulta Cadastrada com Sucesso!');
+
+                            }else{
+
+                                $('#modalError').modal('show');
+
+                            }
+                        }
+                    })
+                })
+            })
+
+        </script>
+
         <footer class="footer">
             <div class="container-fluid">
                 <h4 align="left">Versão 1.0</h4>

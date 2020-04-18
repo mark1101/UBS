@@ -25,7 +25,11 @@ class ConsultaController extends Controller
         $data['id_sede'] = Auth::user()->cidade_sede;
 
         Consulta::create($data);
-        return redirect('/consultaCadastro');
+
+        $response['success'] = true;
+        echo json_encode($response);
+
+        //return redirect('/consultaCadastro');
     }
 
     public function mostraConsulta()

@@ -205,7 +205,7 @@ The above copyright notice and this permission notice shall be included in all c
                                 <h4 class="card-title">Cadastro de paciente</h4>
                             </div>
                             <div class="card-body">
-                                <form action="{{route('cadastraPaciente')}}" method="post">
+                                <form id="cadastraPaciente" {{--action="{{route('cadastraPaciente')}}" method="post"--}}>
                                     @csrf
                                     <p class="card-category">Dados Pessoais</p>
                                     <div class="row">
@@ -240,7 +240,7 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Email</label>
-                                                <input type="email" class="form-control" maxlength="60" id="emal"
+                                                <input type="email" class="form-control" maxlength="60" id="email"
                                                        name="email">
                                             </div>
                                         </div>
@@ -289,25 +289,66 @@ The above copyright notice and this permission notice shall be included in all c
                             </div>
                         </div>
                     </div>
-                    <!-- MOSTRAGEM COM IMAGEM EM CIMA
+
                     <div class="col-md-4">
                       <div class="card card-profile">
-                        <div class="card-avatar">
-                          <a href="javascript:;">
-                            <h1>?</h1>
-                            <img class="img" src="../assets/img/faces/interrogacao.png" />
-                          </a>
-                        </div>
+
                         <div class="card-body">
                           <p class="card-description">
                             Aqui explicar a importancia do cadastro do cliente dentro do sistema.
                           </p>
                         </div>
                       </div>
-                    </div> -->
+                    </div>
+
                 </div>
             </div>
+
         </div>
+
+
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
+
+        <script>
+
+            $(function () {
+                $('form[id="cadastraPaciente"]').submit(function (event) {
+                    event.preventDefault();
+
+                    $.ajax({
+                        url: "{{route('cadastraPaciente')}}",
+                        type: "POST",
+                        data: $(this).serialize(),
+                        dataType: 'json',
+                        success : function (response) {
+                            if(response.success === true){
+
+                                $('#nome').val("");
+                                $('#ultimo_nome').val("");
+                                $('#data-nascimento').val("");
+                                $('#idade').val("");
+                                $('#email').val("");
+                                $('#num_sus').val("");
+                                $('#cpf').val("");
+                                $('#telefone').val("");
+
+                                alert('Paciente Cadastrado com Sucesso!');
+
+                            }else{
+
+                                $('#modalError').modal('show');
+
+                            }
+                        }
+                    })
+                })
+            })
+
+        </script>
+
+
+
         <footer class="footer">
             <div class="container-fluid">
             </div>
