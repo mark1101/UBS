@@ -202,7 +202,7 @@ The above copyright notice and this permission notice shall be included in all c
                                 <h4 class="card-title">Cadastro de Vacina</h4>
                             </div>
                             <div class="card-body">
-                                <form action="{{route('cadastraVacina')}}" method="post">
+                                <form id="cadastraVacina" {{--action="{{route('cadastraVacina')}}" method="post"--}}>
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-5">
@@ -300,6 +300,7 @@ The above copyright notice and this permission notice shall be included in all c
                                 src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
 
                             <script>
+
                                 $(function () {
                                     $('form[id="buscaVacina"]').submit(function (event) {
                                         event.preventDefault();
@@ -343,6 +344,37 @@ The above copyright notice and this permission notice shall be included in all c
                                         });
                                     });
                                 });
+
+
+                                $(function () {
+                                    $('form[id="cadastraVacina"]').submit(function (event) {
+                                        event.preventDefault();
+
+                                        $.ajax({
+                                            url: "{{route('cadastraVacina')}}",
+                                            type: "POST",
+                                            data: $(this).serialize(),
+                                            dataType: 'json',
+                                            success : function (response) {
+                                                if(response.success === true){
+
+                                                    $('#vacina_realizada').val("");
+                                                    $('#informacao_lote').val("");
+                                                    $('#dose').val("");
+
+                                                    alert('Vacina Cadastrada com Sucesso!');
+
+                                                }else{
+
+                                                    alert('Erro ao cadastrar!');
+
+                                                }
+                                            }
+                                        })
+                                    })
+                                })
+
+
                             </script>
 
 

@@ -29,7 +29,10 @@ class AtestadoMedicoController extends Controller
 
         AtestadoMedico::create($data);
 
-        return redirect('/solicitaAtestado');
+        $response['success'] = true;
+        echo json_encode($response);
+
+        //return redirect('/solicitaAtestado');
 
     }
 

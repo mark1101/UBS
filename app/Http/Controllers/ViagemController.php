@@ -64,6 +64,9 @@ class ViagemController extends Controller
 
         Viagens::create($data);
 
-        return redirect('/controleViagem');
+        $response['success'] = true;
+        echo json_encode($response);
+
+        //return redirect('/controleViagem');
     }
 }

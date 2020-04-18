@@ -156,7 +156,7 @@ The above copyright notice and this permission notice shall be included in all c
                                 <h4 class="card-title">Cadastro de Nova Viagem</h4>
                             </div>
                             <div class="card-body">
-                                <form action="{{route('storeViagem')}}" method="post">
+                                <form id="cadastraViagem"{{-- action="{{route('storeViagem')}}" method="post"--}}>
                                     @csrf
                                     <p class="card-category">Origem</p>
                                     <div class="container">
@@ -246,6 +246,42 @@ The above copyright notice and this permission notice shall be included in all c
                 </div>
             </div>
         </div>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
+
+        <script>
+
+            $(function () {
+                $('form[id="cadastraViagem"]').submit(function (event) {
+                    event.preventDefault();
+
+                    $.ajax({
+                        url: "{{route('storeViagem')}}",
+                        type: "POST",
+                        data: $(this).serialize(),
+                        dataType: 'json',
+                        success : function (response) {
+                            if(response.success === true){
+
+                                $('#num_pacientes').val("");
+                                $('#data').val("");
+                                $('#observacao').val("");
+
+
+                                alert('Viagem Cadastrada e Agendada com Sucesso!');
+
+                            }else{
+
+
+                            }
+                        }
+                    })
+                })
+            })
+
+        </script>
+
 
         <footer class="footer">
             <div class="container-fluid">

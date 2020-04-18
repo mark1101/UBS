@@ -29,8 +29,10 @@ class EncaminhamentoController extends Controller
         $data['id_sede'] = Auth::user()->cidade_sede;
         Encaminhamento::create($data);
 
+        $response['success'] = true;
+        echo json_encode($response);
 
-        return redirect('/encaminhamento');
+        //return redirect('/encaminhamento');
     }
 
     public function createPdf()

@@ -202,7 +202,7 @@ The above copyright notice and this permission notice shall be included in all c
                                 <h4 class="card-title">Ficha de Encaminhamento</h4>
                             </div>
                             <div class="card-body">
-                                <form action="{{route('storeEnxaminhamento')}}" method="post">
+                                <form id="cadastraEncaminhamento" action="{{route('storeEnxaminhamento')}}" method="post">
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-3">
@@ -287,6 +287,43 @@ The above copyright notice and this permission notice shall be included in all c
                 </div>
             </div>
         </div>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
+
+        <script>
+
+            $(function () {
+                $('form[id="cadastraEncaminhamento"]').submit(function (event) {
+                    event.preventDefault();
+
+                    $.ajax({
+                        url: "{{route('storeEnxaminhamento')}}",
+                        type: "POST",
+                        data: $(this).serialize(),
+                        dataType: 'json',
+                        success : function (response) {
+                            if(response.success === true){
+
+                                $('#objetivo').val("");
+                                $('#observacao').val("");
+                                $('#data').val("");
+
+
+                                alert('Encaminhamento Cadastrado com Sucesso!');
+
+                            }else{
+
+                                $('#modalError').modal('show');
+
+                            }
+                        }
+                    })
+                })
+            })
+
+        </script>
+
         <footer class="footer">
             <div class="container-fluid">
             </div>

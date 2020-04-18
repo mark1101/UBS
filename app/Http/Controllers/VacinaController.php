@@ -31,7 +31,10 @@ class VacinaController extends Controller
 
         Vacina::create($data);
 
-        return redirect('/vacina');
+        $response['success'] = true;
+        echo json_encode($response);
+
+        //return redirect('/vacina');
     }
 
     public function searchVacina(Request $request)
