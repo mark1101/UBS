@@ -52,7 +52,7 @@ The above copyright notice and this permission notice shall be included in all c
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{route('cadastroPacienteAgente')}}">Cadastro de Paciente</a>
-                        <a class="dropdown-item" href="{{route('mostraPacienteAgente')}}">Busca de Paciente</a>
+                        <a class="dropdown-item" href="{{route('AgenteBuscaPaciente')}}">Busca de Paciente</a>
                     </div>
                 </li>
                 <li class="nav-item  ">

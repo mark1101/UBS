@@ -28,7 +28,7 @@ The above copyright notice and this permission notice shall be included in all c
     <link href="{{asset('css/material-dashboard.css')}}" rel="stylesheet"/>
 </head>
 
-<body class="" style="background-image: url({{asset('img/inicio.jpg')}}) ; background-size: 100% 100%;">
+<body class="" >
 <div class="wrapper ">
 
     <div class="sidebar" data-color="orange" data-background-color="white" data-image="../assets/img/unidade.jpg">
@@ -52,7 +52,7 @@ The above copyright notice and this permission notice shall be included in all c
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{route('cadastroPacienteAgente')}}">Cadastro de Paciente</a>
-                        <a class="dropdown-item" href="{{route('mostraPacienteAgente')}}">Busca de Paciente</a>
+                        <a class="dropdown-item" href="{{route('AgenteBuscaPaciente')}}">Busca de Paciente</a>
                     </div>
                 </li>
                 <li class="nav-item  active">
@@ -118,13 +118,17 @@ The above copyright notice and this permission notice shall be included in all c
         <div class="content">
             <div class="container-fluid">
                 <button type="submit" class="btn btn-primary-agente" style="left: 6px">
-                    <a style="color:#ffffff " href="{{route('comunicacao')}}">Nova Mensagem</a>
+                    <a style="color:#ffffff " href="{{route('comunicacaoAgente')}}">Nova Mensagem</a>
                 </button>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header card-header-warning">
                                 <h4>Mensagens Recebidas</h4>
+                                <?php
+                                date_default_timezone_set('America/Bahia');
+                                echo 'Ultima atualização hoje ', date('\à\s H:i');
+                                ?>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive" style="overflow: auto; height: 250px;">

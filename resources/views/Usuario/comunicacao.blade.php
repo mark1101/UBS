@@ -208,12 +208,12 @@ The above copyright notice and this permission notice shall be included in all c
                                 <form id="cadastroMensagem" {{--action="{{route('storeRecado')}}" method="post"--}}>
                                     @csrf
                                     <div class="row">
-                                        <div class="col-md-3">
+                                        <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Para</label>
                                                 <select class="form-control ls-select" name="destino" id="destino">
                                                     @foreach($profissionais as $pro)
-                                                        <option value="{{$pro->id}}">{{$pro->name}} </option>
+                                                        <option value="{{$pro->id}}">{{$pro->funcao}} {{$pro->name}} {{$pro->ultimo_nome}} </option>
                                                     @endforeach
                                                 </select>
                                             </div>

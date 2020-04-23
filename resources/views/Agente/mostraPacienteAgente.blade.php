@@ -52,7 +52,7 @@ The above copyright notice and this permission notice shall be included in all c
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{route('cadastroPacienteAgente')}}">Cadastro de Paciente</a>
-                        <a class="dropdown-item" href="{{route('mostraPacienteAgente')}}">Busca de Paciente</a>
+                        <a class="dropdown-item" href="{{route('AgenteBuscaPaciente')}}">Busca de Paciente</a>
                     </div>
                 </li>
                 <li class="nav-item  ">
@@ -123,21 +123,18 @@ The above copyright notice and this permission notice shall be included in all c
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <!-- DIV DE BUSCA DE PACIENTE -->
-                    <div class="col-md-12">
 
-                        <!-- PARTE DE CIMA DA TABELA PARA PESQUISA -->
+                    <div class="col-md-12">
                         <div class="card">
                             <div class="card-header card-header-warning">
-                                <h4 class="card-title">Pesquisar Paciente</h4>
-                                <form class="navbar-form" action="{{route('buscaPaciente')}}">
+                                <h4 class="card-title">A busca pode ser feita por nome, CPF ou número do SUS</h4>
+                                <form id="buscaPaciente" class="navbar-form">
                                     @csrf
                                     <div class="input-group no-border">
-                                        <input type="text" style="color: white;" id="buscaPaciente" name="buscaPaciente" value="" class="form-control"
-                                               placeholder="Digite o primeiro nome do paciente...">
+                                        <input onkeyup="submitForm()" type="text" style="color:beige;" id="criterio" name="criterio"
+                                               class="form-control">
                                         <button type="submit" class="btn btn-white btn-round btn-just-icon">
                                             <i class="material-icons">search</i>
-                                            <div class="ripple-container"></div>
                                         </button>
                                     </div>
                                 </form>
@@ -145,28 +142,12 @@ The above copyright notice and this permission notice shall be included in all c
                             <div class="card-body">
                                 <div class="card-body">
                                     <div class="table-responsive" style="overflow: auto; height: 300px;">
-                                        <table class="table">
+                                        <table id="tableSearch" class="table">
                                             <thead>
-                                            <tr>
-                                                <th scope="col" width="10%">Nome</th>
-                                                <th scope="col">Data Nascimento</th>
-                                                <th scope="col">Num Sus</th>
-                                                <th scope="col">CPF</th>
-                                                <th scope="col">Localidade</th>
-                                                <th scope="col">Telefone</th>
-                                            </tr>
+
                                             </thead>
                                             <tbody>
-                                            @foreach($pacientes as $paciente)
-                                                <tr>
-                                                    <td width="20%">{{$paciente->nome. " " .$paciente->ultimo_nome}} </td>
-                                                    <td>{{$paciente->data_nascimento}}</td>
-                                                    <td>{{$paciente->num_sus}}</td>
-                                                    <td>{{$paciente->cpf}}</td>
-                                                    <td>{{($paciente->localidade)->nome}}</td>
-                                                    <td>{{$paciente->telefone}}</td>
-                                                </tr>
-                                            @endforeach
+
                                             </tbody>
                                         </table>
                                     </div>
@@ -174,6 +155,69 @@ The above copyright notice and this permission notice shall be included in all c
                             </div>
                         </div>
                     </div>
+
+                    <script>
+                        function submitForm() {
+                            if($("#criterio").val() === ""){
+                                $("#tableSearch").html("");
+                            }else{
+                                $("#buscaPaciente").submit();
+                            }
+                        }
+                    </script>
+
+                    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
+
+                    <script>
+                        $(function () {
+                            $('form[id="buscaPaciente"]').submit(function (event) {
+                                event.preventDefault();
+                                $.ajax({
+                                    url: "{{route('buscaPacienteAgente')}}",
+                                    type: "get",
+                                    data: $(this).serialize(),
+                                    dataType: 'json',
+                                    success: function (response) {
+                                        if (response.success === true) {
+                                            var newRow = $("<tr>");
+                                            var cols = "";
+                                            cols += '<th>Nome</th>';
+                                            cols += '<th>Data Nascimento</th>';
+                                            cols += '<th>Num Sus</th>';
+                                            cols += '<th>CPF</th>';
+                                            cols += '<th>Localidade</th>';
+                                            cols += '<th>Telefone</th>';
+                                            newRow.append(cols);
+
+                                            $("#tableSearch").html("").append(newRow).fadeIn();
+                                            //funcionou
+                                            $.each(response.data, function (item, value) {
+                                                var newRow = $("<tr>");
+                                                var cols = "";
+                                                cols += '<td>' + response.data[item]["nome"] + " " + response.data[item]["ultimo_nome"] + '</td>';
+                                                cols += '<td>' + response.data[item]["data_nascimento"] + '</td>';
+                                                cols += '<td>' + response.data[item]["num_sus"] + '</td>';
+                                                cols += '<td>' + response.data[item]["cpf"] + '</td>';
+                                                cols += '<td>' + response.data[item]['localidade']['nome'] + '</td>';
+                                                cols += '<td>' + response.data[item]['telefone'] + '</td>';
+/*
+                                                cols += '<td><a  data-toggle="modal" data-target="#modal' + response.data[item]['id'] + '" style="width: 55px;"> <i class="material-icons" style="color: black;"title="Salvar Paciente">edit</i></a>\n</td>';
+*/
+
+                                                newRow.append(cols);
+                                                $("#tableSearch").append(newRow).fadeIn();
+                                            });
+                                        } else {
+                                            //erro
+                                        }
+                                    }
+                                });
+                            });
+                        });
+                    </script>
+
+
                 </div>
             </div>
         </div>

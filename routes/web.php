@@ -164,9 +164,14 @@ Route::middleware(['auth'])->group(function () {
 
 // ROTAS DE AGENTE DE SAUDE
     Route::get('/agente/cadastroPaciente', 'AgenteController@indexcadastraPaciente')->name('cadastroPacienteAgente');
-    Route::get('/busca/paciente', 'AgenteController@mostraPacienteAgente')->name('mostraPacienteAgente');
     Route::get('/homeAgente', 'AgenteController@indexAdmAgente')->name('admAgente');
     Route::get('recados/agente', 'AgenteController@recadoAgente')->name('recadoAgente');
+
+    Route::get('/buscaPaciente', 'AgenteController@indexBuscaPaciente')->name('AgenteBuscaPaciente');
+    Route::get('/buscaPacienteAgente', 'AgenteController@mostraPacienteAgente')->name('buscaPacienteAgente');
+
+    Route::get('/comunicacaoAgente', 'AgenteController@comunicacaAgente')->name('comunicacaoAgente');
+    Route::post('/cadastraRecadoAgente', 'AgenteController@cadastraRecadoAgente')->name('storeRecadoAgente');
 
 
 //ROTOAS DE VIAGENS
