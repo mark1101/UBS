@@ -73,9 +73,9 @@ document.addEventListener('DOMContentLoaded', function() {
             let end = moment(element.event.end).format("DD/MM/YY HH:mm:ss");
             $("#modalCalendar input[name = 'end']").val(end);
 
-            let color = element.event.backgroundColor;
+            /*let color = element.event.backgroundColor;
             $("#modalCalendar input[name = 'color']").val(color);
-
+*/
             let description = element.event.extendedProps.description ;
             $("#modalCalendar textarea[name = 'description']").val(description);
 

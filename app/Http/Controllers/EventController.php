@@ -29,6 +29,7 @@ class EventController extends Controller
     { // cadastra na mesma localidade que o recepcionista esta atendendo
 
         $data = $request->all();
+        
         Event::create($data);
         return redirect('/agendamentoDentista');
     }

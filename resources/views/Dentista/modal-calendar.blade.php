@@ -12,7 +12,7 @@
                 <form id="formEvent">
                     @csrf
                     <div class="form-group ">
-                        <label for="title" class="col-sm-4 col-form-label">Titulo</label>
+                        <label for="title" class="col-sm-4 col-form-label">Paciente</label>
                         <div class="col-sm-8">
                             <input type="text" class="form-control" id="title" name="title" disabled>
                         </div>
@@ -30,12 +30,12 @@
                             <input type="text" class="form-control date-time" id="end" name="end" disabled>
                         </div>
                     </div>
-                    <div class="form-group ">
+                    {{--<div class="form-group ">
                         <label for="color" class="col-sm-4 col-form-label">Cor</label>
                         <div class="col-sm-8">
                             <input type="color" class="form-control" id="color" name="color" disabled>
                         </div>
-                    </div>
+                    </div>--}}
                     <div class="form-group ">
                         <label for="description" class="col-sm-4 col-form-label">Descrição</label>
                         <div class="col-sm-8">

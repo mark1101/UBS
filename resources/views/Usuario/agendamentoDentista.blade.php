@@ -163,8 +163,15 @@ The above copyright notice and this permission notice shall be included in all c
                                     <div class="row">
                                         <div class="col-md-5">
                                             <div class="form-group">
-                                                <label class="bmd-label-floating">Titulo</label>
-                                                <input style="text-transform: uppercase" type="text" class="form-control" name="title" id="title">
+                                                <label class="bmd-label-floating">Paciente</label>
+                                                <select style="text-transform: uppercase" class="form-control" name="title" id="title">
+                                                    @foreach($pacientes as $paciente)
+                                                        <option
+                                                            value="{{$paciente->nome}}{{$paciente->ultimo_nome}}">{{$paciente->nome}} {{$paciente->ultimo_nome}}</option>
+                                                    @endforeach
+                                                </select>
+                                                {{--<label class="bmd-label-floating">Titulo</label>
+                                                <input style="text-transform: uppercase" type="text" class="form-control" name="title" id="title">--}}
                                             </div>
                                         </div>
                                     </div>
@@ -179,7 +186,7 @@ The above copyright notice and this permission notice shall be included in all c
                                                 @endforeach
                                             </select>
                                         </div>
-
+{{--
 
                                         <div class="row">
                                             <label class="bmd-label-floating">Paciente</label>
@@ -189,7 +196,7 @@ The above copyright notice and this permission notice shall be included in all c
                                                         value="{{$paciente->id}}">{{$paciente->nome}} {{$paciente->ultimo_nome}}</option>
                                                 @endforeach
                                             </select>
-                                        </div>
+                                        </div>--}}
                                     </div>
                                 <br>
 
@@ -222,7 +229,7 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-10">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Descrição</label>
-                                                <textarea style="text-transform: uppercase" class="form-control" id="description" name="description"
+                                                <textarea  class="form-control" id="description" name="description"
                                                           rows="3"></textarea>
                                             </div>
                                         </div>

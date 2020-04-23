@@ -15,7 +15,7 @@ class CreateEventsTable extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('id_paciente')->unsigned();
+            /*$table->integer('id_paciente')->unsigned();*/
             $table->integer('id_localidade')->unsigned();
             $table->string('title');
             $table->dateTime('start');
@@ -24,7 +24,7 @@ class CreateEventsTable extends Migration
             $table->longText('description')->nullable();
 
             $table->foreign('id_localidade')->references('id')->on('localidades');
-            $table->foreign('id_paciente')->references('id')->on('pacientes');
+            /*$table->foreign('id_paciente')->references('id')->on('pacientes');*/
 
             $table->timestamps();
             $table->softDeletes();

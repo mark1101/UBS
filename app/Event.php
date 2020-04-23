@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Event extends Model
 {
     use SoftDeletes;
-    protected $fillable = ['id_localidade', 'id_paciente', 'title', 'start', 'end', 'color', 'description'];
+    protected $fillable = ['id_localidade', 'title', 'start', 'end', 'color', 'description']; /*'id_paciente'*/
 
     public function getStartAttribute($value){
         $dateStart = Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('Y-m-d');
