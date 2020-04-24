@@ -320,6 +320,12 @@ The above copyright notice and this permission notice shall be included in all c
                 });
             </script>
 
+            <script>
+                $(document).ready(function () {
+                    $("#buscaProfissional").submit();
+                })
+            </script>
+
 
         </div>
         <footer class="footer">

@@ -209,10 +209,12 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Paciente</label>
-                                                <select style="text-transform: uppercase;" class="form-control" name="id_paciente" id="id_paciente">
+                                                <select style="text-transform: uppercase;" class="form-control"
+                                                        name="id_paciente" id="id_paciente">
                                                     @foreach($pacientes as $paciente)
                                                         <option
-                                                            value="{{$paciente->id}}"style="text-transform: uppercase;" >
+                                                            value="{{$paciente->id}}"
+                                                            style="text-transform: uppercase;">
                                                             {{$paciente->nome}} {{$paciente->ultimo_nome}}</option>
                                                     @endforeach
                                                 </select>
@@ -224,7 +226,8 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Nome do exame</label>
-                                                <input style="text-transform: uppercase;" type="text" class="form-control" name="nome_exame"
+                                                <input style="text-transform: uppercase;" type="text"
+                                                       class="form-control" name="nome_exame"
                                                        id="nome_exame">
                                             </div>
                                         </div>
@@ -234,7 +237,8 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Resultado</label>
-                                                <input style="text-transform: uppercase;" type="text" class="form-control" id="resultado"
+                                                <input style="text-transform: uppercase;" type="text"
+                                                       class="form-control" id="resultado"
                                                        name="resultado">
                                             </div>
                                         </div>
@@ -242,13 +246,15 @@ The above copyright notice and this permission notice shall be included in all c
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Onde foi realizado o exame
                                                     o exame</label>
-                                                <input style="text-transform: uppercase;" type="text" class="form-control" name="local" id="local">
+                                                <input style="text-transform: uppercase;" type="text"
+                                                       class="form-control" name="local" id="local">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Data</label>
-                                                <input style="text-transform: uppercase;" type="text" class="form-control data" name="data" id="data">
+                                                <input style="text-transform: uppercase;" type="text"
+                                                       class="form-control data" name="data" id="data">
                                             </div>
                                         </div>
                                     </div>
@@ -264,7 +270,11 @@ The above copyright notice and this permission notice shall be included in all c
                                     </button>
                                     <!--<button type="submit" class="btn btn-primary pull-right">Solicitar Exame</button>-->
                                 </form>
-                                <button type="submit" class="btn btn-primary-normal "><a style="color: white" href="{{route('solicitarExame')}}">Solicitar Exame</a></button>
+                                @if(\Illuminate\Support\Facades\Auth::user()->funcao == "Medicina  ")
+                                    <button type="submit" class="btn btn-primary-normal "><a style="color: white"
+                                                                                             href="{{route('solicitarExame')}}">Solicitar
+                                            Exame</a></button>
+                                @endif
                             </div>
                         </div>
                     </div>

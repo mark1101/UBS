@@ -363,20 +363,9 @@ The above copyright notice and this permission notice shall be included in all c
 
 
                     <script>
-                        function getPacienteForEdit(id) {
-                            $.ajax({
-                                url: "{{route('puxaPacinete',['id' => '_replace_'])}}".replace('_replace_', id),
-                                type: "get",
-                                data: $(this).serialize(),
-                                dataType: 'json',
-                                success: function (response) {
-                                    if (response.success === true) {
-                                        $("#editPaciente").html('<p class="text-success">Teste</p>');
-
-                                    }
-                                }
-                            });
-                        }
+                        $(document).ready(function () {
+                            $("#buscaPaciente").submit();
+                        })
                     </script>
                     <!-- MOSTRAGEM COM IMAGEM EM CIMA
                     <div class="col-md-4">

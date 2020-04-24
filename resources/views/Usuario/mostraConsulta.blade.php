@@ -303,6 +303,11 @@ The above copyright notice and this permission notice shall be included in all c
 
                     </script>
 
+                    <script>
+                        $(document).ready(function () {
+                            $("#buscaConsulta").submit();
+                        })
+                    </script>
 
                 </div>
             </div>

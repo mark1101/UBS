@@ -225,7 +225,8 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-5">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Vacina Realizada</label>
-                                                <input type="text" class="form-control" id="vacina_realizada" name="vacina_realizada" required>
+                                                <input type="text" class="form-control" id="vacina_realizada"
+                                                       name="vacina_realizada" required>
                                             </div>
                                         </div>
                                     </div>
@@ -355,8 +356,8 @@ The above copyright notice and this permission notice shall be included in all c
                                             type: "POST",
                                             data: $(this).serialize(),
                                             dataType: 'json',
-                                            success : function (response) {
-                                                if(response.success === true){
+                                            success: function (response) {
+                                                if (response.success === true) {
 
                                                     $('#vacina_realizada').val("");
                                                     $('#informacao_lote').val("");
@@ -364,7 +365,7 @@ The above copyright notice and this permission notice shall be included in all c
 
                                                     alert('Vacina Cadastrada com Sucesso!');
 
-                                                }else{
+                                                } else {
 
                                                     alert('Erro ao cadastrar!');
 
@@ -374,7 +375,12 @@ The above copyright notice and this permission notice shall be included in all c
                                     })
                                 })
 
+                            </script>
 
+                            <script>
+                                $(document).ready(function () {
+                                    $("#buscaVacina").submit();
+                                })
                             </script>
 
 
