@@ -16,8 +16,11 @@ class RecadoController extends Controller
             ->orderBy('created_at')
             ->get();
 
+        $user = Auth::user()->localidade;
+
         return view('Usuario.recado' , [
             'rs' => $recado,
+            'usuarioLocalidade' => $user
         ]);
     }
 

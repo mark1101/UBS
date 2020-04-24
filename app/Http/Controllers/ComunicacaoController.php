@@ -11,6 +11,7 @@ class ComunicacaoController extends Controller
 {
     public function index(){
         $user = User::where('localidade', Auth::user()->localidade)
+            ->where('cidade_sede', Auth::user()->cidade_sede)
             ->get();
         return view('Usuario.comunicacao' , [
             'profissionais' => $user

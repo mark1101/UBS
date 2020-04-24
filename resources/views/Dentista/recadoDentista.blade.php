@@ -1,3 +1,14 @@
+<!--
+=========================================================
+Material Dashboard - v2.1.2
+=========================================================
+
+Product Page: https://www.creative-tim.com/product/material-dashboard
+Copyright 2020 Creative Tim (https://www.creative-tim.com)
+Coded by Creative Tim
+
+=========================================================
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,10 +26,9 @@
 
     <!-- CSS Arquivos -->
     <link href="{{asset('css/material-dashboard.css')}}" rel="stylesheet"/>
-
 </head>
 
-<body class="" style="background-image: url({{asset('img/odonto.jpg')}}) ; background-size: 100% 100%;">
+<body class="" >
 <div class="wrapper ">
 
     <div class="sidebar" data-color="azure" data-background-color="white" data-image="../assets/img/unidade.jpg">
@@ -27,7 +37,7 @@
             </a></div>
         <div class="sidebar-wrapper ">
             <ul class="nav">
-                <li class="nav-item active">
+                <li class="nav-item ">
                     <a class="nav-link" href="{{route('admOdonto')}}">
                         <i class="material-icons">home_work</i>
                         <p>Início</p>
@@ -40,7 +50,7 @@
                         <p>Agenda</p>
                     </a>
                 </li>
-                <li class="nav-item dropdown ">
+                <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                        data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">
@@ -60,7 +70,7 @@
                         <p>Encaminhamento</p>
                     </a>
                 </li>
-                <li class="nav-item  ">
+                <li class="nav-item active">
                     <a class="nav-link" href="{{route('indexRecadoOdonto')}}">
                         <i class="material-icons">chat
                         </i>
@@ -77,15 +87,13 @@
             </ul>
         </div>
     </div>
+
     <div class="main-panel">
-        <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
             <div class="container-fluid">
                 <div class="navbar-wrapper">
-                    <a class="navbar-brand" href="javascript:;">Pagina Inicial</a>
+                    <a class="navbar-brand" href="javascript:;">Gerenciamento de Recados</a>
                 </div>
-
-                <!-- BOTAO DE RESPONSIVIDADE PARA OPCIOES DE SIDEBAR-->
                 <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="sr-only">Toggle navigation</span>
@@ -93,9 +101,8 @@
                     <span class="navbar-toggler-icon icon-bar"></span>
                     <span class="navbar-toggler-icon icon-bar"></span>
                 </button>
-
-                <!-- TOPO EM CIMA PARA OPCAO DE SAIDA E CONFIGURAÇÃOES DE PERFIL E SISTEMA  -->
                 <div class="collapse navbar-collapse justify-content-end">
+
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
@@ -111,56 +118,66 @@
                                 </a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                      style="display: none; ">
+                                      style="display: none;">
                                     @csrf
                                 </form>
                             </div>
                         </li>
                     </ul>
                 </div>
-
             </div>
         </nav>
         <!-- End Navbar -->
 
-        <div class="content" )>
+
+        <div class="content">
             <div class="container-fluid">
-                <div class="row d-flex justify-content-center"> <!-- CLASSE DE ALINHAMENTO -->
-                    <div align="center" class="card" style="width: 13rem; height: 13rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Odontológico</h5>
-                            <img src="{{asset('img/DenteClicavel.png')}}">
-                            <a href="{{route('odontologico')}}" class="btn btn-primary-adm">Ver</a>
-                        </div>
-                    </div>
-                    &nbsp &nbsp &nbsp
-                    <div align="center" class="card" style="width: 13rem; height: 13rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Pacientes</h5>
-                            <img src="{{asset('img/PacienteClicavel.png')}}">
-                            <a href="{{route('showPaciente')}}" class="btn btn-primary-adm">Ver</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="row d-flex justify-content-center">
-                    <div align="center" class="card" style="width: 13rem; height: 13rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Exames</h5>
-                            <img src="{{asset('img/ExameClicavel.png')}}">
-                            <a href="#" class="btn btn-primary-adm">Ver</a>
-                        </div>
-                    </div>
-                    &nbsp &nbsp &nbsp
-                    <div align="center" class="card" style="width: 13rem; height: 13rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Encaminhamentos</h5>
-                            <img src="{{asset('img/EncaminhamentoClicavel.png')}}">
-                            <a href="#" class="btn btn-primary-adm">Ver</a>
+                <button type="submit" class="btn btn-primary-adm" style="left: 6px">
+                    <a style="color:#ffffff " href="{{route('indexComunicacaoDentista')}}">Nova Mensagem</a>
+                </button>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header card-header-info">
+                                <h4>Mensagens Recebidas</h4>
+                                <?php
+                                date_default_timezone_set('America/Bahia');
+                                echo 'Ultima atualização hoje ', date('\à\s H:i');
+                                ?>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive" style="overflow: auto; height: 250px;">
+                                    <table class="table">
+
+                                        <thead>
+                                        <tr>
+                                            <th>Localidade Recebimento</th>
+                                            <th>Enviado por</th>
+                                            <th>Módulo de Trabalho</th>
+                                            <th>Mensagem</th>
+                                            <th>Data</th>
+                                        </tr>
+                                        </thead>
+
+                                        <tbody>
+                                        @foreach($rs as $recado)
+                                            <tr>
+                                                <td>{{($recado->localidade)->nome}}</td>
+                                                <td>{{($recado->profissional)->name}}</td>
+                                                <td>{{($recado->profissional)->funcao}}</td>
+                                                <td>{{$recado->mensagem}}</td>
+                                                <td>{{$recado->data}}</td>
+                                            </tr>
+                                        @endforeach
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
         <footer class="footer">
             <div class="container-fluid">
             </div>
@@ -169,24 +186,25 @@
 </div>
 
 <!-- REFERENCIAS EM JS  -->
-<script src="{{asset("js/core/jquery.min.js")}}"></script>
-<script src="{{asset("js/core/popper.min.js")}}"></script>
-<script src="{{asset("js/core/bootstrap-material-design.min.js")}}"></script>
-<script src="{{asset("js/plugins/perfect-scrollbar.jquery.min.js")}}"></script>
-<script src="{{asset("js/plugins/moment.min.js")}}"></script>
-<script src="{{asset("js/plugins/sweetalert2.js")}}"></script>
-<script src="{{asset("js/plugins/jquery.validate.min.js")}}"></script>
-<script src="{{asset("js/plugins/jquery.bootstrap-wizard.js")}}"></script>
-<script src="{{asset("js/plugins/bootstrap-selectpicker.js")}}"></script>
-<script src="{{asset("js/plugins/bootstrap-datetimepicker.min.js")}}"></script>
-<script src="{{asset("js/plugins/jquery.dataTables.min.js")}}"></script>
-<script src="{{asset("js/plugins/bootstrap-tagsinput.js")}}"></script>
-<script src="{{asset("js/plugins/jasny-bootstrap.min.js")}}"></script>
-<script src="{{asset("js/plugins/fullcalendar.min.js")}}"></script>
-<script src="{{asset("js/plugins/jquery-jvectormap.js")}}"></script>
-<script src="{{asset("js/plugins/nouislider.min.js")}}"></script>
-<script src="{{asset("https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js")}}"></script>
-<script src="{{asset("js/plugins/arrive.min.js")}}"></script>
+<script src="{{asset('js/core/jquery.min.js')}}"></script>
+<script src="{{asset('js/core/popper.min.js')}}"></script>
+<script src="{{asset('js/core/bootstrap-material-design.min.js')}}"></script>
+<script src="{{asset('js/plugins/perfect-scrollbar.jquery.min.js')}}"></script>
+<script src="{{asset('js/plugins/moment.min.js')}}"></script>
+<script src="{{asset('js/plugins/sweetalert2.js')}}"></script>
+<script src="{{asset('js/plugins/jquery.validate.min.js')}}"></script>
+<script src="{{asset('js/plugins/jquery.bootstrap-wizard.js')}}"></script>
+<script src="{{asset('js/plugins/bootstrap-selectpicker.js')}}"></script>
+<script src="{{asset('js/plugins/bootstrap-datetimepicker.min.js')}}"></script>
+<script src="{{asset('js/plugins/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('js/plugins/bootstrap-tagsinput.js')}}"></script>
+<script src="{{asset('js/plugins/jasny-bootstrap.min.js')}}"></script>
+<script src="{{asset('js/plugins/fullcalendar.min.js')}}"></script>
+<script src="{{asset('js/plugins/jquery-jvectormap.js')}}"></script>
+<script src="{{asset('js/plugins/nouislider.min.js')}}"></script>
+<script src="{{asset('https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js')}}"></script>
+<script src="{{asset('js/plugins/arrive.min.js')}}"></script>
+
 
 </body>
 

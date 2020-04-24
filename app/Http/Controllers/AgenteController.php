@@ -61,7 +61,9 @@ class AgenteController extends Controller
         ]);
     }
     public function comunicacaAgente(){
-        $users = User::where('localidade', Auth::user()->localidade)->get();
+        $users = User::where('localidade', Auth::user()->localidade)
+            ->where('cidade_sede', Auth::user()->cidade_sede)
+            ->get();
         return view('Agente.comunicacaoAgente',[
            'profissionais' => $users
         ]);

@@ -157,6 +157,10 @@ Route::middleware(['auth'])->group(function () {
     Route::POST('/cadastrouficha' , 'DentistaController@cadastraTratamentoDentista')->name('storeTratamentoOdonto');
     Route::post('/cadastrouSolicitacao' , 'DentistaController@cadastraSolicitacaoExame')->name('storeSolicitacaoExameOdonto');
 
+    Route::get('/recadoDentista', 'DentistaController@indexRecadoDentista')->name('indexRecadoOdonto');
+    Route::get('/comunicacaoDentista', 'DentistaController@indexComunicacaoDentista')->name('indexComunicacaoDentista');
+    Route::post('/cadastrouRecado', 'DentistaController@cadastraRecadoDentista')->name('cadastraRecadoOdonto');
+
     //// GERACAO DE PDF
     Route::get('pdf', 'DentistaController@pdfTratamento')->name('pdfTratamento');
     Route::get('pdf2', 'DentistaController@pdfConsulta')->name('pdfConsulta');
