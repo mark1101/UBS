@@ -93,7 +93,7 @@
                     </a>
                 </li>
                 <li class="nav-item  ">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{route('historicoPaciente')}}">
                         <i class="material-icons">history
                         </i>
                         <p>Histórico dos Pacientes</p>

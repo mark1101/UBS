@@ -2199,13 +2199,13 @@ a.btn.disabled, fieldset:disabled a.btn {
 }
 
 .btn-secondary.disabled, .btn-secondary:disabled {
-    color: #fff;
+    color: grey;
     background-color: #6c757d;
     border-color: #6c757d
 }
 
 .btn-secondary:not(:disabled):not(.disabled).active, .btn-secondary:not(:disabled):not(.disabled):active, .show > .btn-secondary.dropdown-toggle {
-    color: #fff;
+    color: grey;
     background-color: #545b62;
     border-color: #4e555b
 }

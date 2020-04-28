@@ -60,6 +60,9 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/puxaPaciente/{id}' , 'PacienteController@puxaPaciente')->name('puxaPacinete');
 
+    Route::get('historicoPaciente', 'historicoPacienteController@index')->name('historicoPaciente');
+    Route::post('buscaHistorico', 'historicoPacienteController@buscaHistorico')->name('buscaHistorico');
+
 
 // ROTAS DE EXAMES
     Route::group(['prefix'=>'/exame'], function(){
