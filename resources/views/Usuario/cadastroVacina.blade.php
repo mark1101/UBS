@@ -325,13 +325,18 @@ The above copyright notice and this permission notice shall be included in all c
                                                     $("#tableSearch").html("").append(newRow).fadeIn();
 
                                                     $.each(response.data, function (item, value) {
+
+                                                        let data = response.data[item]["data"];
+                                                        let split = data.split(' '); //separa a data da hora
+                                                        let formmated = split[0].split('-');
+
                                                         var newRow = $("<tr>");
                                                         var cols = "";
                                                         cols += '<td>' + response.data[item]['localidade']['nome'] + '</td>';
                                                         cols += '<td>' + response.data[item]["paciente"].nome + " " + response.data[item]["paciente"].ultimo_nome + '</td>';
                                                         cols += '<td>' + response.data[item]["vacina_realizada"] + '</td>';
                                                         cols += '<td>' + response.data[item]["informacao_lote"] + '</td>';
-                                                        cols += '<td>' + response.data[item]["data"] + '</td>';
+                                                        cols += '<td>' + formmated[2] + '/' + formmated[1] + '/' + formmated[0] + '</td>';
                                                         cols += '<td>' + response.data[item]['dose'] + '</td>';
 /*
                                                         cols += '<td><a  data-toggle="modal" data-target="#modal' + response.data[item]['id'] + '" style="width: 55px;"> <i class="material-icons" style="color: black;"title="Salvar Paciente">print</i></a>\n</td>';

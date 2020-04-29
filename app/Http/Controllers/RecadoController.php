@@ -13,7 +13,7 @@ class RecadoController extends Controller
     public function index(){
 
         $recado = Recado::where('destino' , Auth::user()->id)
-            ->orderBy('created_at')
+            ->orderBy('created_at', 'desc')
             ->get();
 
         $user = Auth::user()->localidade;

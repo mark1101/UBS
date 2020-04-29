@@ -89,7 +89,7 @@
                     <a class="nav-link" href="{{route('recado')}}">
                         <i class="material-icons">attach_file
                         </i>
-                        <p>Recados</p>
+                        <p>Recados ({{$recado}})</p>
                     </a>
                 </li>
                 <li class="nav-item  ">
@@ -189,37 +189,6 @@
                         <div class="card-header card-header">
                             <div class="form-group">
                                 <h3 class="bmd-label-floating">Atividades realizadas hoje</h3>
-                                {{--<form id="filters" name="filters" action="{{route('buscaHistorico')}}"
-                                      method="POST">
-                                    @csrf
-                                    <h3 class="bmd-label-floating">Atividades realizadas hoje</h3>
-                                    <br>
-                                    <input type="hidden" name="filterValues" id="filterValues">
-
-                                    <button data-id="vacinas" data-checked="false" type="button"
-                                            class="filter-btn btn btn-teal">
-                                        Vacinas
-                                    </button>
-
-                                    <button data-id="consultas" data-checked="false" type="button"
-                                            class="filter-btn btn btn-teal">
-                                        Consultas
-                                    </button>
-
-                                    <button data-id="encaminhamentos" data-checked="false" type="button"
-                                            class="filter-btn btn btn-teal">
-                                        Encaminhamentos
-                                    </button>
-
-                                    --}}{{--<button data-id="exames" data-checked="false" type="button"
-                                            class="filter-btn btn btn-primary">
-                                        Exames
-                                    </button>--}}{{--
-
-                                    <button type="submit" class="btn btn-teal btn-round btn-just-icon">
-                                        <i class="material-icons">search</i>
-                                    </button>
-                                </form>--}}
 
                                 <div class="card-body">
                                     <div class="table-responsive" style="overflow: auto">
@@ -232,6 +201,7 @@
                                                 <th>Paciente</th>
                                             </tr>
                                             </thead>
+
 
                                             <tbody>
 
