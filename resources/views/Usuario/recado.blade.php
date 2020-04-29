@@ -103,7 +103,7 @@ The above copyright notice and this permission notice shall be included in all c
                     </a>
                 </li>
                 <li class="nav-item  ">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{route('historicoPaciente')}}">
                         <i class="material-icons">history
                         </i>
                         <p>Histórico dos Pacientes</p>
@@ -224,7 +224,7 @@ The above copyright notice and this permission notice shall be included in all c
                                                 <td>{{($recado->profissional)->name}}</td>
                                                 <td>{{($recado->profissional)->funcao}}</td>
                                                 <td>{{$recado->mensagem}}</td>
-                                                <td>{{$recado->data}}</td>
+                                                <td>{{date('d/m/Y H:i',strtotime($recado->data))}}</td>
                                             </tr>
                                         @endforeach
                                     </table>

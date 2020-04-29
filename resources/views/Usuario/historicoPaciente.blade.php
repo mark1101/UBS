@@ -210,7 +210,7 @@ The above copyright notice and this permission notice shall be included in all c
                                             @endforeach
                                         </select>
                                         <br>
-                                        <label class="bmd-label-floating">Buscar por:</label>
+                                        <label class="bmd-label-floating">Escolha somente uma opção de busca</label>
                                         <br>
                                         <input type="hidden" name="filterValues" id="filterValues">
 
@@ -271,7 +271,7 @@ The above copyright notice and this permission notice shall be included in all c
                                                     <td>{{$consulta->sintomas}}</td>
                                                     <td>{{$consulta->observacoes}}</td>
                                                     <td>{{$consulta->finalizacao}}</td>
-                                                    <td>{{$consulta->data}}</td>
+                                                    <td>{{date('d/m/Y',strtotime($consulta->data))}}</td>
                                                 </tr>
 
 
@@ -302,7 +302,7 @@ The above copyright notice and this permission notice shall be included in all c
                                                     <td>{{$encaminhamento->especialidade_encaminhamento}}</td>
                                                     <td>{{$encaminhamento->observacao}}</td>
                                                     <td>{{$encaminhamento->objetivo}}</td>
-                                                    <td>{{$encaminhamento->data}}</td>
+                                                    <td>{{date('d/m/Y',strtotime($encaminhamento->data))}}</td>
                                                 </tr>
 
 
@@ -331,7 +331,7 @@ The above copyright notice and this permission notice shall be included in all c
                                                     <td>{{($vacinas->localidade)->nome}}</td>
                                                     <td>{{$vacinas->vacina_realizada}}</td>
                                                     <td>{{$vacinas->informacao_lote}}</td>
-                                                    <td>{{$vacinas->data}}</td>
+                                                    <td>{{date('d/m/Y',strtotime($vacinas->data))}}</td>
                                                 </tr>
 
 

@@ -27,6 +27,7 @@ class EncaminhamentoController extends Controller
 
         $data['id_localidade'] = Auth::user()->localidade;
         $data['id_sede'] = Auth::user()->cidade_sede;
+        $data['id_profissional'] = Auth::user()->id;
         Encaminhamento::create($data);
 
         $response['success'] = true;

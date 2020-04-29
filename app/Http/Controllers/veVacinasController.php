@@ -21,6 +21,7 @@ class veVacinasController extends Controller
         }
 
         $date1 = date("Y-m-d");
+
         $vacinaDia = Vacina::where('id_sede', Auth::user()->cidade_sede)
             ->where('created_at', 'like', '%' . $date1 . '%')
             ->get();

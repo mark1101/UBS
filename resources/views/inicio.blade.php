@@ -155,7 +155,8 @@
                     <form class="navbar-form"></form>
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
-                            <a style="color: white" id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                            <a style="color: white" id="navbarDropdown" class="nav-link dropdown-toggle" href="#"
+                               role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{Auth::user()->funcao}} {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
@@ -182,10 +183,130 @@
 
         <div class="content">
             <div class="container-fluid">
-                <h1 align="center" style="font-family: Candara ; font-size: 100px ; color: black" >BEM VINDO </h1>
-            </div>
+                {{--<h1 align="center" style="font-family: Candara ; font-size: 100px ; color: black">BEM VINDO </h1>--}}
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header card-header">
+                            <div class="form-group">
+                                <h3 class="bmd-label-floating">Atividades realizadas hoje</h3>
+                                {{--<form id="filters" name="filters" action="{{route('buscaHistorico')}}"
+                                      method="POST">
+                                    @csrf
+                                    <h3 class="bmd-label-floating">Atividades realizadas hoje</h3>
+                                    <br>
+                                    <input type="hidden" name="filterValues" id="filterValues">
 
+                                    <button data-id="vacinas" data-checked="false" type="button"
+                                            class="filter-btn btn btn-teal">
+                                        Vacinas
+                                    </button>
+
+                                    <button data-id="consultas" data-checked="false" type="button"
+                                            class="filter-btn btn btn-teal">
+                                        Consultas
+                                    </button>
+
+                                    <button data-id="encaminhamentos" data-checked="false" type="button"
+                                            class="filter-btn btn btn-teal">
+                                        Encaminhamentos
+                                    </button>
+
+                                    --}}{{--<button data-id="exames" data-checked="false" type="button"
+                                            class="filter-btn btn btn-primary">
+                                        Exames
+                                    </button>--}}{{--
+
+                                    <button type="submit" class="btn btn-teal btn-round btn-just-icon">
+                                        <i class="material-icons">search</i>
+                                    </button>
+                                </form>--}}
+
+                                <div class="card-body">
+                                    <div class="table-responsive" style="overflow: auto">
+                                        <table class="table">
+
+                                            <thead class="thead-light">
+                                            <tr>
+                                                <th>Atividade</th>
+                                                <th>Profissional</th>
+                                                <th>Paciente</th>
+                                            </tr>
+                                            </thead>
+
+                                            <tbody>
+
+                                            @foreach($consultas as $c)
+                                                <tr>
+                                                    <td>Consulta</td>
+                                                    <td>{{($c->profissional)->name}}</td>
+                                                    <td>{{($c->paciente)->nome}} {{($c->paciente)->ultimo_nome}}</td>
+                                                </tr>
+                                            @endforeach
+
+                                            @foreach($vacinas as $v)
+                                                <tr>
+                                                    <td>Vacina</td>
+                                                    <td>{{($v->profissional)->name}}</td>
+                                                    <td>{{($v->paciente)->nome}} {{($v->paciente)->ultimo_nome}}</td>
+                                                </tr>
+                                            @endforeach
+
+                                            @foreach($encaminhamentos as $e)
+                                                <tr>
+                                                    <td>Encaminhamento</td>
+                                                    <td>{{($e->profissional)->name}}</td>
+                                                    <td>{{($e->paciente)->nome}} {{($e->paciente)->ultimo_nome}}</td>
+                                                </tr>
+                                            @endforeach
+
+
+                                            </tbody>
+
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
+
+
+        <script>
+            $(document).ready(function () {
+                var selectedFilters = [];
+
+                $('.filter-btn').on('click', function () {
+                    var clickedButton = $(this);
+
+                    var checked = !Boolean(clickedButton.data('checked'));
+                    clickedButton.data('checked', checked);
+
+                    var dataId = clickedButton.data('id');
+
+                    clickedButton.toggleClass("btn-info");
+                    clickedButton.toggleClass("btn-danger");
+
+                    if (!selectedFilters.includes(dataId) && checked) {
+                        selectedFilters.push(dataId);
+                    } else {
+                        const index = selectedFilters.indexOf(dataId);
+
+                        if (index > -1) {
+                            selectedFilters.splice(index, 1);
+                        }
+                    }
+
+                    var formattedFilters = selectedFilters.join(",");
+                    $('#filterValues').val(formattedFilters);
+                });
+            });
+
+        </script>
 
         <footer class="footer">
             <div class="container-fluid">

@@ -101,7 +101,7 @@ The above copyright notice and this permission notice shall be included in all c
                     </a>
                 </li>
                 <li class="nav-item  ">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{route('historicoPaciente')}}">
                         <i class="material-icons">history
                         </i>
                         <p>Histórico dos Pacientes</p>
@@ -333,7 +333,9 @@ The above copyright notice and this permission notice shall be included in all c
                                                         cols += '<td>' + response.data[item]["informacao_lote"] + '</td>';
                                                         cols += '<td>' + response.data[item]["data"] + '</td>';
                                                         cols += '<td>' + response.data[item]['dose'] + '</td>';
+/*
                                                         cols += '<td><a  data-toggle="modal" data-target="#modal' + response.data[item]['id'] + '" style="width: 55px;"> <i class="material-icons" style="color: black;"title="Salvar Paciente">print</i></a>\n</td>';
+*/
 
                                                         newRow.append(cols);
                                                         $("#tableSearch").append(newRow).fadeIn();
