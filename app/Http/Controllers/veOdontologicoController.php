@@ -21,8 +21,8 @@ class veOdontologicoController extends Controller
             ->orderBy('name')
             ->get();
 
-        $consultasAll = ConsultaDentista::where('id_sede' , Auth::user()->cidade_sede)->orderBy('created_at')->get();
-        $tratamentosAll = FichaTratamento::where('id_sede', Auth::user()->cidade_sede)->orderBy('created_at')->get();
+        $consultasAll = ConsultaDentista::where('id_sede' , Auth::user()->cidade_sede)->orderBy('created_at', 'desc')->get();
+        $tratamentosAll = FichaTratamento::where('id_sede', Auth::user()->cidade_sede)->orderBy('created_at', 'desc')->get();
 
         $consulta = ConsultaDentista::where('id_sede', Auth::user()->cidade_sede)->count();
         $tratamento = FichaTratamento::where('id_sede', Auth::user()->cidade_sede)->count();
@@ -31,13 +31,27 @@ class veOdontologicoController extends Controller
 
         $date1 = date("Y-m-d");
 
-        $consultaDia = ConsultaDentista::where('id_sede', Auth::user()->cidade_sede)
-            ->where('created_at', 'like', '%' . $date1 . '%')
+        $cd = ConsultaDentista::where('id_sede', Auth::user()->cidade_sede)
+            ->orderBy('created_at', 'desc')
             ->get();
 
-        $tratamentoDia = FichaTratamento::where('id_sede', Auth::user()->cidade_sede)
-            ->where('created_at', 'like', '%' . $date1 . '%')
+        $consultaDia = [];
+        foreach ($cd as $item){
+            if(date('d-m-Y', strtotime($item->created_at)) == date('d-m-Y')){
+                $consultaDia[] = $item;
+            }
+        }
+
+        $td = FichaTratamento::where('id_sede', Auth::user()->cidade_sede)
+            ->orderBy('created_at', 'desc')
             ->get();
+
+        $tratamentoDia = [];
+        foreach ($td as $item){
+            if(date('d-m-Y', strtotime($item->created_at)) == date('d-m-Y')){
+                $tratamentoDia[] = $item;
+            }
+        }
 
         return view('Adm.veOdontologico', [
             'dentistas' => $dentistas,

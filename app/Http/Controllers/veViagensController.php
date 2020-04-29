@@ -17,11 +17,17 @@ class veViagensController extends Controller
             ->with('motorista', 'carro', 'localidadeOrigem', 'localidadeDestino')
             ->get();
 
-        $date1 = date("Y-m-d");
 
-        $viagemDia = Viagens::where('id_sede', Auth::user()->cidade_sede)
-            ->where('created_at', 'like', '%' . $date1 . '%')
+        $vd = Viagens::where('id_sede', Auth::user()->cidade_sede)
+            ->orderBy('created_at', 'desc')
             ->get();
+
+        $viagemDia = [];
+        foreach ($vd as $item){
+            if(date('d-m-Y', strtotime($item->created_at)) == date('d-m-Y')){
+                $viagemDia[] = $item;
+            }
+        }
 
         return view('Adm.veViagens', [
             'local' => $localidade,
@@ -46,11 +52,16 @@ class veViagensController extends Controller
 
         $manda = Viagens::where('id_origem', $total->id)->orderBy('data')->get();
 
-        $date1 = date("Y-m-d");
 
-        $viagemDia = Viagens::where('id_sede', Auth::user()->cidade_sede)
-            ->where('created_at', 'like', '%' . $date1 . '%')
+        $vd = Viagens::where('id_sede', Auth::user()->cidade_sede)
             ->get();
+
+        $viagemDia = [];
+        foreach ($vd as $item){
+            if(date('d-m-Y', strtotime($item->data)) == date('d-m-Y')){
+                $viagemDia[] = $item;
+            }
+        }
 
         $valores = Viagens::where('id_sede', Auth::user()->cidade_sede)
             ->get();

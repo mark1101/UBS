@@ -362,7 +362,7 @@ The above copyright notice and this permission notice shall be included in all c
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header card-header-admin">
-                        <h2>Procedimento Odontológicos Realizados no Dia</h2>
+                        <h2>Procedimentos odontológicos realizados hoje</h2>
                         <?php
                         date_default_timezone_set('America/Bahia');
                         echo 'Ultima atualização hoje ', date('\à\s H:i');

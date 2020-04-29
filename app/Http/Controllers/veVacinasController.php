@@ -22,9 +22,17 @@ class veVacinasController extends Controller
 
         $date1 = date("Y-m-d");
 
-        $vacinaDia = Vacina::where('id_sede', Auth::user()->cidade_sede)
-            ->where('created_at', 'like', '%' . $date1 . '%')
+        $vd= Vacina::where('id_sede', Auth::user()->cidade_sede)
+            ->orderBy('data', 'desc')
             ->get();
+
+        $vacinaDia = [];
+        foreach ($vd as $item){
+            if(date('d-m-Y', strtotime($item->data)) == date('d-m-Y')){
+                $vacinaDia[] = $item;
+            }
+        }
+
 
         return view('Adm.veVacinas' , [
             'vacinastotal' => $vacinasTotal,

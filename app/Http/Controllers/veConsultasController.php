@@ -57,10 +57,16 @@ class veConsultasController extends Controller
         }
 
         $date1 = date("Y-m-d");
-        $consultaDia = Consulta::where('id_sede', Auth::user()->cidade_sede)
-            ->where('created_at','like', '%'. $date1. '%')
+        $c = Consulta::where('id_sede', Auth::user()->cidade_sede)
+            ->orderBy('data', 'desc')
             ->get();
 
+        $consultaDia= [];
+        foreach ($c as $item){
+            if(date('d-m-Y', strtotime($item->data)) == date('d-m-Y')){
+                $consultaDia[] = $item;
+            }
+        }
 
         return view('Adm.veConsultas', ['consultas' => $consultasTotal,
             //'profissionaisConsultas' => $consulta,
