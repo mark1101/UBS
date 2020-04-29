@@ -34,7 +34,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{route('recadoAdm')}}">
                         <i class="material-icons">attach_file
                         </i>
                         <p>Recados</p>

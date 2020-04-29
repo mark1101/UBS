@@ -28,7 +28,7 @@ The above copyright notice and this permission notice shall be included in all c
     <link href="{{asset('css/material-dashboard.css')}}" rel="stylesheet"/>
 </head>
 
-<body class=""  >
+<body class="">
 <div class="wrapper ">
 
     <div class="sidebar" data-color="admin" data-background-color="white" data-image="../assets/img/unidade.jpg">
@@ -43,14 +43,14 @@ The above copyright notice and this permission notice shall be included in all c
                         <p>Início</p>
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a class="nav-link" href="{{route('recadoAdm')}}">
                         <i class="material-icons">attach_file
                         </i>
                         <p>Recados</p>
                     </a>
                 </li>
-                <li class="nav-item  active">
+                <li class="nav-item  ">
                     <a class="nav-link" href="{{route('cadastroLocalidade')}}">
                         <i class="material-icons">house
                         </i>
@@ -72,7 +72,6 @@ The above copyright notice and this permission notice shall be included in all c
                     </a>
                 </li>
             </ul>
-
         </div>
     </div>
 
@@ -82,7 +81,7 @@ The above copyright notice and this permission notice shall be included in all c
             <div class="container-fluid">
 
                 <div class="navbar-wrapper">
-                    <a class="navbar-brand" href="javascript:;">Gerenciamento de Exames</a>
+                    <a class="navbar-brand" href="javascript:;">Comunicação</a>
                 </div>
 
                 <!-- BOTAO DE RESPONSIVIDADE PARA OPCIOES DE SIDEBAR-->
@@ -99,7 +98,7 @@ The above copyright notice and this permission notice shall be included in all c
                     <form class="navbar-form"></form>
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
-                            <a style="color: #f8f9fa" id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{Auth::user()->funcao}} {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
@@ -124,134 +123,123 @@ The above copyright notice and this permission notice shall be included in all c
         </nav>
         <!-- End Navbar -->
 
+
         <div class="content">
             <div class="container-fluid">
-
-            <!-- <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-header card-header-admin">
-                            <h4 class="card-title">Cadastro de Sede</h4>
-                        </div>
-                        <div class="card-body" id="exame">
-                            <form action="{{route('storeSede')}}" method="post">
-                                @csrf
                 <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="bmd-label-floating">Nome da Cidade Sede</label>
-                            <input type="text" class="form-control " id="nome"
-                                   name="nome" disabled>
-                        </div>
-                    </div>
-                </div>
-                <br>
-                <button type="submit" class="btn btn-admin" disabled>
-                    Funcionalidade somente para o gerenciador do sistema
-                </button>
-            </form>
-        </div>
-    </div>
-</div> -->
 
-
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-header card-header-admin">
-                            <h4 class="card-title">Cadastro de Localidade</h4>
-                        </div>
-                        <div class="card-body" id="exame">
-                            <form action="{{route('storeLocalidade')}}" method="post">
-                                @csrf
-                                <div class="container">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header card-header-admin">
+                                <h4 class="card-title">Nova Mensagem (as mensagens serão mandadas somente internamente)</h4>
+                            </div>
+                            <div class="card-body">
+                                <form id="cadastroMensagem" {{--action="{{route('storeRecado')}}" method="post"--}}>
+                                    @csrf
                                     <div class="row">
-                                        <label class="bmd-label-floating">Nome da Sede</label>
-                                        <select style="text-transform: uppercase;" class="form-control" name="id_sede" id="id_sede">
-                                            @foreach($sedes as $sede)
-                                                <option
-                                                    value="{{$sede->id}}" style="text-transform: uppercase;">
-                                                    {{$sede->nome}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="bmd-label-floating">Nome da Localidade</label>
-                                            <input style="text-transform: uppercase;" type="text" class="form-control " id="nome"
-                                                   name="nome" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" required>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Para</label>
+                                                <select class="form-control ls-select" name="destino" id="destino">
+                                                    @foreach($profissionais as $pro)
+                                                        <option value="{{$pro->id}}">{{$pro->funcao}} {{$pro->name}} {{$pro->ultimo_nome}} </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <br>
-                                <button type="submit" class="btn btn-primary-admin">Salvar
-                                </button>
-                                <!--<button type="submit" class="btn btn-primary pull-right">Solicitar Exame</button>-->
-                            </form>
-                        </div>
-                    </div>
-                </div>
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Mensagem</label>
+                                                <textarea name="mensagem" id="mensagem" class="form-control" id="exampleFormControlTextarea1" rows="3" maxlength="50"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                <div class="col-md-12" style="overflow: hidden">
-                    <div class="card">
-                        <div class="card-header card-header-admin">
-                            <h4 class="card-title">Comunidades Cadastradas</h4>
-                            <form class="navbar-form" action="#">
-                                @csrf
-                                <div class="input-group no-border">
-                                    <input type="text" id="pesquisaVacina" name="pesquisaVacina"
-                                           style="color:beige;" value="" class="form-control"
-                                           placeholder="Digite a primeira letra da comunidade...">
-                                    <button type="submit" class="btn btn-white btn-round btn-just-icon">
-                                        <i class="material-icons">search</i>
-                                        <div class="ripple-container"></div>
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
-
-                        <div class="card-body">
-                            <div class="table-responsive" style="overflow: auto; height: 300px;">
-                                <table class="table">
-                                    <thead>
-                                    <tr>
-                                        <th >Nome</th>
-                                        <th>Pacientes</th>
-                                        <th>Consultas</th>
-                                        <th>Exames</th>
-                                        <th>Encaminhamentos</th>
-                                        <th>Vacinas</th>
-                                        <th>Viagens Realizadas</th>
-                                        <th>Consulta Odonto</th>
-                                        <th>Tratamento Odonto</th>
-
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    @foreach($localidades as $localidade )
-                                        <tr >
-                                            <td style="text-transform: uppercase">{{$localidade->nome}}</td>
-                                            <td>{{$pacientes[$localidade->id]}}</td>
-                                            <td>{{$consultas[$localidade->id]}}</td>
-                                            <td>{{$exames[$localidade->id]}}</td>
-                                            <td>{{$encaminhamentos[$localidade->id]}}</td>
-                                            <td>{{$vacinas[$localidade->id]}}</td>
-                                            <td>{{$viagens[$localidade->id]}}</td>
-                                            <td>{{$consultaOdonto[$localidade->id]}}</td>
-                                            <td>{{$tratamentoOdonto[$localidade->id]}}</td>
-                                        </tr>
-                                    @endforeach
-                                    </tbody>
-                                </table>
+                                    <button type="submit" class="btn btn-primary-admin">Enviar</button>
+                                </form>
                             </div>
                         </div>
                     </div>
+
+                    <div id="modalSuccess" class="modal" tabindex="-1" role="dialog">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" style="color: green">Sucesso!</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Mensagem enviada com Sucesso!</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="modalError" class="modal" tabindex="-1" role="dialog">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" style="color: green">Ops!</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Algo de errado aconteceu :(!</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
+
+                    <script>
+
+                        $(function () {
+                            $('form[id="cadastroMensagem"]').submit(function (event) {
+                                event.preventDefault();
+
+                                $.ajax({
+                                    url: "{{route('storeRecado')}}",
+                                    type: "POST",
+                                    data: $(this).serialize(),
+                                    dataType: 'json',
+                                    success : function (response) {
+                                        if(response.success === true){
+
+                                            $('#mensagem').val("");
+                                            $('#modalSuccess').modal('show');
+
+                                        }else{
+
+                                            $('#modalError').modal('show');
+
+                                        }
+                                    }
+                                })
+                            })
+                        })
+
+                    </script>
+
+
                 </div>
             </div>
         </div>
+
         <footer class="footer">
             <div class="container-fluid">
-                <h4 align="left">Versão 1.0</h4>
             </div>
         </footer>
     </div>
@@ -273,17 +261,10 @@ The above copyright notice and this permission notice shall be included in all c
 <script src="{{asset('js/plugins/jasny-bootstrap.min.js')}}"></script>
 <script src="{{asset('js/plugins/fullcalendar.min.js')}}"></script>
 <script src="{{asset('js/plugins/jquery-jvectormap.js')}}"></script>
-<!--<script src="{{asset('assets/js/plugins/nouislider.min.js')}}"></script> -->
+<script src="{{asset('js/plugins/nouislider.min.js')}}"></script>
 <script src="{{asset('https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js')}}"></script>
 <script src="{{asset('js/plugins/arrive.min.js')}}"></script>
 
-
-<script src="{{asset('js/mascara.js')}}"></script>
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 
 </body>
 

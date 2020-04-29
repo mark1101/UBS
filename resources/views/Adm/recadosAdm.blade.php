@@ -28,7 +28,7 @@ The above copyright notice and this permission notice shall be included in all c
     <link href="{{asset('css/material-dashboard.css')}}" rel="stylesheet"/>
 </head>
 
-<body class=""  >
+<body class="" >
 <div class="wrapper ">
 
     <div class="sidebar" data-color="admin" data-background-color="white" data-image="../assets/img/unidade.jpg">
@@ -43,7 +43,7 @@ The above copyright notice and this permission notice shall be included in all c
                         <p>Início</p>
                     </a>
                 </li>
-                <li class="nav-item ">
+                <li class="nav-item active">
                     <a class="nav-link" href="{{route('recadoAdm')}}">
                         <i class="material-icons">attach_file
                         </i>
@@ -64,7 +64,7 @@ The above copyright notice and this permission notice shall be included in all c
                         <p>Cadastrar Profissionais</p>
                     </a>
                 </li>
-                <li class="nav-item active ">
+                <li class="nav-item  ">
                     <a class="nav-link" href="{{route('cadastroMotorista')}}">
                         <i class="material-icons">directions_car
                         </i>
@@ -72,20 +72,15 @@ The above copyright notice and this permission notice shall be included in all c
                     </a>
                 </li>
             </ul>
-
         </div>
     </div>
 
     <div class="main-panel">
-        <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
             <div class="container-fluid">
-
                 <div class="navbar-wrapper">
-                    <a class="navbar-brand" href="javascript:;">Gerenciamento de Motoristas e Automoveis</a>
+                    <a class="navbar-brand" href="javascript:;">Gerenciamento de Recados</a>
                 </div>
-
-                <!-- BOTAO DE RESPONSIVIDADE PARA OPCIOES DE SIDEBAR-->
                 <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="sr-only">Toggle navigation</span>
@@ -93,13 +88,11 @@ The above copyright notice and this permission notice shall be included in all c
                     <span class="navbar-toggler-icon icon-bar"></span>
                     <span class="navbar-toggler-icon icon-bar"></span>
                 </button>
-
-                <!-- TOPO EM CIMA PARA OPCAO DE SAIDA E CONFIGURAÇÃOES DE PERFIL E SISTEMA  -->
                 <div class="collapse navbar-collapse justify-content-end">
-                    <form class="navbar-form"></form>
+
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
-                            <a style="color: #f8f9fa" id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{Auth::user()->funcao}} {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
@@ -119,108 +112,61 @@ The above copyright notice and this permission notice shall be included in all c
                         </li>
                     </ul>
                 </div>
-
             </div>
         </nav>
         <!-- End Navbar -->
 
+
         <div class="content">
             <div class="container-fluid">
+                <button type="submit" class="btn btn-primary-admin" style="left: 6px">
+                    <a style="color:#ffffff " href="{{route('comunicacaoAdm')}}">Nova Mensagem</a>
+                </button>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header card-header-admin">
-                                <h4 class="card-title">Cadastro de Motoristas</h4>
+                                <h4>Mensagens Recebidas</h4>
+                                <?php
+                                date_default_timezone_set('America/Bahia');
+                                echo 'Ultima atualização hoje ', date('\à\s H:i');
+                                ?>
                             </div>
-                            <div class="card-body" id="exame">
-                                <form action="{{route('storeMotorista')}}" method="post">
-                                    @csrf
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Nome do Motorista</label>
-                                                <input type="text" class="form-control" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$"
-                                                       name="nome" id="nome" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Telefone</label>
-                                                <input style="text-transform: uppercase"type="text" class="form-control telefone" name="telefone" id="telefone" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">CPF</label>
-                                                <input type="text" class="form-control cpf" name="cpf" id="cpf" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="container">
-                                        <div class="row">
-                                            <select style="text-transform: uppercase"class="form-control" name="id_localidade" id="id_localidade">
-                                                @foreach($localidades as $localidade)
-                                                    <option
-                                                        value="{{$localidade->id}}">{{$localidade->nome}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <button type="submit" class="btn btn-primary-admin">Salvar
-                                    </button>
-                                    <!--<button type="submit" class="btn btn-primary pull-right">Solicitar Exame</button>-->
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+                            <div class="card-body">
+                                <div class="table-responsive" style="overflow: auto; height: 250px;">
+                                    <table class="table">
 
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-header card-header-admin">
-                                <h4 class="card-title">Cadastro de Automóveis</h4>
-                            </div>
-                            <div class="card-body" id="carros">
-                                <form action="{{route('storeCarro')}}" method="post">
-                                    @csrf
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Identificador do Carro</label>
-                                                <input style="text-transform: uppercase"type="text" class="form-control " name="nome" id="nome">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Placa</label>
-                                                <input style="text-transform: uppercase"type="text" class="form-control " name="placa" id="placa">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="container">
-                                        <div class="row">
-                                            <select style="text-transform: uppercase"class="form-control" name="id_localidade" id="id_localidade">
-                                                @foreach($localidades as $localidade)
-                                                    <option
-                                                        value="{{$localidade->id}}">{{$localidade->nome}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <button type="submit" class="btn btn-primary-admin">Salvar
-                                    </button>
-                                    <!--<button type="submit" class="btn btn-primary pull-right">Solicitar Exame</button>-->
-                                </form>
+                                        <thead>
+                                        <tr>
+                                            <th>Localidade Recebimento</th>
+                                            <th>Enviado por</th>
+                                            <th>Módulo de Trabalho</th>
+                                            <th>Mensagem</th>
+                                            <th>Data</th>
+                                        </tr>
+                                        </thead>
+
+                                        <tbody>
+                                        @foreach($rs as $recado)
+                                            <tr>
+                                                <td>{{($recado->localidade)->nome}}</td>
+                                                <td>{{($recado->profissional)->name}}</td>
+                                                <td>{{($recado->profissional)->funcao}}</td>
+                                                <td>{{$recado->mensagem}}</td>
+                                                <td>{{date('d/m/Y H:i',strtotime($recado->data))}}</td>
+                                            </tr>
+                                        @endforeach
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
         <footer class="footer">
             <div class="container-fluid">
-                <h4 align="left">Versão 1.0</h4>
             </div>
         </footer>
     </div>
@@ -242,17 +188,10 @@ The above copyright notice and this permission notice shall be included in all c
 <script src="{{asset('js/plugins/jasny-bootstrap.min.js')}}"></script>
 <script src="{{asset('js/plugins/fullcalendar.min.js')}}"></script>
 <script src="{{asset('js/plugins/jquery-jvectormap.js')}}"></script>
-<!--<script src="{{asset('assets/js/plugins/nouislider.min.js')}}"></script> -->
+<script src="{{asset('js/plugins/nouislider.min.js')}}"></script>
 <script src="{{asset('https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js')}}"></script>
 <script src="{{asset('js/plugins/arrive.min.js')}}"></script>
 
-
-<script src="{{asset('js/mascara.js')}}"></script>
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 
 </body>
 

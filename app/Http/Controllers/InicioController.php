@@ -56,12 +56,12 @@ class InicioController extends Controller
         }
 
         $r = Recado::where('destino' , Auth::user()->id)
-            ->orderBy('created_at', 'desc')
+            ->orderBy('data', 'desc')
             ->get();
 
         $recados = [];
         foreach ($r as $item){
-            if(date('d-m-Y', strtotime($item->created_at)) == date('d-m-Y')){
+            if(date('d-m-Y', strtotime($item->data)) == date('d-m-Y')){
                 $recados[] = $item;
             }
         }
