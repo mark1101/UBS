@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
             resetForm( "#formEvent" );
 
             $("#modalCalendar").modal('show');
-            $("#modalCalendar #titleModal").text('Visualizar/Alterar Evento');
+            $("#modalCalendar #titleModal").text('Atendimento da Semana');
             $("#modalCalendar button.deleteEvent").css("display", "flex");
 
             let id = element.event.id;

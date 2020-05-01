@@ -69,11 +69,16 @@ class DentistaController extends Controller
     public function agendamentoDentista()
     {
 
-        $localidade = Localidade::all();
-        $paciente = Paciente::all();
+        $localidade = Localidade::where('id_sede', Auth::user()->cidade_sede)->get();
+        $paciente = Paciente::where('id_localidade', Auth::user()->localidade)->get();
+        $dentistas = User::where('funcao', 'Odontologia')
+            ->where('cidade_sede', Auth::user()->cidade_sede)->get();
 
-        return view('Usuario.agendamentoDentista',
-            ['localidades' => $localidade, 'pacientes' => $paciente]);
+        return view('Usuario.agendamentoDentista', [
+            'localidades' => $localidade,
+            'pacientes' => $paciente,
+            'dentistas' => $dentistas
+        ]);
     }
 
     public function cadastraConsultaDentista(Request $request) // CADASTRAMENTO DE CONSULTA INICIAL
@@ -123,6 +128,7 @@ class DentistaController extends Controller
         $pdf = PDF::loadView('Dentista.pdfTratamento', compact('data'));
         return $pdf->setPaper('a4')->stream('FichaTratamento.pdf');
     }
+
     public function pdfConsulta()
     {
         $valor = ConsultaDentista::where('id_profissional', Auth::user()->id)
@@ -137,6 +143,7 @@ class DentistaController extends Controller
         $pdf = PDF::loadView('Dentista.pdfConsulta', compact('data'));
         return $pdf->setPaper('a4')->stream('FichaConsulta.pdf');
     }
+
     public function pdfExame()
     {
         $valor = SolicitacaoExameOdonto::where('id_profissional', Auth::user()->id)
@@ -152,12 +159,13 @@ class DentistaController extends Controller
         return $pdf->setPaper('a4')->stream('FichaExame.pdf');
     }
 
-    public function indexRecadoDentista(){
-        $recado = Recado::where('destino' , Auth::user()->id)
+    public function indexRecadoDentista()
+    {
+        $recado = Recado::where('destino', Auth::user()->id)
             ->orderBy('created_at')
             ->get();
 
-        return view ('Dentista.recadoDentista',[
+        return view('Dentista.recadoDentista', [
             'rs' => $recado
         ]);
     }
@@ -167,12 +175,13 @@ class DentistaController extends Controller
         $users = User::where('localidade', Auth::user()->localidade)
             ->where('cidade_sede', Auth::user()->cidade_sede)
             ->get();
-        return view('Dentista.comunicacaoOdonto',[
+        return view('Dentista.comunicacaoOdonto', [
             'profissionais' => $users
         ]);
     }
 
-    public function cadastraRecadoDentista(Request $request){
+    public function cadastraRecadoDentista(Request $request)
+    {
         $data = $request->all();
         $data['origem'] = Auth::user()->localidade;
         $data['mandante'] = Auth::user()->id;

@@ -9,7 +9,7 @@ use App\Vacina;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class historicoPacienteController extends Controller
+class HistoricoPacienteController extends Controller
 {
     public function index()
     {

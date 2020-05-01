@@ -13,7 +13,7 @@ class VacinaController extends Controller
 {
     public function index()
     {
-        $paciente = Paciente::all();
+        $paciente = Paciente::where('id_localidade', Auth::user()->localidade)->get();
 
         return view('Usuario.cadastroVacina', [
             'pacientes' => $paciente

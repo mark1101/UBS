@@ -169,7 +169,7 @@ The above copyright notice and this permission notice shall be included in all c
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{Auth::user()->funcao}} {{ Auth::user()->name }} <span class="caret"></span>
+                             {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -209,12 +209,11 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Paciente</label>
-                                                <select style="text-transform: uppercase;" class="form-control"
+                                                <select class="form-control"
                                                         name="id_paciente" id="id_paciente">
                                                     @foreach($pacientes as $paciente)
                                                         <option
-                                                            value="{{$paciente->id}}"
-                                                            style="text-transform: uppercase;">
+                                                            value="{{$paciente->id}}">
                                                             {{$paciente->nome}} {{$paciente->ultimo_nome}}</option>
                                                     @endforeach
                                                 </select>

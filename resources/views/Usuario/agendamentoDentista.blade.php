@@ -123,7 +123,7 @@ The above copyright notice and this permission notice shall be included in all c
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{Auth::user()->funcao}} {{ Auth::user()->name }} <span class="caret"></span>
+                               {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -167,7 +167,7 @@ The above copyright notice and this permission notice shall be included in all c
                                                 <select style="text-transform: uppercase" class="form-control" name="title" id="title">
                                                     @foreach($pacientes as $paciente)
                                                         <option
-                                                            value="{{$paciente->nome}}{{$paciente->ultimo_nome}}">{{$paciente->nome}} {{$paciente->ultimo_nome}}</option>
+                                                            value="{{$paciente->nome}} {{$paciente->ultimo_nome}}">{{$paciente->nome}} {{$paciente->ultimo_nome}}</option>
                                                     @endforeach
                                                 </select>
                                                 {{--<label class="bmd-label-floating">Titulo</label>
@@ -178,14 +178,16 @@ The above copyright notice and this permission notice shall be included in all c
 
                                     <div class="container">
                                         <div class="row">
-                                            <label class="bmd-label-floating">Localidade</label>
-                                            <select style="text-transform: uppercase" class="form-control" name="id_localidade" id="id_localidade">
-                                                @foreach($localidades as $localidade)
+                                            <label class="bmd-label-floating">Dentista</label>
+                                            <select style="text-transform: uppercase" class="form-control" name="id_profissional" id="id_profissional">
+                                                @foreach($dentistas as $d)
                                                     <option
-                                                        value="{{$localidade->id}}">{{$localidade->nome}}</option>
+                                                        value="{{$d->id}}">{{$d->name}} --  {{$d->cpf}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
+
+
 {{--
 
                                         <div class="row">

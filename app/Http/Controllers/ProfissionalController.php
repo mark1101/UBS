@@ -44,4 +44,16 @@ class ProfissionalController extends Controller
         User::create($data);
         return redirect('/cadastraProfissional');
     }
+
+    public function alteraProfissional(Request $request, $id)
+    {
+        $data = $request->all();
+        unset($data['_token']);
+        User::where('id', $id)->update($data);
+
+        $response['success'] = true;
+        $response['message'] = "Profissional editado com sucesso!";
+
+        echo json_encode($response);
+    }
 }

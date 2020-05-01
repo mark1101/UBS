@@ -157,7 +157,8 @@ The above copyright notice and this permission notice shall be included in all c
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header card-header-admin">
-                            <h4 class="card-title">A busca pode ser feita por nome ou módulo de trabalho do profissional</h4>
+                            <h4 class="card-title">A busca pode ser feita por nome ou módulo de trabalho do
+                                profissional</h4>
                             <form id="buscaProfissional" class="navbar-form">
                                 @csrf
                                 <div class="input-group no-border">
@@ -201,33 +202,35 @@ The above copyright notice and this permission notice shall be included in all c
             <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
 
-            {{--@foreach($pacientes as $paciente)
-                <div class="modal fade" id="modal{{$paciente->id}}" tabindex="-1" role="dialog"
+            @foreach($profissionais as $prof)
+                <div class="modal fade" id="modal{{$prof->id}}" tabindex="-1" role="dialog"
                      aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Título do modal</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Edição de profissionais</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div id="editPaciente" class="modal-body">
                                 <div class=" container">
-                                    <form id="form{{$paciente->id}}">
+                                    <form id="form{{$prof->id}}">
                                         @csrf
-                                        Nome: <label for="name{{$paciente->id}}"></label>
-                                        <input id="name{{$paciente->id}}" name="nome" class="form-control"
-                                               value="{{$paciente->nome}}" required>
+                                        Nome: <label for="name{{$prof->id}}"></label>
+                                        <input id="name{{$prof->id}}" name="name" class="form-control"
+                                               value="{{$prof->name}}" required>
                                         <br>
-                                        Ultimo nome: <label for="ultimo{{$paciente->id}}"></label>
-                                        <input id="ultimo{{$paciente->id}}" name="ultimo_nome"
-                                               class="form-control"
-                                               value="{{$paciente->ultimo_nome}}" required>
+                                        Localidade: <select name="localidade"
+                                                            id="localidade" class="form-control">
+                                            @foreach($localidades as $localidade)
+                                                <option value="{{$localidade->id}}">{{$localidade->nome}}</option>
+                                            @endforeach
+                                        </select>
                                         <br>
-                                        Telefone: <label for="name{{$paciente->id}}"></label>
-                                        <input id="name{{$paciente->id}}" name="telefone" class="form-control"
-                                               value="{{$paciente->telefone}}" required>
+                                        Email: <label for="email{{$prof->id}}"></label>
+                                        <input id="email{{$prof->id}}" name="email" class="form-control"
+                                               value="{{$prof->email}}" required>
                                         <br>
                                         <div class="row" style="float: right; left: 30%">
                                             <button type="submit" class="btn btn-success">Salvar mudanças
@@ -237,21 +240,21 @@ The above copyright notice and this permission notice shall be included in all c
                                 </div>
                                 <script>
                                     $(function () {
-                                        $('form[id="form{{$paciente->id}}"]').submit(function (event) {
+                                        $('form[id="form{{$prof->id}}"]').submit(function (event) {
                                             event.preventDefault();
                                             $.ajax({
-                                                url: "{{route('updatePaciente',['id'=>$paciente->id])}}",
+                                                url: "{{route('alteraProfissional',['id'=>$prof->id])}}",
                                                 type: "post",
                                                 data: $(this).serialize(),
                                                 dataType: 'json',
                                                 success: function (response) {
                                                     if (response.success === true) {
-                                                        $("#footer{{$paciente->id}}").fadeIn();
-                                                        $("#message{{$paciente->id}}").text(response.message);
+                                                        $("#footer{{$prof->id}}").fadeIn();
+                                                        $("#message{{$prof->id}}").text(response.message);
                                                         $.wait(function () {
-                                                            $("#footer{{$paciente->id}}").fadeOut();
+                                                            $("#footer{{$prof->id}}").fadeOut();
                                                         }, 5);
-                                                        $("#buscaPaciente").submit();
+                                                        $("#buscaProfissional").submit();
                                                     }
                                                 }
                                             });
@@ -262,17 +265,13 @@ The above copyright notice and this permission notice shall be included in all c
                                     });
                                 </script>
                             </div>
-                            <div class="modal-footer" id="footer{{$paciente->id}}" style="display: none">
-                                <span id="message{{$paciente->id}}" style="color: green"></span>
-                            </div>
-                            <div class="modal-footer" id="footerError{{$paciente->id}}"
-                                 style="display: none">
-                                <span id="message{{$paciente->id}}" style="color: red"></span>
+                            <div class="modal-footer" id="footer{{$prof->id}}" style="display: none">
+                                <span id="message{{$prof->id}}" style="color: green"></span>
                             </div>
                         </div>
                     </div>
                 </div>
-            @endforeach --}}{{--modal para ver os profissionais--}}
+            @endforeach
 
             <script>
                 $(function () {
@@ -289,7 +288,7 @@ The above copyright notice and this permission notice shall be included in all c
                                     var cols = "";
                                     cols += '<th>Nome</th>';
                                     cols += '<th>Função</th>';
-                                    cols += '<th>Data Nascimento</th>';
+                                    /*cols += '<th>Data Nascimento</th>';*/
                                     cols += '<th>CPF</th>';
                                     cols += '<th>Localidade</th>';
                                     cols += '<th>Email</th>';
@@ -302,10 +301,10 @@ The above copyright notice and this permission notice shall be included in all c
                                         var cols = "";
                                         cols += '<td>' + response.data[item]["name"] + '</td>';
                                         cols += '<td>' + response.data[item]["funcao"] + '</td>';
-                                        cols += '<td>' + response.data[item]["data_nascimento"] + '</td>';
+                                        /*cols += '<td>' + response.data[item]["data_nascimento"] + '</td>';*/
                                         cols += '<td>' + response.data[item]["cpf"] + '</td>';
                                         cols += '<td>' + response.data[item]["localidade"] + '</td>';
-                                        cols += '<td>' + response.data[item]['email']+ '</td>';
+                                        cols += '<td>' + response.data[item]['email'] + '</td>';
                                         cols += '<td><a href="#" data-toggle="modal" data-target="#modal' + response.data[item]['id'] + '" style="width: 55px;"> <i class="material-icons" style="color: black;"title="Salvar Paciente">visibility</i></a>\n</td>';
 
                                         newRow.append(cols);

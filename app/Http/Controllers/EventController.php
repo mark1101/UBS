@@ -10,7 +10,7 @@ class EventController extends Controller
 {
     public function loadEvents(){
 
-        $events = Event::where('id_localidade', Auth::user()->localidade)->get();
+        $events = Event::where('id_profissional', Auth::user()->id)->get();
         return response()->json($events);
     }
     public function cadastra(Request $request){
@@ -26,10 +26,11 @@ class EventController extends Controller
     }
 
     public function cadastroEvento(Request $request)
-    { // cadastra na mesma localidade que o recepcionista esta atendendo
+    {
 
         $data = $request->all();
-        
+        $data['id_localidade'] = Auth::user()->localidade;
+
         Event::create($data);
         return redirect('/agendamentoDentista');
     }

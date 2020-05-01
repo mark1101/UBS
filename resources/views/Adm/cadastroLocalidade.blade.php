@@ -99,9 +99,9 @@ The above copyright notice and this permission notice shall be included in all c
                     <form class="navbar-form"></form>
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
-                            <a style="color: #f8f9fa" id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                            <a style="color: black" id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{Auth::user()->funcao}} {{ Auth::user()->name }} <span class="caret"></span>
+                               {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -178,7 +178,7 @@ The above copyright notice and this permission notice shall be included in all c
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="bmd-label-floating">Nome da Localidade</label>
-                                            <input style="text-transform: uppercase;" type="text" class="form-control " id="nome"
+                                            <input type="text" class="form-control " id="nome"
                                                    name="nome" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" required>
                                         </div>
                                     </div>
@@ -230,7 +230,7 @@ The above copyright notice and this permission notice shall be included in all c
                                     <tbody>
                                     @foreach($localidades as $localidade )
                                         <tr >
-                                            <td style="text-transform: uppercase">{{$localidade->nome}}</td>
+                                            <td>{{$localidade->nome}}</td>
                                             <td>{{$pacientes[$localidade->id]}}</td>
                                             <td>{{$consultas[$localidade->id]}}</td>
                                             <td>{{$exames[$localidade->id]}}</td>

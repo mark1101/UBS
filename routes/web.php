@@ -114,6 +114,7 @@ Route::middleware(['auth'])->group(function () {
         ->name('storeSede');
     Route::get('/cadastraProfissional' , 'ProfissionalController@indexProfissional')
         ->name('cadastraProfissional');
+    Route::post('/editaProfissional/{id}', 'ProfissionalController@alteraProfissional')->name('alteraProfissional');
     Route::post('/cadastrouProfissional' , 'ProfissionalController@cadastroProfissional')
         ->name('storeProfisional');
     Route::get('/graficos' , 'GraficosAdmController@index')->name('graficos');
