@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Localidade;
 use App\Recado;
 use App\User;
 use Illuminate\Http\Request;
@@ -21,13 +22,22 @@ class ComunicacaoAdmController extends Controller
 
     public function indexComunicacaoAdm()
     {
-        $user = User::where('localidade', Auth::user()->localidade)
-            ->where('cidade_sede', Auth::user()->cidade_sede)
+        $localidades = Localidade::where('id_sede', Auth::user()->cidade_sede)->get();
+       /* $user = User::where('cidade_sede', Auth::user()->cidade_sede)
             ->where('id' , '<>' , Auth::user()->id)
-            ->get();
-
-        return view('Adm.comunicacaoAdm',[
-            'profissionais' => $user
+            ->get();*/
+        return view('Adm.comunicacaoAdm', [
+            'localidades' => $localidades
         ]);
+    }
+    public function buscaProfissionais($id){
+
+        $users = User::where('localidade', $id)->get();
+
+        $response['success'] = true;
+        $response['data'] = $users;
+
+       echo json_encode($response);
+
     }
 }

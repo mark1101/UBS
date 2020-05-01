@@ -131,7 +131,8 @@ The above copyright notice and this permission notice shall be included in all c
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header card-header-admin">
-                                <h4 class="card-title">Nova Mensagem (as mensagens serão mandadas somente internamente)</h4>
+                                <h4 class="card-title">Nova Mensagem (as mensagens serão mandadas somente
+                                    internamente)</h4>
                             </div>
                             <div class="card-body">
                                 <form id="cadastroMensagem" {{--action="{{route('storeRecado')}}" method="post"--}}>
@@ -139,11 +140,24 @@ The above copyright notice and this permission notice shall be included in all c
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label class="bmd-label-floating">Para</label>
-                                                <select class="form-control ls-select" name="destino" id="destino">
-                                                    @foreach($profissionais as $pro)
-                                                        <option value="{{$pro->id}}">{{$pro->funcao}} {{$pro->name}} {{$pro->ultimo_nome}} </option>
+                                                <label class="bmd-label-floating">Localidade</label>
+                                                <select class="form-control ls-select"
+                                                        name="localidade" id="localidade">
+                                                    <option
+                                                        value="">Escolha a localidade
+                                                    </option>
+                                                    @foreach($localidades as $localidade)
+                                                        <option
+                                                            value="{{$localidade->id}}">{{$localidade->nome}}</option>
                                                     @endforeach
+                                                </select>
+                                                <label class="bmd-label-floating">Nome do profissional</label>
+                                                <select class="form-control ls-select" name="destino" id="destino">
+                                                    {{--@foreach($profissionais as $pro)--}}
+                                                    <option
+                                                        value="">Escolha um profissional
+                                                    </option>
+                                                    {{-- @endforeach--}}
                                                 </select>
                                             </div>
                                         </div>
@@ -152,7 +166,9 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-10">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Mensagem</label>
-                                                <textarea name="mensagem" id="mensagem" class="form-control" id="exampleFormControlTextarea1" rows="3" maxlength="50"></textarea>
+                                                <textarea name="mensagem" id="mensagem" class="form-control"
+                                                          id="exampleFormControlTextarea1" rows="3"
+                                                          maxlength="50"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -162,6 +178,40 @@ The above copyright notice and this permission notice shall be included in all c
                             </div>
                         </div>
                     </div>
+
+                    <script src="{{url('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js')}}"></script>
+                    <script>
+                        $(document).ready(function () {
+
+                            $('select[name="localidade"]').on('change', function () {
+
+                                var estado_id = $(this).val();
+                                console.log(estado_id);
+
+                                $.ajax({
+                                    url: "{{route('buscaPro',['id' => '_valor_'])}}".replace('_valor_', estado_id),
+                                    type: 'get',
+                                    dataType: 'json',
+                                    success: function (response) {
+                                        console.log(response);
+                                        if (response.success === true) {
+
+                                            $('select[name=destino]').empty();
+                                            $.each(response.data, function (item, value) {
+                                                $('select[name=destino]').append('<option value="' + response.data[item]["id"] + '">' + response.data[item]["name"] + '</option>');
+                                            });
+
+                                        } else {
+                                            console.log('n deu ');
+                                        }
+                                    }
+                                })
+
+                            });
+                        });
+
+
+                    </script>
 
                     <div id="modalSuccess" class="modal" tabindex="-1" role="dialog">
                         <div class="modal-dialog" role="document">
@@ -215,13 +265,13 @@ The above copyright notice and this permission notice shall be included in all c
                                     type: "POST",
                                     data: $(this).serialize(),
                                     dataType: 'json',
-                                    success : function (response) {
-                                        if(response.success === true){
+                                    success: function (response) {
+                                        if (response.success === true) {
 
                                             $('#mensagem').val("");
                                             $('#modalSuccess').modal('show');
 
-                                        }else{
+                                        } else {
 
                                             $('#modalError').modal('show');
 

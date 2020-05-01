@@ -120,6 +120,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/recadosAdm', 'ComunicacaoAdmController@indexRecadoAdm')->name('recadoAdm');
     Route::get('/comunicacaoAdm', 'ComunicacaoAdmController@indexComunicacaoAdm')->name('comunicacaoAdm');
+    Route::get('/buscaProfissional/{id}', 'ComunicacaoAdmController@buscaProfissionais')->name('buscaPro');
 
     /////////// DADOS PARA VISU
 
