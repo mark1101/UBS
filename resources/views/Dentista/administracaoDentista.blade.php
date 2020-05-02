@@ -68,7 +68,7 @@
                     </a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{route('historicoOdonto')}}">
                         <i class="material-icons">history
                         </i>
                         <p>Histórico de Pacientes</p>
@@ -100,7 +100,7 @@
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{Auth::user()->funcao}} {{ Auth::user()->name }} <span class="caret"></span>
+                                {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -128,7 +128,7 @@
                 <div class="row d-flex justify-content-center"> <!-- CLASSE DE ALINHAMENTO -->
                     <div align="center" class="card" style="width: 13rem; height: 13rem;">
                         <div class="card-body">
-                            <h5 class="card-title">Odontológico</h5>
+                            <h5 class="card-title">Meus dados</h5>
                             <img src="{{asset('img/DenteClicavel.png')}}">
                             <a href="{{route('odontologico')}}" class="btn btn-primary-adm">Ver</a>
                         </div>

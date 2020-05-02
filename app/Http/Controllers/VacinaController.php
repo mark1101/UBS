@@ -48,7 +48,7 @@ class VacinaController extends Controller
                 ->get();
             foreach ($data as $item) {
                 if (Vacina::where('id_paciente', $item->id)->with(['localidade', 'paciente'])->count() > 0) {
-                    $vacinasAux[] = Vacina::where('id_paciente', $item->id)->with(['localidade', 'paciente'])
+                    $vacinasAux[] = Vacina::where('id_paciente', $item->id)->orderBy('id_paciente')->with(['localidade', 'paciente'])
                         ->get();
                 }
             }

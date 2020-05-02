@@ -209,9 +209,9 @@ The above copyright notice and this permission notice shall be included in all c
 
                                         <thead>
                                         <tr>
-                                            <th>Localidade Recebimento</th>
-                                            <th>Enviado por</th>
-                                            <th>Módulo de Trabalho</th>
+                                            <th>Recebimento</th>
+                                            <th>De</th>
+                                            <th>Área</th>
                                             <th>Mensagem</th>
                                             <th>Data</th>
                                         </tr>

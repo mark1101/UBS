@@ -58,10 +58,13 @@ class DentistaController extends Controller
     {
         $consultas = ConsultaDentista::where('id_profissional', Auth::user()->id)->count();
         $tratamentos = FichaTratamento::where('id_profissional', Auth::user()->id)->count();
+        $exames = SolicitacaoExameOdonto::where('id_profissional', Auth::user()->id)->count();
+
 
         return view('Dentista.odontologico', [
             'consultas' => $consultas,
-            'tratamentos' => $tratamentos
+            'tratamentos' => $tratamentos,
+            'exames' => $exames
         ]);
 
     }
@@ -192,5 +195,102 @@ class DentistaController extends Controller
         $response['success'] = true;
 
         echo json_encode($response);
+    }
+
+    public function indexHistorico()
+    {
+        $localidade = Localidade::where('id_sede', Auth::user()->cidade_sede)->get();
+        $oque = "";
+
+        return view('Dentista.historicoPacienteOdonto', [
+            'localidades' => $localidade,
+            'oque' => $oque
+        ]);
+    }
+
+    public function buscaPacienteHistorico($id)
+    {
+        $users = Paciente::where('id_localidade', $id)->get();
+
+        $response['success'] = true;
+        $response['data'] = $users;
+
+        echo json_encode($response);
+    }
+
+    public function buscaHistorico(Request $request)
+    {
+        $pacientes = Paciente::where('id_sede', Auth::user()->cidade_sede)->get();
+        $localidades = Localidade::where('id_sede', Auth::user()->cidade_sede)->get();
+        $oque = "";
+
+        $nome = $request->get('id_paciente');
+        $filters = $request->get('filterValues');
+
+        if ($filters == 'consultas') {
+            $historico = ConsultaDentista::where('id_paciente', $nome)->get();
+            $quantos = ConsultaDentista::where('id_paciente', $nome)->count();
+            $oque = "consulta";
+
+            return view('Dentista.historicoPacienteOdonto', [
+                'pacientes' => $pacientes,
+                'dados' => $historico,
+                'oque' => $oque,
+                'quantidade' => $quantos,
+                'localidades' => $localidades
+            ]);
+        } else if ($filters == 'encaminhamentos') {
+            $historico = Encaminhamento::where('id_paciente', $nome)->get();
+            $quantos = Encaminhamento::where('id_paciente', $nome)->count();
+            $oque = "encaminhamentos";
+
+            return view('Dentista.historicoPacienteOdonto', [
+                'pacientes' => $pacientes,
+                'dados' => $historico,
+                'oque' => $oque,
+                'quantidade' => $quantos
+            ]);
+
+        } else if ($filters == 'tratamentos') {
+            $historico = FichaTratamento::where('id_paciente', $nome)->get();
+            $quantos = FichaTratamento::where('id_paciente', $nome)->count();
+            $oque = "tratamentos";
+
+            return view('Dentista.historicoPacienteOdonto', [
+                'pacientes' => $pacientes,
+                'dados' => $historico,
+                'oque' => $oque,
+                'quantidade' => $quantos,
+                'localidades' => $localidades
+            ]);
+
+        } else if ($filters == 'exames') {
+            $historico = SolicitacaoExameOdonto::where('id_paciente', $nome)->get();
+            $quantos = SolicitacaoExameOdonto::where('id_paciente', $nome)->count();
+            $oque = "solicita";
+
+            return view('Dentista.historicoPacienteOdonto', [
+                'pacientes' => $pacientes,
+                'dados' => $historico,
+                'oque' => $oque,
+                'quantidade' => $quantos,
+                'localidades' => $localidades
+            ]);
+
+        } else {
+            $historico = "";
+            $quantos = "";
+            $oque = "Erro ao pesquisar";
+
+            return view('Dentista.historicoPacienteOdonto', [
+                'localidades' => $localidades,
+                'pacientes' => $pacientes,
+                'dados' => $historico,
+                'oque' => $oque,
+                'quantidade' => $quantos,
+
+            ]);
+        }
+
     }
 }

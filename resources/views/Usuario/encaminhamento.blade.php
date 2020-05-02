@@ -219,17 +219,6 @@ The above copyright notice and this permission notice shall be included in all c
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Email do
-                                                    Responsável</label>
-                                                <select class="form-control ls-select" name="id_profissional" id="id_profissional">
-                                                    @foreach($profissionais as $pro)
-                                                        <option value="{{$pro->id}}">{{$pro->email}} </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Especialidade de

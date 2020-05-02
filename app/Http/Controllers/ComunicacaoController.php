@@ -9,27 +9,37 @@ use Illuminate\Support\Facades\Auth;
 
 class ComunicacaoController extends Controller
 {
-    public function index(){
-        $user = User::where('localidade', Auth::user()->localidade)
-            ->where('cidade_sede', Auth::user()->cidade_sede)
-            ->where('id' , '<>' , Auth::user()->id)
-            ->get();
-        return view('Usuario.comunicacao' , [
-            'profissionais' => $user
+    public function index()
+    {
+
+        $adm = User::where([
+            ['cidade_sede', Auth::user()->cidade_sede],
+            ['funcao', 'administrador'],
+        ])->get();
+
+
+        $user = User::where([
+            ['localidade', Auth::user()->localidade],
+            ['cidade_sede', Auth::user()->cidade_sede],
+        ])->get();
+
+        $juncao = [];
+        foreach ($adm as $item){
+            $juncao[] = $item;
+        }
+
+        foreach ($user as $valor){
+            $juncao[] = $valor;
+        }
+
+        $pro = [];
+        foreach ($juncao as $value){
+            $pro[] = $value;
+        }
+
+
+        return view('Usuario.comunicacao', [
+            'profissionais' => $pro
         ]);
     }
-   /* public function cadastraRecado(Request $request){
-        $data = $request->all();
-
-        $data['origem'] = Auth::user()->localidade;
-
-        Recado::create($data);
-
-
-        $response['success'] = true;
-        $response['mensagem enviada com sucesso'];
-
-        echo json_encode($response);
-
-    }*/
 }

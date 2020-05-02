@@ -168,7 +168,7 @@ The above copyright notice and this permission notice shall be included in all c
                                                 <label class="bmd-label-floating">Mensagem</label>
                                                 <textarea name="mensagem" id="mensagem" class="form-control"
                                                           id="exampleFormControlTextarea1" rows="3"
-                                                          maxlength="50"></textarea>
+                                                          maxlength="150"></textarea>
                                             </div>
                                         </div>
                                     </div>

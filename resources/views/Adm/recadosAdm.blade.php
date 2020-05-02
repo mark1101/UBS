@@ -138,7 +138,7 @@ The above copyright notice and this permission notice shall be included in all c
 
                                         <thead>
                                         <tr>
-                                            <th>Localidade Recebimento</th>
+                                            <th>Recebimento</th>
                                             <th>Enviado por</th>
                                             <th>Módulo de Trabalho</th>
                                             <th>Mensagem</th>

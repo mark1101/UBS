@@ -166,7 +166,7 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Área de Trabalho</label>
-                                                <select style="text-transform: uppercase;" class="form-control"
+                                                <select class="form-control"
                                                         name="funcao" id="funcao" required>
                                                     <option selected>Recepcao</option>
                                                     <option>Medicina</option>
@@ -182,11 +182,11 @@ The above copyright notice and this permission notice shall be included in all c
 
                                         <div class="row">
                                             <p class="card-category">Localidade</p>
-                                            <select style="text-transform: uppercase;" class="form-control"
+                                            <select class="form-control"
                                                     name="localidade" id="localidade">
                                                 @foreach($localidades as $localidade)
                                                     <option
-                                                        value="{{$localidade->id}}" style="text-transform: uppercase;">
+                                                        value="{{$localidade->id}}">
                                                         {{$localidade->nome}}</option>
                                                 @endforeach
                                             </select>

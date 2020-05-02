@@ -371,6 +371,9 @@ The above copyright notice and this permission notice shall be included in all c
 
                                                     alert('Vacina Cadastrada com Sucesso!');
 
+                                                    $("#buscaVacina").submit();
+
+
                                                 } else {
 
                                                     alert('Erro ao cadastrar!');

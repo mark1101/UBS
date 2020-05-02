@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Consulta;
 use App\Encaminhamento;
+use App\Localidade;
 use App\Paciente;
+use App\User;
 use App\Vacina;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,16 +16,30 @@ class HistoricoPacienteController extends Controller
     public function index()
     {
         $pacientes = Paciente::where('id_sede', Auth::user()->cidade_sede)->get();
+        $localidades = Localidade::where('id_sede', Auth::user()->cidade_sede)->get();
+
         $oque = "";
         return view('Usuario.historicoPaciente', [
+            'localidades' => $localidades,
             'pacientes' => $pacientes,
             'oque' => $oque
         ]);
     }
 
+    public function buscaPacienteId($id)
+    {
+        $users = Paciente::where('id_localidade', $id)->get();
+
+        $response['success'] = true;
+        $response['data'] = $users;
+
+        echo json_encode($response);
+    }
+
     public function buscaHistorico(Request $request)
     {
         $pacientes = Paciente::where('id_sede', Auth::user()->cidade_sede)->get();
+        $localidades = Localidade::where('id_sede', Auth::user()->cidade_sede)->get();
         $oque = "";
 
         $nome = $request->get('id_paciente');
@@ -38,7 +54,8 @@ class HistoricoPacienteController extends Controller
                 'pacientes' => $pacientes,
                 'dados' => $historico,
                 'oque' => $oque,
-                'quantidade' => $quantos
+                'quantidade' => $quantos,
+                'localidades' => $localidades
             ]);
         } else if ($filters == 'encaminhamentos') {
             $historico = Encaminhamento::where('id_paciente', $nome)->get();
@@ -49,7 +66,8 @@ class HistoricoPacienteController extends Controller
                 'pacientes' => $pacientes,
                 'dados' => $historico,
                 'oque' => $oque,
-                'quantidade' => $quantos
+                'quantidade' => $quantos,
+                'localidades' => $localidades
             ]);
 
         } else if ($filters == 'vacinas') {
@@ -61,7 +79,8 @@ class HistoricoPacienteController extends Controller
                 'pacientes' => $pacientes,
                 'dados' => $historico,
                 'oque' => $oque,
-                'quantidade' => $quantos
+                'quantidade' => $quantos,
+                'localidades' => $localidades
             ]);
 
         }else{
@@ -70,10 +89,12 @@ class HistoricoPacienteController extends Controller
             $oque = "Erro ao pesquisar";
 
             return view('Usuario.historicoPaciente', [
+                'localidades' => $localidades,
                 'pacientes' => $pacientes,
                 'dados' => $historico,
                 'oque' => $oque,
-                'quantidade' => $quantos
+                'quantidade' => $quantos,
+
             ]);
         }
 

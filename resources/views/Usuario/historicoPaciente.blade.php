@@ -190,7 +190,6 @@ The above copyright notice and this permission notice shall be included in all c
 
         <div class="content">
             <div class="container-fluid">
-
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
@@ -199,18 +198,27 @@ The above copyright notice and this permission notice shall be included in all c
                                     <form id="filters" name="filters" action="{{route('buscaHistorico')}}"
                                           method="POST">
                                         @csrf
-                                        <label class="bmd-label-floating">Nome Paciente</label>
+                                        <label class="bmd-label-floating">1 - Localidade</label>
                                         <select class="form-control ls-select"
-                                                name="id_paciente"
-                                                id="id_paciente">
-                                            @foreach($pacientes as $paciente)
+                                                name="localidade"
+                                                id="localidade">
+                                            @foreach($localidades as $localidade)
                                                 <option
-                                                    value="{{$paciente->id}}" >
-                                                    {{$paciente->nome}} {{$paciente->ultimo_nome}}</option>
+                                                    value="{{$localidade->id}}" >
+                                                    {{$localidade->nome}}</option>
                                             @endforeach
                                         </select>
                                         <br>
-                                        <label class="bmd-label-floating">Escolha somente uma opção de busca</label>
+                                        <label class="bmd-label-floating">2 - Nome Paciente</label>
+                                        <select class="form-control ls-select"
+                                                name="id_paciente"
+                                                id="id_paciente">
+                                            <option
+                                                value="">Escolha um Paciente
+                                            </option>
+                                        </select>
+                                        <br>
+                                        <label class="bmd-label-floating">3 - Escolha somente uma opção de busca</label>
                                         <br>
                                         <input type="hidden" name="filterValues" id="filterValues">
 
@@ -354,6 +362,38 @@ The above copyright notice and this permission notice shall be included in all c
         <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
 
+        <script>
+            $(document).ready(function () {
+
+                $('select[name="localidade"]').on('change', function () {
+
+                    var estado_id = $(this).val();
+                    console.log(estado_id);
+
+                    $.ajax({
+                        url: "{{route('buscaHPaciente',['id' => '_valor_'])}}".replace('_valor_', estado_id),
+                        type: 'get',
+                        dataType: 'json',
+                        success: function (response) {
+                            console.log(response);
+                            if (response.success === true) {
+
+                                $('select[name=id_paciente]').empty();
+                                $.each(response.data, function (item, value) {
+                                    $('select[name=id_paciente]').append('<option value="' + response.data[item]["id"] + '">' + response.data[item]["nome"] + ' ' + response.data[item]["ultimo_nome"] +'</option>');
+                                });
+
+                            } else {
+                                console.log('n deu ');
+                            }
+                        }
+                    })
+
+                });
+            });
+
+
+        </script>
 
         <script>
             $(document).ready(function () {
@@ -385,6 +425,12 @@ The above copyright notice and this permission notice shall be included in all c
                 });
             });
 
+        </script>
+
+        <script>
+            $(document).ready(function () {
+                $("#localidade").change();
+            })
         </script>
 
         <footer class="footer">

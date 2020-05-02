@@ -63,6 +63,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('historicoPaciente', 'historicoPacienteController@index')->name('historicoPaciente');
     Route::post('buscaHistorico', 'historicoPacienteController@buscaHistorico')->name('buscaHistorico');
 
+    Route::get('/pacienteLocalidade/{id}', 'HistoricoPacienteController@buscaPacienteId')->name('buscaHPaciente');
+
 
 // ROTAS DE EXAMES
     Route::group(['prefix'=>'/exame'], function(){
@@ -173,6 +175,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('pdf', 'DentistaController@pdfTratamento')->name('pdfTratamento');
     Route::get('pdf2', 'DentistaController@pdfConsulta')->name('pdfConsulta');
     Route::get('pdf3', 'DentistaController@pdfExame')->name('pdfExame');
+
+    Route::get('historicoPacienteOdonto', 'DentistaController@indexHistorico')->name('historicoOdonto');
+    Route::get('/hisPaciente/{id}', 'DentistaController@buscaPacienteHistorico')->name('historyOdonto');
+    Route::post('/historicoOdontoPaciente', 'DentistaController@buscaHistorico')->name('histoPa');
+
+
 
 // ROTAS DE AGENTE DE SAUDE
     Route::get('/agente/cadastroPaciente', 'AgenteController@indexcadastraPaciente')->name('cadastroPacienteAgente');
