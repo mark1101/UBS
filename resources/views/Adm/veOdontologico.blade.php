@@ -290,6 +290,7 @@ The above copyright notice and this permission notice shall be included in all c
                                             <th  style="color: black ; text-transform: uppercase"><strong>Nome Paciente</strong></th>
                                             <th  style="color: black ; text-transform: uppercase"><strong>Comunidade</strong></th>
                                             <th  style="color: black ; text-transform: uppercase"><strong>Profissional</strong></th>
+                                            <th  style="color: black ; text-transform: uppercase"><strong>Data</strong></th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -298,6 +299,7 @@ The above copyright notice and this permission notice shall be included in all c
                                                 <td>{{($consulta->paciente)->nome}} {{($consulta->paciente)->ultimo_nome}}</td>
                                                 <td>{{($consulta->localidade)->nome}}</td>
                                                 <td>{{($consulta->profissional)->name}}</td>
+                                                <td>{{date('d/m/Y',strtotime($consulta->created_at))}}</td>
                                             </tr>
                                         @endforeach
                                         </tbody>
@@ -334,6 +336,7 @@ The above copyright notice and this permission notice shall be included in all c
                                             <th  style="color: black ; width: 30%"><strong>Tratamento Realizado</strong></th>
                                             <th  style="color: black"><strong>Comunidade</strong></th>
                                             <th  style="color: black"><strong>Profissional</strong></th>
+                                            <th  style="color: black"><strong>Data</strong></th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -343,6 +346,7 @@ The above copyright notice and this permission notice shall be included in all c
                                                 <td>{{$tratamento->tratamento_executado}}</td>
                                                 <td>{{($tratamento->localidade)->nome}}</td>
                                                 <td>{{($tratamento->profissional)->name}}</td>
+                                                <td>{{date('d/m/Y',strtotime($tratamento->created_at))}}</td>
                                             </tr>
                                         @endforeach
                                         </tbody>

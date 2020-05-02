@@ -155,7 +155,7 @@ The above copyright notice and this permission notice shall be included in all c
                                     <div class="row">
                                         <div class="container">
                                             <label class="bmd-label-floating">Comunidade Atendida</label>
-                                            <select style="text-transform: uppercase" class="form-control"
+                                            <select class="form-control"
                                                     name="id_localidade" id="id_localidade">
                                                 @foreach($localidades as $localidade)
                                                     <option
@@ -163,7 +163,7 @@ The above copyright notice and this permission notice shall be included in all c
                                                 @endforeach
                                             </select>
                                             <label class="bmd-label-floating">Paciente</label>
-                                            <select style="text-transform: uppercase" class="form-control"
+                                            <select class="form-control"
                                                     name="id_paciente" id="id_paciente">
                                                 @foreach($pacientes as $paciente)
                                                     <option
@@ -179,7 +179,7 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-2">
                                             <div class="form-group">
                                                 <label for="problemas_cardiaco">Tipo</label>
-                                                <select style="text-transform: uppercase" class="form-control" id="tipo"
+                                                <select class="form-control" id="tipo"
                                                         name="tipo">
                                                     <option>Inicio</option>
                                                     <option>Retorno</option>
@@ -190,7 +190,7 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Data</label>
-                                                <input style="text-transform: uppercase" type="text"
+                                                <input type="text"
                                                        class="form-control data" id="data" name="data" maxlength="10">
                                             </div>
                                         </div>

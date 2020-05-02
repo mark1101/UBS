@@ -29,6 +29,7 @@ class veOdontologicoController extends Controller
 
         $total = $consulta + $tratamento;
 
+
         $date1 = date("Y-m-d");
 
         $cd = ConsultaDentista::where('id_sede', Auth::user()->cidade_sede)

@@ -155,7 +155,7 @@ The above copyright notice and this permission notice shall be included in all c
                                     <div class="row">
                                         <div class="container">
                                             <label class="bmd-label-floating">Comunidade Atendida</label>
-                                            <select style="text-transform: uppercase" class="form-control"
+                                            <select class="form-control"
                                                     name="id_localidade" id="id_localidade">
                                                 @foreach($localidades as $localidade)
                                                     <option
@@ -163,7 +163,7 @@ The above copyright notice and this permission notice shall be included in all c
                                                 @endforeach
                                             </select>
                                             <label class="bmd-label-floating">Paciente</label>
-                                            <select style="text-transform: uppercase" class="form-control"
+                                            <select  class="form-control"
                                                     name="id_paciente" id="id_paciente">
                                                 @foreach($pacientes as $paciente)
                                                     <option
@@ -237,7 +237,7 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Outras Doenças</label>
-                                                <input style="text-transform: uppercase" type="text" class="form-control" id="outras_doencas"
+                                                <input type="text" class="form-control" id="outras_doencas"
                                                        name="outras_doencas" required>
                                             </div>
                                         </div>
@@ -270,27 +270,27 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Língua</label>
-                                                <input style="text-transform: uppercase"type="text" class="form-control" id="lingua" name="lingua" required>
+                                                <input type="text" class="form-control" id="lingua" name="lingua" required>
                                             </div>
                                         </div>
                                         <div class="col-md-5">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Palato Mole</label>
-                                                <input style="text-transform: uppercase"type="text" class="form-control" id="palato_mole"
+                                                <input type="text" class="form-control" id="palato_mole"
                                                        name="palato_mole" required>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Assoalho Bucal</label>
-                                                <input style="text-transform: uppercase"type="text" class="form-control" id="assoalho_bucal"
+                                                <input type="text" class="form-control" id="assoalho_bucal"
                                                        name="assoalho_bucal" required>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Labios</label>
-                                                <input style="text-transform: uppercase"type="text" class="form-control" id="labios" name="labios" required>
+                                                <input type="text" class="form-control" id="labios" name="labios" required>
                                             </div>
                                         </div>
                                     </div>
@@ -362,14 +362,14 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-10">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Observações</label>
-                                                <textarea style="text-transform: uppercase;" class="form-control"
+                                                <textarea maxlength="200" class="form-control"
                                                           id="observacoes" name="observacoes" rows="3" required></textarea>
                                             </div>
                                         </div>
                                         <div class="col-md-10">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Plano Tratamento</label>
-                                                <textarea style="text-transform: uppercase;" class="form-control"
+                                                <textarea maxlength="200" class="form-control"
                                                           id="plano_tratamento" name="plano_tratamento"
                                                           rows="3" required></textarea>
                                             </div>

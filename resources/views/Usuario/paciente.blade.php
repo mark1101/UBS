@@ -265,7 +265,7 @@ The above copyright notice and this permission notice shall be included in all c
                                     <p class="card-category">Informações de Endereço</p>
                                     <div class="container">
                                         <div class="row">
-                                            <select style="text-transform: uppercase;" class="form-control" name="id_localidade" id="id_localidade">
+                                            <select  class="form-control" name="id_localidade" id="id_localidade">
                                                 @foreach($localidades as $localidade)
                                                     <option
                                                         value="{{$localidade->id}}"style="text-transform: uppercase;" >

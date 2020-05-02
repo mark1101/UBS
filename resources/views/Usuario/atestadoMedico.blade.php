@@ -206,10 +206,10 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-5">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Nome Paciente</label>
-                                                <select style="text-transform: uppercase;" class="form-control ls-select" name="id_paciente" id="id_paciente">
+                                                <select class="form-control ls-select" name="id_paciente" id="id_paciente">
                                                     @foreach($pacientes as $paciente)
                                                         <option
-                                                            value="{{$paciente->id}}"style="text-transform: uppercase;" >
+                                                            value="{{$paciente->id}}">
                                                             {{$paciente->nome}} {{$paciente->ultimo_nome}}</option>
                                                     @endforeach
                                                 </select>
