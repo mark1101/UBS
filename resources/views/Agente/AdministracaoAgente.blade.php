@@ -18,7 +18,7 @@
 
 </head>
 
-<body class="">
+<body class="" style="background-image: url({{asset('img/inicio.jpg')}}) ; background-size: 100% 100%;">
 <div class="wrapper ">
 
     <div class="sidebar" data-color="orange" data-background-color="white" data-image="../assets/img/unidade.jpg">
@@ -33,17 +33,11 @@
                         <p>Início</p>
                     </a>
                 </li>
-                <li class="nav-item dropdown ">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false">
+                <li class="nav-item ">
+                    <a class="nav-link" href="{{route('AgenteBuscaPaciente')}}">
                         <i class="material-icons">person</i>
-                        Paciente
+                        Busca Paciente
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{route('cadastroPacienteAgente')}}">Cadastro de Paciente</a>
-                        <a class="dropdown-item" href="{{route('AgenteBuscaPaciente')}}">Busca de Paciente</a>
-                    </div>
                 </li>
                 <li class="nav-item  ">
                     <a class="nav-link" href="{{route('recadoAgente')}}">
@@ -51,6 +45,18 @@
                         </i>
                         <p>Recados</p>
                     </a>
+                </li>
+                <li class="nav-item dropdown ">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        <i class="material-icons">assignment</i>
+                        Ficha de visita
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{route('cadastroFicha')}}">Nova visita</a>
+                        <a class="dropdown-item" href="{{route('buscaVisita')}}">Buscar ficha</a>
+                    </div>
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link" href="#">
@@ -67,7 +73,7 @@
         <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
             <div class="container-fluid">
                 <div class="navbar-wrapper">
-                    <a class="navbar-brand" href="javascript:;">Pagina Inicial</a>
+                    <a class="navbar-brand" href="javascript:;"></a>
                 </div>
 
                 <!-- BOTAO DE RESPONSIVIDADE PARA OPCIOES DE SIDEBAR-->
@@ -85,7 +91,7 @@
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{Auth::user()->funcao}} {{ Auth::user()->name }} <span class="caret"></span>
+                               {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -115,7 +121,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Visitas</h5>
                             <img src="{{asset('img/casa.png')}}">
-                            <a href="#" class="btn btn-primary-agente">Cadastrar</a>
+                            <a href="{{route('cadastroFicha')}}" class="btn btn-primary-agente">Cadastrar</a>
                         </div>
                     </div>
                     &nbsp &nbsp &nbsp

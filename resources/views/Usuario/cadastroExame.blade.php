@@ -269,7 +269,7 @@ The above copyright notice and this permission notice shall be included in all c
                                     </button>
                                     <!--<button type="submit" class="btn btn-primary pull-right">Solicitar Exame</button>-->
                                 </form>
-                                @if(\Illuminate\Support\Facades\Auth::user()->funcao == "Medicina  ")
+                                @if(Auth::user()->funcao == "Medicina")
                                     <button type="submit" class="btn btn-primary-normal "><a style="color: white"
                                                                                              href="{{route('solicitarExame')}}">Solicitar
                                             Exame</a></button>

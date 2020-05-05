@@ -13,7 +13,7 @@ class PacienteController extends Controller
     public function indexPaciente()
     {
         $localidade = Localidade::where('id_sede' , Auth::user()->cidade_sede)->get();
-        return view('Usuario.paciente', [
+        return view('Usuario.cadastraPaciente', [
             'localidades' => $localidade
         ]);
     }
@@ -29,6 +29,7 @@ class PacienteController extends Controller
     {
         $errors = "";
         $data = $request->all();
+        unset($data['_token']);
 
         $data['id_sede'] = Auth::user()->cidade_sede;
 
@@ -38,12 +39,6 @@ class PacienteController extends Controller
         $response['success'] = true;
         echo json_encode($response);
 
-
-        /*if (Auth::user()->admin == 3) {
-            return redirect('/agente/cadastroPaciente');
-        } else {
-            return redirect('/paciente');
-        }*/
     }
 
     public function mostraPaciente()

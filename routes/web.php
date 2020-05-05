@@ -193,6 +193,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/comunicacaoAgente', 'AgenteController@comunicacaAgente')->name('comunicacaoAgente');
     Route::post('/cadastraRecadoAgente', 'AgenteController@cadastraRecadoAgente')->name('storeRecadoAgente');
 
+    Route::get('/ficha', 'FichaVisitaController@indexVisita')->name('cadastroFicha');
+    Route::post('cadastraFicha', 'FichaVisitaController@cadastraFicha')->name('cadastrouFicha');
+    Route::get('/buscaVisita', 'FichaVisitaController@indexBuscaFicha')->name('buscaVisita');
+    Route::get('buscaFicha', 'FichaVisitaController@buscaFicha')->name('buscaFichaVisita');
+    Route::post('alteraFicha/{id}', 'FichaVisitaController@alteraFicha')->name('alteraficha');
+
 
 //ROTOAS DE VIAGENS
     Route::post('/cadastrouViagem', 'ViagemController@cadastroViagem')->name('storeViagem');

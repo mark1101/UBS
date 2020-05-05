@@ -43,17 +43,11 @@ The above copyright notice and this permission notice shall be included in all c
                         <p>Início</p>
                     </a>
                 </li>
-                <li class="nav-item dropdown active">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{route('AgenteBuscaPaciente')}}">
                         <i class="material-icons">person</i>
-                        Paciente
+                        Busca Paciente
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{route('cadastroPacienteAgente')}}">Cadastro de Paciente</a>
-                        <a class="dropdown-item" href="{{route('AgenteBuscaPaciente')}}">Busca de Paciente</a>
-                    </div>
                 </li>
                 <li class="nav-item  ">
                     <a class="nav-link" href="{{route('recadoAgente')}}">
@@ -61,6 +55,18 @@ The above copyright notice and this permission notice shall be included in all c
                         </i>
                         <p>Recados</p>
                     </a>
+                </li>
+                <li class="nav-item dropdown ">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        <i class="material-icons">assignment</i>
+                        Ficha de visita
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{route('cadastroFicha')}}">Nova visita</a>
+                        <a class="dropdown-item" href="{{route('buscaVisita')}}">Buscar ficha</a>
+                    </div>
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link" href="#">
@@ -97,7 +103,7 @@ The above copyright notice and this permission notice shall be included in all c
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{Auth::user()->funcao}} {{ Auth::user()->name }} <span class="caret"></span>
+                               {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">

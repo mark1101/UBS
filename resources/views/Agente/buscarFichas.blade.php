@@ -28,120 +28,53 @@ The above copyright notice and this permission notice shall be included in all c
     <link href="{{asset('css/material-dashboard.css')}}" rel="stylesheet"/>
 </head>
 
-<body class="" >
+<body class="">
 <div class="wrapper ">
 
-    <div class="sidebar" data-color="green" data-background-color="white" data-image="../assets/img/unidade.jpg">
-        <div class="logo"><a href="{{'inicio'}}" class="simple-text logo-normal">
-                Unidade {{Auth::user()->localidade}}
+    <div class="sidebar" data-color="orange" data-background-color="white" data-image="../assets/img/unidade.jpg">
+        <div class="logo"><a href="#" class="simple-text logo-normal">
+                <img src="{{asset('img/agente.png')}}">
             </a></div>
-        <div class="sidebar-wrapper">
+        <div class="sidebar-wrapper ">
             <ul class="nav">
-                <li class="nav-item  ">
-                    <a class="nav-link" href="{{route('inicio')}}">
+                <li class="nav-item ">
+                    <a class="nav-link" href="{{route('admAgente')}}">
                         <i class="material-icons">home_work</i>
                         <p>Início</p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="{{route('AgenteBuscaPaciente')}}">
+                        <i class="material-icons">person</i>
+                        Busca Paciente
+                    </a>
+                </li>
+                <li class="nav-item  ">
+                    <a class="nav-link" href="{{route('recadoAgente')}}">
+                        <i class="material-icons">chat
+                        </i>
+                        <p>Recados</p>
                     </a>
                 </li>
                 <li class="nav-item dropdown active">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                        data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">
-                        <i class="material-icons">person</i>
-                        Paciente
+                        <i class="material-icons">assignment</i>
+                        Ficha de visita
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{route('paciente')}}">Cadastro de Paciente</a>
-                        <a class="dropdown-item" href="{{route('mostraPaciente')}}">Busca de Paciente</a>
+                        <a class="dropdown-item" href="{{route('cadastroFicha')}}">Nova visita</a>
+                        <a class="dropdown-item" href="{{route('buscaVisita')}}">Buscar ficha</a>
                     </div>
                 </li>
-                @if(Auth::user()->controle_acesso == 2)
-                    <li class="nav-item dropdown ">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                           data-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false">
-                            <i class="material-icons">content_paste</i>
-                            Exames
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{route('cadastroExame')}}">Novo Exame</a>
-                            <a class="dropdown-item" href="{{route('buscarExame')}}">Buscar Exames </a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown ">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                           data-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false">
-                            <i class="material-icons">insert_emoticon</i>
-                            Consultas
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{route('consultaCadastro')}}">Nova Consulta</a>
-                            <a class="dropdown-item" href="{{route('mostraConsulta')}}">Buscar Consulta </a>
-                        </div>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="{{route('indexVacina')}}">
-                            <i class="material-icons">format_color_reset
-                            </i>
-                            <p>Vacinas</p>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="{{route('encaminhamento')}}">
-                            <i class="material-icons">arrow_right_alt
-                            </i>
-                            <p>Encaminhamentos</p>
-                        </a>
-                    </li>
-                @endif
-                <li class="nav-item  ">
-                    <a class="nav-link" href="{{route('recado')}}">
-                        <i class="material-icons">attach_file
-                        </i>
-                        <p>Recados</p>
-                    </a>
-                </li>
-                <li class="nav-item  ">
-                    <a class="nav-link" href="{{route('historicoPaciente')}}">
+                <li class="nav-item ">
+                    <a class="nav-link" href="#">
                         <i class="material-icons">history
                         </i>
-                        <p>Histórico dos Pacientes</p>
+                        <p>Histórico de Pacientes</p>
                     </a>
                 </li>
-                @if(Auth::user()->controle_acesso == 4)
-                    <li class="nav-item ">
-                        <a class="nav-link" href="{{route('controleViagem')}}">
-                            <i class="material-icons">commute
-                            </i>
-                            <p>Gerenciamento de Viagens</p>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="{{route('agendamentoDentista')}}">
-                            <i class="material-icons">airline_seat_flat_angled
-                            </i>
-                            <p>Agendamento Dentista</p>
-                        </a>
-                    </li>
-                    <li class="nav-item  ">
-                        <a class="nav-link" href="{{route('confirmaViagem')}}">
-                            <i class="material-icons">commute
-                            </i>
-                            <p>Confirmação de Viagens</p>
-                        </a>
-                    </li>
-                @endif
-                @if(Auth::user()->funcao == "Medicina")
-                    <li class="nav-item  ">
-                        <a class="nav-link" href="{{route('atestadoMedico')}}">
-                            <i class="material-icons">assignment_late
-                            </i>
-                            <p>Atestado Medico</p>
-                        </a>
-                    </li>
-
-                @endif
             </ul>
         </div>
     </div>
@@ -150,6 +83,10 @@ The above copyright notice and this permission notice shall be included in all c
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
             <div class="container-fluid">
+
+                <div class="navbar-wrapper">
+                    <a class="navbar-brand" href="javascript:;">Gerenciamento de Paciente</a>
+                </div>
 
                 <!-- BOTAO DE RESPONSIVIDADE PARA OPCIOES DE SIDEBAR-->
                 <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
@@ -194,16 +131,16 @@ The above copyright notice and this permission notice shall be included in all c
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <!-- DIV DE BUSCA DE PACIENTE -->
 
                     <div class="col-md-12">
                         <div class="card">
-                            <div class="card-header card-header-success">
-                                <h4 class="card-title">A busca pode ser feita por nome, CPF ou número do SUS</h4>
-                                <form id="buscaPaciente" class="navbar-form">
+                            <div class="card-header card-header-warning">
+                                <h4 class="card-title">A busca é feita por integrante identificador da familía</h4>
+                                <form id="buscaFicha" class="navbar-form">
                                     @csrf
                                     <div class="input-group no-border">
-                                        <input onkeyup="submitForm()" type="text" style="color:beige;" id="criterio" name="criterio"
+                                        <input onkeyup="submitForm()" type="text" style="color:beige;" id="criterio"
+                                               name="criterio"
                                                class="form-control">
                                         <button type="submit" class="btn btn-white btn-round btn-just-icon">
                                             <i class="material-icons">search</i>
@@ -230,10 +167,10 @@ The above copyright notice and this permission notice shall be included in all c
 
                     <script>
                         function submitForm() {
-                            if($("#criterio").val() === ""){
+                            if ($("#criterio").val() === "") {
                                 $("#tableSearch").html("");
-                            }else{
-                                $("#buscaPaciente").submit();
+                            } else {
+                                $("#buscaFicha").submit();
                             }
                         }
                     </script>
@@ -241,34 +178,32 @@ The above copyright notice and this permission notice shall be included in all c
                     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
                     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
 
-
-                    @foreach($pacientes as $paciente)
-                        <div class="modal fade" id="modal{{$paciente->id}}" tabindex="-1" role="dialog"
+                    @foreach($fichas as $ficha)
+                        <div class="modal fade" id="modal{{$ficha->id}}" tabindex="-1" role="dialog"
                              aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Edição de Paciente</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">Edição ficha de visitas</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <div id="editPaciente" class="modal-body">
+                                    <div id="editFicha" class="modal-body">
                                         <div class=" container">
-                                            <form id="form{{$paciente->id}}">
+                                            <form id="form{{$ficha->id}}">
                                                 @csrf
-                                                Nome: <label for="name{{$paciente->id}}"></label>
-                                                <input id="name{{$paciente->id}}" name="nome" class="form-control"
-                                                       value="{{$paciente->nome}}" required>
+                                                Nome identificador: <label for="name{{$ficha->id}}"></label>
+                                                <input id="identificador" name="identificador" class="form-control"
+                                                       value="{{$ficha->identificador}}" required>
                                                 <br>
-                                                Ultimo nome: <label for="ultimo{{$paciente->id}}"></label>
-                                                <input id="ultimo{{$paciente->id}}" name="ultimo_nome"
-                                                       class="form-control"
-                                                       value="{{$paciente->ultimo_nome}}" required>
+                                                Descricao da visita: <label for="descricao{{$ficha->id}}"></label>
+                                                <textarea  class="form-control" name="descricao" id="descricao" rows="3" required>{{$ficha->descricao}}
+                                                </textarea>
                                                 <br>
-                                                Telefone: <label for="name{{$paciente->id}}"></label>
-                                                <input id="name{{$paciente->id}}" name="telefone" class="form-control"
-                                                       value="{{$paciente->telefone}}" required>
+                                                Problemas: <label for="problemas{{$ficha->id}}"></label>
+                                                <textarea  class="form-control" name="problemas" id="problemas" rows="3" required>{{$ficha->problemas}}
+                                                </textarea>
                                                 <br>
                                                 <div class="row" style="float: right; left: 30%">
                                                     <button type="submit" class="btn btn-success">Salvar mudanças
@@ -278,21 +213,21 @@ The above copyright notice and this permission notice shall be included in all c
                                         </div>
                                         <script>
                                             $(function () {
-                                                $('form[id="form{{$paciente->id}}"]').submit(function (event) {
+                                                $('form[id="form{{$ficha->id}}"]').submit(function (event) {
                                                     event.preventDefault();
                                                     $.ajax({
-                                                        url: "{{route('updatePaciente',['id'=>$paciente->id])}}",
+                                                        url: "{{route('alteraficha',['id'=>$ficha->id])}}",
                                                         type: "post",
                                                         data: $(this).serialize(),
                                                         dataType: 'json',
                                                         success: function (response) {
                                                             if (response.success === true) {
-                                                                $("#footer{{$paciente->id}}").fadeIn();
-                                                                $("#message{{$paciente->id}}").text(response.message);
+                                                                $("#footer{{$ficha->id}}").fadeIn();
+                                                                $("#message{{$ficha->id}}").text(response.message);
                                                                 $.wait(function () {
-                                                                    $("#footer{{$paciente->id}}").fadeOut();
+                                                                    $("#footer{{$ficha->id}}").fadeOut();
                                                                 }, 5);
-                                                                $("#buscaPaciente").submit();
+                                                                $("#buscaFicha").submit();
                                                             }
                                                         }
                                                     });
@@ -303,12 +238,8 @@ The above copyright notice and this permission notice shall be included in all c
                                             });
                                         </script>
                                     </div>
-                                    <div class="modal-footer" id="footer{{$paciente->id}}" style="display: none">
-                                        <span id="message{{$paciente->id}}" style="color: green"></span>
-                                    </div>
-                                    <div class="modal-footer" id="footerError{{$paciente->id}}"
-                                         style="display: none">
-                                        <span id="message{{$paciente->id}}" style="color: red"></span>
+                                    <div class="modal-footer" id="footer{{$ficha->id}}" style="display: none">
+                                        <span id="message{{$ficha->id}}" style="color: green"></span>
                                     </div>
                                 </div>
                             </div>
@@ -317,23 +248,22 @@ The above copyright notice and this permission notice shall be included in all c
 
                     <script>
                         $(function () {
-                            $('form[id="buscaPaciente"]').submit(function (event) {
+                            $('form[id="buscaFicha"]').submit(function (event) {
                                 event.preventDefault();
                                 $.ajax({
-                                    url: "{{route('searchPaciente')}}",
-                                    type: "post",
+                                    url: "{{route('buscaFichaVisita')}}",
+                                    type: "get",
                                     data: $(this).serialize(),
                                     dataType: 'json',
                                     success: function (response) {
                                         if (response.success === true) {
                                             var newRow = $("<tr>");
                                             var cols = "";
-                                            cols += '<th>Nome</th>';
-                                            cols += '<th>Data Nascimento</th>';
-                                            cols += '<th>Num Sus</th>';
-                                            cols += '<th>CPF</th>';
+                                            cols += '<th>Nome Identificador</th>';
+                                            cols += '<th>Descricao da Visita</th>';
+                                            cols += '<th>Problemas</th>';
                                             cols += '<th>Localidade</th>';
-                                            cols += '<th>Telefone</th>';
+                                            cols += '<th>Data</th>';
                                             newRow.append(cols);
 
                                             $("#tableSearch").html("").append(newRow).fadeIn();
@@ -341,13 +271,12 @@ The above copyright notice and this permission notice shall be included in all c
                                             $.each(response.data, function (item, value) {
                                                 var newRow = $("<tr>");
                                                 var cols = "";
-                                                cols += '<td>' + response.data[item]["nome"] + " " + response.data[item]["ultimo_nome"] + '</td>';
-                                                cols += '<td>' + response.data[item]["data_nascimento"] + '</td>';
-                                                cols += '<td>' + response.data[item]["num_sus"] + '</td>';
-                                                cols += '<td>' + response.data[item]["cpf"] + '</td>';
+                                                cols += '<td>' + response.data[item]["identificador"] + '</td>';
+                                                cols += '<td>' + response.data[item]["descricao"] + '</td>';
+                                                cols += '<td>' + response.data[item]["problemas"] + '</td>';
                                                 cols += '<td>' + response.data[item]['localidade']['nome'] + '</td>';
-                                                cols += '<td>' + response.data[item]['telefone'] + '</td>';
-                                                cols += '<td><a  data-toggle="modal" data-target="#modal' + response.data[item]['id'] + '" style="width: 55px;"> <i class="material-icons" style="color: black;"title="Salvar Paciente">edit</i></a>\n</td>';
+                                                cols += '<td>' + response.data[item]['data'] + '</td>';
+                                                cols += '<td><a   href="#" data-toggle="modal" data-target="#modal' + response.data[item]['id'] + '" style="width: 55px;"> <i class="material-icons" style="color: black;"title="Salvar Paciente">edit</i></a>\n</td>';
 
                                                 newRow.append(cols);
                                                 $("#tableSearch").append(newRow).fadeIn();
@@ -360,29 +289,6 @@ The above copyright notice and this permission notice shall be included in all c
                             });
                         });
                     </script>
-
-
-                    <script>
-                        $(document).ready(function () {
-                            $("#buscaPaciente").submit();
-                        })
-                    </script>
-                    <!-- MOSTRAGEM COM IMAGEM EM CIMA
-                    <div class="col-md-4">
-                      <div class="card card-profile">
-                        <div class="card-avatar">
-                          <a href="javascript:;">
-                            <h1>?</h1>
-                            <img class="img" src="../assets/img/faces/interrogacao.png" />
-                          </a>
-                        </div>
-                        <div class="card-body">
-                          <p class="card-description">
-                            Aqui explicar a importancia do cadastro do cliente dentro do sistema.
-                          </p>
-                        </div>
-                      </div>
-                    </div> -->
 
 
                 </div>
