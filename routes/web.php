@@ -203,6 +203,10 @@ Route::middleware(['auth'])->group(function () {
 //ROTOAS DE VIAGENS
     Route::post('/cadastrouViagem', 'ViagemController@cadastroViagem')->name('storeViagem');
     Route::get('/confirmaViagem', 'ViagemController@indexConfirma')->name('confirmaViagem');
+    Route::get('buscaViagem', 'ViagemController@buscaViagens')->name('buscaViagemNao');
+    Route::post('alteraViagem/{id}', 'ViagemController@alteraViagem')->name('alteraViagem');
+    Route::post('confirma/{id}', 'ViagemController@confirmaViagem')->name('confirmacaoviagem');
+
 
 });
 

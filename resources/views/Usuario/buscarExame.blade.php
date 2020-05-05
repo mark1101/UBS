@@ -107,7 +107,7 @@ The above copyright notice and this permission notice shall be included in all c
                     <li class="nav-item ">
                         <a class="nav-link" href="{{route('controleViagem')}}">
                             <i class="material-icons">commute</i>
-                            <p>Gerenciamento de Viagens</p>
+                            <p>Agendamento de veículos</p>
                         </a>
                     </li>
                     <li class="nav-item ">

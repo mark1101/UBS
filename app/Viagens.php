@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Viagens extends Model
 {
     protected $fillable = [
-        'id' ,'num_pacientes', 'id_origem' , 'id_destino' , 'id_motorista' ,
-        'id_carro', 'data', 'observacao', 'ativo'
+        'id' ,'num_pacientes', 'id_origem' , 'destino' , 'id_motorista' ,
+        'id_carro', 'data', 'observacao', 'ativo' ,'id_sede'
         ];
 
     public function motorista()
@@ -21,9 +21,6 @@ class Viagens extends Model
     }
     public function localidadeOrigem(){
         return $this->hasOne(Localidade::class, 'id', 'id_origem');
-    }
-    public function localidadeDestino(){
-        return $this->hasOne(Localidade::class, 'id', 'id_destino');
     }
 
 }

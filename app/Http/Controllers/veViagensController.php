@@ -14,7 +14,7 @@ class veViagensController extends Controller
         $localidade = Localidade::where('id_sede', Auth::user()->cidade_sede)
             ->get();
         $valores = Viagens::where('id_sede', Auth::user()->cidade_sede)
-            ->with('motorista', 'carro', 'localidadeOrigem', 'localidadeDestino')
+            ->with('motorista', 'carro', 'localidadeOrigem')
             ->get();
 
 

@@ -29,7 +29,6 @@ class ConsultaController extends Controller
         $response['success'] = true;
         echo json_encode($response);
 
-        //return redirect('/consultaCadastro');
     }
 
     public function mostraConsulta()

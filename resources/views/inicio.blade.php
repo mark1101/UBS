@@ -104,7 +104,7 @@
                         <a class="nav-link" href="{{route('controleViagem')}}">
                             <i class="material-icons">commute
                             </i>
-                            <p>Gerenciamento de Viagens</p>
+                            <p>Agendamento de veículos</p>
                         </a>
                     </li>
                     <li class="nav-item ">

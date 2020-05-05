@@ -18,18 +18,21 @@ class CreateViagensTable extends Migration
             $table->integer('id_motorista')->unsigned();
             $table->integer('num_pacientes');
             $table->integer('id_origem')->unsigned();
-            $table->integer('id_destino')->unsigned();
+            $table->string('destino');
             $table->timestamp('data');
             $table->integer('id_carro')->unsigned();
             $table->string('observacao');
             $table->integer('ativo')->default(0);
+            $table->integer('id_sede');
             $table->timestamps();
 
-            $table->foreign('id_motorista')->references('id')->on('users');
+        });
+        Schema::table('viagens', function (Blueprint $table) {
+            $table->foreign('id_motorista')->references('id')->on('motoristas');
             $table->foreign('id_origem')->references('id')->on('localidades');
-            $table->foreign('id_destino')->references('id')->on('localidades');
             $table->foreign('id_carro')->references('id')->on('carros');
         });
+
     }
 
     /**

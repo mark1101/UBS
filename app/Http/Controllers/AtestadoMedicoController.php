@@ -32,8 +32,6 @@ class AtestadoMedicoController extends Controller
         $response['success'] = true;
         echo json_encode($response);
 
-        //return redirect('/solicitaAtestado');
-
     }
 
     public function createPdf()

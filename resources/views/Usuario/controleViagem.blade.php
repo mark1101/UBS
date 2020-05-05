@@ -73,7 +73,7 @@ The above copyright notice and this permission notice shall be included in all c
                     <a class="nav-link" href="{{route('controleViagem')}}">
                         <i class="material-icons">commute
                         </i>
-                        <p>Gerenciamento de Viagens</p>
+                        <p>Agendamento de veículos</p>
                     </a>
                 </li>
                 @if(Auth::user()->controle_acesso == 4)
@@ -161,7 +161,7 @@ The above copyright notice and this permission notice shall be included in all c
                                     <p class="card-category">Origem</p>
                                     <div class="container">
                                         <div class="row">
-                                            <select style="text-transform: uppercase" class="form-control" name="id_origem" id="id_origem">
+                                            <select class="form-control" name="id_origem" id="id_origem">
                                                 @foreach($localidades as $localidade)
                                                     <option
                                                         value="{{$localidade->id}}">{{$localidade->nome}}</option>
@@ -172,22 +172,17 @@ The above copyright notice and this permission notice shall be included in all c
                                     <p class="card-category">Destino</p>
                                     <div class="container">
                                         <div class="row">
-                                            <select style="text-transform: uppercase" class="form-control" name="id_destino" id="id_destino">
-                                                @foreach($localidades as $localidade)
-                                                    <option
-                                                        value="{{$localidade->id}}">{{$localidade->nome}}</option>
-                                                @endforeach
-                                            </select>
+                                            <input type="text" name="destino" id="destino" class="form-control">
                                         </div>
                                     </div>
 
                                     <p class="card-category">Motorista Responsável</p>
                                     <div class="container">
                                         <div class="row">
-                                            <select style="text-transform: uppercase" class="form-control" name="id_motorista" id="id_motorista">
+                                            <select  class="form-control" name="id_motorista" id="id_motorista">
                                                 @foreach($motoristas as $motorista)
                                                     <option
-                                                        value="{{$motorista->id}}">{{$motorista->nome}} ----- {{$motorista->telefone}}</option>
+                                                        value="{{$motorista->id}}">{{$motorista->nome}} -- {{$motorista->telefone}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -196,7 +191,7 @@ The above copyright notice and this permission notice shall be included in all c
                                     <p class="card-category">Veículo</p>
                                     <div class="container">
                                         <div class="row">
-                                            <select style="text-transform: uppercase" class="form-control" name="id_carro" id="id_carro">
+                                            <select  class="form-control" name="id_carro" id="id_carro">
                                                 @foreach($carros as $carro)
                                                     <option
                                                         value="{{$carro->id}}">{{$carro->nome}} ---- {{$carro->placa}}</option>
@@ -225,7 +220,7 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Data</label>
-                                                <input style="text-transform: uppercase" type="text" class="form-control data" maxlength="10" name="data" id="data" required>
+                                                <input type="text" class="form-control data" maxlength="10" name="data" id="data" required>
                                             </div>
                                         </div>
                                         <div class="col-md-10">

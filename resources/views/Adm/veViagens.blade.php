@@ -202,7 +202,7 @@ The above copyright notice and this permission notice shall be included in all c
                                                 <td>{{($mostra->motorista)->nome}}</td>
                                                 <td>{{$mostra->num_pacientes}}</td>
                                                 <td>{{($mostra->localidadeOrigem)->nome}}</td>
-                                                <td>{{($mostra->localidadeDestino)->nome}}</td>
+                                                <td>{{$mostra->destino}}</td>
                                                 <td>{{$mostra->data}}</td>
                                                 <td>{{($mostra->carro)->nome}}</td>
                                                 <td>{{($mostra->carro)->placa}}</td>
@@ -252,7 +252,7 @@ The above copyright notice and this permission notice shall be included in all c
                                             <tr>
                                                 <td>{{($dia->motorista)->nome}}</td>
                                                 <td>{{($dia->localidadeOrigem)->nome}}</td>
-                                                <td>{{($dia->localidadeDestino)->nome}}</td>
+                                                <td>{{$dia->destino}}</td>
                                                 <td>{{($dia->carro)->nome}}</td>
                                                 <td>{{($dia->carro)->placa}}</td>
                                                 <td>{{$dia->observacao}}</td>

@@ -140,7 +140,7 @@ The above copyright notice and this permission notice shall be included in all c
                                         <tr>
                                             <th>Recebimento</th>
                                             <th>Enviado por</th>
-                                            <th>Módulo de Trabalho</th>
+                                            <th>Setor</th>
                                             <th>Mensagem</th>
                                             <th>Data</th>
                                         </tr>

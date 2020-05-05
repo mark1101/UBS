@@ -14,7 +14,7 @@ class CreateMotoristasTable extends Migration
     public function up()
     {
         Schema::create('motoristas', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->integerIncrements('id');
             $table->string('nome');
             $table->string('cpf');
             $table->string('telefone');

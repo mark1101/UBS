@@ -143,6 +143,8 @@ The above copyright notice and this permission notice shall be included in all c
                                         <thead>
                                         <tr>
                                             <th>Localidade Recebimento</th>
+                                            <th>Setor</th>
+                                            <th>De</th>
                                             <th>Mensagem</th>
                                             <th>Data</th>
                                         </tr>
@@ -152,6 +154,8 @@ The above copyright notice and this permission notice shall be included in all c
                                         @foreach($rs as $recado)
                                             <tr>
                                                 <td>{{($recado->localidade)->nome}}</td>
+                                                <td>{{($recado->profissional)->funcao}}</td>
+                                                <td>{{($recado->profissional)->name}}</td>
                                                 <td>{{$recado->mensagem}}</td>
                                                 <td>{{$recado->data}}</td>
                                             </tr>
