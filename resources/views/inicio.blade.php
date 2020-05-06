@@ -183,7 +183,103 @@
 
         <div class="content">
             <div class="container-fluid">
-                {{--<h1 align="center" style="font-family: Candara ; font-size: 100px ; color: black">BEM VINDO </h1>--}}
+                @if(\Illuminate\Support\Facades\Auth::user()->funcao == "Recepcao")
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header card-header">
+                                <div class="form-group">
+                                    <h3 class="bmd-label-floating">Entrada de pacientes</h3>
+
+                                    <form id="entradaPaciente">
+                                        @csrf
+                                        <div class="container">
+                                            <div class="row">
+                                                <label for="">Nome</label>
+                                                <select name="id_paciente" id="id_paciente" class="form-control">
+                                                    @foreach($pacientes as $paciente)
+                                                        <option
+                                                            value="{{$paciente->id}}">{{$paciente->nome}} {{$paciente->ultimo_nome}}</option>
+                                                    @endforeach
+                                                </select>
+                                                <br><br>
+                                                <label for="">Encaminhamento</label>
+                                                <select class="form-control" name="encaminhamento" id="encaminhamento">
+                                                    <option value="vacina">Vacina</option>
+                                                    <option value="consulta">Consulta</option>
+                                                    <option value="encaminhamento">Encaminhamento</option>
+                                                    <option value="exame">Exame</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <button type="submit" class="btn btn-success">Cadastrar</button>
+                                    </form>
+
+                                    <form id="tableEntrada" action="">
+                                        <div class="card-body">
+                                            <div class="card-body">
+                                                <div class="table-responsive" style="overflow: auto; height: 300px;">
+                                                    <table id="tableSearch" class="table">
+                                                        <thead>
+
+                                                        </thead>
+                                                        <tbody>
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
+
+
+                    <script>
+                        $(function () {
+                            $('form[id="tableEntrada"]').submit(function (event) {
+                                event.preventDefault();
+                                $.ajax({
+                                    url: "{{route('mostraEntrada')}}",
+                                    type: "get",
+                                    data: $(this).serialize(),
+                                    dataType: 'json',
+                                    success: function (response) {
+                                        if (response.success === true) {
+                                            var newRow = $("<tr>");
+                                            var cols = "";
+                                            cols += '<th>Paciente</th>';
+                                            cols += '<th>Encaminhado</th>';
+                                            cols += '<th>Horario</th>';
+                                            newRow.append(cols);
+
+                                            $("#tableSearch").html("").append(newRow).fadeIn();
+                                            $.each(response.data, function (item, value) {
+                                                var newRow = $("<tr>");
+                                                var cols = "";
+                                                cols += '<td>' + response.data[item]["paciente"].nome + " " + response.data[item]["paciente"].ultimo_nome + '</td>';
+                                                cols += '<td>' + response.data[item]["encaminhamento"] + '</td>';
+                                                cols += '<td>' + response.data[item]['data'] + '</td>';
+
+                                                newRow.append(cols);
+                                                $("#tableSearch").append(newRow).fadeIn();
+                                            });
+                                        } else {
+                                            //erro
+                                        }
+                                    }
+                                });
+                            });
+                        });
+                    </script>
+
+                @endif
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header card-header">
@@ -242,12 +338,37 @@
             </div>
         </div>
 
-        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
+
+        <script>
+            $(function () {
+                $('form[id="entradaPaciente"]').submit(function (event) {
+                    event.preventDefault();
+
+                    $.ajax({
+                        url: "{{route('storeEntrada')}}",
+                        type: "POST",
+                        data: $(this).serialize(),
+                        dataType: 'json',
+                        success: function (response) {
+                            if (response.success === true) {
+                                alert('Entrada de paciente cadastrada!');
+                                $("#tableEntrada").submit();
+                            } else {
+
+                            }
+                        }
+                    })
+                })
+            })
+
+        </script>
 
 
         <script>
             $(document).ready(function () {
+
+                $("#tableEntrada").submit();
+
                 var selectedFilters = [];
 
                 $('.filter-btn').on('click', function () {
@@ -275,7 +396,6 @@
                     $('#filterValues').val(formattedFilters);
                 });
             });
-
         </script>
 
         <footer class="footer">

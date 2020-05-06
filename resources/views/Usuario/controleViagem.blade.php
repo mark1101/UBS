@@ -103,7 +103,7 @@ The above copyright notice and this permission notice shall be included in all c
             <div class="container-fluid">
 
                 <div class="navbar-wrapper">
-                    <a class="navbar-brand" href="javascript:;">Controle de Viagens</a>
+                    <a class="navbar-brand" href="javascript:;">A viagem tem origem na localidade da UBS</a>
                 </div>
 
                 <!-- BOTAO DE RESPONSIVIDADE PARA OPCIOES DE SIDEBAR-->
@@ -158,7 +158,7 @@ The above copyright notice and this permission notice shall be included in all c
                             <div class="card-body">
                                 <form id="cadastraViagem"{{-- action="{{route('storeViagem')}}" method="post"--}}>
                                     @csrf
-                                    <p class="card-category">Origem</p>
+                                    {{--<p class="card-category">Origem</p>
                                     <div class="container">
                                         <div class="row">
                                             <select class="form-control" name="id_origem" id="id_origem">
@@ -168,7 +168,7 @@ The above copyright notice and this permission notice shall be included in all c
                                                 @endforeach
                                             </select>
                                         </div>
-                                    </div>
+                                    </div>--}}
                                     <p class="card-category">Destino</p>
                                     <div class="container">
                                         <div class="row">

@@ -367,24 +367,6 @@ The above copyright notice and this permission notice shall be included in all c
                             $("#buscaPaciente").submit();
                         })
                     </script>
-                    <!-- MOSTRAGEM COM IMAGEM EM CIMA
-                    <div class="col-md-4">
-                      <div class="card card-profile">
-                        <div class="card-avatar">
-                          <a href="javascript:;">
-                            <h1>?</h1>
-                            <img class="img" src="../assets/img/faces/interrogacao.png" />
-                          </a>
-                        </div>
-                        <div class="card-body">
-                          <p class="card-description">
-                            Aqui explicar a importancia do cadastro do cliente dentro do sistema.
-                          </p>
-                        </div>
-                      </div>
-                    </div> -->
-
-
                 </div>
             </div>
         </div>

@@ -179,44 +179,6 @@ The above copyright notice and this permission notice shall be included in all c
                                 </table>
                             </div>
 
-                            {{--<div class="card-body">
-                                <div class="card-body">
-                                    <div class="table-responsive" style="overflow: auto; height: 300px;">
-                                        <table id="tableSearch" class="table">
-                                            <thead>
-
-                                            <tr>
-                                                <th>Origem</th>
-                                                <th>Destino</th>
-                                                <th>Motorista</th>
-                                                <th>Num Passageiros</th>
-                                                <th>Data</th>
-                                                <th>Ativo</th>
-                                                <th></th>
-
-                                            </tr>
-
-                                            </thead>
-                                            <tbody>
-
-                                            @foreach($viagens as $v)
-                                                <tr>
-                                                    <td>{{($v->localidadeOrigem)->nome}}</td>
-                                                    <td>{{$v->destino}}</td>
-                                                    <td>{{($v->motorista)->nome}}</td>
-                                                    <td>{{$v->num_pacientes}}</td>
-                                                    <td>{{$v->data}}</td>
-                                                    <td>{{$v->ativo}}</td>
-                                                    <td><a href="{{route('confirmaaa',['id' => $v->id])}}">Confirmar</a></td>
-                                                </tr>
-                                            @endforeach
-
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>--}}
-
                             <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
                             <script
                                 src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
@@ -338,7 +300,7 @@ The above copyright notice and this permission notice shall be included in all c
                                                                             $("#footer{{$viagem->id}}").fadeOut();
                                                                         }, 5);
                                                                         $("#buscaViagem").submit();
-                                                                        $("#modalConfirma").modal('hide');
+                                                                        $(".modal").modal('hide');
                                                                     }
                                                                 }
                                                             });

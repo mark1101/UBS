@@ -208,6 +208,11 @@ Route::middleware(['auth'])->group(function () {
     Route::post('confirma/{id}', 'ViagemController@confirmaViagem')->name('confirmacaoviagem');
 
 
+    // ENTRADA DE PACIENTES
+    Route::post('entrada', 'FichaEntradaController@store')->name('storeEntrada');
+    Route::get('mostraEntrada', 'FichaEntradaController@mostra')->name('mostraEntrada');
+
+
 });
 
 Route::get('/login', 'LoginController@index')->name('login');

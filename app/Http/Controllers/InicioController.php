@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Consulta;
 use App\Encaminhamento;
+use App\Paciente;
 use App\Recado;
 use App\User;
 use App\Vacina;
@@ -16,6 +17,7 @@ class InicioController extends Controller
     public function index(){
 
         $date1 = date("Y-m-d");
+        $pacientes = Paciente::where('id_sede', Auth::user()->cidade_sede)->get();
 
 
         $c = Consulta::where('id_localidade', Auth::user()->localidade)
@@ -67,6 +69,7 @@ class InicioController extends Controller
         $recado = count($recados);
 
         return view('inicio' ,[
+            'pacientes' => $pacientes,
             'consultas' => $consultas,
             'vacinas' => $vacinas,
             'encaminhamentos' => $encaminhamentos,
