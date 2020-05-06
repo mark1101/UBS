@@ -53,7 +53,7 @@ The above copyright notice and this permission notice shall be included in all c
                     </a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{route('veEncaminhamento')}}"                >
                         <i class="material-icons">arrow_right_alt
                         </i>
                         <p>Encaminhamentos</p>

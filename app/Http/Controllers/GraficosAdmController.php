@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Consulta;
+use App\Encaminhamento;
 use App\Localidade;
 use App\Motorista;
 use App\Paciente;
@@ -81,6 +82,17 @@ class GraficosAdmController extends Controller
             $localidasCount[$item->nome] = Consulta::where('id_localidade',$item->id)->count();
         }
         return view('Adm.graficoConsulta',[
+            'localidades' => $localidasCount
+        ]);
+    }
+    public function indexEncaminhamento(){
+        $localidades = Localidade::where('id_sede', Auth::user()->cidade_sede)->get();
+
+        $localidasCount = [];
+        foreach ($localidades as $item){
+            $localidasCount[$item->nome] = Encaminhamento::where('id_localidade',$item->id)->count();
+        }
+        return view('Adm.graficoEncaminhamento',[
             'localidades' => $localidasCount
         ]);
     }

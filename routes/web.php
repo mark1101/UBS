@@ -122,6 +122,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/grafico' , 'GraficosAdmController@index')->name('graficos');
     Route::get('/grafico/vacina', 'GraficosAdmController@indexVacina')->name('graficoVacina');
     Route::get('/grafico/consulta', 'GraficosAdmController@indexConsulta')->name('graficoConsulta');
+    Route::get('/grafico/encaminhamento', 'GraficosAdmController@indexEncaminhamento')->name('graficoEncaminhamento');
 
     Route::get('/recadosAdm', 'ComunicacaoAdmController@indexRecadoAdm')->name('recadoAdm');
     Route::get('/comunicacaoAdm', 'ComunicacaoAdmController@indexComunicacaoAdm')->name('comunicacaoAdm');
@@ -135,6 +136,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/veVacinas', 'veVacinasController@index')->name('veVacinas');
     Route::get('/vePro', 'veProfissionaisController@mostraProfissional')->name('searchProfissional');
     Route::get('/veViagens', 'veViagensController@index')->name('veViagens');
+    Route::get('/veEncaminhamentos', 'veEncaminhamentosController@index')->name('veEncaminhamento');
     Route::post('/mostraViagem','veViagensController@mostraViagem')->name('mostraViagem');
 
 

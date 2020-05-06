@@ -182,12 +182,12 @@ The above copyright notice and this permission notice shall be included in all c
                 <div class="container">
                     <a style="color: white" class="btn btn-primary-admin" href="{{route('graficos')}}">grafico inicio</a>
                     <a style="color: white" class="btn btn-primary-admin" href="{{route('graficoVacina')}}">Vacinas</a>
-                    <a style="color: white" class="btn btn-primary-admin" href="{{route('graficoEncaminhamento')}}">encaminhamentos</a>
+                    <a style="color: white" class="btn btn-primary-admin" href="{{route('graficoConsulta')}}">consultas</a>
 
                 </div>
                 <div class="card" style="align-items: flex-start">
                     <div class="card-body">
-                        <h6 class="card-subtitle mb-2 text-muted">relação consultas / localidade </h6>
+                        <h6 class="card-subtitle mb-2 text-muted">relação encaminhamentos / localidade </h6>
                         <div id="piechart_3d" style="width: 450px; height: 300px;"></div>
                     </div>
                 </div>

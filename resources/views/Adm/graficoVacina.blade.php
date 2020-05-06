@@ -185,7 +185,7 @@ The above copyright notice and this permission notice shall be included in all c
                     <a style="color: white" class="btn btn-primary-admin"
                        href="{{route('graficoConsulta')}}">consultas</a>
                     <a style="color: white" class="btn btn-primary-admin"
-                       href="">encaminhamento</a>
+                       href="{{route('graficoEncaminhamento')}}">encaminhamento</a>
 
                 </div>
                 <div class="card" style="align-items: flex-start">

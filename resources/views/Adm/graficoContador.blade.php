@@ -217,7 +217,7 @@ The above copyright notice and this permission notice shall be included in all c
                     <a style="color: white" class="btn btn-primary-admin"
                        href="{{route('graficoConsulta')}}">consultas</a>
                     <a style="color: white" class="btn btn-primary-admin" href="{{route('graficoVacina')}}">Vacinas</a>
-                    <a style="color: white" class="btn btn-primary-admin" href="{{route('graficos')}}">encaminhamento</a>
+                    <a style="color: white" class="btn btn-primary-admin" href="{{route('graficoEncaminhamento')}}">encaminhamentos</a>
                 </div>
                 <div class="card" style="align-items: flex-start">
                     <div class="card-body">

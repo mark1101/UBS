@@ -186,7 +186,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Encaminhamentos</h5>
                             <img src="{{asset('img/EncaminhamentoClicavel.png')}}">
-                            <a href="#" class="btn btn-primary-admin">Ver</a>
+                            <a href="{{route('veEncaminhamento')}}" class="btn btn-primary-admin">Ver</a>
                         </div>
                     </div>
                 </div>
