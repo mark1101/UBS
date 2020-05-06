@@ -26,9 +26,35 @@ The above copyright notice and this permission notice shall be included in all c
 
     <!-- CSS Arquivos -->
     <link href="{{asset('css/material-dashboard.css')}}" rel="stylesheet"/>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script type="text/javascript">
+        google.charts.load("current", {packages: ["corechart"]});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Funcao', 'Quantidade'],
+                <?php
+                foreach ($localidades as $key => $value) {
+                    echo "['" . $key . "', " . $value . "],";
+                }
+                ?>
+            ]);
+
+            var options = {
+                is3D: true,
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+            chart.draw(data, options);
+        }
+    </script>
+
 </head>
 
-<body class="" >
+<body class="" style="background-color: white">
 <div class="wrapper ">
 
     <div class="sidebar" data-color="admin" data-background-color="white" data-image="../assets/img/unidade.jpg">
@@ -43,11 +69,25 @@ The above copyright notice and this permission notice shall be included in all c
                         <p>Início</p>
                     </a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{route('recadoAdm')}}">
+                <li class="nav-item ">
+                    <a class="nav-link" href="#">
+                        <i class="material-icons">arrow_right_alt
+                        </i>
+                        <p>Encaminhamentos</p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="#">
                         <i class="material-icons">attach_file
                         </i>
                         <p>Recados</p>
+                    </a>
+                </li>
+                <li class="nav-item  ">
+                    <a class="nav-link" href="#">
+                        <i class="material-icons">commute
+                        </i>
+                        <p>Dados de viagens</p>
                     </a>
                 </li>
                 <li class="nav-item  ">
@@ -64,14 +104,14 @@ The above copyright notice and this permission notice shall be included in all c
                         <p>Cadastrar Profissionais</p>
                     </a>
                 </li>
-                <li class="nav-item  ">
+                <li class="nav-item">
                     <a class="nav-link" href="{{route('cadastroMotorista')}}">
                         <i class="material-icons">directions_car
                         </i>
                         <p>Gestão de Viagens</p>
                     </a>
                 </li>
-                <li class="nav-item dropdown ">
+                <li class="nav-item dropdown active">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                        data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">
@@ -84,15 +124,20 @@ The above copyright notice and this permission notice shall be included in all c
                     </div>
                 </li>
             </ul>
+
         </div>
     </div>
 
     <div class="main-panel">
+        <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
             <div class="container-fluid">
+
                 <div class="navbar-wrapper">
-                    <a class="navbar-brand" href="javascript:;">Gerenciamento de Recados</a>
+                    <a class="navbar-brand" href="javascript:;"></a>
                 </div>
+
+                <!-- BOTAO DE RESPONSIVIDADE PARA OPCIOES DE SIDEBAR-->
                 <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="sr-only">Toggle navigation</span>
@@ -100,13 +145,16 @@ The above copyright notice and this permission notice shall be included in all c
                     <span class="navbar-toggler-icon icon-bar"></span>
                     <span class="navbar-toggler-icon icon-bar"></span>
                 </button>
-                <div class="collapse navbar-collapse justify-content-end">
 
+                <!-- TOPO EM CIMA PARA OPCAO DE SAIDA E CONFIGURAÇÃOES DE PERFIL E SISTEMA  -->
+                <div class="collapse navbar-collapse justify-content-end">
+                    <form class="navbar-form"></form>
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                            <a style="color: black" id="navbarDropdown" class="nav-link dropdown-toggle" href="#"
+                               role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{Auth::user()->funcao}} {{ Auth::user()->name }} <span class="caret"></span>
+                                {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -124,61 +172,34 @@ The above copyright notice and this permission notice shall be included in all c
                         </li>
                     </ul>
                 </div>
+
             </div>
         </nav>
         <!-- End Navbar -->
 
-
         <div class="content">
             <div class="container-fluid">
-                <button type="submit" class="btn btn-primary-admin" style="left: 6px">
-                    <a style="color:#ffffff " href="{{route('comunicacaoAdm')}}">Nova Mensagem</a>
-                </button>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-header card-header-admin">
-                                <h4>Mensagens Recebidas</h4>
-                                <?php
-                                date_default_timezone_set('America/Bahia');
-                                echo 'Ultima atualização hoje ', date('\à\s H:i');
-                                ?>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive" style="overflow: auto; height: 250px;">
-                                    <table class="table">
+                <div class="container">
+                    <a style="color: white" class="btn btn-primary-admin"
+                       href="{{route('graficos')}}">grafico inicio</a>
+                    <a style="color: white" class="btn btn-primary-admin"
+                       href="{{route('graficoConsulta')}}">consultas</a>
+                    <a style="color: white" class="btn btn-primary-admin"
+                       href="">encaminhamento</a>
 
-                                        <thead>
-                                        <tr>
-                                            <th>Recebimento</th>
-                                            <th>Enviado por</th>
-                                            <th>Setor</th>
-                                            <th>Mensagem</th>
-                                            <th>Data</th>
-                                        </tr>
-                                        </thead>
-
-                                        <tbody>
-                                        @foreach($rs as $recado)
-                                            <tr>
-                                                <td>{{($recado->localidade)->nome}}</td>
-                                                <td>{{($recado->profissional)->name}}</td>
-                                                <td>{{($recado->profissional)->funcao}}</td>
-                                                <td>{{$recado->mensagem}}</td>
-                                                <td>{{date('d/m/Y H:i',strtotime($recado->data))}}</td>
-                                            </tr>
-                                        @endforeach
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
+                </div>
+                <div class="card" style="align-items: flex-start">
+                    <div class="card-body">
+                        <h6 class="card-subtitle mb-2 text-muted">relação vacinas / localidade </h6>
+                        <div id="piechart_3d" style="width: 450px; height: 300px;"></div>
                     </div>
                 </div>
+                <br>
             </div>
         </div>
-
         <footer class="footer">
             <div class="container-fluid">
+                <h4 align="left">Versão 1.0</h4>
             </div>
         </footer>
     </div>
@@ -200,10 +221,17 @@ The above copyright notice and this permission notice shall be included in all c
 <script src="{{asset('js/plugins/jasny-bootstrap.min.js')}}"></script>
 <script src="{{asset('js/plugins/fullcalendar.min.js')}}"></script>
 <script src="{{asset('js/plugins/jquery-jvectormap.js')}}"></script>
-<script src="{{asset('js/plugins/nouislider.min.js')}}"></script>
+<!--<script src="{{asset('assets/js/plugins/nouislider.min.js')}}"></script> -->
 <script src="{{asset('https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js')}}"></script>
 <script src="{{asset('js/plugins/arrive.min.js')}}"></script>
 
+
+<script src="{{asset('js/mascara.js')}}"></script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 
 </body>
 

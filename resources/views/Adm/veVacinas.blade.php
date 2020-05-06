@@ -95,12 +95,17 @@ The above copyright notice and this permission notice shall be included in all c
                         <p>Vacinas</p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="material-icons">history
-                        </i>
-                        <p>Dados Gráficos</p>
+                <li class="nav-item dropdown ">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        <i class="material-icons">history</i>
+                        Dados Gráficos
                     </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{route('graficos')}}">Comum</a>
+                        <a class="dropdown-item" href="#">Odontologia</a>
+                    </div>
                 </li>
             </ul>
 
@@ -279,7 +284,7 @@ The above copyright notice and this permission notice shall be included in all c
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Dentistas Cadastrados</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Relação Vacinas/Localidade</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>

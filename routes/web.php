@@ -119,7 +119,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/editaProfissional/{id}', 'ProfissionalController@alteraProfissional')->name('alteraProfissional');
     Route::post('/cadastrouProfissional' , 'ProfissionalController@cadastroProfissional')
         ->name('storeProfisional');
-    Route::get('/graficos' , 'GraficosAdmController@index')->name('graficos');
+    Route::get('/grafico' , 'GraficosAdmController@index')->name('graficos');
+    Route::get('/grafico/vacina', 'GraficosAdmController@indexVacina')->name('graficoVacina');
+    Route::get('/grafico/consulta', 'GraficosAdmController@indexConsulta')->name('graficoConsulta');
 
     Route::get('/recadosAdm', 'ComunicacaoAdmController@indexRecadoAdm')->name('recadoAdm');
     Route::get('/comunicacaoAdm', 'ComunicacaoAdmController@indexComunicacaoAdm')->name('comunicacaoAdm');
