@@ -26,6 +26,66 @@ The above copyright notice and this permission notice shall be included in all c
 
     <!-- CSS Arquivos -->
     <link href="{{asset('css/material-dashboard.css')}}" rel="stylesheet"/>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load("current", {packages: ["corechart"]});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Funcao', 'Quantidade'],
+                ['Enfermeiros',     <?php echo $enfermeiro ?>],
+                ['Medicos',     <?php echo $medico ?>],
+                ['Agentes de Saúde',     <?php echo $agente ?>],
+                ['Dentistas',     <?php echo $dentista ?>],
+                ['Motorista',     <?php echo $motorista ?>],
+            ]);
+
+            var options = {
+                is3D: true,
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+            chart.draw(data, options);
+        }
+    </script>
+
+    <script type="text/javascript">
+        google.charts.load('current', {'packages': ['bar']});
+        google.charts.setOnLoadCallback(drawStuff);
+
+        function drawStuff() {
+            var data = new google.visualization.arrayToDataTable([
+                ['Pacientes', 'Quantidade'],
+                <?php
+                foreach ($localidades as $localidade) {
+                    echo "['" . $localidade->nome . "', " . $pacientes[$localidade->id] . "],";
+                }
+                ?>
+            ]);
+
+            var options = {
+                width: 800,
+                chart: {},
+                bars: 'horizontal', // Required for Material Bar Charts.
+                series: {
+                    0: {axis: 'distance'}, // Bind series 0 to an axis named 'distance'.
+                    1: {axis: 'brightness'} // Bind series 1 to an axis named 'brightness'.
+                },
+                axes: {
+                    x: {
+                        brightness: {side: 'top', label: 'apparent magnitude'} // Top x-axis.
+                    }
+                }
+            };
+
+            var chart = new google.charts.Bar(document.getElementById('dual_x_div'));
+            chart.draw(data, options);
+        };
+    </script>
+
+
 </head>
 
 <body class="" style="background-color: white">
@@ -86,7 +146,7 @@ The above copyright notice and this permission notice shall be included in all c
                     </a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{route('graficos')}}">
                         <i class="material-icons">history
                         </i>
                         <p>Dados Gráficos</p>
@@ -103,7 +163,7 @@ The above copyright notice and this permission notice shall be included in all c
             <div class="container-fluid">
 
                 <div class="navbar-wrapper">
-                    <a class="navbar-brand" href="javascript:;">Gerenciamento de Motoristas e Automoveis</a>
+                    <a class="navbar-brand" href="javascript:;"></a>
                 </div>
 
                 <!-- BOTAO DE RESPONSIVIDADE PARA OPCIOES DE SIDEBAR-->
@@ -120,9 +180,10 @@ The above copyright notice and this permission notice shall be included in all c
                     <form class="navbar-form"></form>
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
-                            <a style="color: #f8f9fa" id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                            <a style="color: black" id="navbarDropdown" class="nav-link dropdown-toggle" href="#"
+                               role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{Auth::user()->funcao}} {{ Auth::user()->name }} <span class="caret"></span>
+                                {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -147,35 +208,23 @@ The above copyright notice and this permission notice shall be included in all c
 
         <div class="content">
             <div class="container-fluid">
-                <div class="row">
-
-                    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-                    <script type="text/javascript">
-                        google.charts.load('current', {'packages':['bar']});
-                        google.charts.setOnLoadCallback(drawChart);
-
-                        function drawChart() {
-                            var data = google.visualization.arrayToDataTable([
-                                ['Year', 'Sales', 'Expenses', 'Profit'],
-                                ['2017', $pacientes, 540, 350]
-                            ]);
-
-                            var options = {
-                                chart: {
-                                    title: 'Pacientes Cadastrados',
-                                    subtitle: '',
-                                },
-                                bars: 'horizontal' // Required for Material Bar Charts.
-                            };
-
-                            var chart = new google.charts.Bar(document.getElementById('barchart_material'));
-
-                            chart.draw(data, google.charts.Bar.convertOptions(options));
-                        }
-                    </script>
-
-                    <div id="barchart_material" style="width: 900px; height: 500px;"></div>
-
+                <div class="container">
+                    <button type="submit" class="btn btn-primary-admin"> consultas</button>
+                    <button type="submit" class="btn btn-primary-admin"> vacinas</button>
+                    <button type="submit" class="btn btn-primary-admin"><a style="color: white" href="{{route('graficos')}}">encaminhamento</a></button>
+                </div>
+                <div class="card" style="align-items: flex-start">
+                    <div class="card-body">
+                        <h6 class="card-subtitle mb-2 text-muted">Profissionais cadastrados no Município </h6>
+                        <div id="piechart_3d" style="width: 415px; height: 300px;"></div>
+                    </div>
+                </div>
+                <br>
+                <div class="card" style="align-items: flex-start">
+                    <div class="card-body">
+                        <h6 class="card-subtitle mb-2 text-muted">Quantidade de Pacientes por UBS (localidade)</h6>
+                        <div id="dual_x_div" style="width: 415px; height: 300px;"></div>
+                    </div>
                 </div>
             </div>
         </div>

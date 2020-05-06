@@ -61,6 +61,13 @@
                         <p>Gestão de Viagens</p>
                     </a>
                 </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="{{route('graficos')}}">
+                        <i class="material-icons">history
+                        </i>
+                        <p>Dados Gráficos</p>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

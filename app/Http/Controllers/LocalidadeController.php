@@ -29,7 +29,7 @@ class LocalidadeController extends Controller
         $localidades = Localidade::all();
         $paciente = Paciente::all();
 
-        foreach ($localidades as $localidade) { //MOSTRA QUANTIDADE DE PASSIENTES EM CADA LOCALIDADE
+        foreach ($localidades as $localidade) { //MOSTRA QUANTIDADE DE PACIENTES EM CADA LOCALIDADE
             $paciente[$localidade->id] = Paciente::where('id_localidade',
                 $localidade->id)->count();
         }

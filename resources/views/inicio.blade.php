@@ -204,15 +204,16 @@
                                                 <br><br>
                                                 <label for="">Encaminhamento</label>
                                                 <select class="form-control" name="encaminhamento" id="encaminhamento">
-                                                    <option value="vacina">Vacina</option>
-                                                    <option value="consulta">Consulta</option>
-                                                    <option value="encaminhamento">Encaminhamento</option>
-                                                    <option value="exame">Exame</option>
+                                                    <option value="Vacina">Vacina</option>
+                                                    <option value="Consulta">Consulta</option>
+                                                    <option value="Encaminhamento">Encaminhamento</option>
+                                                    <option value="Exame">Exame</option>
+                                                    <option value="Outro">Outro</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <br>
-                                        <button type="submit" class="btn btn-success">Cadastrar</button>
+                                        <button type="submit" class="btn btn-success">Dar Entrada</button>
                                     </form>
 
                                     <form id="tableEntrada" action="">
@@ -252,6 +253,7 @@
                                     dataType: 'json',
                                     success: function (response) {
                                         if (response.success === true) {
+
                                             var newRow = $("<tr>");
                                             var cols = "";
                                             cols += '<th>Paciente</th>';

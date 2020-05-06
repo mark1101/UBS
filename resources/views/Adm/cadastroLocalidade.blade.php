@@ -71,6 +71,13 @@ The above copyright notice and this permission notice shall be included in all c
                         <p>Gestão de Viagens</p>
                     </a>
                 </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="{{route('graficos')}}">
+                        <i class="material-icons">history
+                        </i>
+                        <p>Dados Gráficos</p>
+                    </a>
+                </li>
             </ul>
 
         </div>
@@ -196,18 +203,6 @@ The above copyright notice and this permission notice shall be included in all c
                     <div class="card">
                         <div class="card-header card-header-admin">
                             <h4 class="card-title">Comunidades Cadastradas</h4>
-                            <form class="navbar-form" action="#">
-                                @csrf
-                                <div class="input-group no-border">
-                                    <input type="text" id="pesquisaVacina" name="pesquisaVacina"
-                                           style="color:beige;" value="" class="form-control"
-                                           placeholder="Digite a primeira letra da comunidade...">
-                                    <button type="submit" class="btn btn-white btn-round btn-just-icon">
-                                        <i class="material-icons">search</i>
-                                        <div class="ripple-container"></div>
-                                    </button>
-                                </div>
-                            </form>
                         </div>
 
                         <div class="card-body">
