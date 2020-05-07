@@ -84,11 +84,13 @@ class GraficosAdmController extends Controller
             $teste = date('d-m-Y', strtotime($item->data));
             if (strtotime($teste) > strtotime($dias60)) {
                 $mes1++;
-            }if (strtotime($teste) > strtotime($dias90)) {
+            }
+            if (strtotime($teste) > strtotime($dias90)) {
                 if (strtotime($teste) < strtotime($dias30)) {
                     $mes2++;
                 }
-            }if (strtotime($teste) < strtotime($dias90)) {
+            }
+            if (strtotime($teste) < strtotime($dias90)) {
                 $mes3++;
             }
         }
@@ -129,11 +131,13 @@ class GraficosAdmController extends Controller
             $teste = date('d-m-Y', strtotime($item->data));
             if (strtotime($teste) > strtotime($dias60)) {
                 $mes1++;
-            }if (strtotime($teste) > strtotime($dias90)) {
+            }
+            if (strtotime($teste) > strtotime($dias90)) {
                 if (strtotime($teste) < strtotime($dias30)) {
                     $mes2++;
                 }
-            }if (strtotime($teste) < strtotime($dias90)) {
+            }
+            if (strtotime($teste) < strtotime($dias90)) {
                 $mes3++;
             }
         }
@@ -164,16 +168,18 @@ class GraficosAdmController extends Controller
         $mes2 = 0;
         $mes3 = 0;
 
-        $consultas = Encaminhamento::where('id_sede', Auth::user()->cidade_sede)->get();
-        foreach ($consultas as $item) {
+        $encaminhamento = Encaminhamento::where('id_sede', Auth::user()->cidade_sede)->get();
+        foreach ($encaminhamento as $item) {
             $teste = date('d-m-Y', strtotime($item->created_at));
             if (strtotime($teste) > strtotime($dias60)) {
                 $mes1++;
-            }if (strtotime($teste) > strtotime($dias90)) {
+            }
+            if (strtotime($teste) > strtotime($dias90)) {
                 if (strtotime($teste) < strtotime($dias30)) {
                     $mes2++;
                 }
-            }if (strtotime($teste) < strtotime($dias90)) {
+            }
+            if (strtotime($teste) < strtotime($dias90)) {
                 $mes3++;
             }
         }
@@ -194,12 +200,41 @@ class GraficosAdmController extends Controller
     {
         $localidades = Localidade::where('id_sede', Auth::user()->cidade_sede)->get();
 
+        $hoje = date('d-m-Y');
+
+        $dias90 = date('d-m-Y', strtotime('-90 days', strtotime($hoje)));
+        $dias60 = date('d-m-Y', strtotime('-60 days', strtotime($hoje)));
+        $dias30 = date('d-m-Y', strtotime('-30 days', strtotime($hoje)));
+
+        $mes1 = 0;
+        $mes2 = 0;
+        $mes3 = 0;
+
+        $viagens = Viagens::where('id_sede', Auth::user()->cidade_sede)->get();
+        foreach ($viagens as $item) {
+            $teste = date('d-m-Y', strtotime($item->created_at));
+            if (strtotime($teste) > strtotime($dias60)) {
+                $mes1++;
+            }
+            if (strtotime($teste) > strtotime($dias90)) {
+                if (strtotime($teste) < strtotime($dias30)) {
+                    $mes2++;
+                }
+            }
+            if (strtotime($teste) < strtotime($dias90)) {
+                $mes3++;
+            }
+        }
+
         $localidasCount = [];
         foreach ($localidades as $item) {
             $localidasCount[$item->nome] = Viagens::where('id_origem', $item->id)->count();
         }
         return view('Adm.graficoViagem', [
-            'localidades' => $localidasCount
+            'localidades' => $localidasCount,
+            'mes1' => $mes1,
+            'mes2' => $mes2,
+            'mes3' => $mes3
         ]);
 
     }
