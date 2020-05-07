@@ -224,6 +224,7 @@ The above copyright notice and this permission notice shall be included in all c
                 <div class="card" style="align-items: flex-start">
                     <div class="card-body">
                         <h6 class="card-subtitle mb-2 text-muted">Profissionais cadastrados no Município </h6>
+                        <br><br>
                         <div id="piechart_3d" style="width: 600px; height: 300px;"></div>
                     </div>
                 </div>
