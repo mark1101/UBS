@@ -37,7 +37,7 @@ The above copyright notice and this permission notice shall be included in all c
             var data = google.visualization.arrayToDataTable([
                 ['Funcao', 'Quantidade'],
                 <?php
-                foreach ($localidades as $key => $value) {
+                foreach ($consultas as $key => $value) {
                     echo "['" . $key . "', " . $value . "],";
                 }
                 ?>
@@ -53,28 +53,92 @@ The above copyright notice and this permission notice shall be included in all c
     </script>
 
     <script type="text/javascript">
-        google.charts.load('current', {'packages': ['corechart']});
+        google.charts.load("current", {packages: ["corechart"]});
         google.charts.setOnLoadCallback(drawChart);
 
         function drawChart() {
             var data = google.visualization.arrayToDataTable([
-                ['Year', 'Quantidade de Vacinas'],
-                ['3 meses atrás ou mais',  <?php echo $mes3 ?>],
-                ['2 Meses',  <?php echo $mes2 ?>],
-                ['Mes atual',  <?php echo $mes1 ?>],
+                ['Funcao', 'Quantidade'],
+                <?php
+                foreach ($tratamentos as $key => $value) {
+                    echo "['" . $key . "', " . $value . "],";
+                }
+                ?>
             ]);
 
             var options = {
-                title: 'Gráfico de vacinas realizadas no município',
-                hAxis: { titleTextStyle: {color: '#333'}},
-                vAxis: {minValue: 0}
-                /*curveType: 'function',
-                legend: {position: 'bottom'}*/
+                is3D: true,
             };
 
-            var chart = new google.visualization.AreaChart(document.getElementById('curve_chart'));
+            var chart1 = new google.visualization.PieChart(document.getElementById('piechart_3d1'));
+            chart1.draw(data, options);
+        }
+    </script>
 
-            chart.draw(data, options);
+    <script type="text/javascript">
+        google.charts.load("current", {packages: ["corechart"]});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Funcao', 'Quantidade'],
+                <?php
+                foreach ($proC as $p) {
+                    echo "['" . $p["data"]->name . "', " . $p['count'] . "],";
+                }
+                ?>
+            ]);
+
+            var options = {
+                is3D: true,
+            };
+
+            var chart2 = new google.visualization.PieChart(document.getElementById('piechart_3d2'));
+            chart2.draw(data, options);
+        }
+    </script>
+
+    <script type="text/javascript">
+        google.charts.load("current", {packages: ["corechart"]});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Funcao', 'Quantidade'],
+                <?php
+                foreach ($proT as $p) {
+                    echo "['" . $p["data"]->name . "', " . $p['count'] . "],";
+                }
+                ?>
+            ]);
+
+            var options = {
+                is3D: true,
+            };
+
+            var chart3 = new google.visualization.PieChart(document.getElementById('piechart_3d3'));
+            chart3.draw(data, options);
+        }
+    </script>
+
+    <script type="text/javascript">
+        google.charts.load("current", {packages: ["corechart"]});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Funcao', 'Quantidade'],
+                ['De 0 a 10',     <?php echo $faixa1 ?>],
+                ['De 11 a 30 anos',     <?php echo $faixa2 ?>],
+                ['Maiores que 30',     <?php echo $faixa3 ?>],
+            ]);
+
+            var options = {
+                is3D: true,
+            };
+
+            var chart4 = new google.visualization.PieChart(document.getElementById('piechart_3d4'));
+            chart4.draw(data, options);
         }
     </script>
 
@@ -146,7 +210,7 @@ The above copyright notice and this permission notice shall be included in all c
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{route('graficos')}}">Comum</a>
-                        <a class="dropdown-item" href="{{route('graficoOdonto')}}">Odontologia</a>
+                        <a class="dropdown-item" href="#">Odontologia</a>
                     </div>
                 </li>
             </ul>
@@ -206,29 +270,106 @@ The above copyright notice and this permission notice shall be included in all c
         <div class="content">
             <div class="container-fluid">
                 <div class="container">
-                    <a style="color: white" class="btn btn-primary-admin"
-                       href="{{route('graficos')}}">grafico inicio</a>
-                    <a style="color: white" class="btn btn-primary-admin"
-                       href="{{route('graficoConsulta')}}">consultas</a>
-                    <a style="color: white" class="btn btn-primary-admin"
-                       href="{{route('graficoEncaminhamento')}}">encaminhamento</a>
-                    <a style="color: white" class="btn btn-primary-admin" href="{{route('graficoViagem')}}">viagens</a>
-
+                    <button type="button" class="btn btn-primary-admin" data-target="#modalPacientes"
+                            data-toggle="modal">faixa etaria de pacientes
+                    </button>
+                    <button type="button" class="btn btn-primary-admin" data-target="#modalDentistas"
+                            data-toggle="modal">Dentistas / Consulta
+                    </button>
+                    <button type="button" class="btn btn-primary-admin" data-target="#modalDentistasT"
+                            data-toggle="modal">Dentistas / Tratamentos
+                    </button>
                 </div>
                 <div class="card" style="align-items: flex-start">
                     <div class="card-body">
-                        <h6 class="card-subtitle mb-2 text-muted">relação vacinas / localidade </h6>
+                        <h6 class="card-subtitle mb-2 text-muted">relação cosultas odontológicas / localidade </h6>
                         <div id="piechart_3d" style="width: 450px; height: 300px;"></div>
                     </div>
                 </div>
                 <div class="card" style="align-items: flex-start">
                     <div class="card-body">
-                        <div id="curve_chart" style="width: 900px; height: 500px"></div>
+                        <h6 class="card-subtitle mb-2 text-muted">relação tratamentos odontológicos / localidade </h6>
+                        <div id="piechart_3d1" style="width: 450px; height: 300px;"></div>
                     </div>
                 </div>
                 <br>
             </div>
         </div>
+
+        <div class="modal fade bd-example-modal-lg" id="modalDentistas" tabindex="-1" role="dialog"
+             aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Quantidade de Consultas realizadas por
+                            Dentista</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="card-body">
+                            <div id="piechart_3d2" style="width: 600px; height: 300px;"></div>
+                        </div>
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary-admin" data-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade bd-example-modal-lg" id="modalDentistasT" tabindex="-1" role="dialog"
+             aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Quantidade de Tratamento Realizado por
+                            Dentista</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="card-body">
+                            <div id="piechart_3d3" style="width: 450px; height: 300px;"></div>
+                        </div>
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary-admin" data-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade bd-example-modal-lg" id="modalPacientes" tabindex="-1" role="dialog"
+             aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Faixa etária dos pacientes atendidos nas UBS do Município</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                            <div id="piechart_3d4" style="width: max-content; height: 300px;"></div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary-admin" data-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         <footer class="footer">
             <div class="container-fluid">
                 <h4 align="left">Versão 1.0</h4>

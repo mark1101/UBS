@@ -104,7 +104,7 @@ The above copyright notice and this permission notice shall be included in all c
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{route('graficos')}}">Comum</a>
-                        <a class="dropdown-item" href="#">Odontologia</a>
+                        <a class="dropdown-item" href="{{route('graficoOdonto')}}">Odontologia</a>
                     </div>
                 </li>
             </ul>
@@ -172,7 +172,7 @@ The above copyright notice and this permission notice shall be included in all c
                     &nbsp &nbsp &nbsp
                     <div align="center" class="card" style="width: 13rem; height: 13rem;">
                         <div class="card-body">
-                            <h5>Comunidade/Vacinas</h5>
+                            <h5>Localidade/Vacinas</h5>
                             <br><br><br>
                             <button type="button" class="btn btn-primary-admin" data-toggle="modal"
                                     data-target="#modalLocalidade">

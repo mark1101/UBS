@@ -52,6 +52,32 @@ The above copyright notice and this permission notice shall be included in all c
         }
     </script>
 
+    <script type="text/javascript">
+        google.charts.load('current', {'packages': ['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Year', 'Quantidade de Consultas'],
+                ['3 meses atrás ou mais',  <?php echo $mes3 ?>],
+                ['2 Meses',  <?php echo $mes2 ?>],
+                ['Mes atual',  <?php echo $mes1 ?>],
+            ]);
+
+            var options = {
+                title: 'Gráfico de consultas realizadas no município',
+                hAxis: { titleTextStyle: {color: '#333'}},
+                vAxis: {minValue: 0}
+                /*curveType: 'function',
+                legend: {position: 'bottom'}*/
+            };
+
+            var chart = new google.visualization.AreaChart(document.getElementById('curve_chart'));
+
+            chart.draw(data, options);
+        }
+    </script>
+
 </head>
 
 <body class="" style="background-color: white">
@@ -120,7 +146,7 @@ The above copyright notice and this permission notice shall be included in all c
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{route('graficos')}}">Comum</a>
-                        <a class="dropdown-item" href="#">Odontologia</a>
+                        <a class="dropdown-item" href="{{route('graficoOdonto')}}">Odontologia</a>
                     </div>
                 </li>
             </ul>
@@ -180,15 +206,22 @@ The above copyright notice and this permission notice shall be included in all c
         <div class="content">
             <div class="container-fluid">
                 <div class="container">
-                    <a style="color: white" class="btn btn-primary-admin" href="{{route('graficos')}}">grafico inicio</a>
+                    <a style="color: white" class="btn btn-primary-admin" href="{{route('graficos')}}">grafico
+                        inicio</a>
                     <a style="color: white" class="btn btn-primary-admin" href="{{route('graficoVacina')}}">Vacinas</a>
                     <a style="color: white" class="btn btn-primary-admin" href="{{route('graficoEncaminhamento')}}">encaminhamentos</a>
+                    <a style="color: white" class="btn btn-primary-admin" href="{{route('graficoViagem')}}">viagens</a>
 
                 </div>
                 <div class="card" style="align-items: flex-start">
                     <div class="card-body">
                         <h6 class="card-subtitle mb-2 text-muted">relação consultas / localidade </h6>
                         <div id="piechart_3d" style="width: 450px; height: 300px;"></div>
+                    </div>
+                </div>
+                <div class="card" style="align-items: flex-start">
+                    <div class="card-body">
+                        <div id="curve_chart" style="width: 900px; height: 500px"></div>
                     </div>
                 </div>
                 <br>

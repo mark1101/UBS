@@ -104,7 +104,7 @@ The above copyright notice and this permission notice shall be included in all c
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{route('graficos')}}">Comum</a>
-                        <a class="dropdown-item" href="#">Odontologia</a>
+                        <a class="dropdown-item" href="{{route}}">Odontologia</a>
                     </div>
                 </li>
             </ul>

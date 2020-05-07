@@ -52,32 +52,6 @@ The above copyright notice and this permission notice shall be included in all c
         }
     </script>
 
-    <script type="text/javascript">
-        google.charts.load('current', {'packages': ['corechart']});
-        google.charts.setOnLoadCallback(drawChart);
-
-        function drawChart() {
-            var data = google.visualization.arrayToDataTable([
-                ['Year', 'Quantidade de Vacinas'],
-                ['3 meses atrás ou mais',  <?php echo $mes3 ?>],
-                ['2 Meses',  <?php echo $mes2 ?>],
-                ['Mes atual',  <?php echo $mes1 ?>],
-            ]);
-
-            var options = {
-                title: 'Gráfico de vacinas realizadas no município',
-                hAxis: { titleTextStyle: {color: '#333'}},
-                vAxis: {minValue: 0}
-                /*curveType: 'function',
-                legend: {position: 'bottom'}*/
-            };
-
-            var chart = new google.visualization.AreaChart(document.getElementById('curve_chart'));
-
-            chart.draw(data, options);
-        }
-    </script>
-
 </head>
 
 <body class="" style="background-color: white">
@@ -210,20 +184,15 @@ The above copyright notice and this permission notice shall be included in all c
                        href="{{route('graficos')}}">grafico inicio</a>
                     <a style="color: white" class="btn btn-primary-admin"
                        href="{{route('graficoConsulta')}}">consultas</a>
+                    <a style="color: white" class="btn btn-primary-admin" href="{{route('graficoVacina')}}">Vacinas</a>
                     <a style="color: white" class="btn btn-primary-admin"
                        href="{{route('graficoEncaminhamento')}}">encaminhamento</a>
-                    <a style="color: white" class="btn btn-primary-admin" href="{{route('graficoViagem')}}">viagens</a>
 
                 </div>
                 <div class="card" style="align-items: flex-start">
                     <div class="card-body">
-                        <h6 class="card-subtitle mb-2 text-muted">relação vacinas / localidade </h6>
+                        <h6 class="card-subtitle mb-2 text-muted">relação viagens / localidade </h6>
                         <div id="piechart_3d" style="width: 450px; height: 300px;"></div>
-                    </div>
-                </div>
-                <div class="card" style="align-items: flex-start">
-                    <div class="card-body">
-                        <div id="curve_chart" style="width: 900px; height: 500px"></div>
                     </div>
                 </div>
                 <br>

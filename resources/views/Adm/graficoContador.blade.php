@@ -39,7 +39,8 @@ The above copyright notice and this permission notice shall be included in all c
                 ['Medicos',     <?php echo $medico ?>],
                 ['Agentes de Saúde',     <?php echo $agente ?>],
                 ['Dentistas',     <?php echo $dentista ?>],
-                ['Motorista',     <?php echo $motorista ?>],
+                ['Motoristas',     <?php echo $motorista ?>],
+                ['Recepcionistas',     <?php echo $recepcao ?>],
             ]);
 
             var options = {
@@ -154,7 +155,7 @@ The above copyright notice and this permission notice shall be included in all c
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{route('graficos')}}">Comum</a>
-                        <a class="dropdown-item" href="#">Odontologia</a>
+                        <a class="dropdown-item" href="{{route('graficoOdonto')}}">Odontologia</a>
                     </div>
                 </li>
             </ul>
@@ -218,11 +219,12 @@ The above copyright notice and this permission notice shall be included in all c
                        href="{{route('graficoConsulta')}}">consultas</a>
                     <a style="color: white" class="btn btn-primary-admin" href="{{route('graficoVacina')}}">Vacinas</a>
                     <a style="color: white" class="btn btn-primary-admin" href="{{route('graficoEncaminhamento')}}">encaminhamentos</a>
+                    <a style="color: white" class="btn btn-primary-admin" href="{{route('graficoViagem')}}">viagens</a>
                 </div>
                 <div class="card" style="align-items: flex-start">
                     <div class="card-body">
                         <h6 class="card-subtitle mb-2 text-muted">Profissionais cadastrados no Município </h6>
-                        <div id="piechart_3d" style="width: 415px; height: 300px;"></div>
+                        <div id="piechart_3d" style="width: 600px; height: 300px;"></div>
                     </div>
                 </div>
                 <br>

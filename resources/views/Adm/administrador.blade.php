@@ -70,7 +70,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{route('graficos')}}">Comum</a>
-                        <a class="dropdown-item" href="#">Odontologia</a>
+                        <a class="dropdown-item" href="{{route('graficoOdonto')}}">Odontologia</a>
                     </div>
                 </li>
             </ul>

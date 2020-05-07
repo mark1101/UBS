@@ -123,6 +123,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/grafico/vacina', 'GraficosAdmController@indexVacina')->name('graficoVacina');
     Route::get('/grafico/consulta', 'GraficosAdmController@indexConsulta')->name('graficoConsulta');
     Route::get('/grafico/encaminhamento', 'GraficosAdmController@indexEncaminhamento')->name('graficoEncaminhamento');
+    Route::get('/grafico/viagem', 'GraficosAdmController@indexViagem')->name('graficoViagem');
+    Route::get('/grafico/geralOdonto', 'GraficosAdmController@indexOdontologiaGeral')->name('graficoOdonto');
 
     Route::get('/recadosAdm', 'ComunicacaoAdmController@indexRecadoAdm')->name('recadoAdm');
     Route::get('/comunicacaoAdm', 'ComunicacaoAdmController@indexComunicacaoAdm')->name('comunicacaoAdm');
