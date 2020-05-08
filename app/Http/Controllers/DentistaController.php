@@ -122,10 +122,11 @@ class DentistaController extends Controller
     public function pdfTratamento()
     {
 
-        $data = FichaTratamento::where('id', FichaTratamento::max('id'))
-            ->where('id_profissional', Auth::user()->id)
+        $dataa = FichaTratamento::where('id_profissional', Auth::user()->id)
             ->with(['paciente', 'localidade'])
             ->get();
+
+        $data = $dataa[count($dataa)-1];
 
 
         $pdf = PDF::loadView('Dentista.pdfTratamento', compact('data'));
@@ -134,14 +135,11 @@ class DentistaController extends Controller
 
     public function pdfConsulta()
     {
-        $valor = ConsultaDentista::where('id_profissional', Auth::user()->id)
-            ->orderBy('id');
-
-
-        $data = ConsultaDentista::where('id', ConsultaDentista::max('id'))
-            ->where('id_profissional', Auth::user()->id)
-            ->with(['paciente', 'localidade'])
+        $dataa = ConsultaDentista::where('id_profissional', Auth::user()->id)
+            ->with(['paciente','localidade','sede'])
             ->get();
+
+        $data = $dataa[count($dataa)-1];
 
         $pdf = PDF::loadView('Dentista.pdfConsulta', compact('data'));
         return $pdf->setPaper('a4')->stream('FichaConsulta.pdf');
@@ -149,14 +147,11 @@ class DentistaController extends Controller
 
     public function pdfExame()
     {
-        $valor = SolicitacaoExameOdonto::where('id_profissional', Auth::user()->id)
-            ->orderBy('id');
-
-
-        $data = SolicitacaoExameOdonto::where('id', SolicitacaoExameOdonto::max('id'))
-            ->where('id_profissional', Auth::user()->id)
-            ->with(['paciente', 'localidade'])
+        $dataa = SolicitacaoExameOdonto::where('id_profissional', Auth::user()->id)
+            ->with(['paciente','localidade'])
             ->get();
+
+        $data = $dataa[count($dataa)-1];
 
         $pdf = PDF::loadView('Dentista.pdfExame', compact('data'));
         return $pdf->setPaper('a4')->stream('FichaExame.pdf');
