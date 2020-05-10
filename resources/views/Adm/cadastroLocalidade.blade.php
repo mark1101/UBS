@@ -64,12 +64,17 @@ The above copyright notice and this permission notice shall be included in all c
                         <p>Cadastrar Profissionais</p>
                     </a>
                 </li>
-                <li class="nav-item  ">
-                    <a class="nav-link" href="{{route('cadastroMotorista')}}">
-                        <i class="material-icons">directions_car
-                        </i>
-                        <p>Gestão de Viagens</p>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        <i class="material-icons">directions_car</i>
+                        Gestão de Viagens
                     </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{route('cadastroMotorista')}}">Cadastros</a>
+                        <a class="dropdown-item" href="#">Busca ou edição</a>
+                    </div>
                 </li>
                 <li class="nav-item dropdown ">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"

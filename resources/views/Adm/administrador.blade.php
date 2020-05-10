@@ -23,7 +23,7 @@
 
     <div class="sidebar" data-color="admin" data-background-color="white" data-image="../assets/img/unidade.jpg">
         <div class="logo"><a href="{{'/'}}" class="simple-text logo-normal">
-            <img src="{{asset('img/adm.png')}}">
+                <img src="{{asset('img/adm.png')}}">
             </a></div>
         <div class="sidebar-wrapper ">
             <ul class="nav">
@@ -54,12 +54,17 @@
                         <p>Cadastrar Profissionais</p>
                     </a>
                 </li>
-                <li class="nav-item  ">
-                    <a class="nav-link" href="{{route('cadastroMotorista')}}">
-                        <i class="material-icons">directions_car
-                        </i>
-                        <p>Gestão de Viagens</p>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        <i class="material-icons">directions_car</i>
+                        Gestão de Viagens
                     </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{route('cadastroMotorista')}}">Cadastros</a>
+                        <a class="dropdown-item" href="#">Busca ou edição</a>
+                    </div>
                 </li>
                 <li class="nav-item dropdown ">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -97,7 +102,8 @@
                     <form class="navbar-form"></form>
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
-                            <a style="color: #f8f9fa" id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                            <a style="color: #f8f9fa" id="navbarDropdown" class="nav-link dropdown-toggle" href="#"
+                               role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{Auth::user()->funcao}} {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
@@ -196,7 +202,8 @@
 
         <footer class="footer">
             <div class="container-fluid">
-                <div>Ícones feitos por <a href="https://www.flaticon.com/br/autores/srip" title="srip">srip</a> from <a href="https://www.flaticon.com/br/" title="Flaticon">www.flaticon.com</a></div>
+                <div>Ícones feitos por <a href="https://www.flaticon.com/br/autores/srip" title="srip">srip</a> from <a
+                        href="https://www.flaticon.com/br/" title="Flaticon">www.flaticon.com</a></div>
             </div>
         </footer>
     </div>

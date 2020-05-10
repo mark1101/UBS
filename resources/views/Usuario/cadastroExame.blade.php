@@ -86,13 +86,15 @@ The above copyright notice and this permission notice shall be included in all c
                         <p>Vacinas</p>
                     </a>
                 </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="{{route('encaminhamento')}}">
-                        <i class="material-icons">arrow_right_alt
-                        </i>
-                        <p>Encaminhamentos</p>
-                    </a>
-                </li>
+                @if(Auth::user()->funcao == "Medicina")
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{{route('encaminhamento')}}">
+                            <i class="material-icons">arrow_right_alt
+                            </i>
+                            <p>Encaminhamentos</p>
+                        </a>
+                    </li>
+                @endif
                 <li class="nav-item  ">
                     <a class="nav-link" href="{{route('recado')}}">
                         <i class="material-icons">attach_file
@@ -260,19 +262,16 @@ The above copyright notice and this permission notice shall be included in all c
                                     <div class="row">
                                         <div class="col-md-4">
                                             <label class="bmd-label-floating">Caso preciso guarda de arquivo</label>
-                                            <input type="file" class="form-control data" name="arquivo" id="arquivo">
+                                            <input type="file" class="form-control" name="arquivo" id="arquivo">
                                         </div>
                                     </div>
                                     <br>
 
                                     <button type="submit" class="btn btn-primary-normal">Salvar
                                     </button>
-                                    <!--<button type="submit" class="btn btn-primary pull-right">Solicitar Exame</button>-->
                                 </form>
                                 @if(Auth::user()->funcao == "Medicina")
-                                    <button type="submit" class="btn btn-primary-normal "><a style="color: white"
-                                                                                             href="{{route('solicitarExame')}}">Solicitar
-                                            Exame</a></button>
+                                    <a href="{{route('solicitarExame')}}" class="btn btn-primary-normal">Solicitar Exame</a>
                                 @endif
                             </div>
                         </div>

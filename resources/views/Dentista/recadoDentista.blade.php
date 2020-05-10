@@ -132,9 +132,7 @@ The above copyright notice and this permission notice shall be included in all c
 
         <div class="content">
             <div class="container-fluid">
-                <button type="submit" class="btn btn-primary-adm" style="left: 6px">
-                    <a style="color:#ffffff " href="{{route('indexComunicacaoDentista')}}">Nova Mensagem</a>
-                </button>
+                    <a style="color:#ffffff " href="{{route('indexComunicacaoDentista')}}" class="btn btn-primary-adm">Nova Mensagem</a>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">

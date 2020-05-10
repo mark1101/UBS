@@ -40,9 +40,10 @@ class ProfissionalController extends Controller
         }
 
         $data['cidade_sede'] = Auth::user()->cidade_sede;
-
         User::create($data);
-        return redirect('/cadastraProfissional');
+
+        $response['success'] = true;
+        echo json_encode($response);
     }
 
     public function alteraProfissional(Request $request, $id)

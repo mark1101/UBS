@@ -34,7 +34,7 @@
 
     <div class="sidebar" data-color="green" data-background-color="white" data-image="../assets/img/unidade.jpg">
         <div class="logo"><a href="{{'inicio'}}" class="simple-text logo-normal">
-                Unidade {{Auth::user()->localidade}}
+                Unidade {{(Auth::user()->localidade)}}
             </a></div>
         <div class="sidebar-wrapper ">
             <ul class="nav">

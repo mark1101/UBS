@@ -87,13 +87,15 @@ The above copyright notice and this permission notice shall be included in all c
                             <p>Vacinas</p>
                         </a>
                     </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="{{route('encaminhamento')}}">
-                            <i class="material-icons">arrow_right_alt
-                            </i>
-                            <p>Encaminhamentos</p>
-                        </a>
-                    </li>
+                    @if(Auth::user()->funcao == "Medicina")
+                        <li class="nav-item ">
+                            <a class="nav-link" href="{{route('encaminhamento')}}">
+                                <i class="material-icons">arrow_right_alt
+                                </i>
+                                <p>Encaminhamentos</p>
+                            </a>
+                        </li>
+                    @endif
                 @endif
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('recado')}}">

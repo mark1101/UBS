@@ -54,11 +54,12 @@ class veViagensController extends Controller
 
 
         $vd = Viagens::where('id_sede', Auth::user()->cidade_sede)
+            ->orderBy('created_at', 'desc')
             ->get();
 
         $viagemDia = [];
         foreach ($vd as $item){
-            if(date('d-m-Y', strtotime($item->data)) == date('d-m-Y')){
+            if(date('d-m-Y', strtotime($item->created_at)) == date('d-m-Y')){
                 $viagemDia[] = $item;
             }
         }

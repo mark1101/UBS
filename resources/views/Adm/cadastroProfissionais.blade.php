@@ -64,12 +64,17 @@ The above copyright notice and this permission notice shall be included in all c
                         <p>Cadastrar Profissionais</p>
                     </a>
                 </li>
-                <li class="nav-item  ">
-                    <a class="nav-link" href="{{route('cadastroMotorista')}}">
-                        <i class="material-icons">directions_car
-                        </i>
-                        <p>Gestão de Viagens</p>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        <i class="material-icons">directions_car</i>
+                        Gestão de Viagens
                     </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{route('cadastroMotorista')}}">Cadastros</a>
+                        <a class="dropdown-item" href="#">Busca ou edição</a>
+                    </div>
                 </li>
                 <li class="nav-item dropdown ">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -111,9 +116,9 @@ The above copyright notice and this permission notice shall be included in all c
                     <form class="navbar-form"></form>
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
-                                <a style="color: #f8f9fa" id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                <a style="color: black" id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{Auth::user()->funcao}} {{ Auth::user()->name }} <span class="caret"></span>
+                                   {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -146,7 +151,7 @@ The above copyright notice and this permission notice shall be included in all c
                                 <h4 class="card-title">Cadastro de Novos Profissionais</h4>
                             </div>
                             <div class="card-body">
-                                <form action="{{route('storeProfisional')}}" method="post">
+                                <form id="cadastroProfissionais">
                                     @csrf
                                     <p class="card-category">Dados Pessoais</p>
                                     <div class="row">
@@ -227,25 +232,45 @@ The above copyright notice and this permission notice shall be included in all c
                             </div>
                         </div>
                     </div>
-                    <!-- MOSTRAGEM COM IMAGEM EM CIMA
-                    <div class="col-md-4">
-                      <div class="card card-profile">
-                        <div class="card-avatar">
-                          <a href="javascript:;">
-                            <h1>?</h1>
-                            <img class="img" src="../assets/img/faces/interrogacao.png" />
-                          </a>
-                        </div>
-                        <div class="card-body">
-                          <p class="card-description">
-                            Aqui explicar a importancia do cadastro do cliente dentro do sistema.
-                          </p>
-                        </div>
-                      </div>
-                    </div> -->
                 </div>
             </div>
         </div>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
+
+        <script !src="">
+            $(function () {
+                $('form[id="cadastroProfissionais"]').submit(function (event) {
+                    event.preventDefault();
+
+                    $.ajax({
+                        url: "{{route('storeProfisional')}}",
+                        type: "POST",
+                        data: $(this).serialize(),
+                        dataType: 'json',
+                        success: function (response) {
+                            if (response.success === true) {
+
+                                $('#name').val("");
+                                $('#cpf').val("");
+                                $('#data-nascimento').val("");
+                                $('#email').val("");
+                                $('#password').val("");
+
+                                alert('Profissional cadastrado com sucesso!');
+
+                            } else {
+
+                                alert('Erro ao cadastrar!');
+
+                            }
+                        }
+                    })
+                })
+            })
+        </script>
+
         <footer class="footer">
             <div class="container-fluid">
             </div>

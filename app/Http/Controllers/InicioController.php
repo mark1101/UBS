@@ -19,6 +19,12 @@ class InicioController extends Controller
         $date1 = date("Y-m-d");
         $pacientes = Paciente::where('id_sede', Auth::user()->cidade_sede)->get();
 
+        $users = User::where('id', Auth::user()->id)
+            ->with(['localidade'])
+            ->get();
+        $valor = $users[count($users) - 1];
+
+
 
         $c = Consulta::where('id_localidade', Auth::user()->localidade)
             ->where('id_sede', Auth::user()->cidade_sede)
@@ -73,7 +79,8 @@ class InicioController extends Controller
             'consultas' => $consultas,
             'vacinas' => $vacinas,
             'encaminhamentos' => $encaminhamentos,
-            'recado' => $recado
+            'recado' => $recado,
+            'usuario' => $valor
         ]);
     }
 }

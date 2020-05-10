@@ -64,12 +64,17 @@ The above copyright notice and this permission notice shall be included in all c
                         <p>Cadastrar Profissionais</p>
                     </a>
                 </li>
-                <li class="nav-item  ">
-                    <a class="nav-link" href="{{route('cadastroMotorista')}}">
-                        <i class="material-icons">directions_car
-                        </i>
-                        <p>Gestão de Viagens</p>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        <i class="material-icons">directions_car</i>
+                        Gestão de Viagens
                     </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{route('cadastroMotorista')}}">Cadastros</a>
+                        <a class="dropdown-item" href="#">Busca ou edição</a>
+                    </div>
                 </li>
                 <li class="nav-item dropdown ">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -131,9 +136,8 @@ The above copyright notice and this permission notice shall be included in all c
 
         <div class="content">
             <div class="container-fluid">
-                <button type="submit" class="btn btn-primary-admin" style="left: 6px">
-                    <a style="color:#ffffff " href="{{route('comunicacaoAdm')}}">Nova Mensagem</a>
-                </button>
+                    <a style="color:#ffffff " href="{{route('comunicacaoAdm')}}" class="btn btn-primary-admin">Nova Mensagem</a>
+
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">

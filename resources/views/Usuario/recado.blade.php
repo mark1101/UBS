@@ -87,13 +87,15 @@ The above copyright notice and this permission notice shall be included in all c
                             <p>Vacinas</p>
                         </a>
                     </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="{{route('encaminhamento')}}">
-                            <i class="material-icons">arrow_right_alt
-                            </i>
-                            <p>Encaminhamentos</p>
-                        </a>
-                    </li>
+                    @if(Auth::user()->funcao == "Medicina")
+                        <li class="nav-item ">
+                            <a class="nav-link" href="{{route('encaminhamento')}}">
+                                <i class="material-icons">arrow_right_alt
+                                </i>
+                                <p>Encaminhamentos</p>
+                            </a>
+                        </li>
+                    @endif
                 @endif
                 <li class="nav-item active ">
                     <a class="nav-link" href="{{route('recado')}}">
@@ -190,9 +192,7 @@ The above copyright notice and this permission notice shall be included in all c
 
         <div class="content">
             <div class="container-fluid">
-                <button type="submit" class="btn btn-primary-normal" style="left: 6px">
-                    <a style="color:#ffffff " href="{{route('comunicacao')}}">Nova Mensagem</a>
-                </button>
+                    <a style="color:#ffffff " href="{{route('comunicacao')}}" class="btn btn-primary-normal">Nova Mensagem</a>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">

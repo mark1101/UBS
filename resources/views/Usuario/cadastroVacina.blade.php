@@ -86,13 +86,15 @@ The above copyright notice and this permission notice shall be included in all c
                         <p>Vacinas</p>
                     </a>
                 </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="{{route('encaminhamento')}}">
-                        <i class="material-icons">arrow_right_alt
-                        </i>
-                        <p>Encaminhamentos</p>
-                    </a>
-                </li>
+                @if(Auth::user()->funcao == "Medicina")
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{{route('encaminhamento')}}">
+                            <i class="material-icons">arrow_right_alt
+                            </i>
+                            <p>Encaminhamentos</p>
+                        </a>
+                    </li>
+                @endif
                 <li class="nav-item ">
                     <a class="nav-link" href="{{route('recado')}}">
                         <i class="material-icons">attach_file
@@ -296,11 +298,9 @@ The above copyright notice and this permission notice shall be included in all c
 
 
                             <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-                            <script
-                                src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
+                            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
 
                             <script>
-
                                 $(function () {
                                     $('form[id="buscaVacina"]').submit(function (event) {
                                         event.preventDefault();

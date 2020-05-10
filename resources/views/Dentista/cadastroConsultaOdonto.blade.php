@@ -149,7 +149,7 @@ The above copyright notice and this permission notice shall be included in all c
                                 <h4 class="card-title">Ficha de Consulta Inicial</h4>
                             </div>
                             <div class="card-body">
-                                <form action="{{route('storeConsultaOdonto')}}" method="post">
+                                <form id="cadastroConsulta" >
                                     @csrf
                                     <h3 align="center">Identificação</h3>
                                     <div class="row">
@@ -377,8 +377,8 @@ The above copyright notice and this permission notice shall be included in all c
                                     </div>
 
                                     <button type="submit" class="btn btn-primary-adm">Cadastrar</button>
-                                    <button class="btn btn-primary-adm"><a style="color: white" href="{{route('solicitacaoExameOdonto')}}">Solicitar Exame</a></button>
-                                    <button class="btn btn-primary-adm"><a style="color: white" href="{{route('pdfConsulta')}}">Imprimir Ultima Consulta</a></button>
+                                    <a href="{{route('solicitacaoExameOdonto')}}" class="btn btn-primary-adm">Solicitar exame</a>
+                                    <a href="{{route('pdfConsulta')}}" class="btn btn-primary-adm">imprimir ultima consulta</a>
                                     <div class="clearfix"></div>
                                 </form>
                             </div>
@@ -387,6 +387,44 @@ The above copyright notice and this permission notice shall be included in all c
                 </div>
             </div>
         </div>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
+
+        <script !src="">
+            $(function () {
+                $('form[id="cadastroConsulta"]').submit(function (event) {
+                    event.preventDefault();
+
+                    $.ajax({
+                        url: "{{route('storeConsultaOdonto')}}",
+                        type: "POST",
+                        data: $(this).serialize(),
+                        dataType: 'json',
+                        success: function (response) {
+                            if (response.success === true) {
+
+                                $('#outras_doencas').val("");
+                                $('#lingua').val("");
+                                $('#palato_mole').val("");
+                                $('#assoalho_bucal').val("");
+                                $('#labios').val("");
+                                $('#observacoes').val("");
+                                $('#plano_tratamento').val("");
+                                alert('Consulta cadastrada com sucesso!');
+
+                            } else {
+
+                                alert('Erro ao cadastrar!');
+
+                            }
+                        }
+                    })
+                })
+            })
+
+        </script>
+
         <footer class="footer">
             <div class="container-fluid">
                 <h4 align="left">Versão 1.0</h4>

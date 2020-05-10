@@ -64,12 +64,17 @@ The above copyright notice and this permission notice shall be included in all c
                         <p>Cadastrar Profissionais</p>
                     </a>
                 </li>
-                <li class="nav-item active ">
-                    <a class="nav-link" href="{{route('cadastroMotorista')}}">
-                        <i class="material-icons">directions_car
-                        </i>
-                        <p>Gestão de Viagens</p>
+                <li class="nav-item dropdown active ">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        <i class="material-icons">directions_car</i>
+                        Gestão de Viagens
                     </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{route('cadastroMotorista')}}">Cadastros</a>
+                        <a class="dropdown-item" href="#">Busca ou edição</a>
+                    </div>
                 </li>
                 <li class="nav-item dropdown ">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -94,7 +99,7 @@ The above copyright notice and this permission notice shall be included in all c
             <div class="container-fluid">
 
                 <div class="navbar-wrapper">
-                    <a class="navbar-brand" href="javascript:;">Gerenciamento de Motoristas e Automoveis</a>
+                    <a class="navbar-brand" href="javascript:;">Gerenciamento de Motoristas e Veículos</a>
                 </div>
 
                 <!-- BOTAO DE RESPONSIVIDADE PARA OPCIOES DE SIDEBAR-->
@@ -111,9 +116,9 @@ The above copyright notice and this permission notice shall be included in all c
                     <form class="navbar-form"></form>
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
-                            <a style="color: #f8f9fa" id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                            <a style="color: black" id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{Auth::user()->funcao}} {{ Auth::user()->name }} <span class="caret"></span>
+                               {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -145,7 +150,7 @@ The above copyright notice and this permission notice shall be included in all c
                                 <h4 class="card-title">Cadastro de Motoristas</h4>
                             </div>
                             <div class="card-body" id="exame">
-                                <form action="{{route('storeMotorista')}}" method="post">
+                                <form id="cadastroMotorista">
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-4">
@@ -190,16 +195,16 @@ The above copyright notice and this permission notice shall be included in all c
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header card-header-admin">
-                                <h4 class="card-title">Cadastro de Automóveis</h4>
+                                <h4 class="card-title">Cadastro de Veículos</h4>
                             </div>
                             <div class="card-body" id="carros">
-                                <form action="{{route('storeCarro')}}" method="post">
+                                <form id="cadastroCarro">
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label class="bmd-label-floating">Identificador do Carro</label>
-                                                <input style="text-transform: uppercase"type="text" class="form-control " name="nome" id="nome">
+                                                <label class="bmd-label-floating">Identificador do Veículo</label>
+                                                <input type="text" class="form-control " name="nome" id="identificador">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
@@ -230,6 +235,72 @@ The above copyright notice and this permission notice shall be included in all c
                 </div>
             </div>
         </div>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
+
+        <script !src="">
+                $(function () {
+                    $('form[id="cadastroCarro"]').submit(function (event) {
+                        event.preventDefault();
+
+                        $.ajax({
+                            url: "{{route('storeCarro')}}",
+                            type: "POST",
+                            data: $(this).serialize(),
+                            dataType: 'json',
+                            success: function (response) {
+                                if (response.success === true) {
+
+                                    $('#nome').val("");
+                                    $('#identificador').val("");
+                                    $('#placa').val("");
+
+
+                                    alert('Veículo cadastrado com sucesso!');
+
+                                } else {
+
+                                    alert('Erro ao cadastrar!');
+
+                                }
+                            }
+                        })
+                    })
+                })
+        </script>
+
+        <script !src="">
+            $(function () {
+                $('form[id="cadastroMotorista"]').submit(function (event) {
+                    event.preventDefault();
+
+                    $.ajax({
+                        url: "{{route('storeMotorista')}}",
+                        type: "POST",
+                        data: $(this).serialize(),
+                        dataType: 'json',
+                        success: function (response) {
+                            if (response.success === true) {
+
+                                $('#nome').val("");
+                                $('#cpf').val("");
+                                $('#telefone').val("");
+                                alert('Motorista cadastrado com sucesso!');
+
+                            } else {
+
+                                alert('Erro ao cadastrar!');
+
+                            }
+                        }
+                    })
+                })
+            })
+        </script>
+
+
+
         <footer class="footer">
             <div class="container-fluid">
                 <h4 align="left">Versão 1.0</h4>

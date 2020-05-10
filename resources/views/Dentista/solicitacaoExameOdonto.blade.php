@@ -146,7 +146,7 @@ The above copyright notice and this permission notice shall be included in all c
                                 <h4 class="card-title">Ficha de Solicitação de Exame</h4>
                             </div>
                             <div class="card-body">
-                                <form action="{{route('storeSolicitacaoExameOdonto')}}" method="post">
+                                <form id="cadastroSolicitacao" >
                                     @csrf
                                     <h3 align="center">Identificação</h3>
                                     <div class="row">
@@ -222,14 +222,14 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-10">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Descrição dos Exames</label>
-                                                <textarea style="text-transform: uppercase;" class="form-control"
+                                                <textarea  class="form-control"
                                                           id="descricao" name="descricao"
                                                           rows="3" maxlength="150" required></textarea>
                                             </div>
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btn-primary-adm">Cadastrar</button>
-                                    <button type="submit" class="btn btn-primary-adm"><a href="{{route('pdfExame')}}" style="color: white">Gerar Impressão</a></button>
+                                    <a href="{{route('pdfExame')}}" class="btn btn-primary-adm">Gerar impressao</a>
                                 </form>
                             </div>
                         </div>
@@ -237,6 +237,38 @@ The above copyright notice and this permission notice shall be included in all c
                 </div>
             </div>
         </div>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
+
+        <script !src="">
+            $(function () {
+                $('form[id="cadastroSolicitacao"]').submit(function (event) {
+                    event.preventDefault();
+
+                    $.ajax({
+                        url: "{{route('storeSolicitacaoExameOdonto')}}",
+                        type: "POST",
+                        data: $(this).serialize(),
+                        dataType: 'json',
+                        success: function (response) {
+                            if (response.success === true) {
+
+                                $('#descricao').val("");
+                                alert('Solicitação cadastrada com sucesso!');
+
+                            } else {
+
+                                alert('Erro ao cadastrar!');
+
+                            }
+                        }
+                    })
+                })
+            })
+
+        </script>
+
         <footer class="footer">
             <div class="container-fluid">
                 <h4 align="left">Versão 1.0</h4>

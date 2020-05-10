@@ -39,16 +39,26 @@ class ViagemController extends Controller
     }
     public function cadastroMotorista(Request $request){
         $data = $request->all();
+        unset($data['_token']);
+
         $data['id_sede'] = Auth::user()->cidade_sede;
         Motorista::create($data);
-        return redirect('/cadastroMotorista');
+
+        $response['success'] = true;
+        echo json_encode($response);
+
     }
     public function cadastroCarro(Request $request){
 
         $data = $request->all();
+        unset($data['_token']);
+
         $data['id_sede'] = Auth::user()->cidade_sede;
         Carro::create($data);
-        return redirect('/cadastroMotorista');
+
+        $response['success'] = true;
+        echo json_encode($response);
+
     }
     public function cadastroViagem(Request $request){
 

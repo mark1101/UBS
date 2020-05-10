@@ -91,9 +91,9 @@ class DentistaController extends Controller
         $data['id_sede'] = Auth::user()->cidade_sede;
 
         ConsultaDentista::create($data);
-        $this->pdfConsulta();
 
-        return redirect('/odonto/consulta');
+        $response['success'] = true;
+        echo json_encode($response);
     }
 
     public function cadastraTratamentoDentista(Request $request)
@@ -103,9 +103,9 @@ class DentistaController extends Controller
         $data['id_sede'] = Auth::user()->cidade_sede;
 
         FichaTratamento::create($data);
-        $this->pdfTratamento();
 
-        return redirect('/fichaTratamento');
+        $response['success'] = true;
+        echo json_encode($response);
     }
 
     public function cadastraSolicitacaoExame(Request $request)
@@ -116,7 +116,8 @@ class DentistaController extends Controller
 
         SolicitacaoExameOdonto::create($data);
 
-        return redirect('/solicitacaoExameOdonto');
+        $response['success'] = true;
+        echo json_encode($response);
     }
 
     public function pdfTratamento()

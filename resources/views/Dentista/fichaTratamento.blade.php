@@ -149,7 +149,7 @@ The above copyright notice and this permission notice shall be included in all c
                                 <h4 class="card-title">Ficha de Tratamento</h4>
                             </div>
                             <div class="card-body">
-                                <form action="{{route('storeTratamentoOdonto')}}" method="post">
+                                <form id="cadastroTratamento">
                                     @csrf
                                     <h3 align="center">Identificação</h3>
                                     <div class="row">
@@ -197,13 +197,13 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-10">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Tratamento Executado</label>
-                                                <textarea style="text-transform: uppercase;" class="form-control"
+                                                <textarea class="form-control"
                                                           id="tratamento_executado" name="tratamento_executado" rows="3"></textarea>
                                             </div>
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btn-primary-adm">Cadastrar</button>
-                                    <button type="button" class="btn btn-primary-adm"><a href="{{route('pdfTratamento')}}" style="color: white">Imprimir ultimo registro</a></button>
+                                    <a href="{{route('pdfTratamento')}}" class="btn btn-primary-adm">Imprimir Ultimo Registro</a>
                                 </form>
                             </div>
                         </div>
@@ -211,6 +211,40 @@ The above copyright notice and this permission notice shall be included in all c
                 </div>
             </div>
         </div>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
+
+        <script !src="">
+            $(function () {
+                $('form[id="cadastroTratamento"]').submit(function (event) {
+                    event.preventDefault();
+
+                    $.ajax({
+                        url: "{{route('storeTratamentoOdonto')}}",
+                        type: "POST",
+                        data: $(this).serialize(),
+                        dataType: 'json',
+                        success: function (response) {
+                            if (response.success === true) {
+
+                                $('#tipo').val("");
+                                $('#tratamento_executado').val("");
+                                $('#data').val("");
+                                alert('Tratamento cadastrado com sucesso!');
+
+                            } else {
+
+                                alert('Erro ao cadastrar!');
+
+                            }
+                        }
+                    })
+                })
+            })
+
+        </script>
+
         <footer class="footer">
             <div class="container-fluid">
                 <h4 align="left">Versão 1.0</h4>
