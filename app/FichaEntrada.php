@@ -10,6 +10,7 @@ class FichaEntrada extends Model
         'id' , 'id_paciente' , 'encaminhamento', 'data' , 'id_localidade'
     ];
 
+
     public function paciente()
     {
         return $this->hasOne(Paciente::class, 'id', 'id_paciente');

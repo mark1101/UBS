@@ -11,12 +11,12 @@
     @endforeach--}}
 </head>
 
-
+{{--
 @foreach($data as $valor)
 
     <div class="container">
-        {{--<h2 style="text-transform: uppercase ; " align="center">prefeitura municipal
-            de {{($valor->localidade->sede)->nome}}</h2>--}}
+        --}}{{--<h2 style="text-transform: uppercase ; " align="center">prefeitura municipal
+            de {{($valor->localidade->sede)->nome}}</h2>--}}{{--
         <br><br>
         <h1 align="center">ATESTADO MÉDICO</h1>
         <br><br><br>
@@ -36,7 +36,7 @@
     <h3 align="center">Assinatura/Carimbo do Profissional</h3>
     <br>
     <h2 align="center">___________________________________</h2>
-@endforeach
+@endforeach--}}
 
 </body>
 </html>

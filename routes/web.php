@@ -217,6 +217,7 @@ Route::middleware(['auth'])->group(function () {
     // ENTRADA DE PACIENTES
     Route::post('entrada', 'FichaEntradaController@store')->name('storeEntrada');
     Route::get('mostraEntrada', 'FichaEntradaController@mostra')->name('mostraEntrada');
+    Route::post('tiraEntrada/{id}', 'FichaEntradaController@drop')->name('confirmaAtendimento');
 
 
 });

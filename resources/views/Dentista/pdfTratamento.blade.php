@@ -10,19 +10,20 @@
 <body>
 
 
-    <h2 style="text-transform: uppercase ; " align="center">prefeitura municipal
+    <h2  align="center">Prefeitura Municipal
         de {{($data->localidade->sede)->nome}}</h2>
+    <h3 align="center">Tratamento Odontológico</h3>
     <br><br><br>
     Nome do Paciente: <label
         style="text-transform: uppercase">{{($data->paciente)->nome}} {{($data->paciente)->ultimo_nome}}</label>
     <br><br><br>
-    Comunidade: <label style="text-transform: uppercase">{{($data->localidade)->nome}}</label>
+    Unidade Basica de : <label style="text-transform: uppercase">{{($data->localidade)->nome}}</label>
     <br><br><br>
     Procedimento Executado:
     <br>
-    <label style="text-transform: uppercase">{{$data->tratamento_executado}}</label>
+    <label>{{$data->tratamento_executado}}</label>
     <br><br><br>
-    Tipo da Consulta:
+    Tipo:
     <label style="text-transform: uppercase">{{$data->tipo}}</label>
     <br><br>
     Data: <label>{{$data->data}}</label>

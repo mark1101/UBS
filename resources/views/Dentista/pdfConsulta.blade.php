@@ -9,18 +9,21 @@
 </head>
 <body>
 
-    <h2 style="text-transform: uppercase ; " align="center">prefeitura municipal de {{($data->sede)->nome}}</h2>
+    <h2 align="center">Prefeitura Municipal de {{($data->sede)->nome}}</h2>
+    <h3 align="center">Primeira consulta</h3>
     <br><br><br>
     Nome do Paciente: <label style="text-transform: uppercase">{{($data->paciente)->nome}} {{($data->paciente)->ultimo_nome}}</label>
-    <br><br><br>
-    Comunidade: <label style="text-transform: uppercase">{{($data->localidade)->nome}}</label>
-    <br><br><br>
-    Inicio do Tratamento: <label style="text-transform: uppercase">{{$data->inicio_tratamento}}</label>
-    <br><br><br>
-    <h2 align="center">Anamnese</h2>
-    Higiene: <label style="text-transform: uppercase">{{$data->condicoes_higiene}}</label>
     <br>
-    Uso Medicamento : <label style="text-transform: uppercase">{{$data->uso_medicamento}}</label> <h2>________________________________________</h2>
+    Unidade Basica de Saúde: <label style="text-transform: uppercase">{{($data->localidade)->nome}}</label>
+    <br>
+    Data da Consulta: <label style="text-transform: uppercase">{{date('d/m/Y',strtotime($data->inicio_tratamento))}}</label>
+    <br><br>
+    <h2 align="center">Anamnese</h2>
+    Higiene: <label style="text-transform: uppercase"><strong>{{$data->condicoes_higiene}}</strong></label>
+    <br>
+    Uso Medicamento : <label style="text-transform: uppercase"><strong>{{$data->uso_medicamento}}</strong></label>
+    ______________________________________________
+    <h2 align="center">________________________________________</h2>
     <br>
     Alergia : <label style="text-transform: uppercase">{{$data->alergia}}</label>
     <br>
@@ -58,10 +61,11 @@
     <br>
     Diastemas : <label style="text-transform: uppercase">{{$data->diastemas}}</label>
     <br>
-    Obervações : <textarea class="form-control" id="exampleFormControlTextarea1" rows="3">{{$data->observacoes}}</textarea>
-    Plano de Tratamento: <textarea class="form-control" id="exampleFormControlTextarea1" rows="3">{{$data->plano_tratamento}}</textarea>
+    Obervações : <label for="">{{$data->observacoes}}</label>
+    <br>
+    Plano de Tratamento: <label for="">{{$data->plano_tratamento}}</label>
 
-    <br><br><br><br>
+    <br><br><br><br><br>
 
     <h3 align="center">Assinatura/Carimbo do Profissional</h3>
     <h2 align="center">___________________________________</h2>

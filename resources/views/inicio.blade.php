@@ -194,6 +194,10 @@
         </nav>
         <!-- End Navbar -->
 
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
+
         <div class="content">
             <div class="container-fluid">
                 @if(\Illuminate\Support\Facades\Auth::user()->funcao == "Recepcao")
@@ -251,11 +255,6 @@
                         </div>
                     </div>
 
-
-                    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
-
-
                     <script>
                         $(function () {
                             $('form[id="tableEntrada"]').submit(function (event) {
@@ -296,6 +295,125 @@
                     </script>
 
                 @endif
+
+                @if(\Illuminate\Support\Facades\Auth::user()->funcao == "Medicina" || \Illuminate\Support\Facades\Auth::user()->funcao == "Enfermagem")
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header card-header">
+                                <div class="form-group">
+                                    <h3 class="bmd-label-floating">Pacientes na fila para confirmação de atendimento</h3>
+                                    <form id="tableEntrada" action="">
+                                        <div class="card-body">
+                                            <div class="card-body">
+                                                <div class="table-responsive"
+                                                     style="overflow: auto; height: 300px;">
+                                                    <table id="tableSearch" class="table">
+                                                        <thead>
+
+                                                        </thead>
+                                                        <tbody>
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <script>
+                        $(function () {
+                            $('form[id="tableEntrada"]').submit(function (event) {
+                                event.preventDefault();
+                                $.ajax({
+                                    url: "{{route('mostraEntrada')}}",
+                                    type: "get",
+                                    data: $(this).serialize(),
+                                    dataType: 'json',
+                                    success: function (response) {
+                                        if (response.success === true) {
+
+                                            var newRow = $("<tr>");
+                                            var cols = "";
+                                            cols += '<th>Paciente</th>';
+                                            cols += '<th>Encaminhado</th>';
+                                            cols += '<th>Horario</th>';
+                                            cols += '<th></th>';
+                                            newRow.append(cols);
+
+                                            $("#tableSearch").html("").append(newRow).fadeIn();
+                                            $.each(response.data, function (item, value) {
+                                                var newRow = $("<tr>");
+                                                var cols = "";
+                                                cols += '<td>' + response.data[item]["paciente"].nome + " " + response.data[item]["paciente"].ultimo_nome + '</td>';
+                                                cols += '<td>' + response.data[item]["encaminhamento"] + '</td>';
+                                                cols += '<td>' + response.data[item]['data'] + '</td>';
+                                                cols += '<td><a href="#" data-toggle="modal" data-target="#modal' + response.data[item]['id'] + '" style="width: 55px;"> <i class="material-icons" style="color: black;"title="Salvar Paciente">done_all</i></a>\n</td>';
+
+                                                newRow.append(cols);
+                                                $("#tableSearch").append(newRow).fadeIn();
+                                            });
+                                        } else {
+                                            //erro
+                                        }
+                                    }
+                                });
+                            });
+                        });
+                    </script>
+
+                @endif
+
+                    @foreach($fichas as $paciente)
+                        <div class="modal fade" id="modal{{$paciente->id}}" tabindex="-1" role="dialog"
+                             aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Confirmação de atendimento</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div id="editPaciente" class="modal-body">
+                                        <div class=" container">
+                                            <form id="form{{$paciente->id}}">
+                                                @csrf
+                                                Confirmar atendimento de {{($paciente->paciente)->nome}} {{($paciente->paciente)->ultimo_nome}} ?
+                                                <div class="row" style="float: right; left: 30%">
+                                                    <button type="submit" class="btn btn-success">Sim
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <script>
+                                            $(function () {
+                                                $('form[id="form{{$paciente->id}}"]').submit(function (event) {
+                                                    event.preventDefault();
+                                                    $.ajax({
+                                                        url: "{{route('confirmaAtendimento',['id'=> $paciente->id_paciente])}}",
+                                                        type: "post",
+                                                        data: $(this).serialize(),
+                                                        dataType: 'json',
+                                                        success: function (response) {
+                                                            if (response.success === true) {
+                                                                $("#tableEntrada").submit();
+                                                                $('#modal{{$paciente->id}}').modal('hide');
+                                                            }
+                                                        }
+                                                    });
+                                                });
+                                            });
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header card-header">

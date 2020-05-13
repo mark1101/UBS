@@ -15,7 +15,7 @@
 @foreach($data as $valor)
 
     <div class="container">
-        <h2 style="text-transform: uppercase ; " align="center">prefeitura municipal
+        <h2 align="center">prefeitura municipal
             de {{($valor->localidade->sede)->nome}}</h2>
         <br><br>
 

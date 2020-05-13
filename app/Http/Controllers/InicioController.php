@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Consulta;
 use App\Encaminhamento;
+use App\FichaEntrada;
 use App\Paciente;
 use App\Recado;
 use App\User;
@@ -22,6 +23,7 @@ class InicioController extends Controller
         $users = User::where('id', Auth::user()->id)
             ->with(['localidade'])
             ->get();
+
         $valor = $users[count($users) - 1];
 
 
@@ -74,13 +76,16 @@ class InicioController extends Controller
 
         $recado = count($recados);
 
+        $ficha = FichaEntrada::where('id_localidade', Auth::user()->localidade)->get();
+
         return view('inicio' ,[
             'pacientes' => $pacientes,
             'consultas' => $consultas,
             'vacinas' => $vacinas,
             'encaminhamentos' => $encaminhamentos,
             'recado' => $recado,
-            'usuario' => $valor
+            'usuario' => $valor,
+            'fichas' => $ficha
         ]);
     }
 }
