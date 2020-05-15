@@ -294,13 +294,8 @@ The above copyright notice and this permission notice shall be included in all c
                                                                 dataType: 'json',
                                                                 success: function (response) {
                                                                     if (response.success === true) {
-                                                                        $("#footer{{$viagem->id}}").fadeIn();
-                                                                        $("#message{{$viagem->id}}").text(response.message);
-                                                                        $.wait(function () {
-                                                                            $("#footer{{$viagem->id}}").fadeOut();
-                                                                        }, 5);
                                                                         $("#buscaViagem").submit();
-                                                                        $(".modal").modal('hide');
+                                                                        $('#modalConfirma{{$viagem->id}}').modal('hide');
                                                                     }
                                                                 }
                                                             });

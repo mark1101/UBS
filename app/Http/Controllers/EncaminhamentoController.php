@@ -13,7 +13,7 @@ class EncaminhamentoController extends Controller
 {
     public function index()
     {
-        $paciente = Paciente::where('id_localidade' , Auth::user()->localidade)->get();
+        $paciente = Paciente::where('id_sede' , Auth::user()->cidade_sede)->get();
         $user = User::all();
 
         return view('Usuario.encaminhamento', ['pacientes' => $paciente , 'profissionais' => $user]);

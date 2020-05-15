@@ -262,6 +262,7 @@ The above copyright notice and this permission notice shall be included in all c
                                 $('#num_pacientes').val("");
                                 $('#data').val("");
                                 $('#observacao').val("");
+                                $('#destino').val("");
 
 
                                 alert('Viagem Cadastrada e Agendada com Sucesso!');

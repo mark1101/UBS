@@ -12,7 +12,7 @@ class AtestadoMedicoController extends Controller
 {
     public function index()
     {
-        $pacientes = Paciente::where('id_localidade' , Auth::user()->localidade)->get();
+        $pacientes = Paciente::where('id_sede' , Auth::user()->cidade_sede)->get();
 
         return view('Usuario.atestadoMedico' ,[
             'pacientes' => $pacientes

@@ -85,7 +85,7 @@ The above copyright notice and this permission notice shall be included in all c
 
     <div class="sidebar" data-color="admin" data-background-color="white" data-image="../assets/img/unidade.jpg">
         <div class="logo"><a href="{{'/'}}" class="simple-text logo-normal">
-                <img src="{{asset('img/adm.png')}}">
+                <h4 style="color: black">Dados Estatísticos</h4>
             </a></div>
         <div class="sidebar-wrapper ">
             <ul class="nav">
@@ -96,45 +96,53 @@ The above copyright notice and this permission notice shall be included in all c
                     </a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{route('veProfissionais')}}">
+                        <i class="material-icons">person
+                        </i>
+                        <p>Profissionais</p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="{{route('veEncaminhamento')}}">
                         <i class="material-icons">arrow_right_alt
                         </i>
                         <p>Encaminhamentos</p>
                     </a>
                 </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="#">
-                        <i class="material-icons">attach_file
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('veOdontologico')}}">
+                        <i class="material-icons">airline_seat_flat_angled
+
                         </i>
-                        <p>Recados</p>
+                        <p>Odontológico</p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="{{route('veConsultas')}}">
+                        <i class="material-icons">insert_emoticon
+                        </i>
+                        <p>Consultas</p>
                     </a>
                 </li>
                 <li class="nav-item  ">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{route('veViagens')}}">
                         <i class="material-icons">commute
                         </i>
-                        <p>Dados de viagens</p>
+                        <p>Viagens</p>
                     </a>
                 </li>
                 <li class="nav-item  ">
-                    <a class="nav-link" href="{{route('cadastroLocalidade')}}">
-                        <i class="material-icons">house
+                    <a class="nav-link" href="#">
+                        <i class="material-icons">content_paste
                         </i>
-                        <p>Cadastro Localidade</p>
+                        <p>Exames</p>
                     </a>
                 </li>
                 <li class="nav-item  ">
-                    <a class="nav-link" href="{{route('cadastraProfissional')}}">
-                        <i class="material-icons">person
+                    <a class="nav-link" href="#">
+                        <i class="material-icons">format_color_reset
                         </i>
-                        <p>Cadastrar Profissionais</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{route('cadastroMotorista')}}">
-                        <i class="material-icons">directions_car
-                        </i>
-                        <p>Gestão de Viagens</p>
+                        <p>Vacinas</p>
                     </a>
                 </li>
                 <li class="nav-item dropdown active">

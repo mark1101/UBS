@@ -18,7 +18,7 @@ class ExameController extends Controller
 
     public function indexcadastroExame()
     {
-        $paciente = Paciente::where('id_localidade', Auth::user()->localidade)->get();
+        $paciente = Paciente::where('id_sede', Auth::user()->cidade_sede)->get();
         return view('Usuario.cadastroExame', [
             'pacientes' => $paciente
         ]);
