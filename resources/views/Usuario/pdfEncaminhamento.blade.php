@@ -15,7 +15,7 @@
 @foreach($data as $valor)
 
     <div class="container">
-        <h2 align="center">prefeitura municipal
+        <h2 align="center">Prefeitura Municipal
             de {{($valor->localidade->sede)->nome}}</h2>
         <br><br>
 
@@ -37,15 +37,15 @@
 
         <h1 align="center">ENCAMINHAMENTO</h1>
         <br><br><br>
-        Especialidade Encaminhamento: <label style="text-transform: uppercase">{{$valor->especialidade_encaminhamento}}</label>
+        <h4>Especialidade de encaminhamento: </h4><label style="text-transform: uppercase">{{$valor->especialidade_encaminhamento}}</label>
         <br>
-        Observação: <label for="">{{$valor->observacao}}</label>
+        <h4>Observação: </h4><label for="">{{$valor->observacao}}</label>
         <br>
-        Objetivo: <label for="">{{$valor->objetivo}}</label>
+        <h4>Objetivo do encaminhamento: </h4><label for="">{{$valor->objetivo}}</label>
     </div>
     <br><br>
 
-    <label style="text-transform: uppercase">{{($valor->localidade->sede)->nome}} </label> {{$valor->data}}
+    <h3>{{($valor->localidade->sede)->nome}}, {{date('d/m/Y',strtotime($valor->data))}}</h3>
 
 
     <br><br><br>

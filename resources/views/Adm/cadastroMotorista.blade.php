@@ -28,7 +28,7 @@ The above copyright notice and this permission notice shall be included in all c
     <link href="{{asset('css/material-dashboard.css')}}" rel="stylesheet"/>
 </head>
 
-<body class=""  >
+<body class="">
 <div class="wrapper ">
 
     <div class="sidebar" data-color="admin" data-background-color="white" data-image="../assets/img/unidade.jpg">
@@ -116,9 +116,10 @@ The above copyright notice and this permission notice shall be included in all c
                     <form class="navbar-form"></form>
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
-                            <a style="color: black" id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                            <a style="color: black" id="navbarDropdown" class="nav-link dropdown-toggle" href="#"
+                               role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                               {{ Auth::user()->name }} <span class="caret"></span>
+                                {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -156,20 +157,25 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Nome do Motorista</label>
-                                                <input type="text" class="form-control" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$"
+                                                <input type="text" class="form-control"
+                                                       pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$"
                                                        name="nome" id="nome" required>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Telefone</label>
-                                                <input style="text-transform: uppercase"type="text" class="form-control telefone" name="telefone" id="telefone" required>
+                                                <input style="text-transform: uppercase" type="text"
+                                                       class="form-control telefone" name="telefone" id="telefone"
+                                                       required>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">CPF</label>
-                                                <input type="text" class="form-control cpf" name="cpf" id="cpf" required>
+                                                <input type="text" class="form-control cpf" name="cpf" id="cpf"
+                                                       required>
+                                                <span id="cpff"></span>
                                             </div>
                                         </div>
                                     </div>
@@ -210,7 +216,8 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Placa</label>
-                                                <input style="text-transform: uppercase"type="text" class="form-control " name="placa" id="placa">
+                                                <input style="text-transform: uppercase" type="text"
+                                                       class="form-control " name="placa" id="placa">
                                             </div>
                                         </div>
                                     </div>
@@ -240,34 +247,34 @@ The above copyright notice and this permission notice shall be included in all c
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
 
         <script !src="">
-                $(function () {
-                    $('form[id="cadastroCarro"]').submit(function (event) {
-                        event.preventDefault();
+            $(function () {
+                $('form[id="cadastroCarro"]').submit(function (event) {
+                    event.preventDefault();
 
-                        $.ajax({
-                            url: "{{route('storeCarro')}}",
-                            type: "POST",
-                            data: $(this).serialize(),
-                            dataType: 'json',
-                            success: function (response) {
-                                if (response.success === true) {
+                    $.ajax({
+                        url: "{{route('storeCarro')}}",
+                        type: "POST",
+                        data: $(this).serialize(),
+                        dataType: 'json',
+                        success: function (response) {
+                            if (response.success === true) {
 
-                                    $('#nome').val("");
-                                    $('#identificador').val("");
-                                    $('#placa').val("");
+                                $('#nome').val("");
+                                $('#identificador').val("");
+                                $('#placa').val("");
 
 
-                                    alert('Veículo cadastrado com sucesso!');
+                                alert('Veículo cadastrado com sucesso!');
 
-                                } else {
+                            } else {
 
-                                    alert('Erro ao cadastrar!');
+                                alert('Erro ao cadastrar!');
 
-                                }
                             }
-                        })
+                        }
                     })
                 })
+            })
         </script>
 
         <script !src="">
@@ -282,6 +289,7 @@ The above copyright notice and this permission notice shall be included in all c
                         dataType: 'json',
                         success: function (response) {
                             if (response.success === true) {
+                                $("#cpff").text("");
 
                                 $('#nome').val("");
                                 $('#cpf').val("");
@@ -289,8 +297,12 @@ The above copyright notice and this permission notice shall be included in all c
                                 alert('Motorista cadastrado com sucesso!');
 
                             } else {
+                                $("#cpff").css({
+                                    "color": "red",
+                                    "font-size": "13px"
+                                }).text(response.errors.cpf);
 
-                                alert('Erro ao cadastrar!');
+
 
                             }
                         }
@@ -298,7 +310,6 @@ The above copyright notice and this permission notice shall be included in all c
                 })
             })
         </script>
-
 
 
         <footer class="footer">

@@ -229,6 +229,7 @@ The above copyright notice and this permission notice shall be included in all c
                                                 <label class="bmd-label-floating">Data de hoje</label>
                                                 <input style="text-transform: uppercase;" type="text" class="form-control data" id="data"
                                                        name="data" required>
+                                                <span id="hoje"></span>
                                             </div>
                                         </div>
                                     </div>
@@ -260,6 +261,7 @@ The above copyright notice and this permission notice shall be included in all c
                         dataType: 'json',
                         success : function (response) {
                             if(response.success === true){
+                                $("#hoje").css({"color": "red", "font-size": "13px"}).text("");
 
                                 $('#dias').val("");
                                 $('#data').val("");
@@ -268,7 +270,7 @@ The above copyright notice and this permission notice shall be included in all c
                                 alert('Atestado Médico Cadastrado com Sucesso!');
 
                             }else{
-
+                                $("#hoje").css({"color": "red", "font-size": "13px"}).text(response.errors.date);
 
                             }
                         }

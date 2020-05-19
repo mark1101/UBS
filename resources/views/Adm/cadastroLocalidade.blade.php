@@ -177,12 +177,12 @@ The above copyright notice and this permission notice shall be included in all c
                             <h4 class="card-title">Cadastro de Localidade</h4>
                         </div>
                         <div class="card-body" id="exame">
-                            <form action="{{route('storeLocalidade')}}" method="post">
+                            <form id="cadastroLocalidade" {{--action="{{route('storeLocalidade')}}" method="post"--}}>
                                 @csrf
                                 <div class="container">
                                     <div class="row">
                                         <label class="bmd-label-floating">Nome da Sede</label>
-                                        <select style="text-transform: uppercase;" class="form-control" name="id_sede" id="id_sede">
+                                        <select  class="form-control" name="id_sede" id="id_sede">
                                             @foreach($sedes as $sede)
                                                 <option
                                                     value="{{$sede->id}}" style="text-transform: uppercase;">
@@ -197,6 +197,7 @@ The above copyright notice and this permission notice shall be included in all c
                                             <label class="bmd-label-floating">Nome da Localidade</label>
                                             <input type="text" class="form-control " id="nome"
                                                    name="nome" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" required>
+                                            <span id="nomeLocalidade"></span>
                                         </div>
                                     </div>
                                 </div>
@@ -259,6 +260,38 @@ The above copyright notice and this permission notice shall be included in all c
                 <h4 align="left">Versão 1.0</h4>
             </div>
         </footer>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
+
+        <script>
+
+            $(function () {
+                $('form[id="cadastroLocalidade"]').submit(function (event) {
+                    event.preventDefault();
+
+                    $.ajax({
+                        url: "{{route('storeLocalidade')}}",
+                        type: "POST",
+                        data: $(this).serialize(),
+                        dataType: 'json',
+                        success : function (response) {
+                            if(response.success === true){
+                                console.log('aaae')
+                                $("#nomeLocalidade").text("");
+                                $('#nome').val("");
+
+                                alert('Localidade cadastrada com sucesso!');
+
+                            }else{
+                                $("#nomeLocalidade").css({"color": "red", "font-size": "13px"}).text(response.errors.localidade);
+                            }
+                        }
+                    })
+                })
+            })
+        </script>
+
     </div>
 </div>
 

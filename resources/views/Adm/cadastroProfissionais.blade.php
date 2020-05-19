@@ -167,6 +167,7 @@ The above copyright notice and this permission notice shall be included in all c
                                                 <label class="bmd-label-floating">CPF</label>
                                                 <input type="text" class="form-control cpf" id="cpf"
                                                        name="cpf" required>
+                                                <span id="cpff"></span>
                                             </div>
                                         </div>
                                         <div class="col-md-2">
@@ -174,6 +175,7 @@ The above copyright notice and this permission notice shall be included in all c
                                                 <label class="bmd-label-floating">Data Nascimento</label>
                                                 <input type="text" class="form-control data" id="data_nascimento"
                                                        name="data_nascimento" required>
+                                                <span id="nascimento"></span>
                                             </div>
                                         </div>
                                     </div>
@@ -215,13 +217,20 @@ The above copyright notice and this permission notice shall be included in all c
                                                 <label class="bmd-label-floating">Email</label>
                                                 <input type="email" class="form-control" maxlength="60" id="email"
                                                        name="email" required>
+                                                <span id="emaill"></span>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Senha</label>
-                                                <input type="text" class="form-control" id="password" name="password"
+                                                <input type="password" class="form-control" id="password" name="password"
                                                        required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Confirma senha</label>
+                                                <input type="password" class="form-control" id="confirma" name="confirma"
+                                                       required>
+                                                <span id="senha"></span>
                                             </div>
                                         </div>
                                     </div>
@@ -252,18 +261,25 @@ The above copyright notice and this permission notice shall be included in all c
                         success: function (response) {
                             if (response.success === true) {
 
+                                $("#nascimento").text("");
+                                $("#cpff").text("");
+                                $("#senha").text("");
+                                $("#emaill").text("");
+
                                 $('#name').val("");
                                 $('#cpf').val("");
-                                $('#data-nascimento').val("");
+                                $('#data_nascimento').val("");
                                 $('#email').val("");
                                 $('#password').val("");
+                                $('#confirma').val("");
 
                                 alert('Profissional cadastrado com sucesso!');
 
                             } else {
-
-                                alert('Erro ao cadastrar!');
-
+                                $("#nascimento").css({"color": "red", "font-size": "13px"}).text(response.errors.nascimento);
+                                $("#cpff").css({"color": "red", "font-size": "13px"}).text(response.errors.cpf);
+                                $("#senha").css({"color": "red", "font-size": "13px"}).text(response.errors.senha);
+                                $("#emaill").css({"color": "red", "font-size": "13px"}).text(response.errors.email);
                             }
                         }
                     })

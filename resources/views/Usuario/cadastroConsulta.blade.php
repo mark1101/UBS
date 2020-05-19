@@ -269,7 +269,7 @@ The above copyright notice and this permission notice shall be included in all c
                                     <div class="row">
                                         <div class="col-md-10">
                                             <div class="form-group">
-                                                <label class="bmd-label-floating">Finalização de Examinações</label>
+                                                <label class="bmd-label-floating">Finalização da consulta</label>
                                                 <textarea  class="form-control" id="finalizacao" name="finalizacao"
                                                           rows="3"></textarea>
                                             </div>

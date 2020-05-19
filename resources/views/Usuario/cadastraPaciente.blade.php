@@ -211,7 +211,7 @@ The above copyright notice and this permission notice shall be included in all c
                             </div>
                             <div class="card-body">
                                 <form
-                                    id="cadastraPaciente"{{-- action="{{route('cadastraPaciente')}}" method="post"--}}>
+                                    id="cadastraPaciente" {{--action="{{route('cadastraPaciente')}}" method="post"--}}>
                                     @csrf
                                     <p class="card-category">Dados Pessoais</p>
                                     <div class="row">
@@ -240,7 +240,7 @@ The above copyright notice and this permission notice shall be included in all c
                                                 <span id="nascimento"></span>
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
+                                       {{-- <div class="col-md-3">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Idade</label>
                                                 <input style="text-transform: uppercase;" type="text"
@@ -248,7 +248,7 @@ The above copyright notice and this permission notice shall be included in all c
                                                        required>
                                                 <span id="idade"></span>
                                             </div>
-                                        </div>
+                                        </div>--}}
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Email</label>
@@ -361,6 +361,11 @@ The above copyright notice and this permission notice shall be included in all c
                                 $('#num_sus').val("");
                                 $('#cpf').val("");
                                 $('#telefone').val("");
+
+                                $("#nascimento").css({"color": "red", "font-size": "13px"}).text("");
+                                $("#pemail").css({"color": "red", "font-size": "13px"}).text("");
+                                $("#sus").css({"color": "red", "font-size": "13px"}).text("");
+                                $("#pcpf").css({"color": "red", "font-size": "13px"}).text("");
 
                                 alert('Paciente Cadastrado com Sucesso!');
 

@@ -32,10 +32,16 @@ class PacienteController extends Controller
         unset($data['_token']);
 
         $data['id_sede'] = Auth::user()->cidade_sede;
-        //dd($data);
         $date_born = $data['data_nascimento'];
         $date_born = date('Y-m-d', strtotime(str_replace('/', "-", $date_born)));
         $today = date('Y-m-d');
+
+        $dataa = date('Y', strtotime(str_replace('/', "-", $date_born)));
+        $hoje = date('Y');
+
+        $idade = "";
+        $idade = $hoje - $dataa;
+        $data['idade'] = $idade;
 
         $response['errors']['date'] = "";
         $response['errors']['email'] = "";

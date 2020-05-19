@@ -102,23 +102,15 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/pdfAtestado' , 'AtestadoMedicoController@createPdf')->name('createPdf');
 
 // ROTAS DE ADMINISTRACAO
-    Route::get('/cadastroMotorista', 'ViagemController@indexMotorista')
-        ->name('cadastroMotorista');
-    Route::post('/cadastrouMotorista', 'ViagemController@cadastroMotorista')
-        ->name('storeMotorista');
-    Route::post('/cadastrouCarro', 'ViagemController@cadastroCarro')
-        ->name('storeCarro');
-    Route::get('/cadastroLocalidade', 'LocalidadeController@indexCadastroLocalidade')
-        ->name('cadastroLocalidade');
-    Route::post('/cadastrouLocalidade', 'LocalidadeController@cadastroLocalidade')
-        ->name('storeLocalidade');
-    Route::post('/cadastrouSede', 'LocalidadeController@cadastroSede')
-        ->name('storeSede');
-    Route::get('/cadastraProfissional' , 'ProfissionalController@indexProfissional')
-        ->name('cadastraProfissional');
+    Route::get('/cadastroMotorista', 'ViagemController@indexMotorista')->name('cadastroMotorista');
+    Route::post('/cadastrouMotorista', 'ViagemController@cadastroMotorista')->name('storeMotorista');
+    Route::post('/cadastrouCarro', 'ViagemController@cadastroCarro')->name('storeCarro');
+    Route::get('/cadastroLocalidade', 'LocalidadeController@indexCadastroLocalidade')->name('cadastroLocalidade');
+    Route::post('/cadastrouLocalidade', 'LocalidadeController@cadastroLocalidade')->name('storeLocalidade');
+    Route::post('/cadastrouSede', 'LocalidadeController@cadastroSede')->name('storeSede');
+    Route::get('/cadastraProfissional' , 'ProfissionalController@indexProfissional')->name('cadastraProfissional');
     Route::post('/editaProfissional/{id}', 'ProfissionalController@alteraProfissional')->name('alteraProfissional');
-    Route::post('/cadastrouProfissional' , 'ProfissionalController@cadastroProfissional')
-        ->name('storeProfisional');
+    Route::post('/cadastrouProfissional' , 'ProfissionalController@cadastroProfissional')->name('storeProfisional');
     Route::get('/grafico' , 'GraficosAdmController@index')->name('graficos');
     Route::get('/grafico/vacina', 'GraficosAdmController@indexVacina')->name('graficoVacina');
     Route::get('/grafico/consulta', 'GraficosAdmController@indexConsulta')->name('graficoConsulta');

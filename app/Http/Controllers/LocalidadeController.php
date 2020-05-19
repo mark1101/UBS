@@ -20,7 +20,18 @@ class LocalidadeController extends Controller
     public function cadastraLocalidade(Request $request)
     {
         $data = $request->all();
-        Localidade::create($data);
+        unset($data['_token']);
+
+        $response['errors']['localidade'] = "";
+
+        if(Localidade::where('nome', $data['nome'])->count() > 0){
+            $response['success'] = false;
+            $response['errors']['localidade'] = "Localidade já cadastrada.";
+        }else{
+            $response['success'] = true;
+            Localidade::create($data);
+        }
+        echo json_encode($response);
     }
 
     public function indexCadastroLocalidade()
@@ -92,13 +103,21 @@ class LocalidadeController extends Controller
 
     public function cadastroLocalidade(Request $request)
     {
-
         $data = $request->all();
-
         $data['cidade_sede'] = Auth::user()->cidade_sede;
 
-        Localidade::create($data);
-        return redirect('/cadastroLocalidade');
+        unset($data['_token']);
+
+        $response['errors']['localidade'] = "";
+
+        if(Localidade::where('nome', $data['nome'])->count() > 0){
+            $response['success'] = false;
+            $response['errors']['localidade'] = "Localidade já cadastrada.";
+        }else{
+            $response['success'] = true;
+            Localidade::create($data);
+        }
+        echo json_encode($response);
     }
 
 }

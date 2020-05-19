@@ -12,24 +12,37 @@ class AtestadoMedicoController extends Controller
 {
     public function index()
     {
-        $pacientes = Paciente::where('id_sede' , Auth::user()->cidade_sede)->get();
+        $pacientes = Paciente::where('id_sede', Auth::user()->cidade_sede)->get();
 
-        return view('Usuario.atestadoMedico' ,[
+        return view('Usuario.atestadoMedico', [
             'pacientes' => $pacientes
         ]);
     }
-    public function create(Request $request){
+
+    public function create(Request $request)
+    {
         $data = $request->all();
 
-        $pacientes = Paciente::where('id_localidade' , Auth::user()->localidade)->get();
+        $pacientes = Paciente::where('id_localidade', Auth::user()->localidade)->get();
 
         $data['id_localidade'] = Auth::user()->localidade;
         $data['id_profissional'] = Auth::user()->id;
         $data['id_sede'] = Auth::user()->cidade_sede;
 
-        AtestadoMedico::create($data);
+        $response['errors']['date'] = "";
 
-        $response['success'] = true;
+        $date_born = $data['data'];
+        $date_born = date('Y-m-d', strtotime(str_replace('/', "-", $date_born)));
+        $today = date('Y-m-d');
+
+        if ($date_born < $today) {
+            $response['success'] = false;
+            $response['errors']['date'] = "Data inválida, é aceito somente datas maiores ou igual a de hoje.";
+        }else{
+            $response['success'] = true;
+            AtestadoMedico::create($data);
+        }
+
         echo json_encode($response);
 
     }
