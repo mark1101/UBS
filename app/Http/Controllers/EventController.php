@@ -32,7 +32,9 @@ class EventController extends Controller
         $data['id_localidade'] = Auth::user()->localidade;
 
         Event::create($data);
-        return redirect('/agendamentoDentista');
+
+        $response['success'] = true;
+        echo json_encode($response);
     }
 
 }

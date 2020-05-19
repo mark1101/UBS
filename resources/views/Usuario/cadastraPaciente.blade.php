@@ -173,7 +173,7 @@ The above copyright notice and this permission notice shall be included in all c
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                               {{ Auth::user()->name }} <span class="caret"></span>
+                                {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -198,6 +198,9 @@ The above copyright notice and this permission notice shall be included in all c
 
 
         <div class="content">
+            <a style="float: right" href="" data-toggle="modal" data-target="#modalExemplo"
+               class="btn btn-primary-admin"><strong>?</strong></a>
+
             <div class="container-fluid">
                 <div class="row">
                     <!-- CADASTRO DE PACIENTE -->
@@ -207,7 +210,8 @@ The above copyright notice and this permission notice shall be included in all c
                                 <h4 class="card-title">Cadastro de paciente</h4>
                             </div>
                             <div class="card-body">
-                                <form id="cadastraPaciente" {{--action="{{route('cadastraPaciente')}}" method="post"--}}>
+                                <form
+                                    id="cadastraPaciente"{{-- action="{{route('cadastraPaciente')}}" method="post"--}}>
                                     @csrf
                                     <p class="card-category">Dados Pessoais</p>
                                     <div class="row">
@@ -215,28 +219,34 @@ The above copyright notice and this permission notice shall be included in all c
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Primeiro Nome</label>
                                                 <input type="text" class="form-control" maxlength="15" id="nome"
-                                                       name="nome" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" required>
+                                                       name="nome" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$"
+                                                       required>
                                             </div>
                                         </div>
                                         <div class="col-md-5">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Restante nome</label>
-                                                <input  type="text" class="form-control" maxlength="40" id="ultimo_nome"
-                                                       name="ultimo_nome" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$"  required>
+                                                <input type="text" class="form-control" maxlength="40" id="ultimo_nome"
+                                                       name="ultimo_nome"
+                                                       pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" required>
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Data de Nascimento</label>
-                                                <input style="text-transform: uppercase;" type="text" class="form-control data" id="data-nascimento"
+                                                <input style="text-transform: uppercase;" type="text"
+                                                       class="form-control data" id="data_nascimento"
                                                        name="data_nascimento" maxlength="16" required>
+                                                <span id="nascimento"></span>
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Idade</label>
-                                                <input style="text-transform: uppercase;" type="text" class="form-control idade" id="idade" name="idade"
+                                                <input style="text-transform: uppercase;" type="text"
+                                                       class="form-control idade" id="idade" name="idade"
                                                        required>
+                                                <span id="idade"></span>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
@@ -244,6 +254,7 @@ The above copyright notice and this permission notice shall be included in all c
                                                 <label class="bmd-label-floating">Email</label>
                                                 <input type="email" class="form-control" maxlength="60" id="email"
                                                        name="email">
+                                                <span id="pemail"></span>
                                             </div>
                                         </div>
                                     </div>
@@ -251,15 +262,19 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Numero do SUS</label>
-                                                <input style="text-transform: uppercase;" type="text" class="form-control sus" id="num_sus" name="num_sus"
+                                                <input style="text-transform: uppercase;" type="text"
+                                                       class="form-control sus" id="num_sus" name="num_sus"
                                                        required>
+                                                <span id="sus"></span>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">CPF</label>
-                                                <input style="text-transform: uppercase;" type="text" class="form-control cpf" id="cpf" name="cpf"
+                                                <input style="text-transform: uppercase;" type="text"
+                                                       class="form-control cpf" id="cpf" name="cpf"
                                                        maxlength="16" required>
+                                                <span id="pcpf"></span>
                                             </div>
                                         </div>
                                     </div>
@@ -267,10 +282,10 @@ The above copyright notice and this permission notice shall be included in all c
                                     <p class="card-category">Informações de Endereço</p>
                                     <div class="container">
                                         <div class="row">
-                                            <select  class="form-control" name="id_localidade" id="id_localidade">
+                                            <select class="form-control" name="id_localidade" id="id_localidade">
                                                 @foreach($localidades as $localidade)
                                                     <option
-                                                        value="{{$localidade->id}}"style="text-transform: uppercase;" >
+                                                        value="{{$localidade->id}}">
                                                         {{$localidade->nome}}</option>
                                                 @endforeach
                                             </select>
@@ -280,27 +295,40 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Telefone</label>
-                                                <input style="text-transform: uppercase;" type="text" class="form-control telefone" id="telefone"
+                                                <input style="text-transform: uppercase;" type="text"
+                                                       class="form-control telefone" id="telefone"
                                                        name="telefone">
                                             </div>
                                         </div>
                                     </div>
-                                    <button  type="submit" class="btn btn-primary-normal">Salvar
+                                    <button type="submit" class="btn btn-primary-normal">Salvar
                                     </button>
                                 </form>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-md-4">
-                      <div class="card card-profile">
-
-                        <div class="card-body">
-                          <p class="card-description">
-                            Aqui explicar a importancia do cadastro do cliente dentro do sistema.
-                          </p>
+                    <!-- Modal -->
+                    <div class="modal fade" id="modalExemplo" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Ajuda </h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    Todos os pacientes devem ser cadastrado com a informação de endereço de onde moram
+                                    mesmo que sejam atendimento pela primeira vez em outra unidade de saúde por algum motivo
+                                    de emergência.
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                </div>
+                            </div>
                         </div>
-                      </div>
                     </div>
 
                 </div>
@@ -325,7 +353,6 @@ The above copyright notice and this permission notice shall be included in all c
                         dataType: 'json',
                         success : function (response) {
                             if(response.success === true){
-
                                 $('#nome').val("");
                                 $('#ultimo_nome').val("");
                                 $('#data-nascimento').val("");
@@ -338,9 +365,10 @@ The above copyright notice and this permission notice shall be included in all c
                                 alert('Paciente Cadastrado com Sucesso!');
 
                             }else{
-
-                                $('#modalError').modal('show');
-
+                                $("#nascimento").css({"color": "red", "font-size": "13px"}).text(response.errors.date);
+                                $("#pemail").css({"color": "red", "font-size": "13px"}).text(response.errors.email);
+                                $("#sus").css({"color": "red", "font-size": "13px"}).text(response.errors.sus);
+                                $("#pcpf").css({"color": "red", "font-size": "13px"}).text(response.errors.cpf);
                             }
                         }
                     })

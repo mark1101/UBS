@@ -12,7 +12,7 @@ class PacienteController extends Controller
 {
     public function indexPaciente()
     {
-        $localidade = Localidade::where('id_sede' , Auth::user()->cidade_sede)->get();
+        $localidade = Localidade::where('id_sede', Auth::user()->cidade_sede)->get();
         return view('Usuario.cadastraPaciente', [
             'localidades' => $localidade
         ]);
@@ -32,11 +32,33 @@ class PacienteController extends Controller
         unset($data['_token']);
 
         $data['id_sede'] = Auth::user()->cidade_sede;
+        //dd($data);
+        $date_born = $data['data_nascimento'];
+        $date_born = date('Y-m-d', strtotime(str_replace('/', "-", $date_born)));
+        $today = date('Y-m-d');
 
-        Paciente::create($data);
+        $response['errors']['date'] = "";
+        $response['errors']['email'] = "";
+        $response['errors']['sus'] = "";
+        $response['errors']['cpf'] = "";
 
+        if ($date_born > $today) {
+            $response['success'] = false;
+            $response['errors']['date'] = "A data de nascimento precisa ser menor que o dia de hoje.";
+        } else if (Paciente::where('email', $data['email'])->count() > 0) {
+            $response['success'] = false;
+            $response['errors']['email'] = "Email inválido, ja temos cadastrado no sistema.";
+        } else if (Paciente::where('num_sus', $data['num_sus'])->count() > 0) {
+            $response['success'] = false;
+            $response['errors']['sus'] = "Número do SUS inválido, já temos cadastrado no sistema";
+        } else if (Paciente::where('cpf', $data['cpf'])->count() > 0) {
+            $response['success'] = false;
+            $response['errors']['cpf'] = "CPF inválido, ja temos cadastrado no sistema.";
+        } else {
+            $response['success'] = true;
+            Paciente::create($data);
+        }
 
-        $response['success'] = true;
         echo json_encode($response);
 
     }

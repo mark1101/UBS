@@ -29,7 +29,7 @@ The above copyright notice and this permission notice shall be included in all c
 
 </head>
 
-<body class="" >
+<body class="">
 <div class="wrapper ">
 
     <div class="sidebar" data-color="green" data-background-color="white" data-image="../assets/img/unidade.jpg">
@@ -123,7 +123,7 @@ The above copyright notice and this permission notice shall be included in all c
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                               {{ Auth::user()->name }} <span class="caret"></span>
+                                {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -157,21 +157,19 @@ The above copyright notice and this permission notice shall be included in all c
                                 <h4 class="card-title">Novo Agendamento</h4>
                             </div>
                             <div class="card-body">
-                                <form action="{{route('cadastroEvento')}}" method="post">
+                                <form id="cadatroAgendamento" >
                                     @csrf
 
                                     <div class="row">
                                         <div class="col-md-5">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Paciente</label>
-                                                <select style="text-transform: uppercase" class="form-control" name="title" id="title">
+                                                <select class="form-control" name="title" id="title">
                                                     @foreach($pacientes as $paciente)
                                                         <option
                                                             value="{{$paciente->nome}} {{$paciente->ultimo_nome}}">{{$paciente->nome}} {{$paciente->ultimo_nome}}</option>
                                                     @endforeach
                                                 </select>
-                                                {{--<label class="bmd-label-floating">Titulo</label>
-                                                <input style="text-transform: uppercase" type="text" class="form-control" name="title" id="title">--}}
                                             </div>
                                         </div>
                                     </div>
@@ -179,45 +177,35 @@ The above copyright notice and this permission notice shall be included in all c
                                     <div class="container">
                                         <div class="row">
                                             <label class="bmd-label-floating">Dentista</label>
-                                            <select style="text-transform: uppercase" class="form-control" name="id_profissional" id="id_profissional">
+                                            <select class="form-control" name="id_profissional" id="id_profissional">
                                                 @foreach($dentistas as $d)
                                                     <option
-                                                        value="{{$d->id}}">{{$d->name}} --  {{$d->cpf}}</option>
+                                                        value="{{$d->id}}">{{$d->name}} , CPF : {{$d->cpf}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
-
-
-{{--
-
-                                        <div class="row">
-                                            <label class="bmd-label-floating">Paciente</label>
-                                            <select style="text-transform: uppercase" class="form-control" name="id_paciente" id="id_paciente">
-                                                @foreach($pacientes as $paciente)
-                                                    <option
-                                                        value="{{$paciente->id}}">{{$paciente->nome}} {{$paciente->ultimo_nome}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>--}}
                                     </div>
-                                <br>
+                                    <br>
 
                                     <div class="row">
-                                        <div class="col-md-2">
+                                        <div class="col-md-5">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Data Inicio</label>
                                                 <input type="text" class="form-control horario" name="start"
-                                                       id="start" placeholder="Y/m/d h/m/s">
+                                                       id="start" placeholder="ano/mes/dia hora/minuto/segundo" required>
                                             </div>
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-5">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Data Final</label>
                                                 <input type="text" class="form-control horario"
-                                                       placeholder="Y/m/d h/m/s"
-                                                       name="end" id="end">
+                                                       placeholder="ano/mes/dia hora/minuto/segundo"
+                                                       name="end" id="end" required>
                                             </div>
                                         </div>
+                                    </div>
+
+                                    <div class="row">
                                         <div class="col-md-1">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Cor</label>
@@ -226,12 +214,11 @@ The above copyright notice and this permission notice shall be included in all c
                                         </div>
                                     </div>
 
-
                                     <div class="row">
                                         <div class="col-md-10">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Descrição</label>
-                                                <textarea  class="form-control" id="description" name="description"
+                                                <textarea class="form-control" id="description" name="description"
                                                           rows="3"></textarea>
                                             </div>
                                         </div>
@@ -242,10 +229,44 @@ The above copyright notice and this permission notice shall be included in all c
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
+
+        <script>
+
+            $(function () {
+                $('form[id="cadatroAgendamento"]').submit(function (event) {
+                    event.preventDefault();
+
+                    $.ajax({
+                        url: "{{route('cadastroEvento')}}",
+                        type: "POST",
+                        data: $(this).serialize(),
+                        dataType: 'json',
+                        success : function (response) {
+                            if(response.success === true){
+
+                                $('#start').val("");
+                                $('#end').val("");
+                                $('#description').val("");
+
+                                alert('Agendamento realizado com sucesso!');
+
+                            }else{
+
+
+                            }
+                        }
+                    })
+                })
+            })
+
+        </script>
 
         <footer class="footer">
             <div class="container-fluid">
@@ -270,7 +291,6 @@ The above copyright notice and this permission notice shall be included in all c
 <script src="{{asset('js/plugins/jasny-bootstrap.min.js')}}"></script>
 <script src="{{asset('js/plugins/fullcalendar.min.js')}}"></script>
 <script src="{{asset('js/plugins/jquery-jvectormap.js')}}"></script>
-<script src="{{asset('assets/js/plugins/nouislider.min.js')}}"></script>
 <script src="{{asset('https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js')}}"></script>
 <script src="{{asset('js/plugins/arrive.min.js')}}"></script>
 

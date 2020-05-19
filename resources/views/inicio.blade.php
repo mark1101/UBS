@@ -339,7 +339,7 @@
                                             var newRow = $("<tr>");
                                             var cols = "";
                                             cols += '<th>Paciente</th>';
-                                            cols += '<th>Encaminhado</th>';
+                                            cols += '<th>Tipo de atividade</th>';
                                             cols += '<th>Horario</th>';
                                             cols += '<th></th>';
                                             newRow.append(cols);
