@@ -19,11 +19,20 @@ class HistoricoPacienteController extends Controller
         $localidades = Localidade::where('id_sede', Auth::user()->cidade_sede)->get();
 
         $oque = "";
-        return view('Usuario.historicoPaciente', [
-            'localidades' => $localidades,
-            'pacientes' => $pacientes,
-            'oque' => $oque
-        ]);
+
+        if (Auth::user()->funcao == "Agente de Saúde") {
+            return view('Agente.historicoPaciente', [
+                'localidades' => $localidades,
+                'pacientes' => $pacientes,
+                'oque' => $oque
+            ]);
+        } else {
+            return view('Usuario.historicoPaciente', [
+                'localidades' => $localidades,
+                'pacientes' => $pacientes,
+                'oque' => $oque
+            ]);
+        }
     }
 
     public function buscaPacienteId($id)
@@ -50,52 +59,96 @@ class HistoricoPacienteController extends Controller
             $quantos = Consulta::where('id_paciente', $nome)->count();
             $oque = "consulta";
 
-            return view('Usuario.historicoPaciente', [
-                'pacientes' => $pacientes,
-                'dados' => $historico,
-                'oque' => $oque,
-                'quantidade' => $quantos,
-                'localidades' => $localidades
-            ]);
+            if (Auth::user()->funcao == "Agente de Saúde") {
+                return view('Agente.historicoPaciente', [
+                    'pacientes' => $pacientes,
+                    'dados' => $historico,
+                    'oque' => $oque,
+                    'quantidade' => $quantos,
+                    'localidades' => $localidades
+                ]);
+            } else {
+
+                return view('Usuario.historicoPaciente', [
+                    'pacientes' => $pacientes,
+                    'dados' => $historico,
+                    'oque' => $oque,
+                    'quantidade' => $quantos,
+                    'localidades' => $localidades
+                ]);
+            }
         } else if ($filters == 'encaminhamentos') {
             $historico = Encaminhamento::where('id_paciente', $nome)->get();
             $quantos = Encaminhamento::where('id_paciente', $nome)->count();
             $oque = "encaminhamentos";
 
-            return view('Usuario.historicoPaciente', [
-                'pacientes' => $pacientes,
-                'dados' => $historico,
-                'oque' => $oque,
-                'quantidade' => $quantos,
-                'localidades' => $localidades
-            ]);
+            if (Auth::user()->funcao == "Agente de Saúde") {
+                return view('Agente.historicoPaciente', [
+                    'pacientes' => $pacientes,
+                    'dados' => $historico,
+                    'oque' => $oque,
+                    'quantidade' => $quantos,
+                    'localidades' => $localidades
+                ]);
+            } else {
+
+                return view('Usuario.historicoPaciente', [
+                    'pacientes' => $pacientes,
+                    'dados' => $historico,
+                    'oque' => $oque,
+                    'quantidade' => $quantos,
+                    'localidades' => $localidades
+                ]);
+            }
 
         } else if ($filters == 'vacinas') {
             $historico = Vacina::where('id_paciente', $nome)->get();
             $quantos = Vacina::where('id_paciente', $nome)->count();
             $oque = "vacinas";
 
-            return view('Usuario.historicoPaciente', [
-                'pacientes' => $pacientes,
-                'dados' => $historico,
-                'oque' => $oque,
-                'quantidade' => $quantos,
-                'localidades' => $localidades
-            ]);
+            if (Auth::user()->funcao == "Agente de Saúde") {
+                return view('Agente.historicoPaciente', [
+                    'pacientes' => $pacientes,
+                    'dados' => $historico,
+                    'oque' => $oque,
+                    'quantidade' => $quantos,
+                    'localidades' => $localidades
+                ]);
+            } else {
 
-        }else{
+                return view('Usuario.historicoPaciente', [
+                    'pacientes' => $pacientes,
+                    'dados' => $historico,
+                    'oque' => $oque,
+                    'quantidade' => $quantos,
+                    'localidades' => $localidades
+                ]);
+            }
+
+        } else {
             $historico = "";
             $quantos = "";
             $oque = "Erro ao pesquisar";
 
-            return view('Usuario.historicoPaciente', [
-                'localidades' => $localidades,
-                'pacientes' => $pacientes,
-                'dados' => $historico,
-                'oque' => $oque,
-                'quantidade' => $quantos,
+            if (Auth::user()->funcao == "Agente de Saúde") {
+                return view('Agente.historicoPaciente', [
+                    'pacientes' => $pacientes,
+                    'dados' => $historico,
+                    'oque' => $oque,
+                    'quantidade' => $quantos,
+                    'localidades' => $localidades
+                ]);
+            } else {
 
-            ]);
+                return view('Usuario.historicoPaciente', [
+                    'localidades' => $localidades,
+                    'pacientes' => $pacientes,
+                    'dados' => $historico,
+                    'oque' => $oque,
+                    'quantidade' => $quantos,
+
+                ]);
+            }
         }
 
     }

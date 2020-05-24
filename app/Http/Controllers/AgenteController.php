@@ -80,5 +80,8 @@ class AgenteController extends Controller
 
         echo json_encode($response);
     }
+    public function indexHistorico(){
+        return view('Agente.historicoPaciente');
+    }
 
 }

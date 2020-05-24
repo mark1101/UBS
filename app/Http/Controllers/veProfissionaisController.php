@@ -32,6 +32,8 @@ class veProfissionaisController extends Controller
             ->where('cidade_sede', $cidade)
             ->get();
 
+
+
         $response['success'] = true;
         $response['data'] = $data;
 

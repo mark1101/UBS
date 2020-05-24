@@ -271,6 +271,10 @@ The above copyright notice and this permission notice shall be included in all c
                                         <input id="email{{$prof->id}}" name="email" class="form-control"
                                                value="{{$prof->email}}" required>
                                         <br>
+                                        Senha: <label for="password{{$prof->id}}"></label>
+                                        <input id="password{{$prof->id}}" name="password" class="form-control"
+                                               value="{{$prof->password}}" required>
+                                        <br>
                                         <div class="row" style="float: right; left: 30%">
                                             <button type="submit" class="btn btn-success">Salvar mudanças
                                             </button>

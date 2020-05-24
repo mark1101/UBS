@@ -85,7 +85,7 @@ The above copyright notice and this permission notice shall be included in all c
             <div class="container-fluid">
 
                 <div class="navbar-wrapper">
-                    <a class="navbar-brand" href="javascript:;">Gerenciamento de Paciente</a>
+                    <a class="navbar-brand" href="javascript:;"></a>
                 </div>
 
                 <!-- BOTAO DE RESPONSIVIDADE PARA OPCIOES DE SIDEBAR-->
@@ -221,6 +221,12 @@ The above copyright notice and this permission notice shall be included in all c
                                 });
                             });
                         });
+                    </script>
+
+                    <script>
+                        $(document).ready(function () {
+                            $("#buscaPaciente").submit();
+                        })
                     </script>
 
 
