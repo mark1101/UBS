@@ -24,6 +24,7 @@ class FichaVisitaController extends Controller
 
         $data['id_agente'] = Auth::user()->id;
         $data['id_localidade'] = Auth::user()->localidade;
+        $data['id_sede'] = Auth::user()->cidade_sede;
 
         FichaVisitaAgente::create($data);
 
@@ -73,5 +74,15 @@ class FichaVisitaController extends Controller
         $response['message'] = "Ficha editada com sucesso!";
 
         echo json_encode($response);
+    }
+    public function mostraProblema(){
+
+        $visita = FichaVisitaAgente::where('id_sede', Auth::user()->cidade_sede)
+            ->where('problemas' ,'<>', 'null')
+            ->get();
+
+        return view('Adm.problemaVisita',[
+            'ficha' => $visita
+        ]);
     }
 }

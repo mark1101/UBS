@@ -41,7 +41,7 @@
                     </a>
                 </li>
                 <li class="nav-item  ">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{route('mostraProblema')}}">
                         <i class="material-icons">report_problem
                         </i>
                         <p>Problemas com visitas</p>

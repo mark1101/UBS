@@ -20,6 +20,7 @@ class CreateFichaVisitaAgentesTable extends Migration
             $table->string('descricao');
             $table->string('problemas')->default("nada");
             $table->integer('id_localidade')->unsigned();
+            $table->integer('id_sede');
             $table->string('data');
             $table->timestamps();
 

@@ -8,6 +8,7 @@ class FichaVisitaAgente extends Model
 {
     protected $fillable = [
         'id',  'identificador' , 'id_agente' , 'id_localidade' , 'descricao' , 'problemas' , 'data' ,
+        'id_sede'
     ];
 
     public function paciente(){
