@@ -68,7 +68,7 @@
                     </a>
                 </li>
                 <li class="nav-item  ">
-                    <a class="nav-link" href="{{route('indexRecadoOdonto')}}">
+                    <a class="nav-link" href="{{route('atestadoOdonto')}}">
                         <i class="material-icons">assignment_late
                         </i>
                         <p>Atestados</p>

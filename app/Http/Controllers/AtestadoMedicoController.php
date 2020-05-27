@@ -19,6 +19,15 @@ class AtestadoMedicoController extends Controller
         ]);
     }
 
+    public function indexDentista()
+    {
+        $pacientes = Paciente::where('id_sede', Auth::user()->cidade_sede)->get();
+
+        return view('Dentista.atestadoOdontologico', [
+            'pacientes' => $pacientes
+        ]);
+    }
+
     public function create(Request $request)
     {
         $data = $request->all();
@@ -38,7 +47,7 @@ class AtestadoMedicoController extends Controller
         if ($date_born < $today) {
             $response['success'] = false;
             $response['errors']['date'] = "Data inválida, é aceito somente datas maiores ou igual a de hoje.";
-        }else{
+        } else {
             $response['success'] = true;
             AtestadoMedico::create($data);
         }
@@ -49,13 +58,20 @@ class AtestadoMedicoController extends Controller
 
     public function createPdf()
     {
-        $data = AtestadoMedico::where('id', AtestadoMedico::max('id'))
-            ->where('id_profissional', Auth::user()->id)
+        $id = AtestadoMedico::where('id', Auth::user()->id)
             ->with(['paciente', 'localidade'])
             ->get();
+        $data = [];
+        foreach ($id as $item){
+            $data = $item;
+        }
 
-
-        $pdf = PDF::loadView('Usuario.pdfAtestadoMedico', compact('data'));
-        return $pdf->setPaper('a4')->stream('AtestadoMedico.pdf');
+        if (Auth::user()->funcao == "Odontologia") {
+            $pdf = PDF::loadView('Dentista.pdfAtestadoOdonto', compact('data'));
+            return $pdf->setPaper('a4')->stream('AtestadoOdontologico.pdf');
+        } else {
+            $pdf = PDF::loadView('Usuario.pdfAtestadoMedico', compact('data'));
+            return $pdf->setPaper('a4')->stream('AtestadoMedico.pdf');
+        }
     }
 }

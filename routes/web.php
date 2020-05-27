@@ -171,6 +171,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/comunicacaoDentista', 'DentistaController@indexComunicacaoDentista')->name('indexComunicacaoDentista');
     Route::post('/cadastrouRecado', 'DentistaController@cadastraRecadoDentista')->name('cadastraRecadoOdonto');
 
+    Route::get('/atestadoOdontologico', 'AtestadoMedicoController@indexDentista')->name('atestadoOdonto');
+
     //// GERACAO DE PDF
     Route::get('pdf', 'DentistaController@pdfTratamento')->name('pdfTratamento');
     Route::get('pdf2', 'DentistaController@pdfConsulta')->name('pdfConsulta');

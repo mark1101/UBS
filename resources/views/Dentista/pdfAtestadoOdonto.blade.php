@@ -9,18 +9,19 @@
         <title>PDF Atestado {{($data->paciente)->nome}} {{($data->paciente)->ultimo_nome}}</title>
 </head>
 
+
     <div class="container">
         <h2 style="text-transform: uppercase ; " align="center">prefeitura municipal
             de {{($data->localidade->sede)->nome}}</h2>
         <br><br>
-        <h1 align="center">ATESTADO MÉDICO</h1>
+        <h1 align="center">ATESTADO MÉDICO ODONTOLÓGICO</h1>
         <br><br><br>
         Unidade Básica de Saúde de: <label style="text-transform: uppercase">{{($data->localidade)->nome}}</label>
         <br><br><br>
         Atesto que <label
             style="text-transform: uppercase">{{($data->paciente)->nome}} {{($data->paciente)->ultimo_nome}} </label>
         foi atendido(a) nesta UBS, nesta data,
-        e que necessita de {{$data->dias}} dias de afastamento do trabalho, para tratamento de saúde.
+        e que necessita de {{$data->dias}} dias de afastamento do trabalho, para tratamento.
     </div>
     <br><br>
 

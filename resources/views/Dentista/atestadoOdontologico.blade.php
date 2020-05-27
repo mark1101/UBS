@@ -26,7 +26,6 @@ The above copyright notice and this permission notice shall be included in all c
 
     <!-- CSS Arquivos -->
     <link href="{{asset('css/material-dashboard.css')}}" rel="stylesheet"/>
-
 </head>
 
 <body class="" >
@@ -38,7 +37,7 @@ The above copyright notice and this permission notice shall be included in all c
             </a></div>
         <div class="sidebar-wrapper ">
             <ul class="nav">
-                <li class="nav-item ">
+                <li class="nav-item">
                     <a class="nav-link" href="{{route('admOdonto')}}">
                         <i class="material-icons">home_work</i>
                         <p>Início</p>
@@ -51,7 +50,7 @@ The above copyright notice and this permission notice shall be included in all c
                         <p>Agenda</p>
                     </a>
                 </li>
-                <li class="nav-item dropdown active">
+                <li class="nav-item dropdown ">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                        data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">
@@ -78,7 +77,7 @@ The above copyright notice and this permission notice shall be included in all c
                         <p>Recados</p>
                     </a>
                 </li>
-                <li class="nav-item  ">
+                <li class="nav-item active ">
                     <a class="nav-link" href="{{route('atestadoOdonto')}}">
                         <i class="material-icons">assignment_late
                         </i>
@@ -102,7 +101,7 @@ The above copyright notice and this permission notice shall be included in all c
             <div class="container-fluid">
 
                 <div class="navbar-wrapper">
-                    <a class="navbar-brand" href="javascript:;"></a>
+                    <a class="navbar-brand" href="javascript:;">Gerenciamento de Atestados</a>
                 </div>
 
                 <!-- BOTAO DE RESPONSIVIDADE PARA OPCIOES DE SIDEBAR-->
@@ -139,7 +138,6 @@ The above copyright notice and this permission notice shall be included in all c
                         </li>
                     </ul>
                 </div>
-
             </div>
         </nav>
         <!-- End Navbar -->
@@ -150,93 +148,46 @@ The above copyright notice and this permission notice shall be included in all c
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header card-header-info">
-                                <h4 class="card-title">Ficha de Solicitação de Exame</h4>
+                                <h4 class="card-title">Solicitação de Atestados</h4>
                             </div>
                             <div class="card-body">
-                                <form id="cadastroSolicitacao" >
+                                <form id="cadastraAtestado" {{--action="{{route('atestado')}}" method="post"--}}>
                                     @csrf
-                                    <h3 align="center">Identificação</h3>
                                     <div class="row">
-                                        <div class="container">
-                                            <label class="bmd-label-floating">Comunidade Atendida</label>
-                                            <select style="text-transform: uppercase" class="form-control"
-                                                    name="id_localidade" id="id_localidade">
-                                                @foreach($localidades as $localidade)
-                                                    <option
-                                                        value="{{$localidade->id}}">{{$localidade->nome}}</option>
-                                                @endforeach
-                                            </select>
-                                            <label class="bmd-label-floating">Paciente</label>
-                                            <select style="text-transform: uppercase" class="form-control"
-                                                    name="id_paciente" id="id_paciente">
-                                                @foreach($pacientes as $paciente)
-                                                    <option
-                                                        value="{{$paciente->id}}">{{$paciente->nome}} {{$paciente->ultimo_nome}}</option>
-                                                @endforeach
-                                            </select>
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Nome Paciente</label>
+                                                <select class="form-control ls-select" name="id_paciente" id="id_paciente">
+                                                    @foreach($pacientes as $paciente)
+                                                        <option
+                                                            value="{{$paciente->id}}">
+                                                            {{$paciente->nome}} {{$paciente->ultimo_nome}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
-                                    <h3 align="center">Ficha de Exames</h3>
-
-                                    <p class="card-category">Geral</p>
-                                    <p>Urgência na atenção basica : atendimento prestado a pacientes acometidos por quadros
-                                    agudos ou adudizações de patologias crônicas, de baixa complexidade, deverão ter seu atendimento
-                                    garantido na UBS, sem agendamento prévio</p>
-                                    <p>Atendimento Ambulatorial : realização de procedimentos odontológicos com agendamento prévio</p>
-                                    <p>Demanda espontânea : busca do usuário á unidade de saúde de forma não programada pelo serviço, independente
-                                    do motivo ou do tempo de evolução do problema, podendo ou não apresentar queixa clínica</p>
                                     <div class="row">
-                                        <div class="col-md-2">
+                                        <div class="col-md-5">
                                             <div class="form-group">
-                                                <label for="problemas_cardiaco">Radiografia</label>
-                                                <select style="text-transform: uppercase" class="form-control" id="raio_x"
-                                                        name="raio_x">
-                                                    <option>Não</option>
-                                                    <option>Sim</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label for="problemas_cardiaco">Sangue</label>
-                                                <select style="text-transform: uppercase" class="form-control" id="sangue"
-                                                        name="sangue">
-                                                    <option>Não</option>
-                                                    <option>Sim</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label for="problemas_cardiaco">Tomografia</label>
-                                                <select style="text-transform: uppercase" class="form-control" id="tomografia"
-                                                        name="tomografia">
-                                                    <option>Não</option>
-                                                    <option>Sim</option>
-                                                </select>
+                                                <label class="bmd-label-floating">Quantos dias solicitado</label>
+                                                <input style="text-transform: uppercase;" type="text" class="form-control" id="dias"
+                                                       name="dias" required>
                                             </div>
                                         </div>
                                         <div class="col-md-5">
                                             <div class="form-group">
-                                                <label for="problemas_cardiaco">Ressonância Magnética</label>
-                                                <select style="text-transform: uppercase" class="form-control" id="ressonancia"
-                                                        name="ressonancia">
-                                                    <option>Não</option>
-                                                    <option>Sim</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-10">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Descrição dos Exames</label>
-                                                <textarea  class="form-control"
-                                                          id="descricao" name="descricao"
-                                                          rows="3" maxlength="150" required></textarea>
+                                                <label class="bmd-label-floating">Data</label>
+                                                <input style="text-transform: uppercase;" type="text" class="form-control data" id="data"
+                                                       name="data" required>
+                                                <span id="hoje"></span>
                                             </div>
                                         </div>
                                     </div>
-                                    <button type="submit" class="btn btn-primary-adm">Cadastrar</button>
-                                    <a href="{{route('pdfExame')}}" class="btn btn-primary-adm">Gerar impressao</a>
+                                    <button  type="submit" class="btn btn-primary-adm">Cadastrar
+                                    </button>
+                                    <button  type="button" class="btn btn-primary-adm"><a style="color: white" href="{{route('createPdf')}}" >Imprimir ultimo registro</a>
+                                    </button>
                                 </form>
                             </div>
                         </div>
@@ -248,25 +199,29 @@ The above copyright notice and this permission notice shall be included in all c
         <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
 
-        <script !src="">
+        <script>
+
             $(function () {
-                $('form[id="cadastroSolicitacao"]').submit(function (event) {
+                $('form[id="cadastraAtestado"]').submit(function (event) {
                     event.preventDefault();
 
                     $.ajax({
-                        url: "{{route('storeSolicitacaoExameOdonto')}}",
+                        url: "{{route('atestado')}}",
                         type: "POST",
                         data: $(this).serialize(),
                         dataType: 'json',
-                        success: function (response) {
-                            if (response.success === true) {
+                        success : function (response) {
+                            if(response.success === true){
+                                $("#hoje").css({"color": "red", "font-size": "13px"}).text("");
 
-                                $('#descricao').val("");
-                                alert('Solicitação cadastrada com sucesso!');
+                                $('#dias').val("");
+                                $('#data').val("");
 
-                            } else {
 
-                                alert('Erro ao cadastrar!');
+                                alert('Atestado Médico Cadastrado com Sucesso!');
+
+                            }else{
+                                $("#hoje").css({"color": "red", "font-size": "13px"}).text(response.errors.date);
 
                             }
                         }
@@ -276,9 +231,10 @@ The above copyright notice and this permission notice shall be included in all c
 
         </script>
 
+
+
         <footer class="footer">
             <div class="container-fluid">
-                <h4 align="left">Versão 1.0</h4>
             </div>
         </footer>
     </div>
@@ -300,9 +256,9 @@ The above copyright notice and this permission notice shall be included in all c
 <script src="{{asset('js/plugins/jasny-bootstrap.min.js')}}"></script>
 <script src="{{asset('js/plugins/fullcalendar.min.js')}}"></script>
 <script src="{{asset('js/plugins/jquery-jvectormap.js')}}"></script>
+<script src="{{asset('js/plugins/nouislider.min.js')}}"></script>
 <script src="{{asset('https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js')}}"></script>
 <script src="{{asset('js/plugins/arrive.min.js')}}"></script>
-
 
 <script src="{{asset('js/mascara.js')}}"></script>
 

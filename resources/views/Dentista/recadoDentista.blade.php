@@ -77,6 +77,13 @@ The above copyright notice and this permission notice shall be included in all c
                         <p>Recados</p>
                     </a>
                 </li>
+                <li class="nav-item  ">
+                    <a class="nav-link" href="{{route('atestadoOdonto')}}">
+                        <i class="material-icons">assignment_late
+                        </i>
+                        <p>Atestados</p>
+                    </a>
+                </li>
                 <li class="nav-item ">
                     <a class="nav-link" href="{{route('historicoOdonto')}}">
                         <i class="material-icons">history
