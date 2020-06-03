@@ -28,7 +28,7 @@ The above copyright notice and this permission notice shall be included in all c
     <link href="{{asset('css/material-dashboard.css')}}" rel="stylesheet"/>
 </head>
 
-<body class="" >
+<body class="">
 <div class="wrapper ">
 
     <div class="sidebar" data-color="green" data-background-color="white" data-image="../assets/img/unidade.jpg">
@@ -169,7 +169,7 @@ The above copyright notice and this permission notice shall be included in all c
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                               {{ Auth::user()->name }} <span class="caret"></span>
+                                {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -201,64 +201,65 @@ The above copyright notice and this permission notice shall be included in all c
                                 <h4 class="card-title">Solicitação de Exame</h4>
                             </div>
                             <div class="card-body" id="exame">
-                                <form action="{{route('cadastrarExame')}}" method="post">
+                                <form
+                                    id="cadastraSolicitacao" {{--action="{{route('cadastraSolicitacao')}}" method="post"--}}>
                                     @csrf
                                     <div class="row">
-                                        <div class="col-md-4">
+                                        <div class="col-md-6">
                                             <div class="form-group">
-                                                <label class="bmd-label-floating">Comunidade Atendida</label>
-                                                <input type="text" id="comunidade_atendida" name="comunidade_atendida"
-                                                       class="form-control">
+                                                <label class="bmd-label-floating">Paciente</label>
+                                                <select class="form-control"
+                                                        name="id_paciente" id="id_paciente">
+                                                    @foreach($pacientes as $paciente)
+                                                        <option
+                                                            value="{{$paciente->id}}">
+                                                            {{$paciente->nome}} {{$paciente->ultimo_nome}}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                         </div>
 
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Primeiro nome do paciente</label>
-                                                <input type="text" class="form-control" name="nome" id="nome">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-5">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Ultimo nome</label>
-                                                <input type="text" class="form-control" name="ultimo_nome"
-                                                       id="ultimo_nome">
-                                            </div>
-                                        </div>
                                     </div>
                                     <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Unidade de Solicitaçao</label>
+                                                <input type="text" id="unidade_solicitada"
+                                                       placeholder="ex: Ortopedia, Otorrino" name="unidade_solicitada"
+                                                       class="form-control" required>
+                                            </div>
+                                        </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Nome do exame</label>
                                                 <input type="text" class="form-control" name="nome_exame"
-                                                       id="nome_exame">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Resultado</label>
-                                                <input type="text" class="form-control" id="resultado" name="resultado">
+                                                       id="nome_exame" required>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label class="bmd-label-floating">Localizacao de onde foi realizado o
-                                                    exame</label>
-                                                <input type="text" class="form-control" name="local" id="local">
+                                                <label class="bmd-label-floating">Observação</label>
+                                                <input type="text" class="form-control" name="observacao"
+                                                       id="observacao" required>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Data</label>
-                                                <input type="text" class="form-control data" name="data" id="data">
+                                                <input type="text" class="form-control data" name="data" id="data"
+                                                       required>
+                                                <span id="dataSolicitacao"></span>
                                             </div>
                                         </div>
                                     </div>
-                                    <button  type="submit" class="btn btn-primary-normal">Salvar
+                                    <button type="submit" class="btn btn-primary-normal">1 - Salvar
                                     </button>
-                                    <!--<button type="submit" class="btn btn-primary pull-right">Solicitar Exame</button>-->
+                                </form>
+                                <form action="{{route('pdfSolicitacao')}}" method="get">
+                                    <button type="submit" class="btn btn-primary-normal">2 - Imprimir
+                                    </button>
                                 </form>
                             </div>
                         </div>
@@ -266,6 +267,46 @@ The above copyright notice and this permission notice shall be included in all c
                 </div>
             </div>
         </div>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
+
+        <script>
+
+            $(function () {
+                $('form[id="cadastraSolicitacao"]').submit(function (event) {
+                    event.preventDefault();
+
+                    $.ajax({
+                        url: "{{route('cadastraSolicitacao')}}",
+                        type: "POST",
+                        data: $(this).serialize(),
+                        dataType: 'json',
+                        success: function (response) {
+                            if (response.success === true) {
+
+                                $('#unidade_solicitada').val("");
+                                $('#nome_exame').val("");
+                                $('#observacao').val("");
+                                $('#data').val("");
+
+                                $("#dataSolicitacao").text("");
+                                alert("Solicitação cadastrada com sucesso! pronto para mandar imprimir")
+
+                            } else {
+                                $("#dataSolicitacao").css({
+                                    "color": "red",
+                                    "font-size": "13px"
+                                }).text(response.errors.data);
+
+                            }
+                        }
+                    })
+                })
+            })
+
+        </script>
+
         <footer class="footer">
             <div class="container-fluid">
                 <h4 align="left">Versão 1.0</h4>

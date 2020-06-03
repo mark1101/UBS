@@ -42,7 +42,6 @@ class EncaminhamentoController extends Controller
             ->with(['paciente', 'localidade'])
             ->get();
 
-
         $pdf = PDF::loadView('Usuario.pdfEncaminhamento', compact('data'));
         return $pdf->setPaper('a4')->stream('Encaminhamento.pdf');
     }

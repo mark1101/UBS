@@ -72,6 +72,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/buscar', 'ExameController@indexbuscarExame')->name('buscarExame');
         Route::get('/solicitar', 'ExameController@indexsolicitacaoExame')->name('solicitarExame');
         Route::POST('/cadastrar', 'ExameController@cadastraExame')->name('cadastrarExame');
+        Route::POST('nova-solicitacao', 'ExameController@cadastraSolicitacaoExame')->name('cadastraSolicitacao');
+        Route::get('pdfSolicitacao', 'ExameController@pdfSolicitacao')->name('pdfSolicitacao');
     });
 
 

@@ -205,7 +205,7 @@ The above copyright notice and this permission notice shall be included in all c
                                 <h4 class="card-title">Cadastro de Exame</h4>
                             </div>
                             <div class="card-body" id="exame">
-                                <form action="{{route('cadastrarExame')}}" method="post" enctype="multipart/form-data">
+                                <form id="cadastroExame" {{--action="{{route('cadastrarExame')}}" method="post" enctype="multipart/form-data"--}}>
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-6">
@@ -227,7 +227,7 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Nome do exame</label>
-                                                <input style="text-transform: uppercase;" type="text"
+                                                <input  type="text"
                                                        class="form-control" name="nome_exame"
                                                        id="nome_exame">
                                             </div>
@@ -238,7 +238,7 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Resultado</label>
-                                                <input style="text-transform: uppercase;" type="text"
+                                                <input  type="text"
                                                        class="form-control" id="resultado"
                                                        name="resultado">
                                             </div>
@@ -247,22 +247,23 @@ The above copyright notice and this permission notice shall be included in all c
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Onde foi realizado o exame
                                                     o exame</label>
-                                                <input style="text-transform: uppercase;" type="text"
+                                                <input  type="text"
                                                        class="form-control" name="local" id="local">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label class="bmd-label-floating">Data</label>
-                                                <input style="text-transform: uppercase;" type="text"
+                                                <label class="bmd-label-floating">Data de realização do exame</label>
+                                                <input  type="text"
                                                        class="form-control data" name="data" id="data">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-4">
-                                            <label class="bmd-label-floating">Caso preciso guarda de arquivo</label>
-                                            <input type="file" class="form-control" name="arquivo" id="arquivo">
+                                            <label class="bmd-label-floating">Caso seja preciso o armazenamento do arquivo</label>
+                                            <input type="file" class="form-control" name="documento" id="documento">
+                                            <span>é aceito somente fotos</span>
                                         </div>
                                     </div>
                                     <br>
@@ -279,6 +280,43 @@ The above copyright notice and this permission notice shall be included in all c
                 </div>
             </div>
         </div>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
+
+        <script>
+
+            $(function () {
+                $('form[id="cadastroExame"]').submit(function (event) {
+                    event.preventDefault();
+
+                    $.ajax({
+                        url: "{{route('cadastrarExame')}}",
+                        type: "POST",
+                        data: $(this).serialize(),
+                        dataType: 'json',
+                        success : function (response) {
+                            if(response.success === true){
+
+                                $('#nome_exame').val("");
+                                $('#resultado').val("");
+                                $('#local').val("");
+                                $('#data').val("");
+                                $('#documento').val("");
+
+                                alert('Exame cadastrado com sucesso!');
+
+                            }else{
+
+                            }
+                        }
+                    })
+                })
+            })
+
+        </script>
+
+
         <footer class="footer">
             <div class="container-fluid">
                 <h4 align="left">Versão 1.0</h4>
