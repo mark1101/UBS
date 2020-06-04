@@ -198,9 +198,6 @@ The above copyright notice and this permission notice shall be included in all c
 
 
         <div class="content">
-            <a style="float: right" href="" data-toggle="modal" data-target="#modalExemplo"
-               class="btn btn-primary-admin"><strong>?</strong></a>
-
             <div class="container-fluid">
                 <div class="row">
                     <!-- CADASTRO DE PACIENTE -->

@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>cUBS Site</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{asset('site/css/animate.css')}}">
+    <link rel="stylesheet" href="{{asset('site/css/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{asset('site/fonts/ionicons/css/ionicons.min.css')}}">
+    <link rel="stylesheet" href="{{asset('site/fonts/fontawesome/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{asset('site/fonts/flaticon/font/flaticon.css')}}">
+    <link rel="stylesheet" href="{{asset('site/css/style.css')}}">
+
+</head>
+<body>
+
+<header role="banner" style="background-color: black; top: 0">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a style="font-size: 25px ; color: white" href="{{route('siteInicio')}}">cUBS</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05"
+                    aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarsExample05">
+                <ul class="navbar-nav pl-md-5">
+                    <li class="nav-item">
+                        <a class="nav-link " href="{{route('siteInicio')}}">INICIO</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{route('sobre')}}">SOBRE</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('contato')}}">CONTATO</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('cadastro')}}">CADASTRO DE MUNICÍPIO</a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+</header>
+
+<br><br><br><br>
+
+<section>
+    <div class="half d-lg-flex d-block">
+        <div class="image" style="background-image: url({{URL::asset('site/images/login.png')}})"></div>
+        <div class="text text-center element-animate">
+            <h3 class="mb-4">Principal missão</h3>
+            <p class="mb-5">Possibilitar ao gestor do município da área da saúde um controle dos dados coletados dentro
+                das UBSs, assim integranto totalmente
+                e obtendo um melhor gerenciamento.</p>
+            <!--<p><a href="#" class="btn btn-primary btn-sm px-3 py-2">Learn More</a></p>-->
+        </div>
+    </div>
+
+    <div class="half d-lg-flex d-block">
+        <div class="image order-2" style="background-image: url({{URL::asset('site/images/dadosGraficos.png')}})"></div>
+        <div class="text text-center element-animate">
+            <h3 class="mb-4">Funcionalidades</h3>
+            <p class="mb-5">Apresentação de Gráficos em relação aos profissionais, pacientes, e também sobre as
+                atividades
+                mostrando também um histórico de até 3 meses, das vacinas, consultas, viagens, e encaminhamentos
+                realizados dentro
+                do município e cadastrado dentro do sistema cUBS.</p>
+        </div>
+    </div>
+
+    <div class="half d-lg-flex d-block">
+        <div class="image" style="background-image: url({{URL::asset('site/images/telaFuncionalidades.png')}})"></div>
+        <div class="text text-center element-animate">
+            <h3 class="mb-4">Tarefas</h3>
+            <p class="mb-5">Sistema cUBS possui o controle das tarefas realizadas dentro das UBSs, como por exemplo
+                cadastro de pacientes, vacinas, encaminhamentos, exames, pedidos de exames, atestados médicos, e também
+                pode se
+                fazer a busca de todos esses dados, além de obter a impressão de algumas atividades realizadas.</p>
+            <!--<p><a href="#" class="btn btn-primary btn-sm px-3 py-2">Learn More</a></p>-->
+        </div>
+    </div>
+
+    <div class="half d-lg-flex d-block">
+        <div class="image order-2" style="background-image: url({{URL::asset('site/images/seguranca.jpg')}})"></div>
+        <div class="text text-center element-animate">
+            <h3 class="mb-4">Segurança</h3>
+            <p class="mb-5">Os dados de cada município são todos integrados em um unico banco. Seguro, por um sistema de gerenciamento de banco de dados, hoje
+                um dos sistemas mais populares do mundo para controle e segurança de dados.</p>
+        </div>
+    </div>
+
+</section>
+
+<section class="section element-animate">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-lg-4">
+                <div class="media block-6 d-block text-center">
+                    <div class="icon mb-3"><span class="ion-ios-bell-outline"></span></div>
+                    <div class="media-body">
+                        <h3 class="heading">Comunicação interna</h3>
+                        <p>Sistema tem a capacidade de promover uma comunicação interna para os profissionais de cada
+                            UBS.</p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-6 col-lg-4 ">
+                <div class="media block-6 d-block text-center">
+                    <div class="icon mb-3"><span class="ion-ios-heart-outline"></span></div>
+                    <div class="media-body">
+                        <h3 class="heading">Qualidade de atendimento</h3>
+                        <p>cUBS possibilita aos profissionais um melhor gerenciamento das atividades realizadas.</p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="media block-6 d-block text-center">
+                    <div class="icon mb-3"><span class="ion-ios-bolt-outline"></span></div>
+                    <div class="media-body">
+                        <h3 class="heading">Velocidade de atendimento</h3>
+                        <p>O sistema cUBS tem integrado um sistema de gerenciamento de entrada de paciente, que pode ser
+                            mostrado diretamente ao profissional para agilizar o atendimento.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="section bg-light">
+    <div class="container">
+        <div class="row justify-content-center mb-5 element-animate">
+            <div class="col-md-8 text-center">
+                <h2 class="heading mb-4">Time</h2>
+                <p class="mb-5 lead">Responsável por todo gerenciamento e suporte do sistema cUBS.</p>
+            </div>
+        </div>
+        <div class="row element-animate block-11">
+            <div class="nonloop-block-11 owl-carousel">
+                <div>
+                    <div class="media d-block media-custom text-center">
+                        <a href="adoption-single.html"><img src="{{asset('site/images/mark.jpg')}}" alt="Image Placeholder"
+                                                            class="img-fluid"></a>
+                        <div class="media-body">
+                            <h3 class="mt-0 text-black">Mark Willian</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END slider -->
+        </div>
+    </div>
+</section>
+<!-- END section -->
+
+
+<footer class="site-footer" role="contentinfo">
+    <div class="container">
+        <!-- <div class="row mb-5">
+           <div class="col-md-4 mb-5">
+             <h3>About The Hexa Template</h3>
+             <p class="mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus et dolor blanditiis consequuntur ex voluptates perspiciatis omnis unde minima expedita.</p>
+             <ul class="list-unstyled footer-link d-flex footer-social">
+               <li><a href="#" class="p-2"><span class="fa fa-twitter"></span></a></li>
+               <li><a href="#" class="p-2"><span class="fa fa-facebook"></span></a></li>
+               <li><a href="#" class="p-2"><span class="fa fa-linkedin"></span></a></li>
+               <li><a href="#" class="p-2"><span class="fa fa-instagram"></span></a></li>
+             </ul>
+
+           </div>
+           <div class="col-md-5 mb-5 pl-md-5">
+             <h3>Contact Info</h3>
+             <ul class="list-unstyled footer-link">
+               <li class="d-block">
+                 <span class="d-block">Address:</span>
+                 <span class="text-white">34 Street Name, City Name Here, United States</span></li>
+               <li class="d-block"><span class="d-block">Telephone:</span><span class="text-white">+1 242 4942 290</span></li>
+               <li class="d-block"><span class="d-block">Email:</span><span class="text-white">info@yourdomain.com</span></li>
+             </ul>
+           </div>
+           <div class="col-md-3 mb-5">
+             <h3>Quick Links</h3>
+             <ul class="list-unstyled footer-link">
+               <li><a href="#">About</a></li>
+               <li><a href="#">Terms of Use</a></li>
+               <li><a href="#">Disclaimers</a></li>
+               <li><a href="#">Contact</a></li>
+             </ul>
+           </div>
+           <div class="col-md-3">
+
+           </div>
+         </div>-->
+        <div class="row">
+            <div class="col-12 text-md-center text-left">
+                <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    Copyright &copy;
+                    <script>
+                        document.write(new Date().getFullYear());
+                    </script>
+                    All rights reserved | This template is made with <i class="fa fa-heart"
+                                                                        aria-hidden="true"></i> by <a
+                        href="https://colorlib.com" target="_blank">Colorlib</a>
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- END footer -->
+
+<!-- loader -->
+<div id="loader" class="show fullscreen">
+    <svg class="circular" width="48px" height="48px">
+        <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/>
+        <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
+                stroke="#f4b214"/>
+    </svg>
+</div>
+
+<script src="{{asset('site/js/jquery-3.2.1.min.js')}}"></script>
+<script src="{{asset('site/js/popper.min.js')}}"></script>
+<script src="{{asset('site/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('site/js/owl.carousel.min.js')}}"></script>
+<script src="{{asset('site/js/jquery.waypoints.min.js')}}"></script>
+<script src="{{asset('site/js/main.js')}}"></script>
+
+
+</body>
+</html>

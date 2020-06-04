@@ -220,4 +220,17 @@ Route::middleware(['auth'])->group(function () {
 
 });
 
+// ROTAS DO SITE
+
+Route::get('/inicioSite', 'InicioSiteController@index')->name('siteInicio');
+Route::get('/sobre' , 'SobreController@index')->name('sobre');
+Route::get('/cadastro' , 'CadastroMunicipioController@index')->name('cadastro');
+Route::get('/contato' , 'ContatoController@index')->name('contato');
+Route::get('/pedidos' , 'PedidosController@index')->name('pedidos')->middleware('auth');
+Route::get('/recebimentos', 'RecebimentosController@index')->name('recebimentos')->middleware('auth');
+
+
+Route::post('pedido' , 'CadastroMunicipioController@cadastro')->name('cadastroPedido');
+Route::post('contato' , 'ContatoController@cadastro')->name('contatoCadastro');
+
 Route::get('/login', 'LoginController@index')->name('login');
