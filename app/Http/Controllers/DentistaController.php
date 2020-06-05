@@ -60,12 +60,14 @@ class DentistaController extends Controller
         $consultas = ConsultaDentista::where('id_profissional', Auth::user()->id)->count();
         $tratamentos = FichaTratamento::where('id_profissional', Auth::user()->id)->count();
         $exames = SolicitacaoExameOdonto::where('id_profissional', Auth::user()->id)->count();
+        $encaminhamentos = EncaminhamentoOdonto::where('id_profissional' , Auth::user()->id)->count();
 
 
         return view('Dentista.odontologico', [
             'consultas' => $consultas,
             'tratamentos' => $tratamentos,
-            'exames' => $exames
+            'exames' => $exames,
+            'encaminhamentos' => $encaminhamentos
         ]);
 
     }
@@ -236,19 +238,7 @@ class DentistaController extends Controller
                 'quantidade' => $quantos,
                 'localidades' => $localidades
             ]);
-        } else if ($filters == 'encaminhamentos') {
-            $historico = Encaminhamento::where('id_paciente', $nome)->get();
-            $quantos = Encaminhamento::where('id_paciente', $nome)->count();
-            $oque = "encaminhamentos";
-
-            return view('Dentista.historicoPacienteOdonto', [
-                'pacientes' => $pacientes,
-                'dados' => $historico,
-                'oque' => $oque,
-                'quantidade' => $quantos
-            ]);
-
-        } else if ($filters == 'tratamentos') {
+        }else if ($filters == 'tratamentos') {
             $historico = FichaTratamento::where('id_paciente', $nome)->get();
             $quantos = FichaTratamento::where('id_paciente', $nome)->count();
             $oque = "tratamentos";
@@ -274,6 +264,18 @@ class DentistaController extends Controller
                 'localidades' => $localidades
             ]);
 
+        } else if ($filters == "encaminhamentos") {
+            $historico = EncaminhamentoOdonto::where('id_paciente', $nome)->get();
+            $quantos = EncaminhamentoOdonto::where('id_paciente', $nome)->count();
+            $oque = "encaminhamentos";
+
+            return view('Dentista.historicoPacienteOdonto', [
+                'pacientes' => $pacientes,
+                'dados' => $historico,
+                'oque' => $oque,
+                'quantidade' => $quantos,
+                'localidades' => $localidades
+            ]);
         } else {
             $historico = "";
             $quantos = "";
@@ -318,7 +320,7 @@ class DentistaController extends Controller
             $response['success'] = false;
             $response['errors']['data'] = "A data não pode ser menor que hoje.";
 
-        }else{
+        } else {
             EncaminhamentoOdonto::create($data);
             $response['success'] = true;
         }
@@ -326,7 +328,8 @@ class DentistaController extends Controller
 
     }
 
-    public function pdfEncaminhamento(){
+    public function pdfEncaminhamento()
+    {
         $dataa = EncaminhamentoOdonto::where('id_profissional', Auth::user()->id)->get();
 
         $data = $dataa[count($dataa) - 1];

@@ -65,7 +65,7 @@ The above copyright notice and this permission notice shall be included in all c
                     </div>
                 </li>
                 <li class="nav-item  ">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{route('encaminhamentoOdonto')}}">
                         <i class="material-icons">trending_flat
                         </i>
                         <p>Encaminhamento</p>

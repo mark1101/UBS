@@ -89,7 +89,7 @@
         <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
             <div class="container-fluid">
                 <div class="navbar-wrapper">
-                    <a class="navbar-brand" href="javascript:;">Pagina Inicial</a>
+                    <a class="navbar-brand" href="javascript:;"></a>
                 </div>
 
                 <!-- BOTAO DE RESPONSIVIDADE PARA OPCIOES DE SIDEBAR-->
@@ -149,12 +149,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="row d-flex justify-content-center">
+                {{--<div class="row d-flex justify-content-center">
                     <div align="center" class="card" style="width: 13rem; height: 13rem;">
                         <div class="card-body">
                             <h5 class="card-title">Exames</h5>
                             <img src="{{asset('img/ExameClicavel.png')}}">
-                            <a href="#" class="btn btn-primary-adm">Ver</a>
+                            <a href="{{route('historicoOdonto')}}" class="btn btn-primary-adm">Ver</a>
                         </div>
                     </div>
                     &nbsp &nbsp &nbsp
@@ -162,10 +162,10 @@
                         <div class="card-body">
                             <h5 class="card-title">Encaminhamentos</h5>
                             <img src="{{asset('img/EncaminhamentoClicavel.png')}}">
-                            <a href="#" class="btn btn-primary-adm">Ver</a>
+                            <a href="{{}}" class="btn btn-primary-adm">Ver</a>
                         </div>
                     </div>
-                </div>
+                </div>--}}
             </div>
         </div>
         <footer class="footer">

@@ -66,7 +66,7 @@ The above copyright notice and this permission notice shall be included in all c
                     </div>
                 </li>
                 <li class="nav-item  ">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{route('encaminhamentoOdonto')}}">
                         <i class="material-icons">trending_flat
                         </i>
                         <p>Encaminhamento</p>
@@ -196,10 +196,10 @@ The above copyright notice and this permission notice shall be included in all c
                                             Solicitações de exames
                                         </button>
 
-                                        {{--<button data-id="encaminhamentos" data-checked="false" type="button"
+                                        <button data-id="encaminhamentos" data-checked="false" type="button"
                                                 class="filter-btn btn btn-teal">
                                             Encaminhamentos
-                                        </button>--}}
+                                        </button>
 
                                         {{--<button data-id="exames" data-checked="false" type="button"
                                                 class="filter-btn btn btn-primary">
@@ -261,10 +261,9 @@ The above copyright notice and this permission notice shall be included in all c
 
                                                 <thead class="thead-light">
                                                 <tr>
-                                                    <th>Localidade</th>
-                                                    <th>Especialidade</th>
-                                                    <th>Observacoes</th>
-                                                    <th>Objetivo</th>
+                                                    <th>Nome profissional</th>
+                                                    <th>Nome Dr</th>
+                                                    <th>Observação</th>
                                                     <th>Data</th>
                                                 </tr>
                                                 </thead>
@@ -272,14 +271,12 @@ The above copyright notice and this permission notice shall be included in all c
                                                 <tbody>
 
                                                 <tr>
-                                                    <td>{{($encaminhamento->localidade)->nome}}</td>
-                                                    <td>{{$encaminhamento->especialidade_encaminhamento}}</td>
+                                                    <td>{{($encaminhamento->profissional)->name}}</td>
+                                                    <td>{{$encaminhamento->nome_profissional}}</td>
                                                     <td>{{$encaminhamento->observacao}}</td>
-                                                    <td>{{$encaminhamento->objetivo}}</td>
-                                                    <td>{{date('d/m/Y',strtotime($encaminhamento->data))}}</td>
+                                                    <td>{{$encaminhamento->data}}</td>
+                                                    {{--<td>{{date('d/m/Y',strtotime($encaminhamento->data))}}</td>--}}
                                                 </tr>
-
-
                                             </table>
                                         </div>
                                     @endforeach
