@@ -53,6 +53,7 @@ The above copyright notice and this permission notice shall be included in all c
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{route('paciente')}}">Cadastro de Paciente</a>
                         <a class="dropdown-item" href="{{route('mostraPaciente')}}">Busca de Paciente</a>
+                        <a class="dropdown-item" href="{{route('tratamentoPacienteAntes')}}">Cadastrar tratamento ja realizado</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown ">

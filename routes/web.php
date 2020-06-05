@@ -65,6 +65,11 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/pacienteLocalidade/{id}', 'HistoricoPacienteController@buscaPacienteId')->name('buscaHPaciente');
 
+    // TRATAMENTO JA REALIZADO
+
+    Route::get('cadastroTratamento', 'TratamentoPacienteController@index')->name('tratamentoPacienteAntes');
+    Route::post('tratamentoCadastro' , 'TratamentoPacienteController@cadastro')->name('trataPaciente');
+
 
 // ROTAS DE EXAMES
     Route::group(['prefix'=>'/exame'], function(){

@@ -54,6 +54,7 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{route('paciente')}}">Cadastro de Paciente</a>
                         <a class="dropdown-item" href="{{route('mostraPaciente')}}">Busca de Paciente</a>
+                        <a class="dropdown-item" href="{{route('tratamentoPacienteAntes')}}">Cadastrar tratamento ja realizado</a>
                     </div>
                 </li>
                 @if(Auth::user()->controle_acesso == 2)

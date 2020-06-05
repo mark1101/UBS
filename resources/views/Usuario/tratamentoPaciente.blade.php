@@ -32,8 +32,8 @@ The above copyright notice and this permission notice shall be included in all c
 <div class="wrapper ">
 
     <div class="sidebar" data-color="green" data-background-color="white" data-image="../assets/img/unidade.jpg">
-        <div class="logo"><a href="#" class="simple-text logo-normal">
-                Unidade São José
+        <div class="logo"><a href="{{'inicio'}}" class="simple-text logo-normal">
+                Unidade {{Auth::user()->localidade}}
             </a></div>
         <div class="sidebar-wrapper">
             <ul class="nav">
@@ -43,7 +43,7 @@ The above copyright notice and this permission notice shall be included in all c
                         <p>Início</p>
                     </a>
                 </li>
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown active">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                        data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">
@@ -56,49 +56,47 @@ The above copyright notice and this permission notice shall be included in all c
                         <a class="dropdown-item" href="{{route('tratamentoPacienteAntes')}}">Cadastrar tratamento ja realizado</a>
                     </div>
                 </li>
-                @if(Auth::user()->controle_acesso == 2)
-                    <li class="nav-item dropdown ">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                           data-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false">
-                            <i class="material-icons">content_paste</i>
-                            Exames
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{route('cadastroExame')}}">Novo Exame</a>
-                            <a class="dropdown-item" href="{{route('buscarExame')}}">Buscar Exames </a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown active">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                           data-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false">
-                            <i class="material-icons">insert_emoticon</i>
-                            Consultas
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{route('consultaCadastro')}}">Nova Consulta</a>
-                            <a class="dropdown-item" href="{{route('mostraConsulta')}}">Buscar Consulta </a>
-                        </div>
-                    </li>
+                <li class="nav-item dropdown ">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        <i class="material-icons">content_paste</i>
+                        Exames
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{route('cadastroExame')}}">Novo Exame</a>
+                        <a class="dropdown-item" href="{{route('buscarExame')}}">Buscar Exames </a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown ">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        <i class="material-icons">insert_emoticon</i>
+                        Consultas
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{route('consultaCadastro')}}">Nova Consulta</a>
+                        <a class="dropdown-item" href="{{route('mostraConsulta')}}">Buscar Consulta </a>
+                    </div>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="{{route('indexVacina')}}">
+                        <i class="material-icons">format_color_reset
+                        </i>
+                        <p>Vacinas</p>
+                    </a>
+                </li>
+                @if(Auth::user()->funcao == "Medicina")
                     <li class="nav-item ">
-                        <a class="nav-link" href="{{route('indexVacina')}}">
-                            <i class="material-icons">format_color_reset
+                        <a class="nav-link" href="{{route('encaminhamento')}}">
+                            <i class="material-icons">arrow_right_alt
                             </i>
-                            <p>Vacinas</p>
+                            <p>Encaminhamentos</p>
                         </a>
                     </li>
-                    @if(Auth::user()->funcao == "Medicina")
-                        <li class="nav-item ">
-                            <a class="nav-link" href="{{route('encaminhamento')}}">
-                                <i class="material-icons">arrow_right_alt
-                                </i>
-                                <p>Encaminhamentos</p>
-                            </a>
-                        </li>
-                    @endif
                 @endif
-                <li class="nav-item  ">
+                <li class="nav-item ">
                     <a class="nav-link" href="{{route('recado')}}">
                         <i class="material-icons">attach_file
                         </i>
@@ -155,7 +153,7 @@ The above copyright notice and this permission notice shall be included in all c
             <div class="container-fluid">
 
                 <div class="navbar-wrapper">
-                    <a class="navbar-brand" href="javascript:;">Gerenciamento de Exames</a>
+                    <a class="navbar-brand" href="javascript:;">Gerenciamento de Vacinas</a>
                 </div>
 
                 <!-- BOTAO DE RESPONSIVIDADE PARA OPCIOES DE SIDEBAR-->
@@ -192,31 +190,30 @@ The above copyright notice and this permission notice shall be included in all c
                         </li>
                     </ul>
                 </div>
-
             </div>
         </nav>
         <!-- End Navbar -->
 
-        <!-- CADASTRO DE CONSULTA COMPLETA  -->
+        <!-- CADASTRO DE EXAME COMPLETO  -->
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-
-                    <!-- FORM DE CADASTRO DE CONSULTA  -->
+                    <!-- FORM DE CADASTRO DE VACINA  -->
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header card-header-success">
-                                <h4 class="card-title">Cadastro de Nova Consulta</h4>
+                                <h4 class="card-title">Cadastro tratamento anterior do paciente</h4>
                             </div>
                             <div class="card-body">
-                                <form id="cadastroConsulta" action="{{route('cadastroConsulta')}}" method="POST">
+                                <form id="cadastroTratamento" >
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-5">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Nome Paciente</label>
-                                                <select class="form-control ls-select" name="id_paciente"
-                                                        id="id_paciente">
+                                                <select
+                                                    class="form-control ls-select" name="id_paciente"
+                                                    id="id_paciente">
                                                     @foreach($pacientes as $paciente)
                                                         <option
                                                             value="{{$paciente->id}}">
@@ -226,111 +223,68 @@ The above copyright notice and this permission notice shall be included in all c
                                             </div>
                                         </div>
                                     </div>
-                                    <p>Pré-Consulta</p>
                                     <div class="row">
-                                        <div class="col-md-3">
+                                        <div class="col-md-5">
                                             <div class="form-group">
-                                                <label class="bmd-label-floating">Peso</label>
-                                                <input type="text" placeholder="ex: 50,50" class="form-control peso" name="peso" id="peso">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Altura</label>
-                                                <input vtype="text" placeholder="ex: 1,74" class="form-control altura" name="altura"
-                                                       id="altura">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Pressão</label>
-                                                <input type="text" placeholder="ex: normal, alta, baixa..." pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$"  class="form-control" name="pressao" id="pressao">
+                                                <label class="bmd-label-floating">Tratamento de saúde realizado</label>
+                                                <textarea class="form-control" id="tratamento" name="tratamento"
+                                                          rows="5" cols="6" required maxlength="200"></textarea>
                                             </div>
                                         </div>
                                     </div>
-
-
-                                    <p>Consulta</p>
-                                    <div class="row">
-                                        <div class="col-md-10">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Sintomas</label>
-                                                <textarea class="form-control" id="sintomas" name="sintomas"
-                                                          rows="3"></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-10">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Observações</label>
-                                                <textarea  class="form-control" id="observacoes" name="observacoes"
-                                                          rows="3"></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-10">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Finalização da consulta</label>
-                                                <textarea  class="form-control" id="finalizacao" name="finalizacao"
-                                                          rows="3"></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary-normal">Cadastrar</button>
+                                    <button type="submit" class="btn btn-primary-normal">Salvar
+                                    </button>
                                 </form>
                             </div>
                         </div>
                     </div>
+                    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
+
+                    <script>
+                        $(function () {
+                            $('form[id="cadastroTratamento"]').submit(function (event) {
+                                event.preventDefault();
+
+                                $.ajax({
+                                    url: "{{route('trataPaciente')}}",
+                                    type: "POST",
+                                    data: $(this).serialize(),
+                                    dataType: 'json',
+                                    success: function (response) {
+                                        if (response.success === true) {
+
+                                            $('#tratamento').val("");
+                                            alert('Tratamento cadastrado com sucesso!');
+                                            $("#buscaVacina").submit();
+                                        } else {
+
+                                            alert('Erro ao cadastrar!');
+
+                                        }
+                                    }
+                                })
+                            })
+                        })
+
+                    </script>
+
+                    <script>
+                        $(document).ready(function () {
+                            $("#buscaVacina").submit();
+                        })
+                    </script>
+
+
                 </div>
             </div>
         </div>
-
-        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
-
-        <script>
-
-            $(function () {
-                $('form[id="cadastroConsulta"]').submit(function (event) {
-                    event.preventDefault();
-
-                    $.ajax({
-                        url: "{{route('cadastroConsulta')}}",
-                        type: "POST",
-                        data: $(this).serialize(),
-                        dataType: 'json',
-                        success : function (response) {
-                            if(response.success === true){
-
-                                $('#peso').val("");
-                                $('#altura').val("");
-                                $('#pressao').val("");
-                                $('#sintomas').val("");
-                                $('#observacoes').val("");
-                                $('#finalizacao').val("");
-
-                                alert('Consulta Cadastrada com Sucesso!');
-
-                            }else{
-
-                                $('#modalError').modal('show');
-
-                            }
-                        }
-                    })
-                })
-            })
-
-        </script>
-
-        <footer class="footer">
-            <div class="container-fluid">
-                <h4 align="left">Versão 1.0</h4>
-            </div>
-        </footer>
     </div>
+    <footer class="footer">
+        <div class="container-fluid">
+        </div>
+    </footer>
 </div>
-
 <!-- REFERENCIAS EM JS  -->
 <script src="{{asset('js/core/jquery.min.js')}}"></script>
 <script src="{{asset('js/core/popper.min.js')}}"></script>
@@ -351,12 +305,6 @@ The above copyright notice and this permission notice shall be included in all c
 <script src="{{asset('https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js')}}"></script>
 <script src="{{asset('js/plugins/arrive.min.js')}}"></script>
 
-<script src="{{asset('js/mascara.js')}}"></script>
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 
 </body>
 

@@ -6,6 +6,7 @@ use App\Consulta;
 use App\Encaminhamento;
 use App\Localidade;
 use App\Paciente;
+use App\PacienteTratamento;
 use App\User;
 use App\Vacina;
 use Illuminate\Http\Request;
@@ -125,6 +126,29 @@ class HistoricoPacienteController extends Controller
                 ]);
             }
 
+        } else if ($filters == "tratamentos") {
+            $historico = PacienteTratamento::where('id_paciente', $nome)->get();
+            $quantos = PacienteTratamento::where('id_paciente', $nome)->count();
+            $oque = "tratamentos";
+
+            if (Auth::user()->funcao == "Agente de Saúde") {
+                return view('Agente.historicoPaciente', [
+                    'pacientes' => $pacientes,
+                    'dados' => $historico,
+                    'oque' => $oque,
+                    'quantidade' => $quantos,
+                    'localidades' => $localidades
+                ]);
+            } else {
+
+                return view('Usuario.historicoPaciente', [
+                    'pacientes' => $pacientes,
+                    'dados' => $historico,
+                    'oque' => $oque,
+                    'quantidade' => $quantos,
+                    'localidades' => $localidades
+                ]);
+            }
         } else {
             $historico = "";
             $quantos = "";
