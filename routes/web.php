@@ -175,10 +175,15 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/atestadoOdontologico', 'AtestadoMedicoController@indexDentista')->name('atestadoOdonto');
 
+    Route::get('/encaminhamentoOdonto', 'DentistaController@encaminhamentoIndex')->name('encaminhamentoOdonto');
+    Route::post('cadastraEncaminhamento' , 'DentistaController@cadastraEncaminhamento')->name('cadastraEncaminhamentoD');
+
+
     //// GERACAO DE PDF
     Route::get('pdf', 'DentistaController@pdfTratamento')->name('pdfTratamento');
     Route::get('pdf2', 'DentistaController@pdfConsulta')->name('pdfConsulta');
     Route::get('pdf3', 'DentistaController@pdfExame')->name('pdfExame');
+    Route::get('pdf4', 'DentistaController@pdfEncaminhamento')->name('pdfEncaminamentoOdonto');
 
     Route::get('historicoPacienteOdonto', 'DentistaController@indexHistorico')->name('historicoOdonto');
     Route::get('/hisPaciente/{id}', 'DentistaController@buscaPacienteHistorico')->name('historyOdonto');

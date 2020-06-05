@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\ConsultaDentista;
 use App\Dentista;
+use App\EncaminhamentoOdonto;
 use App\FichaTratamento;
 use App\Localidade;
 use App\Paciente;
@@ -127,7 +128,7 @@ class DentistaController extends Controller
             ->with(['paciente', 'localidade'])
             ->get();
 
-        $data = $dataa[count($dataa)-1];
+        $data = $dataa[count($dataa) - 1];
 
 
         $pdf = PDF::loadView('Dentista.pdfTratamento', compact('data'));
@@ -137,10 +138,10 @@ class DentistaController extends Controller
     public function pdfConsulta()
     {
         $dataa = ConsultaDentista::where('id_profissional', Auth::user()->id)
-            ->with(['paciente','localidade','sede'])
+            ->with(['paciente', 'localidade', 'sede'])
             ->get();
 
-        $data = $dataa[count($dataa)-1];
+        $data = $dataa[count($dataa) - 1];
 
         $pdf = PDF::loadView('Dentista.pdfConsulta', compact('data'));
         return $pdf->setPaper('a4')->stream('FichaConsulta.pdf');
@@ -149,10 +150,10 @@ class DentistaController extends Controller
     public function pdfExame()
     {
         $dataa = SolicitacaoExameOdonto::where('id_profissional', Auth::user()->id)
-            ->with(['paciente','localidade'])
+            ->with(['paciente', 'localidade'])
             ->get();
 
-        $data = $dataa[count($dataa)-1];
+        $data = $dataa[count($dataa) - 1];
 
         $pdf = PDF::loadView('Dentista.pdfExame', compact('data'));
         return $pdf->setPaper('a4')->stream('FichaExame.pdf');
@@ -288,5 +289,49 @@ class DentistaController extends Controller
             ]);
         }
 
+    }
+
+    public function encaminhamentoIndex()
+    {
+        $localidades = Localidade::where('id_sede', Auth::user()->cidade_sede)->get();
+        $pacientes = Paciente::where('id_sede', Auth::user()->cidade_sede)->get();
+
+        return view('Dentista.encaminhamentoOdonto', [
+            'localidades' => $localidades,
+            'pacientes' => $pacientes
+        ]);
+    }
+
+    public function cadastraEncaminhamento(Request $request)
+    {
+        $data = $request->all();
+        $data['id_profissional'] = Auth::user()->id;
+        $data['id_sede'] = Auth::user()->cidade_sede;
+
+        $date_born = $data['data'];
+        $date_born = date('Y-m-d', strtotime(str_replace('/', "-", $date_born)));
+        $today = date('Y-m-d');
+
+        $response['errors']['data'] = "";
+
+        if ($date_born < $today) {
+            $response['success'] = false;
+            $response['errors']['data'] = "A data não pode ser menor que hoje.";
+
+        }else{
+            EncaminhamentoOdonto::create($data);
+            $response['success'] = true;
+        }
+        echo json_encode($response);
+
+    }
+
+    public function pdfEncaminhamento(){
+        $dataa = EncaminhamentoOdonto::where('id_profissional', Auth::user()->id)->get();
+
+        $data = $dataa[count($dataa) - 1];
+
+        $pdf = PDF::loadView('Dentista.pdfEncaminhamentoOdonto', compact('data'));
+        return $pdf->setPaper('a4')->stream('Encaminhamento-odonto.pdf');
     }
 }
