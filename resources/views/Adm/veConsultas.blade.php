@@ -82,7 +82,7 @@ The above copyright notice and this permission notice shall be included in all c
                     </a>
                 </li>
                 <li class="nav-item  ">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{route('veExames')}}">
                         <i class="material-icons">content_paste
                         </i>
                         <p>Exames</p>
@@ -294,7 +294,7 @@ The above copyright notice and this permission notice shall be included in all c
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Dentistas Cadastrados</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Consultas Realizadas</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>

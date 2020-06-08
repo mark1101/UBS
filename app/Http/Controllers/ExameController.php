@@ -41,6 +41,7 @@ class ExameController extends Controller
 
         $data['comunidade_atendida'] = Auth::user()->localidade;
         $data['id_profissional'] = Auth::user()->id;
+        $data['id_sede'] = Auth::user()->cidade_sede;
 
 
         Exame::create($data);

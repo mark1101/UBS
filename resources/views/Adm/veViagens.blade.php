@@ -82,7 +82,7 @@ The above copyright notice and this permission notice shall be included in all c
                     </a>
                 </li>
                 <li class="nav-item  ">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{route('veExames')}}">
                         <i class="material-icons">content_paste
                         </i>
                         <p>Exames</p>
@@ -195,7 +195,7 @@ The above copyright notice and this permission notice shall be included in all c
                                             <th><strong>Data</strong></th>
                                             <th><strong>Carro</strong></th>
                                             <th><strong>Placa</strong></th>
-                                            <th><strong>Obervação</strong></th>
+                                            {{--<th><strong>Obervação</strong></th>--}}
                                         </tr>
 
                                         </thead>
@@ -211,7 +211,7 @@ The above copyright notice and this permission notice shall be included in all c
                                                 <td>{{$mostra->data}}</td>
                                                 <td>{{($mostra->carro)->nome}}</td>
                                                 <td>{{($mostra->carro)->placa}}</td>
-                                                <td>{{$mostra->observacao}}</td>
+                                                {{--<td>{{$mostra->observacao}}</td>--}}
 
                                             </tr>
                                         @endforeach

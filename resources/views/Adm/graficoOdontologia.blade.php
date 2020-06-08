@@ -83,6 +83,29 @@ The above copyright notice and this permission notice shall be included in all c
             var data = google.visualization.arrayToDataTable([
                 ['Funcao', 'Quantidade'],
                 <?php
+                foreach ($encaminhamentos as $key => $value) {
+                    echo "['" . $key . "', " . $value . "],";
+                }
+                ?>
+            ]);
+
+            var options = {
+                is3D: true,
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('piechart_3denxaminha'));
+            chart.draw(data, options);
+        }
+    </script>
+
+    <script type="text/javascript">
+        google.charts.load("current", {packages: ["corechart"]});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Funcao', 'Quantidade'],
+                <?php
                 foreach ($proC as $p) {
                     echo "['" . $p["data"]->name . "', " . $p['count'] . "],";
                 }
@@ -117,6 +140,29 @@ The above copyright notice and this permission notice shall be included in all c
             };
 
             var chart3 = new google.visualization.PieChart(document.getElementById('piechart_3d3'));
+            chart3.draw(data, options);
+        }
+    </script>
+
+    <script type="text/javascript">
+        google.charts.load("current", {packages: ["corechart"]});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Funcao', 'Quantidade'],
+                <?php
+                foreach ($proE as $p) {
+                    echo "['" . $p["data"]->name . "', " . $p['count'] . "],";
+                }
+                ?>
+            ]);
+
+            var options = {
+                is3D: true,
+            };
+
+            var chart3 = new google.visualization.PieChart(document.getElementById('relacaoEncaminhamentos'));
             chart3.draw(data, options);
         }
     </script>
@@ -287,6 +333,9 @@ The above copyright notice and this permission notice shall be included in all c
                     <button type="button" class="btn btn-primary-admin" data-target="#modalDentistasT"
                             data-toggle="modal">Dentistas / Tratamentos
                     </button>
+                    <button type="button" class="btn btn-primary-admin" data-target="#modalDentistasE"
+                            data-toggle="modal">Dentistas / Encaminhamentos
+                    </button>
                 </div>
                 <div class="card" style="align-items: flex-start">
                     <div class="card-body">
@@ -298,6 +347,12 @@ The above copyright notice and this permission notice shall be included in all c
                     <div class="card-body">
                         <h6 class="card-subtitle mb-2 text-muted">relação tratamentos odontológicos / localidade </h6>
                         <div id="piechart_3d1" style="width: 450px; height: 300px;"></div>
+                    </div>
+                </div>
+                <div class="card" style="align-items: flex-start">
+                    <div class="card-body">
+                        <h6 class="card-subtitle mb-2 text-muted">relação encaminhamentos odontológicos / localidade </h6>
+                        <div id="piechart_3denxaminha" style="width: 450px; height: 300px;"></div>
                     </div>
                 </div>
                 <br>
@@ -345,6 +400,32 @@ The above copyright notice and this permission notice shall be included in all c
 
                         <div class="card-body">
                             <div id="piechart_3d3" style="width: 450px; height: 300px;"></div>
+                        </div>
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary-admin" data-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade bd-example-modal-lg" id="modalDentistasE" tabindex="-1" role="dialog"
+             aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Quantidade de Encaminhamentos realizados por
+                            Dentista</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="card-body">
+                            <div id="relacaoEncaminhamentos" style="width: 600px; height: 300px;"></div>
                         </div>
 
                     </div>

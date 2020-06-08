@@ -79,6 +79,7 @@ Route::middleware(['auth'])->group(function () {
         Route::POST('/cadastrar', 'ExameController@cadastraExame')->name('cadastrarExame');
         Route::POST('nova-solicitacao', 'ExameController@cadastraSolicitacaoExame')->name('cadastraSolicitacao');
         Route::get('pdfSolicitacao', 'ExameController@pdfSolicitacao')->name('pdfSolicitacao');
+
     });
 
 
@@ -140,6 +141,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/vePro', 'veProfissionaisController@mostraProfissional')->name('searchProfissional');
     Route::get('/veViagens', 'veViagensController@index')->name('veViagens');
     Route::get('/veEncaminhamentos', 'veEncaminhamentosController@index')->name('veEncaminhamento');
+    Route::get('/veExames', 'veExamesController@index')->name('veExames');
     Route::post('/mostraViagem','veViagensController@mostraViagem')->name('mostraViagem');
 
 

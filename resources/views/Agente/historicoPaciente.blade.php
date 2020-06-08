@@ -137,7 +137,7 @@ The above copyright notice and this permission notice shall be included in all c
                                                 id="localidade">
                                             @foreach($localidades as $localidade)
                                                 <option
-                                                    value="{{$localidade->id}}" >
+                                                    value="{{$localidade->id}}">
                                                     {{$localidade->nome}}</option>
                                             @endforeach
                                         </select>
@@ -168,6 +168,11 @@ The above copyright notice and this permission notice shall be included in all c
                                         <button data-id="encaminhamentos" data-checked="false" type="button"
                                                 class="filter-btn btn btn-teal">
                                             Encaminhamentos
+                                        </button>
+
+                                        <button data-id="tratamentos" data-checked="false" type="button"
+                                                class="filter-btn btn btn-teal">
+                                            Tratamentos
                                         </button>
 
                                         {{--<button data-id="exames" data-checked="false" type="button"
@@ -281,6 +286,29 @@ The above copyright notice and this permission notice shall be included in all c
                                     @endforeach
                                 @endif
 
+                                @if($oque == "tratamentos")
+                                    @foreach($dados as $tratamento)
+                                        <div class="table-responsive" style="overflow: auto">
+                                            <table class="table">
+
+                                                <thead class="thead-light">
+                                                <tr>
+                                                    <th>Tratamento</th>
+                                                </tr>
+                                                </thead>
+
+                                                <tbody>
+
+                                                <tr>
+                                                    <td>{{$tratamento->tratamento}}</td>
+                                                </tr>
+
+
+                                            </table>
+                                        </div>
+                                    @endforeach
+                                @endif
+
                                 @if($oque == "Erro ao pesquisar")
 
                                 @endif
@@ -313,7 +341,7 @@ The above copyright notice and this permission notice shall be included in all c
 
                                 $('select[name=id_paciente]').empty();
                                 $.each(response.data, function (item, value) {
-                                    $('select[name=id_paciente]').append('<option value="' + response.data[item]["id"] + '">' + response.data[item]["nome"] + ' ' + response.data[item]["ultimo_nome"] +'</option>');
+                                    $('select[name=id_paciente]').append('<option value="' + response.data[item]["id"] + '">' + response.data[item]["nome"] + ' ' + response.data[item]["ultimo_nome"] + '</option>');
                                 });
 
                             } else {

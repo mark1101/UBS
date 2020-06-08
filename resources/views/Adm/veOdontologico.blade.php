@@ -82,7 +82,7 @@ The above copyright notice and this permission notice shall be included in all c
                     </a>
                 </li>
                 <li class="nav-item  ">
-                    <a class="nav-link" href="{{route('veViagens')}}">
+                    <a class="nav-link" href="{{route('veExames')}}">
                         <i class="material-icons">content_paste
                         </i>
                         <p>Exames</p>
@@ -198,6 +198,19 @@ The above copyright notice and this permission notice shall be included in all c
                             <h1>{{$tratamentos}}</h1>
                             <button type="button" class="btn btn-primary-admin" data-toggle="modal"
                                     data-target="#modalTratamentos">
+                                Ver Detalhes
+                            </button>
+                        </div>
+                    </div>
+
+                    &nbsp &nbsp &nbsp
+                    <div align="center" class="card" style="width: 13rem; height: 13rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Encaminhamentos</h5>
+                            <br>
+                            <h1>{{$encaminhamentos}}</h1>
+                            <button type="button" class="btn btn-primary-admin" data-toggle="modal"
+                                    data-target="#modalEncaminhamentos">
                                 Ver Detalhes
                             </button>
                         </div>
@@ -368,6 +381,55 @@ The above copyright notice and this permission notice shall be included in all c
                 </div>
             </div>
 
+
+            <div class="modal fade bd-example-modal-lg" id="modalEncaminhamentos" tabindex="-1" role="dialog"
+                 aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Encaminhamentos Realizados ({{$encaminhamentos}})</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+
+                            <div class="card-body">
+                                <div class="table-responsive" style="overflow: auto; height: 300px;">
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th  style="color: black"><strong>Nome Paciente</strong></th>
+                                            <th  style="color: black ; width: 30%"><strong>Encaminhado a:</strong></th>
+                                            <th  style="color: black"><strong>Comunidade</strong></th>
+                                            <th  style="color: black"><strong>Profissional</strong></th>
+                                            <th  style="color: black"><strong>Data</strong></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($encaminhamentoAll as $encaminhamento)
+                                            <tr >
+                                                <td>{{($encaminhamento->paciente)->nome}} {{($encaminhamento->paciente)->ultimo_nome}}</td>
+                                                <td>{{$encaminhamento->nome_profissional}}</td>
+                                                <td>{{($encaminhamento->localidade)->nome}}</td>
+                                                <td>{{($encaminhamento->profissional)->name}}</td>
+                                                <td>{{$encaminhamento->data}}</td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+
+                            <button type="button" class="btn btn-primary-admin" data-dismiss="modal">Fechar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header card-header-admin">
@@ -411,6 +473,15 @@ The above copyright notice and this permission notice shall be included in all c
                                         </tr>
                                     @endforeach
 
+                                    @foreach($encaminhamentoDia as $edia)
+                                        <tr>
+                                            <td>{{($edia->localidade)->nome}}</td>
+                                            <td>{{($edia->profissional)->name}}</td>
+                                            <td>Encaminhamento</td>
+                                            <td>{{$edia->observacao}}</td>
+                                        </tr>
+                                    @endforeach
+
                                     </tbody>
                                 </table>
                             </div>
@@ -418,6 +489,7 @@ The above copyright notice and this permission notice shall be included in all c
                     </div>
                 </div>
             </div>
+
 
 
 

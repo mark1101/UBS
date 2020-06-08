@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Consulta;
 use App\ConsultaDentista;
 use App\Encaminhamento;
+use App\EncaminhamentoOdonto;
 use App\FichaTratamento;
 use App\Localidade;
 use App\Motorista;
@@ -253,6 +254,13 @@ class GraficosAdmController extends Controller
             $localidasTratamentoCount[$item->nome] = FichaTratamento::where('id_localidade', $item->id)->count();
         }
 
+        $localidasEncaminhamentoCount = [];
+        foreach ($localidades as $item) {
+            $localidasEncaminhamentoCount[$item->nome] = EncaminhamentoOdonto::where('id_localidade', $item->id)->count();
+        }
+
+
+
         $dentistas = User::where('cidade_sede', Auth::user()->cidade_sede)
             ->where('funcao', 'Odontologia')
             ->get();
@@ -281,6 +289,18 @@ class GraficosAdmController extends Controller
             $countt++;
         }
 
+        $profissionaisE = [];
+        $counttt = 0;
+        foreach ($dentistas as $item) {
+            $profissionaisE[$counttt]['data'] = $item;
+            $profissionaisE[$counttt]['count'] = EncaminhamentoOdonto::where('id_profissional', $item->id)->count();
+            $comunidade = Localidade::where('id', $item->localidade)->get();
+            foreach ($comunidade as $local) {
+                $profissionaisE[$counttt]['localidade'] = $local;
+            }
+            $counttt++;
+        }
+
         $pacientes = Paciente::where('id_sede', Auth::user()->cidade_sede)->get();
         $faixa1 = [];
         $faixa2 = [];
@@ -298,8 +318,10 @@ class GraficosAdmController extends Controller
         return view('Adm.graficoOdontologia', [
             'consultas' => $localidasConsultaCount,
             'tratamentos' => $localidasTratamentoCount,
+            'encaminhamentos' => $localidasEncaminhamentoCount,
             'proC' => $profissionais,
             'proT' => $profissionaisT,
+            'proE' => $profissionaisE,
             'faixa1' => count($faixa1),
             'faixa2' => count($faixa2),
             'faixa3' => count($faixa3)

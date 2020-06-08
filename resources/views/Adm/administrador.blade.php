@@ -183,7 +183,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Exames</h5>
                             <img src="{{asset('img/ExameClicavel.png')}}">
-                            <a href="#" class="btn btn-primary-admin">Ver</a>
+                            <a href="{{route('veExames')}}" class="btn btn-primary-admin">Ver</a>
                         </div>
                     </div>
                     &nbsp &nbsp &nbsp
