@@ -33,7 +33,7 @@ Route::group(['middleware' => ['web', 'auth']], function () {
             return view('Dentista.administracaoDentista');
         } else if (Auth::user()->admin == 3) {
             return view('Agente.AdministracaoAgente');
-        }else if(Auth::user()->admin == 10){
+        } else if (Auth::user()->admin == 10) {
             return redirect('/gerente');
         } else {
             return redirect()->back();
@@ -54,6 +54,7 @@ Route::middleware(['auth'])->group(function () {
 
 
 // ROTAS DE PACIENTE
+
     Route::get('/paciente', 'PacienteController@indexPaciente')->name('paciente');
     Route::get('/buscaPaciente', 'PacienteController@indexbuscaPaciente')->name('buscaPaciente');
     Route::get('/mostraPaciente', 'PacienteController@mostraPaciente')->name('mostraPaciente');
@@ -91,12 +92,16 @@ Route::middleware(['auth'])->group(function () {
 
 // ROTAS DE VACINAS
 
-    Route::get('/vacina', 'VacinaController@index')->name('indexVacina');
-    Route::POST('vacina/cadastrarVacina', 'VacinaController@cadastraVacina')->name('cadastraVacina');
-    Route::get('/busca_Vacinas', 'VacinaController@searchVacina')->name('searchVacina');
+    Route::group(['prefix' => '/vacina'], function () {
+        Route::get('/inicio', 'VacinaController@index')->name('indexVacina');
+        Route::POST('/cadastra', 'VacinaController@cadastraVacina')->name('cadastraVacina');
+        Route::get('/busca', 'VacinaController@searchVacina')->name('searchVacina');
+    });
 
 
 // ROTAS DE RECADOS
+
+
     Route::get('/recado', 'RecadoController@index')->name('recado');
     Route::get('/comunicacao', 'ComunicacaoController@index')->name('comunicacao');
     Route::post('/cadastraRecado', 'RecadoController@cadastraRecado')->name('storeRecado');

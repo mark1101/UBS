@@ -6,7 +6,7 @@
     <link rel="icon" type="image/png" href="{{asset('img/log.png')}}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <title>
-        cUBS
+        cUBS Gerenciamento
     </title>
     <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport'/>
     <!--     Fonts and icons     -->
@@ -19,10 +19,10 @@
 
 </head>
 
-<body>
+
 <div class="main-panel">
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+    <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top " style="background-color: grey">
         <div class="container-fluid">
 
             <!-- BOTAO DE RESPONSIVIDADE PARA OPCIOES DE SIDEBAR-->
@@ -63,8 +63,9 @@
 
         </div>
     </nav>
+    <body>
     <!-- End Navbar -->
-    <br><br>
+    <br><br><br><br>
     <div class="container">
         <img src="{{asset('img/iconLogin.png')}}" alt="">
     </div>
@@ -72,12 +73,14 @@
 
     <div class="container">
         <h2>Administradores de cada Município</h2>
+        <a href="{{route('pedidos')}}">Ver pedidos de cadastro</a>
+        <br>
         <br>
         <table class="table">
             <thead>
             <tr>
                 <th scope="col">Nome</th>
-                <th scope="col">Login</th>
+                <th scope="col">Email</th>
                 <th scope="col">Senha</th>
                 <th scope="col">Cidade</th>
             </tr>
@@ -124,6 +127,26 @@
             <input style="width: 350px" type="text" name="nome" id="nome">
             <button type="submit" class="btn btn-primary">enviar</button>
         </form>
+
+        <br><br>
+        <h2>Dados numéricos</h2>
+        <br>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Total de Pacientes Cadastrados</th>
+                <th scope="col">Total de Atividades cadastradas</th>
+            </tr>
+            </thead>
+
+                <tbody>
+                <tr>
+                    <td>{{$pacientes}}</td>
+                    <td>{{$tudo}}</td>
+                </tr>
+                </tbody>
+
+        </table>
     </div>
 
     <br><br><br><br><br>

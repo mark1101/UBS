@@ -59,6 +59,8 @@
         <div class="row">
             <div class="col-md-12 mb-5 order-2">
                 <h1>Pedidos</h1>
+                <a href="{{route('gerente')}}">Voltar a tela de Gerenciamento</a>
+                <br><br>
                 <table class="table">
                     <thead>
                     <tr>

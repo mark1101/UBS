@@ -66,7 +66,7 @@ The above copyright notice and this permission notice shall be included in all c
 
             var options = {
                 title: 'Gráfico de vacinas realizadas no município',
-                hAxis: { titleTextStyle: {color: '#333'}},
+                hAxis: {titleTextStyle: {color: '#333'}},
                 vAxis: {minValue: 0}
                 /*curveType: 'function',
                 legend: {position: 'bottom'}*/
@@ -226,12 +226,10 @@ The above copyright notice and this permission notice shall be included in all c
                 <div class="card" style="align-items: flex-start">
                     <div class="card-body">
                         <h6 class="card-subtitle mb-2 text-muted">relação vacinas / localidade </h6>
-                        <div id="piechart_3d" style="width: 450px; height: 300px;"></div>
-                    </div>
-                </div>
-                <div class="card" style="align-items: flex-start">
-                    <div class="card-body">
-                        <div id="curve_chart" style="width: 900px; height: 500px"></div>
+                        <div class="row">
+                            <div id="piechart_3d" style="width: 450px; height: 300px;"></div>
+                            <div id="curve_chart" style="width: 500px; height: 500px"></div>
+                        </div>
                     </div>
                 </div>
                 <br>

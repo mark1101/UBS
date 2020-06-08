@@ -78,7 +78,7 @@ The above copyright notice and this permission notice shall be included in all c
         }
 
     </script>
-d
+    d
 </head>
 
 <body class="" style="background-color: white">
@@ -223,17 +223,13 @@ d
                     <a style="color: white" class="btn btn-primary-admin" href="{{route('graficoViagem')}}">viagens</a>
 
                 </div>
-                <div class="card" style="align-items: flex-start">
+                <div class="card" style="align-items: flex-start ; box-shadow: black">
                     <div class="card-body">
                         <h6 class="card-subtitle mb-2 text-muted">relação encaminhamentos / localidade </h6>
-                        <div id="piechart_3d" style="width: 450px; height: 300px;"></div>
-                    </div>
-                </div>
-                <div class="card" style="align-items: flex-start">
-                    <div class="card-body">
-                        <div id="curve_chart" style="width: 900px; height: 500px"></div>
-                        <div id="visualization_div" style="width: 270px; height: 200px;"></div>
-                        <div id="toolbar_div"></div>
+                        <div class="row">
+                            <div id="piechart_3d" style="width: 450px; height: 300px;"></div>
+                            <div id="curve_chart" style="width: 500px; height: 500px"></div>
+                        </div>
                     </div>
                 </div>
                 <br>

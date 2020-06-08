@@ -194,14 +194,14 @@ The above copyright notice and this permission notice shall be included in all c
 
         function drawChart() {
             var data = google.visualization.arrayToDataTable([
-                ['Year', 'Quantidade de Vacinas'],
+                ['Year', 'Quantidade de consultas'],
                 ['90 dias atrás ou mais',  <?php echo $mes3c ?>],
                 ['Em 60 dias atrás',  <?php echo $mes2c ?>],
                 ['Em 30 dias atrás',  <?php echo $mes1c ?>],
             ]);
 
             var options = {
-                title: 'Histórico de consulta odontológicas realizadas',
+                title: 'Histórico de consultas odontológicas realizadas',
                 hAxis: {titleTextStyle: {color: '#333'}},
                 vAxis: {minValue: 0}
                 /*curveType: 'function',
@@ -220,7 +220,7 @@ The above copyright notice and this permission notice shall be included in all c
 
         function drawChart() {
             var data = google.visualization.arrayToDataTable([
-                ['Year', 'Quantidade de Vacinas'],
+                ['Year', 'Quantidade de tratamentos'],
                 ['90 dias atrás ou mais',  <?php echo $mes3t ?>],
                 ['Em 60 dias atrás',  <?php echo $mes2t ?>],
                 ['Em 30 dias atrás',  <?php echo $mes1t ?>],
@@ -246,7 +246,7 @@ The above copyright notice and this permission notice shall be included in all c
 
         function drawChart() {
             var data = google.visualization.arrayToDataTable([
-                ['Year', 'Quantidade de Vacinas'],
+                ['Year', 'Quantidade de encaminhamentos'],
                 ['90 dias atrás ou mais',  <?php echo $mes3e ?>],
                 ['Em 60 dias atrás',  <?php echo $mes2e ?>],
                 ['Em 30 dias atrás',  <?php echo $mes1e ?>],
@@ -266,31 +266,6 @@ The above copyright notice and this permission notice shall be included in all c
         }
     </script>
 
-    <script type="text/javascript">
-        google.charts.load('current', {'packages': ['corechart']});
-        google.charts.setOnLoadCallback(drawChart);
-
-        function drawChart() {
-            var data = google.visualization.arrayToDataTable([
-                ['Year', 'Quantidade de Vacinas'],
-                ['90 dias atrás ou mais',  <?php echo $mes3e ?>],
-                ['Em 60 dias atrás',  <?php echo $mes2e ?>],
-                ['Em 30 dias atrás',  <?php echo $mes1e ?>],
-            ]);
-
-            var options = {
-                title: 'Gráfico de vacinas realizadas no município',
-                hAxis: {titleTextStyle: {color: '#333'}},
-                vAxis: {minValue: 0}
-                /*curveType: 'function',
-                legend: {position: 'bottom'}*/
-            };
-
-            var chart = new google.visualization.AreaChart(document.getElementById('curve_chart1'));
-
-            chart.draw(data, options);
-        }
-    </script>
 
 </head>
 
