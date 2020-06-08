@@ -59,9 +59,9 @@ The above copyright notice and this permission notice shall be included in all c
         function drawChart() {
             var data = google.visualization.arrayToDataTable([
                 ['Year', 'Quantidade de Vacinas'],
-                ['3 meses atrás ou mais',  <?php echo $mes3 ?>],
-                ['2 Meses',  <?php echo $mes2 ?>],
-                ['Mes atual',  <?php echo $mes1 ?>],
+                ['90 dias atrás ou mais',  <?php echo $mes3 ?>],
+                ['Em 60 dias atrás',  <?php echo $mes2 ?>],
+                ['Em 30 dias atrás',  <?php echo $mes1 ?>],
             ]);
 
             var options = {

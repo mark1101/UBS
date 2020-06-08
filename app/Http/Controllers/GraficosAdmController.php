@@ -315,6 +315,70 @@ class GraficosAdmController extends Controller
             }
         }
 
+        $hoje = date('d-m-Y');
+
+        $dias90 = date('d-m-Y', strtotime('-90 days', strtotime($hoje)));
+        $dias60 = date('d-m-Y', strtotime('-60 days', strtotime($hoje)));
+        $dias30 = date('d-m-Y', strtotime('-30 days', strtotime($hoje)));
+
+        $mes1c = 0;
+        $mes2c = 0;
+        $mes3c = 0;
+        $mes1t = 0;
+        $mes2t = 0;
+        $mes3t = 0;
+        $mes1e = 0;
+        $mes2e = 0;
+        $mes3e = 0;
+
+        $consultaDen = ConsultaDentista::where('id_sede', Auth::user()->cidade_sede)->get();
+        $tratamentoDen = FichaTratamento::where('id_sede', Auth::user()->cidade_sede)->get();
+        $encaminhamentoDen = EncaminhamentoOdonto::where('id_sede', Auth::user()->cidade_sede)->get();
+
+        foreach ($consultaDen as $item) {
+            $teste = date('d-m-Y', strtotime($item->created_at));
+            if (strtotime($teste) > strtotime($dias60)) {
+                $mes1c++;
+            }
+            if (strtotime($teste) > strtotime($dias90)) {
+                if (strtotime($teste) < strtotime($dias30)) {
+                    $mes2c++;
+                }
+            }
+            if (strtotime($teste) < strtotime($dias90)) {
+                $mes3c++;
+            }
+        }
+        foreach ($tratamentoDen as $item) {
+            $teste = date('d-m-Y', strtotime($item->created_at));
+            if (strtotime($teste) > strtotime($dias60)) {
+                $mes1t++;
+            }
+            if (strtotime($teste) > strtotime($dias90)) {
+                if (strtotime($teste) < strtotime($dias30)) {
+                    $mes2t++;
+                }
+            }
+            if (strtotime($teste) < strtotime($dias90)) {
+                $mes3t++;
+            }
+        }
+        foreach ($encaminhamentoDen as $item) {
+            $teste = date('d-m-Y', strtotime($item->created_at));
+            if (strtotime($teste) > strtotime($dias60)) {
+                $mes1e++;
+            }
+            if (strtotime($teste) > strtotime($dias90)) {
+                if (strtotime($teste) < strtotime($dias30)) {
+                    $mes2e++;
+                }
+            }
+            if (strtotime($teste) < strtotime($dias90)) {
+                $mes3e++;
+            }
+        }
+
+
         return view('Adm.graficoOdontologia', [
             'consultas' => $localidasConsultaCount,
             'tratamentos' => $localidasTratamentoCount,
@@ -324,7 +388,16 @@ class GraficosAdmController extends Controller
             'proE' => $profissionaisE,
             'faixa1' => count($faixa1),
             'faixa2' => count($faixa2),
-            'faixa3' => count($faixa3)
+            'faixa3' => count($faixa3),
+            'mes1c' => $mes1c,
+            'mes2c' => $mes2c,
+            'mes3c' => $mes3c,
+            'mes1t' => $mes1t,
+            'mes2t' => $mes2t,
+            'mes3t' => $mes3t,
+            'mes1e' => $mes1e,
+            'mes2e' => $mes2e,
+            'mes3e' => $mes3e,
         ]);
 
 

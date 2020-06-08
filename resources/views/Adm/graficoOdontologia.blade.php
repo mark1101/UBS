@@ -188,13 +188,117 @@ The above copyright notice and this permission notice shall be included in all c
         }
     </script>
 
+    <script type="text/javascript">
+        google.charts.load('current', {'packages': ['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Year', 'Quantidade de Vacinas'],
+                ['90 dias atrás ou mais',  <?php echo $mes3c ?>],
+                ['Em 60 dias atrás',  <?php echo $mes2c ?>],
+                ['Em 30 dias atrás',  <?php echo $mes1c ?>],
+            ]);
+
+            var options = {
+                title: 'Histórico de consulta odontológicas realizadas',
+                hAxis: {titleTextStyle: {color: '#333'}},
+                vAxis: {minValue: 0}
+                /*curveType: 'function',
+                legend: {position: 'bottom'}*/
+            };
+
+            var chart = new google.visualization.AreaChart(document.getElementById('curve_chart1'));
+
+            chart.draw(data, options);
+        }
+    </script>
+
+    <script type="text/javascript">
+        google.charts.load('current', {'packages': ['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Year', 'Quantidade de Vacinas'],
+                ['90 dias atrás ou mais',  <?php echo $mes3t ?>],
+                ['Em 60 dias atrás',  <?php echo $mes2t ?>],
+                ['Em 30 dias atrás',  <?php echo $mes1t ?>],
+            ]);
+
+            var options = {
+                title: 'Histórico de tratamentos odontológicos realizados',
+                hAxis: {titleTextStyle: {color: '#333'}},
+                vAxis: {minValue: 0}
+                /*curveType: 'function',
+                legend: {position: 'bottom'}*/
+            };
+
+            var chart = new google.visualization.AreaChart(document.getElementById('curve_chart2'));
+
+            chart.draw(data, options);
+        }
+    </script>
+
+    <script type="text/javascript">
+        google.charts.load('current', {'packages': ['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Year', 'Quantidade de Vacinas'],
+                ['90 dias atrás ou mais',  <?php echo $mes3e ?>],
+                ['Em 60 dias atrás',  <?php echo $mes2e ?>],
+                ['Em 30 dias atrás',  <?php echo $mes1e ?>],
+            ]);
+
+            var options = {
+                title: 'Histórico de encaminhamentos realizados',
+                hAxis: {titleTextStyle: {color: '#333'}},
+                vAxis: {minValue: 0}
+                /*curveType: 'function',
+                legend: {position: 'bottom'}*/
+            };
+
+            var chart = new google.visualization.AreaChart(document.getElementById('curve_chart3'));
+
+            chart.draw(data, options);
+        }
+    </script>
+
+    <script type="text/javascript">
+        google.charts.load('current', {'packages': ['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Year', 'Quantidade de Vacinas'],
+                ['90 dias atrás ou mais',  <?php echo $mes3e ?>],
+                ['Em 60 dias atrás',  <?php echo $mes2e ?>],
+                ['Em 30 dias atrás',  <?php echo $mes1e ?>],
+            ]);
+
+            var options = {
+                title: 'Gráfico de vacinas realizadas no município',
+                hAxis: {titleTextStyle: {color: '#333'}},
+                vAxis: {minValue: 0}
+                /*curveType: 'function',
+                legend: {position: 'bottom'}*/
+            };
+
+            var chart = new google.visualization.AreaChart(document.getElementById('curve_chart1'));
+
+            chart.draw(data, options);
+        }
+    </script>
+
 </head>
 
 <body class="" style="background-color: white">
 <div class="wrapper ">
 
     <div class="sidebar" data-color="admin" data-background-color="white" data-image="../assets/img/unidade.jpg">
-    <div class="logo"><a href="{{'/'}}" class="simple-text logo-normal">
+        <div class="logo"><a href="{{'/'}}" class="simple-text logo-normal">
                 <h4 style="color: black">Dados Estatísticos</h4>
             </a></div>
         <div class="sidebar-wrapper ">
@@ -340,19 +444,29 @@ The above copyright notice and this permission notice shall be included in all c
                 <div class="card" style="align-items: flex-start">
                     <div class="card-body">
                         <h6 class="card-subtitle mb-2 text-muted">relação cosultas odontológicas / localidade </h6>
-                        <div id="piechart_3d" style="width: 450px; height: 300px;"></div>
+                        <div class="row">
+                            <div id="piechart_3d" style="width: 450px; height: 300px;"></div>
+                            <div id="curve_chart1" style="width: 500px; height: 500px"></div>
+                        </div>
                     </div>
                 </div>
                 <div class="card" style="align-items: flex-start">
                     <div class="card-body">
                         <h6 class="card-subtitle mb-2 text-muted">relação tratamentos odontológicos / localidade </h6>
-                        <div id="piechart_3d1" style="width: 450px; height: 300px;"></div>
+                        <div class="row">
+                            <div id="piechart_3d1" style="width: 450px; height: 300px;"></div>
+                            <div id="curve_chart2" style="width: 500px; height: 500px"></div>
+                        </div>
                     </div>
                 </div>
                 <div class="card" style="align-items: flex-start">
                     <div class="card-body">
-                        <h6 class="card-subtitle mb-2 text-muted">relação encaminhamentos odontológicos / localidade </h6>
-                        <div id="piechart_3denxaminha" style="width: 450px; height: 300px;"></div>
+                        <h6 class="card-subtitle mb-2 text-muted">relação encaminhamentos odontológicos /
+                            localidade </h6>
+                        <div class="row">
+                            <div id="piechart_3denxaminha" style="width: 450px; height: 300px;"></div>
+                            <div id="curve_chart3" style="width: 500px; height: 500px"></div>
+                        </div>
                     </div>
                 </div>
                 <br>
@@ -442,13 +556,14 @@ The above copyright notice and this permission notice shall be included in all c
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Faixa etária dos pacientes atendidos nas UBS do Município</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Faixa etária dos pacientes atendidos nas UBS do
+                            Município</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                            <div id="piechart_3d4" style="width: max-content; height: 300px;"></div>
+                        <div id="piechart_3d4" style="width: max-content; height: 300px;"></div>
                     </div>
 
                     <div class="modal-footer">
