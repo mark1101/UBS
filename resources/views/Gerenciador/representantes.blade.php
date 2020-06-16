@@ -18,11 +18,11 @@
 
 
 </head>
-
+<body>
 
 <div class="main-panel">
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top " style="background-color: grey">
+    <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top " style="background-color: white">
         <div class="container-fluid">
 
             <!-- BOTAO DE RESPONSIVIDADE PARA OPCIOES DE SIDEBAR-->
@@ -63,7 +63,6 @@
 
         </div>
     </nav>
-    <body>
     <!-- End Navbar -->
     <br><br><br><br>
     <div class="container">
@@ -139,24 +138,25 @@
             </tr>
             </thead>
 
-                <tbody>
-                <tr>
-                    <td>{{$pacientes}}</td>
-                    <td>{{$tudo}}</td>
-                </tr>
-                </tbody>
+            <tbody>
+            <tr>
+                <td>{{$pacientes}}</td>
+                <td>{{$tudo}}</td>
+            </tr>
+            </tbody>
 
         </table>
     </div>
 
-    <br><br><br><br><br>
 
-
-    <footer class="footer">
-        <div class="container-fluid">
-        </div>
-    </footer>
 </div>
+<br><br><br><br><br>
+
+
+<footer class="footer">
+    <div class="container-fluid">
+    </div>
+</footer>
 
 
 <!-- REFERENCIAS EM JS  -->
