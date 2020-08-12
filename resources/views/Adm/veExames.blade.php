@@ -67,7 +67,7 @@ The above copyright notice and this permission notice shall be included in all c
                         <p>Odontológico</p>
                     </a>
                 </li>
-                <li class="nav-item active">
+                <li class="nav-item ">
                     <a class="nav-link" href="{{route('veConsultas')}}">
                         <i class="material-icons">insert_emoticon
                         </i>
@@ -81,7 +81,7 @@ The above copyright notice and this permission notice shall be included in all c
                         <p>Viagens</p>
                     </a>
                 </li>
-                <li class="nav-item  ">
+                <li class="nav-item  active">
                     <a class="nav-link" href="{{route('veExames')}}">
                         <i class="material-icons">content_paste
                         </i>
@@ -242,7 +242,7 @@ The above copyright notice and this permission notice shall be included in all c
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">Profissionais Capacitados a Realizar
-                                Consulta</h5>
+                                e Cadastrar Exames</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -258,7 +258,7 @@ The above copyright notice and this permission notice shall be included in all c
                                             <th><strong>Cpf</strong></th>
                                             <th><strong>Módulo de Trabalho</strong></th>
                                             <th><strong>Comunidade de Trabalho</strong></th>
-                                            <th><strong>Consultas Realizadas</strong></th>
+                                            <th><strong>Exames Realizados</strong></th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -304,7 +304,7 @@ The above copyright notice and this permission notice shall be included in all c
                                         <thead>
                                         <tr>
                                             <th style="color: black"><strong>Localidade</strong></th>
-                                            <th style="color: black"><strong>Quantidade de Consultas</strong></th>
+                                            <th style="color: black"><strong>Quantidade de Exames</strong></th>
 
                                         </tr>
                                         </thead>

@@ -46,7 +46,7 @@ The above copyright notice and this permission notice shall be included in all c
                     </a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link" href="{{route('veProfissionais')}}">
+                    <a class="nav-link" href="#">
                         <i class="material-icons">person
                         </i>
                         <p>Profissionais</p>
@@ -74,7 +74,7 @@ The above copyright notice and this permission notice shall be included in all c
                         <p>Consultas</p>
                     </a>
                 </li>
-                <li class="nav-item  active">
+                <li class="nav-item active ">
                     <a class="nav-link" href="{{route('veViagens')}}">
                         <i class="material-icons">commute
                         </i>
@@ -115,7 +115,6 @@ The above copyright notice and this permission notice shall be included in all c
     <div class="main-panel">
         <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
             <div class="container-fluid">
-
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -158,162 +157,86 @@ The above copyright notice and this permission notice shall be included in all c
 
         <div class="content">
             <div class="container-fluid">
-                <a style="color:#ffffff " href="{{route('gerenciaMoto')}}" class="btn btn-primary-admin">Gerenciar Motoristas</a>
-                <a style="color:#ffffff " href="{{route('geVei')}}" class="btn btn-primary-admin">Gerenciar Veículos</a>
+                <a style="color:#ffffff " href="{{route('veViagens')}}" class="btn btn-primary-admin">Voltar para ver viagens</a>
+
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header card-header-admin">
-
-                            <form action="{{route('mostraViagem')}}" method="POST" id="buscaViagemNome"
-                                  class="navbar-form">
+                            <h4 class="card-title">A busca pode ser feita por nome do Veiculo ou placa</h4>
+                            <form id="buscaVeiculo" class="navbar-form">
                                 @csrf
-                                <h4>Pesquisa por Localidade de Origem</h4>
                                 <div class="input-group no-border">
-                                    <select style="text-transform: uppercase" class="form-control " name="localidade"
-                                            id="localidade">
-                                        @foreach($local as $item)
-                                            <option>{{$item->nome}}</option>
-                                        @endforeach
-                                    </select>
+                                    <input onkeyup="submitForm()" type="text" style="color:beige;" id="criterio"
+                                           name="criterio"
+                                           class="form-control">
                                     <button type="submit" class="btn btn-white btn-round btn-just-icon">
                                         <i class="material-icons">search</i>
                                     </button>
                                 </div>
-
                             </form>
                         </div>
                         <div class="card-body">
                             <div class="card-body">
-                                <div class="table-responsive" style="overflow: auto; height: 400px;">
+                                <div class="table-responsive" style="overflow: auto; height: 600px;">
                                     <table id="tableSearch" class="table">
                                         <thead>
 
-                                        <tr>
-                                            <th><strong>Motorista</strong></th>
-                                            <th><strong>Numero de Pacientes</strong></th>
-                                            <th><strong>Origem</strong></th>
-                                            <th><strong>Destino</strong></th>
-                                            <th><strong>Data</strong></th>
-                                            <th><strong>Carro</strong></th>
-                                            <th><strong>Placa</strong></th>
-                                        </tr>
-
                                         </thead>
                                         <tbody>
-
-                                        @foreach($valores as $mostra)
-
-                                            <tr>
-                                                <td>{{($mostra->motorista)->nome}}</td>
-                                                <td>{{$mostra->num_pacientes}}</td>
-                                                <td>{{($mostra->localidadeOrigem)->nome}}</td>
-                                                <td>{{$mostra->destino}}</td>
-                                                <td>{{$mostra->data}}</td>
-                                                <td>{{($mostra->carro)->nome}}</td>
-                                                <td>{{($mostra->carro)->placa}}</td>
-
-                                            </tr>
-                                        @endforeach
-
 
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
 
-                <br>
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-header card-header-admin">
-                            <h2>Viagens realizadas hoje</h2>
-                            <?php
-                            date_default_timezone_set('America/Bahia');
-                            echo 'Ultima atualização hoje ', date('\à\s H:i');
-                            ?>
-                        </div>
-                        <div class="card-body">
-                            <div class="card-body">
-                                <div class="table-responsive" style="overflow: auto; height: 450px;">
-                                    <table id="tableSearch" class="table">
-                                        <thead>
-
-                                        <tr>
-                                            <th><strong>Motorista</strong></th>
-                                            <th><strong>Origem</strong></th>
-                                            <th><strong>Destino</strong></th>
-                                            <th><strong>Carro</strong></th>
-                                            <th><strong>Placa</strong></th>
-                                            <th><strong>Observação</strong></th>
-                                        </tr>
-
-                                        </thead>
-                                        <tbody>
-
-                                        @foreach($viagemDia as $dia)
-                                            <tr>
-                                                <td>{{($dia->motorista)->nome}}</td>
-                                                <td>{{($dia->localidadeOrigem)->nome}}</td>
-                                                <td>{{$dia->destino}}</td>
-                                                <td>{{($dia->carro)->nome}}</td>
-                                                <td>{{($dia->carro)->placa}}</td>
-                                                <td>{{$dia->observacao}}</td>
-                                            </tr>
-                                        @endforeach
-
-
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
             </div>
 
-            {{--<script>
+            <script>
                 function submitForm() {
                     if ($("#criterio").val() === "") {
                         $("#tableSearch").html("");
                     } else {
-                        $("#buscaProfissional").submit();
+                        $("#buscaVeiculo").submit();
                     }
                 }
-            </script>--}}
+            </script>
 
             <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
 
-            {{--@foreach($pacientes as $paciente)
-                <div class="modal fade" id="modal{{$paciente->id}}" tabindex="-1" role="dialog"
+            @foreach($data as $da)
+                <div class="modal fade" id="modal{{$da->id}}" tabindex="-1" role="dialog"
                      aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Título do modal</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Edição de motoristas</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div id="editPaciente" class="modal-body">
                                 <div class=" container">
-                                    <form id="form{{$paciente->id}}">
+                                    <form id="form{{$da->id}}">
                                         @csrf
-                                        Nome: <label for="name{{$paciente->id}}"></label>
-                                        <input id="name{{$paciente->id}}" name="nome" class="form-control"
-                                               value="{{$paciente->nome}}" required>
+                                        Nome: <label for="nome{{$da->id}}"></label>
+                                        <input id="nome{{$da->id}}" name="nome" class="form-control"
+                                               value="{{$da->nome}}" required>
                                         <br>
-                                        Ultimo nome: <label for="ultimo{{$paciente->id}}"></label>
-                                        <input id="ultimo{{$paciente->id}}" name="ultimo_nome"
-                                               class="form-control"
-                                               value="{{$paciente->ultimo_nome}}" required>
+                                        Localidade: <select name="id_localidade"
+                                                            id="localidade" class="form-control">
+                                            @foreach($localidades as $localidade)
+                                                <option value="{{$localidade->id}}">{{$localidade->nome}}</option>
+                                            @endforeach
+                                        </select>
                                         <br>
-                                        Telefone: <label for="name{{$paciente->id}}"></label>
-                                        <input id="name{{$paciente->id}}" name="telefone" class="form-control"
-                                               value="{{$paciente->telefone}}" required>
+                                        Placa: <label for="placa{{$da->id}}"></label>
+                                        <input id="placa{{$da->id}}" name="placa" class="form-control"
+                                               value="{{$da->placa}}" required>
                                         <br>
                                         <div class="row" style="float: right; left: 30%">
                                             <button type="submit" class="btn btn-success">Salvar mudanças
@@ -323,21 +246,21 @@ The above copyright notice and this permission notice shall be included in all c
                                 </div>
                                 <script>
                                     $(function () {
-                                        $('form[id="form{{$paciente->id}}"]').submit(function (event) {
+                                        $('form[id="form{{$da->id}}"]').submit(function (event) {
                                             event.preventDefault();
                                             $.ajax({
-                                                url: "{{route('updatePaciente',['id'=>$paciente->id])}}",
+                                                url: "{{route('alteraVeicu',['id'=>$da->id])}}",
                                                 type: "post",
                                                 data: $(this).serialize(),
                                                 dataType: 'json',
                                                 success: function (response) {
                                                     if (response.success === true) {
-                                                        $("#footer{{$paciente->id}}").fadeIn();
-                                                        $("#message{{$paciente->id}}").text(response.message);
+                                                        $("#footer{{$da->id}}").fadeIn();
+                                                        $("#message{{$da->id}}").text(response.message);
                                                         $.wait(function () {
-                                                            $("#footer{{$paciente->id}}").fadeOut();
+                                                            $("#footer{{$da->id}}").fadeOut();
                                                         }, 5);
-                                                        $("#buscaPaciente").submit();
+                                                        $("#buscaVeiculo").submit();
                                                     }
                                                 }
                                             });
@@ -348,24 +271,78 @@ The above copyright notice and this permission notice shall be included in all c
                                     });
                                 </script>
                             </div>
-                            <div class="modal-footer" id="footer{{$paciente->id}}" style="display: none">
-                                <span id="message{{$paciente->id}}" style="color: green"></span>
-                            </div>
-                            <div class="modal-footer" id="footerError{{$paciente->id}}"
-                                 style="display: none">
-                                <span id="message{{$paciente->id}}" style="color: red"></span>
+                            <div class="modal-footer" id="footer{{$da->id}}" style="display: none">
+                                <span id="message{{$da->id}}" style="color: green"></span>
                             </div>
                         </div>
                     </div>
                 </div>
-            @endforeach --}}{{--modal para ver os profissionais--}}
+            @endforeach
 
-            {{--<script>
+            @foreach($data as $da)
+                <div class="modal fade" id="modalDelete{{$da->id}}" tabindex="-1" role="dialog"
+                     aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Deletar Veículo</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div id="editPaciente" class="modal-body">
+                                <div class=" container">
+                                    <form id="formDelete{{$da->id}}">
+                                        @csrf
+                                        <h3>Deseja mesmo deletar o Veículo {{$da->nome}} com a placa {{$da->placa}} ? </h3>
+                                        <br>
+                                        <div class="row" style="float: right; left: 30%">
+                                            <button type="submit" class="btn btn-danger">Deletar
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <script>
+                                    $(function () {
+                                        $('form[id="formDelete{{$da->id}}"]').submit(function (event) {
+                                            event.preventDefault();
+                                            $.ajax({
+                                                url: "{{route('deletaVeiculo',['id'=>$da->id])}}",
+                                                type: "post",
+                                                data: $(this).serialize(),
+                                                dataType: 'json',
+                                                success: function (response) {
+                                                    if (response.success === true) {
+                                                        $("#footer{{$da->id}}").fadeIn();
+                                                        $("#message{{$da->id}}").text(response.message);
+                                                        $.wait(function () {
+                                                            $("#footer{{$da->id}}").fadeOut();
+                                                        }, 5);
+                                                        $("#buscaVeiculo").submit();
+                                                    }
+                                                }
+                                            });
+                                        });
+                                        $.wait = function (callback, seconds) {
+                                            return window.setTimeout(callback, seconds * 1000);
+                                        }
+                                    });
+                                </script>
+                            </div>
+                            <div class="modal-footer" id="footer{{$da->id}}" style="display: none">
+                                <span id="message{{$da->id}}" style="color: green"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+
+            <script>
                 $(function () {
-                    $('form[id="buscaProfissional"]').submit(function (event) {
+                    $('form[id="buscaVeiculo"]').submit(function (event) {
                         event.preventDefault();
                         $.ajax({
-                            url: "{{route('searchProfissional')}}",
+                            url: "{{route('geVeicu')}}",
                             type: "get",
                             data: $(this).serialize(),
                             dataType: 'json',
@@ -374,11 +351,9 @@ The above copyright notice and this permission notice shall be included in all c
                                     var newRow = $("<tr>");
                                     var cols = "";
                                     cols += '<th>Nome</th>';
-                                    cols += '<th>Função</th>';
-                                    cols += '<th>Data Nascimento</th>';
-                                    cols += '<th>CPF</th>';
-                                    cols += '<th>Localidade</th>';
-                                    cols += '<th>Email</th>';
+                                    cols += '<th>Placa</th>';
+                                    cols += '<th></th>';
+                                    cols += '<th></th>';
                                     newRow.append(cols);
 
                                     $("#tableSearch").html("").append(newRow).fadeIn();
@@ -386,13 +361,10 @@ The above copyright notice and this permission notice shall be included in all c
                                     $.each(response.data, function (item, value) {
                                         var newRow = $("<tr>");
                                         var cols = "";
-                                        cols += '<td>' + response.data[item]["name"] + '</td>';
-                                        cols += '<td>' + response.data[item]["funcao"] + '</td>';
-                                        cols += '<td>' + response.data[item]["data_nascimento"] + '</td>';
-                                        cols += '<td>' + response.data[item]["cpf"] + '</td>';
-                                        cols += '<td>' + response.data[item]["localidade"] + '</td>';
-                                        cols += '<td>' + response.data[item]['email']+ '</td>';
-                                        cols += '<td><a href="#" data-toggle="modal" data-target="#modal' + response.data[item]['id'] + '" style="width: 55px;"> <i class="material-icons" style="color: black;"title="Salvar Paciente">visibility</i></a>\n</td>';
+                                        cols += '<td>' + response.data[item]["nome"] + '</td>';
+                                        cols += '<td>' + response.data[item]["placa"] + '</td>';
+                                        cols += '<td><a href="#" data-toggle="modal" data-target="#modal' + response.data[item]['id'] + '" style="width: 55px;"> <i class="material-icons" style="color: black;"title="Salvar Paciente">edit</i></a>\n</td>';
+                                        cols += '<td><a href="#" data-toggle="modal" data-target="#modalDelete' + response.data[item]['id'] + '" style="width: 55px;"> <i class="material-icons" style="color: black;"title="Salvar Paciente">delete</i></a>\n</td>';
 
                                         newRow.append(cols);
                                         $("#tableSearch").append(newRow).fadeIn();
@@ -404,7 +376,13 @@ The above copyright notice and this permission notice shall be included in all c
                         });
                     });
                 });
-            </script>--}}
+            </script>
+
+            <script>
+                $(document).ready(function () {
+                    $("#buscaVeiculo").submit();
+                })
+            </script>
 
 
         </div>

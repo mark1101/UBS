@@ -162,13 +162,13 @@
                         </div>
                     </div>
                     &nbsp &nbsp &nbsp
-                    <div align="center" class="card" style="width: 13rem; height: 13rem;">
+                    {{--<div align="center" class="card" style="width: 13rem; height: 13rem;">
                         <div class="card-body">
                             <h5 class="card-title">Pacientes</h5>
                             <img src="{{asset('img/PacienteClicavel.png')}}">
                             <a href="#" class="btn btn-primary-admin">Ver</a>
                         </div>
-                    </div>
+                    </div>--}}
                 </div>
                 <div class="row d-flex justify-content-center"> <!-- CLASSE DE ALINHAMENTO -->
                     <div align="center" class="card" style="width: 13rem; height: 13rem;">

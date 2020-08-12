@@ -50,6 +50,13 @@ The above copyright notice and this permission notice shall be included in all c
                         <p>Recados</p>
                     </a>
                 </li>
+                <li class="nav-item  ">
+                    <a class="nav-link" href="{{route('mostraProblema')}}">
+                        <i class="material-icons">report_problem
+                        </i>
+                        <p>Problemas com visitas</p>
+                    </a>
+                </li>
                 <li class="nav-item  active">
                     <a class="nav-link" href="{{route('cadastroLocalidade')}}">
                         <i class="material-icons">house

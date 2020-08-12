@@ -161,6 +161,11 @@ Route::middleware(['auth'])->group(function () {
         Route::get('alteraMoto', 'ViagemController@gerenciaMotorista')->name('gerenc');
         Route::post('/editaMotorista/{id}', 'ViagemController@alteraMotorista')->name('alteraMotorista');
 
+        Route::get('/gerenciaVeiculo', 'CarroController@indexGerencia')->name('geVei');
+        Route::get('alteraVei', 'CarroController@gerenciaCarro')->name('geVeicu');
+        Route::post('/editaVeiculo/{id}', 'CarroController@alteraCarro')->name('alteraVeicu');
+        Route::post('/deletaVeiculo/{id}', 'CarroController@deletaCarro')->name('deletaVeiculo');
+
     });
 
     Route::middleware(['odontoAcess'])->group(function () {
