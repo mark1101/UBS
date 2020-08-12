@@ -55,6 +55,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/gerente', 'GerenciadorController@index')->name('gerente');
         Route::post('cadatraSede', 'GerenciadorController@cadastrarSede')->name('cadaSede');
 
+        Route::get('/pedidos', 'PedidosController@index')->name('pedidos')->middleware('auth');
+        Route::get('/recebimentos', 'RecebimentosController@index')->name('recebimentos')->middleware('auth');
+
     });
 
     Route::get('/paciente', 'PacienteController@indexPaciente')->name('paciente');
@@ -154,13 +157,16 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/veExames', 'veExamesController@index')->name('veExames');
         Route::post('/mostraViagem', 'veViagensController@mostraViagem')->name('mostraViagem');
 
+        Route::get('/gerenciaMotorista', 'ViagemController@indexGeMotorista')->name('gerenciaMoto');
+        Route::get('alteraMoto', 'ViagemController@gerenciaMotorista')->name('gerenc');
+        Route::post('/editaMotorista/{id}', 'ViagemController@alteraMotorista')->name('alteraMotorista');
+
     });
 
     Route::middleware(['odontoAcess'])->group(function () {
 
         Route::get('/administracaoOdonto', 'DentistaController@indexAdm')->name('admOdonto');
         Route::get('/odonto/consulta', 'DentistaController@indexConsulta')->name('cadastroConsultaOdonto');
-        Route::get('/agendamentoDentista', 'DentistaController@agendamentoDentista')->name('agendamentoDentista');
         Route::get('/solicitacaoExameOdonto', 'DentistaController@indexSolicitacaoExame')->name('solicitacaoExameOdonto');
         Route::get('/agendaDentista', 'FullCalendarController@index')->name('agendaDentista');
         Route::get('/load-events', 'EventController@loadEvents')->name('routeLoadEvents');
@@ -222,6 +228,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('alteraViagem/{id}', 'ViagemController@alteraViagem')->name('alteraViagem');
         Route::post('confirma/{id}', 'ViagemController@confirmaViagem')->name('confirmacaoviagem');
         Route::get('/controleViagem', 'ViagemController@index')->name('controleViagem');
+        Route::get('/agendamentoDentista', 'DentistaController@agendamentoDentista')->name('agendamentoDentista');
 
         Route::post('entrada', 'FichaEntradaController@store')->name('storeEntrada');
 
@@ -235,8 +242,6 @@ Route::get('/inicioSite', 'InicioSiteController@index')->name('siteInicio');
 Route::get('/sobre', 'SobreController@index')->name('sobre');
 Route::get('/cadastro', 'CadastroMunicipioController@index')->name('cadastro');
 Route::get('/contato', 'ContatoController@index')->name('contato');
-Route::get('/pedidos', 'PedidosController@index')->name('pedidos')->middleware('auth');
-Route::get('/recebimentos', 'RecebimentosController@index')->name('recebimentos')->middleware('auth');
 
 
 Route::post('pedido', 'CadastroMunicipioController@cadastro')->name('cadastroPedido');

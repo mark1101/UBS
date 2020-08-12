@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Carro;
 use App\Localidade;
 use App\Motorista;
+use App\User;
 use App\Viagens;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -135,6 +136,48 @@ class ViagemController extends Controller
 
         $response['success'] = true;
         $response['data'] = $data;
+
+        echo json_encode($response);
+    }
+
+    public function indexGeMotorista()
+    {
+       $data =  Motorista::where('id_sede', Auth::user()->cidade_sede)->with('localidade')->get();
+       $localidade = Localidade::where('id_sede', Auth::user()->cidade_sede)->get();
+
+       return view('Adm.gerenciarMotoristas', [
+          'data' => $data,
+           'localidades' => $localidade
+       ]);
+
+    }
+
+    public function gerenciaMotorista(Request $request)
+    {
+        $dataa = $request->all();
+        unset($dataa['_token']);
+
+        $cidade = Auth::user()->cidade_sede;
+
+        $data = Motorista::where('id_sede', $cidade)
+            ->where('nome', 'like', '%' . $request->criterio . '%')
+            ->with('localidade')
+            ->get();
+
+        $response['success'] = true;
+        $response['data'] = $data;
+
+        echo json_encode($response);
+
+    }
+    public function alteraMotorista(Request $request, $id)
+    {
+        $data = $request->all();
+        unset($data['_token']);
+        Motorista::where('id', $id)->update($data);
+
+        $response['success'] = true;
+        $response['message'] = "Motorista editado com sucesso!";
 
         echo json_encode($response);
     }
